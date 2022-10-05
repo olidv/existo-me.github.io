@@ -126,3 +126,12 @@ testem.log
 .history/
 prettierignore.txt
 *.code-workspace
+
+# ---------------------------------------------------------
+
+#####
+# End of core ignore list, 
+# below put you custom 'per project' settings,
+# patterns or path.
+#####
+ROADMAP.md
