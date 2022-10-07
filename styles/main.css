@@ -8,13 +8,12 @@ html,body {
 }
 
 body {
-    min-height: 100vh !important;
-    max-height: 100% !important;
-    height: 100% !important;
-
+    width: 100% !important;
     min-width: 100vw !important;
     max-width: 100% !important;
-    width: 100% !important;
+    height: 100% !important;
+    min-height: 100vh !important;
+    max-height: 100% !important;
 }
 
 header {
@@ -33,7 +32,6 @@ footer {
 }
 
 .back-flag {
-    background-position: 0 0;
     background-clip: padding-box;
     background-origin: padding-box;
     background-repeat: no-repeat;
@@ -49,16 +47,16 @@ footer {
 }
 
 .page {
+    height: 100% !important;
     min-height: 100vh !important;
     max-height: 100% !important;
-    height: 100% !important;
-    background-color: #dddddd;
+    background-color: #dedede;
 }
 
 @media (orientation: portrait) {
     .back-flag {
+        background-position: center;
         background-size: auto 100%;
-        background-position-x: center;
     }
 
     .frame {
@@ -69,6 +67,7 @@ footer {
 
 @media (orientation: landscape) {
     .back-flag {
+        background-position: 0 0;
         background-size: 100% 100%;
     }
 
