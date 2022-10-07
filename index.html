@@ -20,7 +20,7 @@
         <meta name="author" content="EXISTO.me" />
         <meta name="description" content="." />
         <meta name="keywords" content="" />
-        <title>EXISTO.me • Teste Político</title>
+        <title>EXISTO.me • GPS Político</title>
 
         <!-- Progressive Web Application -->
         <meta name="application-name" content="EXISTO.me" />
@@ -67,7 +67,7 @@
         <link rel="mask-icon" color="#000000" href="icons/safari-pinned-tab.svg" />
 
         <!-- Windows Tiles for Desktop -->
-        <meta name="msapplication-tooltip" content="EXISTO.me" />
+        <meta name="msapplication-tooltip" content="EXISTO.me • GPS Político" />
         <meta name="msapplication-starturl" content="/" />
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="msapplication-navbutton-color" content="#000000" />
@@ -81,18 +81,18 @@
 
         <!-- Share on Social Networks -->
         <meta property="og:site_name" content="EXISTO.me" />
-        <meta property="og:title" content="EXISTO.me • Teste do Espectro Político" />
+        <meta property="og:title" content="EXISTO.me • GPS Político" />
         <meta property="og:description" content="." />
-        <meta property="og:locale" content="en-US" />
+        <meta property="og:locale" content="pt-BR" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://existo-me.github.io/br/" />
         <meta property="og:image" content="https://existo-me.github.io/br/icons/ms-icon-310x150.png" />
-        <meta property="og:image:alt" content="Existo.me Logo" />
+        <meta property="og:image:alt" content="EXISTO.me Logo" />
         <meta property="og:image:type" content="image/jpeg, image/png" />
 
         <!-- Share on Twitter -->
         <meta name="twitter:site" content="@United_Sapiens" />
-        <meta name="twitter:title" content="EXISTO.me • Teste do Espectro Político" />
+        <meta name="twitter:title" content="EXISTO.me • GPS Político" />
         <meta name="twitter:description" content="." />
         <meta name="twitter:card" content="summary" />
         <meta name="twitter:image" content="https://existo-me.github.io/br/icons/ms-icon-310x150.png" />
@@ -101,11 +101,11 @@
         <!-- Google Web Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Jost&display=swap" />
 
         <!-- Icon Fonts -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
 
         <!-- Libraries Stylesheets -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
@@ -115,141 +115,84 @@
     </head>
 
     <!-- Website Content -->
-    <body class="d-flex flex-column min-vh-100">
-        <header class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
-            <div class="col-md-4 d-flex caption">
-                <a id="aboutModalLabel" href="#" data-bs-toggle="modal" data-bs-target="#aboutModal" title="Clique para saber mais sobre este website">
-                    <h3 class="nav-top"><i class="fa-solid fa-bars" role="img" aria-label="Clique para saber mais sobre este website"></i> EXISTO.me</h3>
-                </a>
-            </div>
-            <div class="col-md-4 d-flex justify-content-end caption">
-                <a href="https://github.com/existo-me/existo-me.github.io" title="Wanna add your country?" target="_blank">
-                    <h5 class="nav-top"><img src="images/world-map.png" class="map-inline" alt="Mapa Mundi" draggable="false" /> Brazil</h5>
-                </a>
+    <body class="back-flag">
+
+        <header class="frame">
+            <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
+                <div class="col-md-6 d-flex caption dropdown">
+                    <a id="dropdownHMenu" href="#" class="dropdown" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Clique para abrir o menu principal.">
+                        <h3 class="nav-top light"><i class="fa-solid fa-bars" role="img" aria-label="Clique para abrir o menu principal."></i> <b>EXISTO.me</b></h3>
+                    </a>
+                    <div class="dropdown-menu shadow-10" aria-labelledby="dropdownHMenu">
+                        <h6 class="dropdown-header">MENU PRINCIPAL DO SITE</h6>
+                        <button class="dropdown-item" type="button">Action</button>
+                        <button class="dropdown-item" type="button">Another action</button>
+                        <div class="dropdown-divider"></div>
+                        <button class="dropdown-item" type="button">Something else here</button>
+                    </div>
+                </div>
+                <ul class="nav col-md-6 d-flex justify-content-end list-unstyled">
+                    <li class="ms-3 caption">
+                        <a href="#" title="Clique para revisar o seu resultado do teste político." target="_blank"><i class="bi bi-grid-3x3-gap icon-menu" role="img" aria-label="Clique para revisar o seu resultado do teste político."></i></a>
+                    </li>
+                    <li class="ms-3 caption">
+                        <a href="#" title="Clique para consultar a ajuda online do site." target="_blank"><i class="bi bi-question-circle icon-menu" role="img" aria-label="Clique para consultar a ajuda online do site."></i></a>
+                    </li>
+                    <li class="ms-3 caption">
+                        <a href="#" title="Clique para editar as configurações do site." target="_blank"><i class="bi bi-gear icon-menu" role="img" aria-label="Clique para editar as configurações do site."></i></a>
+                    </li>
+                    <li class="ms-3 caption">
+                        <a href="#" title="Contribua com nossa iniciativa, ajude-nos a melhorar o site." target="_blank"><i class="bi bi-heart-pulse icon-menu" role="img" aria-label="Contribua com nossa iniciativa, ajude-nos a melhorar o site."></i></a>
+                    </li>
+                </ul>
             </div>
         </header>
 
-        <!-- Pages as Tab panes -->
-        <main class="container-fluid flex-fill tab-content">
-            <!-- Home -->
-            <section class="container tab-pane fade show active">
-                <div class="row justify-content-md-center my-5">
-                    <div class="col-lg-8 p-4 pb-0 text-center border rounded-3 shadow-lg">
-                        <p><i class="fa-solid fa-location-crosshairs fa-3x"></i></p>
-                        <h1 class="display-4 mb-3">Teste do Espectro Político</h1>
-                        <p class="lead">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio.Paisis, filhis, espiritis santis.Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
-                        <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 mb-lg-4">
-                            <button type="button" class="btn btn-dark btn-lg px-4 me-md-2 fw-bold"><i class="fa-solid fa-check"></i>&nbsp; Iniciar Teste</button>
-                            <button type="button" class="btn btn-outline-secondary btn-lg px-4" disabled><i class="fa-solid fa-border-none"></i>&nbsp; Meu Resultado</button>
+        <main class="frame page border shadow-10">
+            <div class="container-fluid d-flex align-items-center h-100">
+                    <div class="row justify-content-md-center">
+                        <div class="col-lg-8 text-center">
+                            <p><i class="fa-solid fa-location-crosshairs fa-3x"></i></p>
+                            <h2 class="mb-3">Faça o Teste do GPS Político</h2>
+                            <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+                            <button type="button" class="btn btn-lg btn-dark m-4 px-4"><i class="fa-solid fa-play"></i>&nbsp; Iniciar Teste</button>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <!-- Test -->
-            <section class="container tab-pane fade">ok 2</section>
-
-            <!-- Result -->
-            <section class="container tab-pane fade">ok 3</section>
+            </div>
         </main>
 
-        <footer class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
-            <div class="col-md-4 d-flex caption">
-                <a href="https://www.united-sapiens.org/" title="Visite a landing page da United Sapiens" target="_blank">
-                    <h6 class="nav-top"><i class="fa-brands fa-creative-commons" role="img" aria-label="Visite a landing page da United Sapiens"></i>&nbsp; 2022&nbsp; United Sapiens</h6>
-                </a>
+        <footer class="frame">
+            <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
+                <div class="col-md-6 d-flex caption">
+                    <a href="https://github.com/tecnolista" title="Visite minha página de desenvolvedor no GitHub." target="_blank">
+                        <h5 class="nav-top"><i class="bi bi-cc-circle" role="img" aria-label="Visite meu perfil no GitHub."></i>&nbsp; 2022&nbsp; Raul Bras</h5>
+                    </a>
+                </div>
+                <ul class="nav col-md-6 d-flex justify-content-end list-unstyled">
+                    <li class="ms-3 caption">
+                        <a href="https://www.twitter.com/United_Sapiens" title="Fale comigo no Twitter." target="_blank"><i class="bi bi-twitter icon-social" role="img" aria-label="Fale comigo no Twitter."></i></a>
+                    </li>
+                    <li class="ms-3 caption">
+                        <a href="https://www.reddit.com/user/united_sapiens" title="Fale comigo no Reddit." target="_blank"><i class="bi bi-reddit icon-social" role="img" aria-label="Fale comigo no Reddit."></i></a>
+                    </li>
+                    <li class="ms-3 caption">
+                        <a href="https://www.9gag.com/u/united_sapiens" title="Fale comigo no 9gag." target="_blank"><i class="bi bi-9-square-fill icon-social" role="img" aria-label="Fale comigo no 9gag."></i></a>
+                    </li>
+                    <li class="ms-3 caption">
+                        <a href="https://www.imgur.com/user/unitedsapiens" title="Fale comigo no Imgur." target="_blank"><i class="bi bi-info-square-fill icon-social" role="img" aria-label="Fale comigo no Imgur."></i></a>
+                    </li>
+                    <li class="ms-3 caption">
+                        <a href="https://www.instagram.com/united_sapiens" title="Fale comigo no Instagram." target="_blank"><i class="bi bi-instagram icon-social" role="img" aria-label="Fale comigo no Instagram."></i></a>
+                    </li>
+                </ul>
             </div>
-            <ul class="nav col-md-4 d-flex justify-content-end list-unstyled">
-                <li class="ms-3 caption">
-                    <a href="https://www.twitter.com/United_Sapiens" title="Fale comigo no Twitter" target="_blank"><i class="fa-brands fa-twitter icon-social" role="img" aria-label="Fale comigo no Twitter"></i></a>
-                </li>
-                <li class="ms-3 caption">
-                    <a href="https://www.reddit.com/user/united_sapiens" title="Fale comigo no Reddit" target="_blank"><i class="fa-brands fa-reddit icon-social" role="img" aria-label="Fale comigo no Reddit"></i></a>
-                </li>
-                <li class="ms-3 caption">
-                    <a href="https://www.linkedin.com/company/united-sapiens" title="Fale comigo no LinkedIn" target="_blank"><i class="fa-brands fa-linkedin icon-social" role="img" aria-label="Fale comigo no LinkedIn"></i></a>
-                </li>
-            </ul>
         </footer>
 
-        <!-- Toast: Carousel Navigation Instructions -->
-        <div class="position-fixed top-0 end-0 p-2 fade" style="z-index: 50">
-            <div id="navigationToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <i class="fa-solid fa-circle-chevron-left"></i> &nbsp; &nbsp; <i class="fa-solid fa-circle-chevron-right"></i> &nbsp; &nbsp; <strong class="me-auto">Navegação</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" title="Close this"></button>
-                </div>
-                <div class="toast-body fs-6">Clique nas setas &nbsp;<i class="fa-solid fa-chevron-left"></i>&nbsp; "esquerda" e &nbsp;<i class="fa-solid fa-chevron-right"></i>&nbsp; "direita" ou deslize para a esquerda e direita para percorrer todos os memes.</div>
-            </div>
-        </div>
-
-        <!-- Scrollable modal -->
-        <div id="aboutModal" class="modal fade" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <img src="images/modal-logo.png" class="icon-inline" alt="United Sapiens Logo" draggable="false" />
-                        <h3 class="modal-title caption">&nbsp; EXISTO.me</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar" title="Clique para fechar"></button>
-                    </div>
-                    <div class="modal-body">
-                        <img src="images/modal-banner.jpg" class="img-fluid img-thumbnail mb-4" alt="Stop The Wars" />
-                        <!-- ABOUT THIS IN PORTUGUESE -->
-                        <h4>Sobre Este Teste</h4>
-                        <p>...</p>
-                        <p>...</p>
-                        <br />
-
-                        <h4>Título</h4>
-                        <p>...</p>
-                        <p>...</p>
-                        <br />
-
-                        <h4>Título</h4>
-                        <p>...</p>
-                        <p>...</p>
-                        <br />
-
-                        <h4>Título</h4>
-                        <p>...</p>
-                        <p>...</p>
-                        <br />
-
-                        <hr />
-                        <figure class="text-center">
-                            <blockquote class="blockquote">
-                                <p>"O pior analfabeto é o analfabeto político. Ele não ouve, não fala, nem participa dos acontecimentos políticos. Ele não sabe que o custo de vida, o preço do feijão, do peixe, da farinha, do aluguel, do sapato e do remédio dependem das decisões políticas. O analfabeto político é tão burro que se orgulha e estufa o peito dizendo que odeia a política. Não sabe o imbecil que da sua ignorância política nasce a prostituta, o menor abandonado e o pior de todos os bandidos, que é o político vigarista, pilantra, corrupto e lacaio das empresas nacionais e multinacionais."</p>
-                            </blockquote>
-                            <figcaption class="blockquote-footer"><a href="https://pt.wikipedia.org/wiki/Bertolt_Brecht" title="Clique aqui para saber mais sobre Bertolt Brecht" target="_blank">Bertolt Brecht</a>, em <cite title="Título da Fonte:">Terra Nossa: Newsletter of Project Abraço, North Americans in Solidarity with the People of Brazil.</cite></figcaption>
-                        </figure>
-                        <br />
-                    </div>
-                    <div class="modal-footer">
-                        <a href="https://www.unhcr.org/" class="btn btn-primary" role="button" title="Quer apoiar uma causa muito legal?" target="_blank"><i class="fa-solid fa-hand-holding-heart"></i>&nbsp; UNHCR</a>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Clique para fechar"><i class="fa-solid fa-xmark"></i>&nbsp; Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!-- Libraries Scripts -->
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Website Scripts -->
         <script src="scripts/main.js"></script>
-
-        <!-- Website PWA - Progressive Web Application -->
-        <script>
-            // Check compatibility for the browser we're running this in:
-            if ("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
-                // Register the service worker:
-                navigator.serviceWorker
-                    .register("/sw.js", { scope: "/" })
-                    .then((reg) => console.info("[PWA] Service worker has been registered:", reg))
-                    .catch((err) => console.error("[PWA] Service worker registration failed:", err));
-            }
-        </script>
-
     </body>
 </html>

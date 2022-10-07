@@ -1,24 +1,90 @@
-/*** WEB SITE STYLESHEET ***/
-body {
+/*** WEB SITE LAYOUT ***/
+
+html,body {
     font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
     margin: 0;
     overflow-x: hidden;
-    /*overflow-y: hidden;*/
+    overflow-y: hidden;
 }
 
+body {
+    min-height: 100vh !important;
+    max-height: 100% !important;
+    height: 100% !important;
+
+    min-width: 100vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+header {
+    top: 0px;
+    z-index: 99;
+}
+
+main {
+    top: 0px;
+    z-index: 1;
+}
+
+footer {
+    bottom: 0px;
+    z-index: 99;
+}
+
+.back-flag {
+    background-position: 0 0;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: url(../images/br.jpg);
+}
+
+.frame {
+    position: fixed;
+    margin: 0;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.page {
+    min-height: 100vh !important;
+    max-height: 100% !important;
+    height: 100% !important;
+    background-color: #dddddd;
+}
+
+@media (orientation: portrait) {
+    .back-flag {
+        background-size: auto 100%;
+        background-position-x: center;
+    }
+
+    .frame {
+        left: 0 !important;
+        width: 100% !important;
+    }
+}
+
+@media (orientation: landscape) {
+    .back-flag {
+        background-size: 100% 100%;
+    }
+
+    .frame {
+        left: 20% !important;
+        width: 60% !important;
+    }
+}
+
+
+/*** TYPOGRAPHY ***/
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: "Roboto", Helvetica, Arial, sans-serif !important;
+    font-family: "Jost", Helvetica, Arial, sans-serif !important;
 }
 
-.vermelho { background-color: red; }
-.azul { background-color: blue; }
-.laranja { background-color: orange; }
-.cinza { background-color: #BBBBBB; }
-.verde { background-color: green; }
-.amarelo { background-color: yellow; }
-
-/*** HEADER + FOOTER ***/
 .nav-top {
     margin-top: 0;
     margin-bottom: 0;
@@ -36,13 +102,6 @@ h1, h2, h3, h4, h5, h6,
     }
 }
 
-.caption {
-    text-shadow: rgb(222 222 222) 1.33333px 1.33333px 2px,
-                 rgb(222 222 222) 1.33333px 1.33333px 2.66667px,
-                 rgb(222 222 222) 1.33333px 1.33333px 3.33333px;
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
 .caption a,
 .caption a:active,
 .caption a:link,
@@ -53,24 +112,17 @@ h1, h2, h3, h4, h5, h6,
     text-decoration: none;
 }
 
-.map-inline {
-    display: inline-block;
-    width: 2em;
-    height: auto;
-}
-
-.icon-social {
-    color: black;
-    font-size: 1rem;
-}
 
 /*** TOASTS ***/
+
 .toast-header,
 .toast-body {
     color: black;
 }
 
+
 /*** MODAL DIALOG ***/
+
 .modal .modal-content .modal-header h4 {
     color: #366b7f;
 }
@@ -80,12 +132,40 @@ h1, h2, h3, h4, h5, h6,
     text-align: justify;
 }
 
+.modal .modal-content .modal-body .blockquote {
+    font-size: 1rem;
+}
+
+
+/*** UTILITIES  d-none ***/
+
+.shadow-10 {
+    box-shadow: 0 10px 20px -4px #000;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.icon-menu {
+    color: #212529;
+    font-size: 1.8rem;
+}
+
+.icon-social {
+    color: #212529;
+    font-size: 1.4rem;
+}
+
 .icon-inline {
     display: inline-block;
     width: 2em;
     height: 2em;
 }
 
-.modal .modal-content .modal-body .blockquote {
-    font-size: 1rem;
-}
+.vermelho { background-color: red; }
+.azul { background-color: blue; }
+.laranja { background-color: orange; }
+.cinza { background-color: #BBBBBB; }
+.verde { background-color: green; }
+.amarelo { background-color: yellow; }
