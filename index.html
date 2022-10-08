@@ -119,9 +119,9 @@
 
         <header class="frame">
             <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
-                <div class="col-md-6 d-flex caption dropdown">
+                <div class="col-md-6 d-flex dropdown">
                     <a id="HMenuDropdown" href="#" class="dropdown" data-bs-toggle="dropdown" data-toggle="dropdown" title="Clique para abrir o menu principal.">
-                        <h2 class="h-nav light"><i class="bi bi-list"></i> <b>EXISTO.me</b></h2>
+                        <h2 class="h-nav text-dark"><i class="bi bi-list"></i> <b>EXISTO.me</b></h2>
                     </a>
                     <div class="dropdown-menu shadow-10">
                         <h6 class="dropdown-header"><b>SOBRE O EXISTO.me @ BRASIL</b></h6>
@@ -134,25 +134,25 @@
                         <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalLegal"><i class="fa-solid fa-scale-balanced"></i> &nbsp; Informações Legais</a>
                         <div class="dropdown-divider"></div>
                         <a href="https://github.com/existo-me/existo-me.github.io" class="dropdown-item" title="https://github.com/existo-me/existo-me.github.io/" target="_blank"><i class="fa-solid fa-code"></i> &nbsp; Participe do Projeto</a>
-                        <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalTranslate"><i class="fa-regular fa-flag"></i> &nbsp; Add Your Country</a>
+                        <a href="#" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalTranslate"><i class="fa-solid fa-earth-americas"></i> &nbsp; Add Your Country</a>
                         <a href="mailto:united.sapiens.br@gmail.com" class="dropdown-item" title="mailto:united.sapiens.br@gmail.com"><i class="fa-regular fa-envelope"></i> &nbsp; Seu Feedback é Bem-vindo</a>
                         <div class="dropdown-divider"></div>
                         <h6 class="dropdown-header"><b>UNITED SAPIENS</b></h6>
-                        <a href="https://www.united-sapiens.org" class="dropdown-item" title="https://www.united-sapiens.org/" target="_blank"><i class="fa-solid fa-earth-americas"></i> &nbsp; Conheça a Iniciativa</a>
+                        <a href="https://www.united-sapiens.org" class="dropdown-item" title="https://www.united-sapiens.org/" target="_blank"><i class="fa-solid fa-up-right-from-square"></i>&nbsp; Conheça a Iniciativa</a>
                     </div>
                 </div>
                 <ul class="nav col-md-6 d-flex justify-content-end list-unstyled">
-                    <li class="ms-3 caption">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap icon-menu"></i></a>
+                    <li class="ms-3">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap icon-nav icon-result"></i></a>
                     </li>
-                    <li class="ms-3 caption">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a ajuda online do site."><i class="bi bi-question-circle icon-menu"></i></a>
+                    <li class="ms-3">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a ajuda online do site."><i class="bi bi-question-circle icon-nav"></i></a>
                     </li>
-                    <li class="ms-3 caption">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-menu"></i></a>
+                    <li class="ms-3">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-nav"></i></a>
                     </li>
-                    <li class="ms-3 caption">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Contribua com nossa iniciativa ajudando nosso projeto a crescer."><i class="bi bi-heart-pulse icon-menu"></i></a>
+                    <li class="ms-3">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Contribua com nossa iniciativa ajudando nosso projeto a crescer."><i class="bi bi-heart-pulse icon-nav"></i></a>
                     </li>
                 </ul>
             </div>
@@ -162,46 +162,106 @@
             <div class="container-fluid d-flex align-items-center h-100">
                 <div class="row justify-content-md-center">
 
-                    <div id="carouselTest" class="carousel slide col-lg-10" data-bs-ride="carousel" data-bs-interval="false">
+                    <div id="carouselTest" class="carousel slide col-lg-10" data-bs-ride="carousel">  <!--   data-bs-interval="false" -->
                         <div class="carousel-inner">
 
-                            <div id="itemStart" class="carousel-item text-center active verde">
+                            <div id="itemStart" class="carousel-item text-center active">
                                 <p><i class="fa-solid fa-location-crosshairs fa-3x"></i></p>
-                                <h2 class="mb-3">Faça o Teste do GPS Político</h2>
+                                <h2 class="text-uppercase mb-3">Teste do GPS Político</h2>
                                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
-                                <button type="button" class="btn btn-lg btn-dark m-4 px-4"><i class="fa-solid fa-play"></i>&nbsp; Iniciar Teste</button>
+                                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
+                                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title=""><i class="fa-solid fa-play"></i>&nbsp; Iniciar Teste</button>
+                                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" data-bs-toggle="modal" data-bs-target="#modalHelp" title=""><i class="fa-regular fa-circle-question"></i>&nbsp; Como Funciona</button>
+                                </div>
                             </div>
 
-                            <div id="itemRestart" class="carousel-item text-center vermelho">
-                                <p><i class="fa-solid fa-rotate-right fa-3x"></i></p>
-                                <h2 class="mb-3">Refaça o Teste do GPS Político</h2>
+                            <div id="itemRestart" class="carousel-item text-center">
+                                <p><i class="fa-solid fa-table-cells fa-3x icon-result"></i></p>
+                                <h2 class="text-uppercase mb-3">Teste do GPS Político</h2>
                                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
-                                <button type="button" class="btn btn-lg btn-dark m-4 px-4"><i class="fa-solid fa-play"></i>&nbsp; Reiniciar Teste</button>
+                                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
+                                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title=""><i class="fa-solid fa-rotate-right"></i>&nbsp; Refazer Teste</button>
+                                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title=""><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                                </div>
                             </div>
 
-                            <div id="itemQuestion" class="carousel-item azul">
-                                <p class="lead text-justify mb-3">#1) Texto introdutório do teste...</p>
-                                <p class="lead text-justify">( ) Texto da opcao 1: Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio.</p>
-                                <p class="lead text-justify">( ) Texto da opcao 2: Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+                            <div id="itemNotify" class="carousel-item text-center">
+                                <h2 class="m-3"><span class="badge text-bg-danger">+4</span></h2>
+                                <h2 class="text-uppercase mb-3">Novas Questões para o Teste</h2>
+                                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+                                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
+                                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title=""><i class="fa-solid fa-forward"></i>&nbsp; Continuar Teste</button>
+                                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title=""><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                                </div>
                             </div>
 
-                            <div class="carousel-item azul">
-                                <p class="lead text-justify mb-3">#2) Texto introdutório do teste...</p>
-                                <p class="lead text-justify">( ) Texto da opcao 1: Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio.</p>
-                                <p class="lead text-justify">( ) Texto da opcao 2: Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+                            <div id="itemQuestion" class="carousel-item">
+                                <h2 class="text-center m-3"><span class="badge bg-secondary">#1...60</span></h2>
+                                <p class="lead text-justify mb-3"> Texto introdutório do teste...</p>
+
+                                <div class="form-check m-3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Texto da opcao 1: Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio.
+                                    </label>
+                                </div>
+                                <div class="form-check m-3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Texto da opcao 2: Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
+                                    </label>
+                                </div>
+
+                    <div id="panelRange" class="col-lg-10">
+                        <p><input id="rangeTest" type="range" class="form-range" min="0" max="60" step="1" value="10" disabled></p>
+                    </div>
                             </div>
 
-                            <div id="itemStop" class="carousel-item text-center cinza">
+                            <div class="carousel-item">
+                                <h2 class="text-center"><span class="badge bg-secondary">#2...60</span></h2>
+                                <p class="lead text-justify mb-3"> Texto introdutório do teste...</p>
+
+                                <div class="form-check m-3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                        Texto da opcao 1: Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio.
+                                    </label>
+                                </div>
+                                <div class="form-check m-3">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                    <label class="form-check-label" for="flexRadioDefault2">
+                                        Texto da opcao 2: Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!
+                                    </label>
+
+                                </div>
+
+                    <div id="panelRange" class="col-lg-10">
+                        <p><input id="rangeTest" type="range" class="form-range" min="0" max="60" step="1" value="10" disabled></p>
+                    </div>
+                            </div>
+
+                            <div id="itemStop" class="carousel-item text-center">
                                 <p><i class="fa-solid fa-flag-checkered fa-3x"></i></p>
-                                <h2 class="mb-3">Parabéns por concluir o teste!</h2>
+                                <h2 class="text-uppercase mb-3">Parabéns por Concluir o Teste!</h2>
                                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
-                                <button type="button" class="btn btn-lg btn-dark m-4 px-4"><i class="bi bi-grid-3x3-gap"></i>&nbsp; Exibir Resultado</button>
+                                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
+                                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" data-bs-toggle="modal" data-bs-target="#modalResult" title=""><i class="bi bi-grid-3x3-gap"></i>&nbsp; Exibir Resultado</button>
+                                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title=""><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                                </div>
                             </div>
 
                         </div>
-                    </div>
-                    <div id="panelRange" class="col-lg-10">
-                        <p><input id="rangeTest" type="range" class="form-range" min="0" max="60" step="1" value="10" disabled></p>
+
+                        <!-- d-none -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselTest" data-bs-slide="prev" title="Questão Anterior">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselTest" data-bs-slide="next" title="Próxima Questão">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Próxima</span>
+                        </button>
+
                     </div>
 
                 </div>
@@ -210,25 +270,25 @@
 
         <footer class="frame">
             <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
-                <div class="col-md-6 d-flex caption">
+                <div class="col-md-6 d-flex">
                     <a href="https://github.com/tecnolista" title="Visite minha página de desenvolvedor no GitHub." target="_blank">
-                        <h5 class="h-nav"><i class="bi bi-cc-circle"></i>&nbsp; 2022&nbsp; Raul Bras</h5>
+                        <h5 class="h-nav text-dark"><i class="bi bi-cc-circle"></i>&nbsp; 2022&nbsp; Raul Bras</h5>
                     </a>
                 </div>
                 <ul class="nav col-md-6 d-flex justify-content-end list-unstyled">
-                    <li class="ms-3 caption">
+                    <li class="ms-3">
                         <a href="https://www.twitter.com/United_Sapiens" title="Fale comigo no Twitter." target="_blank"><i class="bi bi-twitter icon-social"></i></a>
                     </li>
-                    <li class="ms-3 caption">
+                    <li class="ms-3">
                         <a href="https://www.reddit.com/user/united_sapiens" title="Fale comigo no Reddit." target="_blank"><i class="bi bi-reddit icon-social"></i></a>
                     </li>
-                    <li class="ms-3 caption">
+                    <li class="ms-3">
                         <a href="https://www.9gag.com/u/united_sapiens" title="Fale comigo no 9gag." target="_blank"><i class="bi bi-9-square-fill icon-social"></i></a>
                     </li>
-                    <li class="ms-3 caption">
+                    <li class="ms-3">
                         <a href="https://www.imgur.com/user/unitedsapiens" title="Fale comigo no Imgur." target="_blank"><i class="bi bi-info-square-fill icon-social"></i></a>
                     </li>
-                    <li class="ms-3 caption">
+                    <li class="ms-3">
                         <a href="https://www.instagram.com/united_sapiens" title="Fale comigo no Instagram." target="_blank"><i class="bi bi-instagram icon-social"></i></a>
                     </li>
                 </ul>
@@ -249,7 +309,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <img src="images/modal-banner.jpg" class="img-fluid img-thumbnail mb-4" alt="Penso Logo Existo" />
+                        <img src="images/intro-banner.jpg" class="img-fluid img-thumbnail mb-4" alt="Penso Logo Existo" />
                         <h4>Sobre Este Teste</h4>
                         <p>...</p>
                         <p>...</p>
@@ -376,7 +436,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title"><i class="fa-regular fa-flag"></i>&nbsp; Add Your Country</h3>
+                        <h3 class="modal-title"><i class="fa-solid fa-earth-americas"></i>&nbsp; Add Your Country</h3>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"title="Clique para fechar."></button>
                     </div>
                     <div class="modal-body">
@@ -396,7 +456,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h3 class="modal-title"><i class="bi bi-grid-3x3-gap icon-menu"></i>&nbsp; Resultado do Teste</h3>
+                        <h3 class="modal-title"><i class="bi bi-grid-3x3-gap icon-nav"></i>&nbsp; Resultado do Teste</h3>
                         <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Gostou do site? Que tal ajudar nosso projeto a crescer.">
                             <i class="bi bi-heart-pulse"></i>
                         </button>

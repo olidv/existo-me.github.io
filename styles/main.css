@@ -1,4 +1,4 @@
-/*** WEB SITE LAYOUT ***/
+/*--- LAYOUT --------------------------------------------------*/
 
 html,body {
     font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
@@ -36,7 +36,7 @@ footer {
     background-origin: padding-box;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-image: url(../images/br.jpg);
+    background-image: url(../images/br-flag.jpg);
 }
 
 .frame {
@@ -82,7 +82,8 @@ footer {
 }
 
 
-/*** TYPOGRAPHY ***/
+/*--- TYPOGRAPHY --------------------------------------------------*/
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Jost", Helvetica, Arial, sans-serif !important;
@@ -127,7 +128,35 @@ a i[class^='bi']:focus {
     }
 }
 
-/*** TOASTS ***/
+
+/*--- CAROUSEL --------------------------------------------------*/
+
+.carousel-control-next,
+.carousel-control-prev {
+    z-index: 30;
+}
+@media (orientation: portrait) {
+    .carousel-control-prev .carousel-control-prev-icon,
+    .carousel-control-next .carousel-control-next-icon {
+        display: none;
+    }
+}
+@media (orientation: landscape) {
+    .carousel-control-prev .carousel-control-prev-icon,
+    .carousel-control-next .carousel-control-next-icon {
+        border-radius: 3rem;
+        width: 3rem;
+        height: 3rem;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .carousel-control-prev .carousel-control-prev-icon:hover,
+    .carousel-control-next .carousel-control-next-icon:hover {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+/*--- TOASTS --------------------------------------------------*/
 
 .toast-header,
 .toast-body {
@@ -135,7 +164,7 @@ a i[class^='bi']:focus {
 }
 
 
-/*** MODAL DIALOG ***/
+/*--- MODAL --------------------------------------------------*/
 
 .modal .modal-content .modal-body p,
 .modal .modal-content .modal-body li {
@@ -147,7 +176,7 @@ a i[class^='bi']:focus {
 }
 
 
-/*** UTILITIES  d-none ***/
+/*--- UTILITIES --------------------------------------------------*/
 
 .shadow-10 {
     box-shadow: 0 10px 20px -4px #000;
@@ -157,16 +186,29 @@ a i[class^='bi']:focus {
     text-align: justify;
 }
 
-.icon-menu {
+.icon-nav {
     color: #212529;
     font-size: 1.8rem;
+}
+
+.icon-menu {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    vertical-align: baseline;
+}
+
+.icon-inline {
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    /* height: auto; */
 }
 
 .icon-social {
     color: #212529;
     font-size: 1.4rem;
 }
-
 
 .btn-nav {
     box-sizing: content-box;
@@ -192,6 +234,7 @@ a i[class^='bi']:focus {
 
 
 
+/*--- INPUT-RANGE --------------------------------------------------*/
 
 input[type=range] {
   height: 33px;
