@@ -230,8 +230,11 @@ a i[class^='bi']:focus {
 .amarelo { background-color: yellow; }
 
 
+/*--- INPUT-RADIO --------------------------------------------------*/
 
-
+input[type='radio']:checked {
+    background-color: #212529;
+}
 
 
 /*--- INPUT-RANGE --------------------------------------------------*/
