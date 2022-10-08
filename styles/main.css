@@ -200,9 +200,10 @@ a i[class^='bi']:focus {
 
 .icon-inline {
     display: inline-block;
-    width: 2em;
-    height: 2em;
-    /* height: auto; */
+    width: auto;
+    height: 1em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
 }
 
 .icon-social {
