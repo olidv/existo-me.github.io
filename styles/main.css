@@ -132,6 +132,17 @@ a i[class^='bi']:focus {
     }
 }
 
+.h-notify {
+    line-height: 1.5em;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.h-notify .badge {
+    font-size: 0.94em;
+    line-height: 1em;
+}
+
 
 /*--- CAROUSEL --------------------------------------------------*/
 
@@ -225,6 +236,8 @@ a i[class^='bi']:focus {
     color: #212529;
     font-size: 1.4rem;
 }
+
+.icon-test {}
 
 .btn-nav {
     box-sizing: content-box;
