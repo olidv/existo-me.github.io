@@ -11,12 +11,13 @@ const carousel = new bootstrap.Carousel(myCarouselElement, {
 /** Classe para armazenamento de informacoes e configuracoes do usuario. */
 class AppUser {
     // propriedades publicas: informacoes gerais
+    ids = null;  // identificacao do usuario no local-storage.
     name = null;  // nome do usuario para emissao de certificado
 
     // propriedades publicas: preferencias
     prefDarkTheme = false; // true=dark/escuro, false=light/claro
     prefFontSized = 2; // 1=small/pequena, 2=normal/padrao, 3=big/grande, 4=bigger/maior
-    prefPlaySound = true; // true=on/ligado, false=off/desligado
+    prefPlaySound = false; // true=on/ligado, false=off/desligado
     prefDateReset = null; // null=never reset/nunca resetou, date=when reset/quando resetou
 
     // propriedades publicas: resultado do teste
@@ -31,12 +32,13 @@ class AppUser {
     testQuizImage = null; // id do plano (figura) para a pontuacao obtida
 
     /**
-     * Inicializacao.
+     * Inicializacao de nova instancia.
      *
-     * @param  {[type]} config [description]
+     * @param  {string} id Nome do usuario ou apenas id para o local-storage.
      */
-    constructor(name) {
-        this.name = name;
+    constructor(id) {
+        this.ids = id;
+        this.name = id;  // por enquanto utiliza o id (default).
     }
 
     /**
@@ -68,22 +70,21 @@ class AppUser {
     // }
 }
 
-function getAppUser(objName) {
-    if ($.localStorage.isSet(objName)) {
-        let objUser = $.localStorage.get(objName);
+function getAppUser(objId) {
+    if ($.localStorage.isSet(objId)) {
+        let objUser = $.localStorage.get(objId);
         console.table("Instancia de AppUser recuperada do LocalStorage: ", objUser);
         return objUser;
-
     } else {
-        let objUser = new AppUser(objName);
+        let objUser = new AppUser(objId);
         console.table("Nova instancia de AppUser criada e armazenada no LocalStorage: ", objUser);
-        $.localStorage.set(objName, objUser);
+        $.localStorage.set(objId, objUser);
         return objUser;
     }
 };
 
 function setAppUser(objUser) {
-    $.localStorage.set(objUser.name, objUser); // Set storage.foo to "value"
+    $.localStorage.set(objUser.ids, objUser);
     console.table("Instancia corrente de AppUser armazenada no LocalStorage: ", objUser);
     return objUser;  // fluent-interface
 };
@@ -95,8 +96,13 @@ function setAppUser(objUser) {
     // carousel.to(1);
     // carousel.pause();
 
-    // obtem a instancia para o usuario corrente, ja existente ou nao:
-    let objUser = getAppUser("nobody");
+    // obtem a instancia para o usuario corrente, ja existente ou nao (1a. vez)
+    let objUser = getAppUser("EXISTO.me"); // se nao existir, ja inicializa
+
+
+
+
+
 
 
 })(jQuery);
