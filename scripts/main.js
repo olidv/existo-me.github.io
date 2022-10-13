@@ -11,15 +11,15 @@ class AppUser {
     prefDateReset = null; // null=never reset/nunca resetou, date=when reset/quando resetou
 
     // propriedades publicas: resultado do teste
-    testQuizVersion = 1; // numero da versao do teste respondido
-    testQuizStart = 1; // data em que iniciou o teste
-    testQuizOpen = true; // indica se o teste esta em andamento agora
-    testQuizDone = 0; // numero de questoes respondidas ate o momento
-    testQuizOpts = []; // respostas para as questoes respondidas
-    testQuizFinal = null; // data em que finalizou o teste
-    testQuizScore = null; // pontuacao calculada para as respostas
-    testQuizColor = null; // coloracao correspondente a pontuacao obtida
-    testQuizImage = null; // id do plano (figura) para a pontuacao obtida
+    quizVersion = 1; // numero da versao do teste respondido
+    quizDateStart = null; // data em que iniciou o teste
+    quizFlagOpen = false; // indica se o teste esta em andamento agora
+    quizTotalDone = 0; // numero de questoes respondidas ate o momento
+    quizUserOpts = []; // respostas para as questoes respondidas
+    quizDateFinal = null; // data em que finalizou o teste
+    quizUserScore = null; // pontuacao calculada para as respostas
+    quizHexColor = null; // coloracao correspondente a pontuacao obtida
+    quizFileImage = null; // id do plano (figura) para a pontuacao obtida
 
     /**
      * Inicializacao de nova instancia.
@@ -33,17 +33,17 @@ class AppUser {
 
     /** Getter. */
     get noQuizYet() {
-        return this.testQuizStart == null;
+        return this.quizDateStart == null;
     }
 
     /** Getter. */
     get isQuizOnGoing() {
-        return this.testQuizStart != null && this.testQuizOpen;
+        return this.quizDateStart != null && this.quizFlagOpen;
     }
 
     /** Getter. */
     get isQuizComplete() {
-        return this.testQuizStart != null && !this.testQuizOpen && this.testQuizFinal != null;
+        return this.quizDateStart != null && !this.quizFlagOpen && this.quizDateFinal != null;
     }
 
     /** Getter. */
@@ -53,44 +53,26 @@ class AppUser {
     }
 
     /**
-     * methodThree description
-     *
-     * @private
-     * @param  {String} str [description]
-     * @return {String}     [description]
-     */
-    // age() {
-    //     let date = new Date();
-    //     return date.getFullYear(); // - this.#width;
-    // }
-
-    /**
-     * methodTwo description
-     *
-     * @param  {Object} fruit      [description]
-     * @param  {String} fruit.name [description]
-     * @return {String}            [description]
-     */
-    // calcArea() {
-    //     return this.height * this.#width;
-    // }
-
-    /**
      * Getter da estrategia singleton para inicializacao do AppUser.
      *
      * @param  {String} objId Identificacao da instancia no local-storage.
      */
-    static getAppUser(objId) {
+    static getObjectUser(objId) {
+        let objUser = new AppUser(objId);
+
+        // se ja estivder salvo no local-storage, recupera as propriedades:
         if ($.localStorage.isSet(objId)) {
-            let objUser = $.localStorage.get(objId);
-            console.table("Instancia de AppUser recuperada do LocalStorage: ", objUser);
-            return objUser;
+            let objStorage = $.localStorage.get(objId);
+            console.table("Valores de AppUser recuperados do LocalStorage: ", objStorage);
+            // transfere os valores para uma nova instancia de AppUser...
+            objUser = Object.assign(objUser, objStorage);
         } else {
-            let objUser = new AppUser(objId);
             console.table("Nova instancia de AppUser criada e armazenada no LocalStorage: ", objUser);
             $.localStorage.set(objId, objUser);
             return objUser;
         }
+
+        return objUser;
     }
 
     /**
@@ -98,7 +80,7 @@ class AppUser {
      *
      * @param  {String} objUser Instancia do AppUser para salvar no local-storage.
      */
-    static setAppUser(objUser) {
+    static setObjectUser(objUser) {
         $.localStorage.set(objUser.ids, objUser);
         console.table("Instancia corrente de AppUser armazenada no LocalStorage: ", objUser);
         return objUser; // fluent-interface
@@ -209,16 +191,12 @@ class CarouselWrapper {
 
 
 // obtem a instancia para o usuario corrente, ja existente ou nao (1a. vez)
-//let objUser = getAppUser("EXISTO.me"); // se nao existir, ja inicializa
-var objUser = new AppUser("EXISTO.me");
-//$.localStorage.set("EXISTO.me", objUser);
-
-
-
-console.log(`objUser.noQuizYet = ${objUser.noQuizYet}`);
-console.log(`objUser.isQuizOnGoing = ${objUser.isQuizOnGoing}`);
-console.log(`objUser.isQuizComplete = ${objUser.isQuizComplete}`);
-console.log(`objUser.hasQuizUpdate = ${objUser.hasQuizUpdate}`);
+//$.localStorage.removeAll();  // reset do local-storage
+let objUser = AppUser.getObjectUser("EXISTO.me"); // se nao existir, ja inicializa
+ console.log(`objUser.noQuizYet = ${objUser.noQuizYet}`);
+ console.log(`objUser.isQuizOnGoing = ${objUser.isQuizOnGoing}`);
+ console.log(`objUser.isQuizComplete = ${objUser.isQuizComplete}`);
+ console.log(`objUser.hasQuizUpdate = ${objUser.hasQuizUpdate}`);
 
 // Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
 $(document).ready(function () {
