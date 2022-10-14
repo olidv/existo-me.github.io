@@ -157,7 +157,8 @@ class AppUser {
     quizVersion = 1; // numero da versao do teste respondido
     quizDateStart = null; // data em que iniciou o teste
     quizFlagOpen = false; // indica se o teste esta em andamento agora
-    quizTotalDone = 0; // numero de questoes respondidas ate o momento
+    quizTotalBasic = 0; // numero de questoes do teste basico respondidas ate o momento
+    quizTotalExtra = 0; // numero de questoes do teste extra respondidas ate o momento
     quizUserOpts = []; // respostas para as questoes respondidas
     quizDateFinal = null; // data em que finalizou o teste
     quizUserScore = null; // pontuacao calculada para as respostas
@@ -172,6 +173,11 @@ class AppUser {
     constructor(id) {
         this.ids = id;
         this.name = id; // por enquanto utiliza o id (default).
+    }
+
+    /** Getter: numero total de questoes respondidas ate o momento. */
+    get quizTotalDone() {
+        return this.quizTotalBasic + this.quizTotalExtra;
     }
 
     /** Getter. */

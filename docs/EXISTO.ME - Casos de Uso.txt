@@ -2,20 +2,26 @@
 CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 ===============================================
 
+    ----------
+    Tracejado indica o início de um caso de uso ou o fluxo de um cenário.
+    
     @NOME 
-    Entidade externa, considerada agente/atuante pela aplicação.
+    Um ator ou agente/atuante, considerado como entidade externa pela aplicação.
 
-    <token>
-    Ação executada por uma entidade externa ou pela aplicação.
+    $CENARIO::TITULO
+    Detalhamento dos fluxos principal, alternativo ou exceção do cenário especificado.
+    
+    <ação>
+    Indica uma ação executada por uma entidade externa ou pela aplicação.
 
-    [Título]
+    [Componente]
     Botão ou opção de menu acessível pela entidade externa através do mouse ou teclado.
 
-    {Designação}
+    {identificador}
     Possível estrutura de dados, classe ou arquivo - já implementado ou ainda a ser definido.
 
     ## ...
-    COMENTÁRIOS, EM LETRA MAIÚSCULA PARA MAIOR DESTAQUE.
+    OBSERVAÇÕES E/OU COMENTÁRIOS IMPORTANTES, EM LETRA MAIÚSCULA PARA MAIOR DESTAQUE.
 
     'uri'
     Apóstrofos designam endereço (url) de web site ou qualquer outro recurso (uri) utilizado.
@@ -34,109 +40,360 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
         pgps = {estrutura-gps-politico}
     
     inicializa estrutura de dados do usuário
+        $CENARIO::BEGINNER
         ## 1º ACESSO DO USUARIO
         se {estrutura-usuario} não está armazenada no local-storage  
             inicializa nova {estrutura-usuario} -> user
             
+            $CENARIO::BEGINNER-START
             ## PRIMEIRA VISITA DO USUÁRIO, NÃO INICIOU NENHUMA VERSÃO DO TESTE
             estabelece versao primária (basic) para inicio dos testes
                 {estrutura-usuario}.quizVersion = 1
             salva {estrutura-usuario} no local-storage
         
+        $CENARIO::MAJOR
         ## NÃO É 1º ACESSO DO USUARIO
         se {estrutura-usuario} já está armazenada no local-storage  
             obtém do local-storage {estrutura-usuario} -> user
             
-            ## USUÁRIO JÁ COMPLETOU VERSÃO BASICO DO TESTE
-            se user.quizVersion = 1 e user.quizTotalDone >= pgps.quizTotalBasicQueries
+            $CENARIO::BEGINNER-RESTART
+            ## USUÁRIO JÁ COMPLETOU VERSÃO BASICA DO TESTE
+            se user.quizVersion = 1 e user.quizTotalBasic = pgps.quizTotalBasicQueries
                 atualiza versao do teste do usuario: user.quizVersion = pgps.quizLastVersion
                 salva {estrutura-usuario} no local-storage
             
+            $CENARIO::MAJOR-RESTART
             ## USUÁRIO JÁ COMPLETOU VERSÃO EXTRA DO TESTE
-            se user.quizVersion > 1 e (user.quizTotalDone - pgps.quizTotalBasicQueries) = pgps.quizTotalBasicQueries  
+            se user.quizVersion > 1 e user.quizTotalExtra = pgps.quizTotalExtraQueries  
                 atualiza versao do teste do usuario: user.quizVersion = pgps.quizLastVersion
                 salva {estrutura-usuario} no local-storage
 
 
     identifica o cenário de uso pelo estado do usuário
-        ## CENÁRIO BEGINNER-START: PRIMEIRA VISITA DO USUARIO, NÃO INICIOU NENHUMA VERSÃO DO TESTE
+        $CENARIO::BEGINNER-START
+        ## PRIMEIRA VISITA DO USUARIO, NÃO INICIOU NENHUMA VERSÃO DO TESTE
         se user.quizDateStart = null ou user.quizTotalDone = 0  
-            inicializa teste com questões de pgps.quizListBasicQueries
             apresenta opções [Iniciar Teste Básico] [Como Funciona]
-            stand-by
+            <stand-by>
 
-        ## CENÁRIO BEGINNER-RESUME: USUARIO INICIOU VERSÃO BASICO DO TESTE MAS NÃO FINALIZOU
-        se user.quizVersion = 1 e user.quizTotalDone < pgps.quizTotalBasicQueries  
-            inicializa teste com questões de pgps.quizListBasicQueries
+        $CENARIO::BEGINNER-RESUME
+        ## USUARIO INICIOU VERSÃO BASICA DO TESTE MAS NÃO FINALIZOU
+        se user.quizVersion = 1 e user.quizTotalBasic < pgps.quizTotalBasicQueries  
             apresenta opções [Retomar Teste Básico] [Revisar Respostas Básico]
-            stand-by
+            exibe notificação de questões pendentes com valor: # user.quizTotalBasic ... pgps.quizTotalBasicQueries
+            <stand-by>
 
-        ## CENÁRIO BEGINNER-RESTART: USUÁRIO ACABOU DE FINALIZAR VERSÃO BASICO DO TESTE
-        se user.quizVersion = 1 e user.quizTotalDone = pgps.quizTotalBasicQueries  
+        $CENARIO::BEGINNER-RESTART
+        ## USUÁRIO ACABOU DE FINALIZAR VERSÃO BASICA DO TESTE
+        se user.quizVersion = 1 e user.quizTotalBasic = pgps.quizTotalBasicQueries  
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
-            inicializa teste com questões de pgps.quizListBasicQueries
             apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
-            stand-by
+            <stand-by>
 
-        ## CENÁRIO MAJOR-NOTIFY: USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
+        $CENARIO::MAJOR-NOTIFY
+        ## USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
         se user.quizVersion > 1 e user.quizTotalDone = pgps.quizTotalBasicQueries  
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
-            exibe notificação de novas questões com valor: pgps.quizTotalExtraQueries    
-            inicializa teste com questões de pgps.quizListExtraQueries
+            exibe notificação de novas questões com valor: + pgps.quizTotalExtraQueries    
             apresenta opções [Continuar Teste Extra] [Revisar Respostas Básico]
-            stand-by
+            <stand-by>
 
-        ## CENÁRIO MAJOR-RESUME: USUÁRIO INICIOU VERSÃO EXTRA DO TESTE MAS NÃO FINALIZOU
-        se user.quizVersion > 1 e (user.quizTotalDone - pgps.quizTotalBasicQueries) < pgps.quizTotalExtraQueries  
+        $CENARIO::MAJOR-RESUME
+        ## USUÁRIO INICIOU VERSÃO EXTRA DO TESTE MAS NÃO FINALIZOU
+        se user.quizVersion > 1 e user.quizTotalExtra < pgps.quizTotalExtraQueries  
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
-            exibe notificação de questões pendentes com valor: pgps.quizTotalExtraQueries - (user.quizTotalDone - pgps.quizTotalBasicQueries)
-            inicializa teste com questões de pgps.quizListExtraQueries
+            exibe notificação de questões pendentes com valor: # user.quizTotalExtra ... pgps.quizTotalExtraQueries
             apresenta opções [Retomar Teste Extra] [Revisar Respostas Extra]
-            stand-by
+            <stand-by>
 
-        ## CENÁRIO MAJOR-RESTART: USUÁRIO ACABOU DE FINALIZAR VERSÃO EXTRA DO TESTE
-        se user.quizVersion > 1 e (user.quizTotalDone - pgps.quizTotalBasicQueries) = pgps.quizTotalExtraQueries
+        $CENARIO::MAJOR-RESTART
+        ## USUÁRIO ACABOU DE FINALIZAR VERSÃO EXTRA DO TESTE
+        se user.quizVersion > 1 e user.quizTotalExtra = pgps.quizTotalExtraQueries
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
-            inicializa teste com questões de (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
             apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
-            stand-by
+            <stand-by>
 
-        ## CENÁRIO MAJOR-NOTIFY: USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
-        se 1 < user.quizVersion < pgps.quizLastVersion e (user.quizTotalDone - pgps.quizTotalBasicQueries) < pgps.quizTotalExtraQueries  
+        $CENARIO::MAJOR-NOTIFY
+        ## USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
+        se 1 < user.quizVersion < pgps.quizLastVersion e user.quizTotalExtra < pgps.quizTotalExtraQueries  
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
-            exibe notificação de novas questões com valor: pgps.quizTotalExtraQueries    
-            inicializa teste com questões de pgps.quizListExtraQueries
+            exibe notificação de novas questões com valor: + pgps.quizTotalExtraQueries    
             apresenta opções [Continuar Teste Extra] [Revisar Respostas Completo]
-            stand-by
-
-
-
+            <stand-by>
 
 
 -------------------------------------------------------------------------------
-@USUÁRIO <click-on> [Iniciar Teste]
+@USUÁRIO <click-on> [Iniciar Teste Básico]
+    inicializa teste com questões de pgps.quizListBasicQueries
+    registra o início do teste: user.quizDateStart, user.quizFlagOpen
+
+    $CENARIO::BEGINNER-TEST
+    obtem 1ª questão do teste: query <- pgps.quizListBasicQueries
+        prepara template de div para carrocel com dados da questão
+        adiciona div como slide no carrocel e desloca para a primeira questão
+        <stand-by>
 
 
--------------------------------------------------------------------------------
-@USUÁRIO <click-on> [Retomar Teste]
-
-
--------------------------------------------------------------------------------
-@USUÁRIO <click-on> [Refazer Teste]
-
-
--------------------------------------------------------------------------------
-@USUÁRIO <click-on> [Revisar Respostas]
-
-
--------------------------------------------------------------------------------
-@USUÁRIO <click-on> [Continuar Teste]
+@USUÁRIO <click-on> [Questão A ou B]
+    coleta resposta do usuário -> quizUserOpts e quizTotalBasic++
+    salva {estrutura-usuario} no local-storage
     
+    se ainda há questões a serem respondidas
+        $CENARIO::BEGINNER-TEST
+        obtem próxima questão do teste: query <- pgps.quizListBasicQueries
+            prepara template de div para carrocel com dados da questão
+                adiciona div como slide no carrocel e desloca para a próxima questão
+            <stand-by>
+
+    se acabou as questões
+        registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
+        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        salva {estrutura-usuario} no local-storage
+
+        $CENARIO::BEGINNER-RESTART
+        exibe opções [Resultado] e [Doação]
+            obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+        prepara template de div para carrocel com resultado do teste
+            adiciona div como slide no carrocel e desloca para slide final
+            apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
+        <stand-by>
+    
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Retomar Teste Básico]
+    inicializa teste com questões de pgps.quizListBasicQueries
+    identifica a última questão respondida pelo usuario: user.quizTotalBasic
+
+    $CENARIO::BEGINNER-TEST
+    obtem próxima questão do teste: query <- pgps.quizListBasicQueries
+        prepara template de div para carrocel com dados da questão
+        adiciona div como slide no carrocel e desloca para a primeira questão
+        <stand-by>
+
+
+@USUÁRIO <click-on> [Questão A ou B]
+    coleta resposta do usuário -> quizUserOpts e quizTotalBasic++
+    salva {estrutura-usuario} no local-storage
+    
+    se ainda há questões a serem respondidas
+        $CENARIO::BEGINNER-TEST
+        obtem próxima questão do teste: query <- pgps.quizListBasicQueries
+            prepara template de div para carrocel com dados da questão
+                adiciona div como slide no carrocel e desloca para a próxima questão
+            <stand-by>
+
+    se acabou as questões
+        registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
+        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        salva {estrutura-usuario} no local-storage
+
+        $CENARIO::BEGINNER-RESTART
+        exibe opções [Resultado] e [Doação]
+            obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+        prepara template de div para carrocel com resultado do teste
+            adiciona div como slide no carrocel e desloca para slide final
+            apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
+        <stand-by>
+    
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Refazer Teste Básico]
+    inicializa teste com questões de pgps.quizListBasicQueries
+    limpa as respostas do usuário: quizTotalBasic, quizTotalExtra, quizUserOpts, quizDateFinal, 
+                                   quizUserScore, quizHexColor, quizFileImage
+    registra o início do teste: user.quizDateStart, user.quizFlagOpen
+    
+    $CENARIO::BEGINNER-TEST
+    obtem 1ª questão do teste: query <- pgps.quizListBasicQueries
+        prepara template de div para carrocel com dados da questão
+        adiciona div como slide no carrocel e desloca para a primeira questão
+        <stand-by>
+
+
+@USUÁRIO <click-on> [Questão A ou B]
+    coleta resposta do usuário -> quizUserOpts e quizTotalBasic++
+    salva {estrutura-usuario} no local-storage
+    
+    se ainda há questões a serem respondidas
+        $CENARIO::BEGINNER-TEST
+        obtem próxima questão do teste: query <- pgps.quizListBasicQueries
+            prepara template de div para carrocel com dados da questão
+                adiciona div como slide no carrocel e desloca para a próxima questão
+            <stand-by>
+
+    se acabou as questões
+        registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
+        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        salva {estrutura-usuario} no local-storage
+
+        $CENARIO::BEGINNER-RESTART
+        exibe opções [Resultado] e [Doação]
+            obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+        prepara template de div para carrocel com resultado do teste
+            adiciona div como slide no carrocel e desloca para slide final
+            apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
+        <stand-by>
+    
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Revisar Respostas Básico]
+    inicializa teste com questões de pgps.quizListBasicQueries
+
+    $CENARIO::BEGINNER-REVIEW
+    loop de todas as questões do teste: query <- pgps.quizListBasicQueries
+        identifica qual a questão selecionada (resposta) do usuário
+        prepara template (read-only) de div para carrocel com dados da questão
+        adiciona div como slide no carrocel
+    move o slide de introdução para a última posição no carrocel
+    habilita navegação do carrocel com mouse ou teclado
+    desloca para a primeira questão
+    <stand-by>
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Continuar Teste Extra]
+    inicializa teste com questões de pgps.quizListExtraQueries
+    registra o início do teste: user.quizFlagOpen
+
+    $CENARIO::MAJOR-TEST
+    obtem 1ª questão do teste: query <- pgps.quizListExtraQueries
+        prepara template de div para carrocel com dados da questão
+        adiciona div como slide no carrocel e desloca para a primeira questão
+        <stand-by>
+
+
+@USUÁRIO <click-on> [Questão A ou B]
+    coleta resposta do usuário -> quizUserOpts e quizTotalExtra++
+    salva {estrutura-usuario} no local-storage
+    
+    se ainda há questões a serem respondidas
+        $CENARIO::MAJOR-TEST
+        obtem próxima questão do teste: query <- pgps.quizListExtraQueries
+            prepara template de div para carrocel com dados da questão
+                adiciona div como slide no carrocel e desloca para a próxima questão
+            <stand-by>
+
+    se acabou as questões
+        registra a conclusao do teste: user.quizFlagOpen
+        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        salva {estrutura-usuario} no local-storage
+
+        $CENARIO::MAJOR-RESTART
+        exibe opções [Resultado] e [Doação]
+            obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+        prepara template de div para carrocel com resultado do teste
+            adiciona div como slide no carrocel e desloca para slide final
+            apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
+        <stand-by>
+        
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Retomar Teste Extra]
+    inicializa teste com questões de pgps.quizListExtraQueries
+    identifica a última questão respondida pelo usuario: user.quizTotalExtra
+
+    $CENARIO::MAJOR-TEST
+    obtem próxima questão do teste: query <- pgps.quizListExtraQueries
+        prepara template de div para carrocel com dados da questão
+        adiciona div como slide no carrocel e desloca para a primeira questão
+        <stand-by>
+
+
+@USUÁRIO <click-on> [Questão A ou B]
+    coleta resposta do usuário -> quizUserOpts e quizTotalExtra++
+    salva {estrutura-usuario} no local-storage
+    
+    se ainda há questões a serem respondidas
+        $CENARIO::MAJOR-TEST
+        obtem próxima questão do teste: query <- pgps.quizListExtraQueries
+            prepara template de div para carrocel com dados da questão
+                adiciona div como slide no carrocel e desloca para a próxima questão
+            <stand-by>
+
+    se acabou as questões
+        registra a conclusao do teste: user.quizFlagOpen
+        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        salva {estrutura-usuario} no local-storage
+
+        $CENARIO::MAJOR-RESTART
+        exibe opções [Resultado] e [Doação]
+            obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+        prepara template de div para carrocel com resultado do teste
+            adiciona div como slide no carrocel e desloca para slide final
+            apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
+        <stand-by>
+    
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Revisar Respostas Extra]
+    inicializa teste com questões de pgps.quizListExtraQueries
+
+    $CENARIO::MAJOR-REVIEW
+    loop de todas as questões do teste: query <- pgps.quizListExtraQueries
+        identifica qual a questão selecionada (resposta) do usuário
+        prepara template (read-only) de div para carrocel com dados da questão
+        adiciona div como slide no carrocel
+    move o slide de introdução para a última posição no carrocel
+    habilita navegação do carrocel com mouse ou teclado
+    desloca para a primeira questão
+    <stand-by>
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Refazer Teste Completo]
+    inicializa teste com questões de (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
+    registra o início do teste: user.quizDateStart, user.quizFlagOpen
+
+    $CENARIO::MAJOR-TEST
+    obtem 1ª questão do teste: query <- (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
+        prepara template de div para carrocel com dados da questão
+        adiciona div como slide no carrocel e desloca para a primeira questão
+        <stand-by>
+
+
+@USUÁRIO <click-on> [Questão A ou B]
+    coleta resposta do usuário -> quizUserOpts e (quizTotalBasic++ ou quizTotalExtra++)
+    salva {estrutura-usuario} no local-storage
+    
+    se ainda há questões a serem respondidas
+        $CENARIO::MAJOR-TEST
+        obtem próxima questão do teste: query <- (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
+            prepara template de div para carrocel com dados da questão
+                adiciona div como slide no carrocel e desloca para a próxima questão
+            <stand-by>
+
+    se acabou as questões
+        registra a conclusao do teste: user.quizFlagOpen, user.quizDateFinal
+        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        salva {estrutura-usuario} no local-storage
+
+        $CENARIO::MAJOR-RESTART
+        exibe opções [Resultado] e [Doação]
+            obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+        prepara template de div para carrocel com resultado do teste
+            adiciona div como slide no carrocel e desloca para slide final
+            apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
+        <stand-by>
+        
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Revisar Respostas Completo]
+    inicializa teste com questões de (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
+
+    $CENARIO::MAJOR-REVIEW
+    loop de todas as questões do teste: query <- (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
+        identifica qual a questão selecionada (resposta) do usuário
+        prepara template (read-only) de div para carrocel com dados da questão
+        adiciona div como slide no carrocel
+    move o slide de introdução para a última posição no carrocel
+    habilita navegação do carrocel com mouse ou teclado
+    desloca para a primeira questão
+    <stand-by>
 
 
 -------------------------------------------------------------------------------
