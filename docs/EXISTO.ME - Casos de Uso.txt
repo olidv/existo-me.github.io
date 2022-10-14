@@ -75,7 +75,6 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
                 atualiza versao do teste do usuario: user.quizVersion = pgps.quizLastVersion
                 salva {estrutura-usuario} no local-storage
 
-
     identifica o cenário de uso pelo estado do usuário
         ## PRIMEIRA VISITA DO USUARIO, NÃO INICIOU NENHUMA VERSÃO DO TESTE
         se user.quizDateStart = null ou user.quizTotalDone = 0  
@@ -103,7 +102,8 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
             $CENARIO::MAJOR-NOTIFY
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
-            exibe notificação de novas questões com valor: + pgps.quizTotalExtraQueries    
+            exibe notificação de novas questões com valor: + pgps.quizTotalExtraQueries
+            altera o título do site: (pgps.quizTotalExtraQueries) EXISTO.me • GPS Político
             apresenta opções [Continuar Teste Extra] [Revisar Respostas Básico]
             <stand-by>
 
@@ -130,6 +130,7 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
             exibe notificação de novas questões com valor: + pgps.quizTotalExtraQueries    
+            altera o título do site: (pgps.quizTotalExtraQueries) EXISTO.me • GPS Político
             apresenta opções [Continuar Teste Extra] [Revisar Respostas Completo]
             <stand-by>
 
