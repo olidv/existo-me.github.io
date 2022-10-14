@@ -1,3 +1,10 @@
+A R T E F A T O :   C A S O S   D E   U S O
+===========================================
+
+Este documento descreve os casos de uso do site EXISTO.me, detalhando os cenários e seus respectivos fluxos principal, alternativo e exceção. O fluxo principal da aplicação se mostrou bastante complexo, por isso este documento foi elaborado para facilitar a manutenção posterior. Também pode auxiliar caso algum novo desenvolvedor queira contribuir com o projeto ou mesmo traduzir (locale, i18n) para outro idioma_PAÍS.
+
+As convenções de nomenclatura abaixo são um apanhado de lições aprendidas, ao longo de anos atuando como analista de sistemas. Normalmente as empresas gostam de elaborar artefatos mais "formais" como um documento do MS Word ou diagramação no System Architect. Particularmente eu sempre achei que este tipo de documentação possui um propósito único de auxiliar no desenvolvimento, não tendo um fim em sí. Existe enquanto necessário para esclarecer a lógica na cabeça do analista e/ou desenvolvedor, discutir com integrantes da equipe, dirimir dúvidas com o usuário, etc. O clássico "papel de pão".
+
 
 CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 ===============================================
@@ -9,13 +16,13 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
     Um ator ou agente/atuante, considerado como entidade externa pela aplicação.
 
     $CENARIO::TITULO
-    Detalhamento dos fluxos principal, alternativo ou exceção do cenário especificado.
+    Detalhamento de fluxo(s) principal, alternativo ou exceção do cenário especificado.
     
     <ação>
-    Indica uma ação executada por uma entidade externa ou pela aplicação.
+    Indica uma ação executada por uma entidade externa (ator) ou pela aplicação.
 
     [Componente]
-    Botão ou opção de menu acessível pela entidade externa através do mouse ou teclado.
+    Botão ou opção de menu acessível pela entidade externa (ator) através do mouse ou teclado.
 
     {identificador}
     Possível estrutura de dados, classe ou arquivo - já implementado ou ainda a ser definido.
@@ -27,16 +34,16 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
     Apóstrofos designam endereço (url) de web site ou qualquer outro recurso (uri) utilizado.
 
     "Descrição"
-    Aspas designam qualquer literal cadeia de alfanumérica, manipulado como valor string.
+    Aspas designam qualquer literal (cadeia de caracteres alfanumérico) manipulado como valor string.
 
-    * Números e Datas manipulados conforme regras gramaticais da língua portuguesa.
+    * Números e Datas são manipulados conforme regras gramaticais da língua portuguesa.
 
 
 -------------------------------------------------------------------------------
-@USUÁRIO <request-get> 'www.EXISTO.me'
+@USUÁRIO <get-request> 'www.EXISTO.me'
     renderiza tela principal (home)
 
-    obtém ultima versão da {estrutura-gps-politico}, sem cache
+    obtém ultima versão da {estrutura-gps-politico}, sem usar cache
         pgps = {estrutura-gps-politico}
     
     inicializa estrutura de dados do usuário
@@ -70,56 +77,56 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
 
     identifica o cenário de uso pelo estado do usuário
-        $CENARIO::BEGINNER-START
         ## PRIMEIRA VISITA DO USUARIO, NÃO INICIOU NENHUMA VERSÃO DO TESTE
         se user.quizDateStart = null ou user.quizTotalDone = 0  
+            $CENARIO::BEGINNER-START
             apresenta opções [Iniciar Teste Básico] [Como Funciona]
             <stand-by>
 
-        $CENARIO::BEGINNER-RESUME
         ## USUARIO INICIOU VERSÃO BASICA DO TESTE MAS NÃO FINALIZOU
         se user.quizVersion = 1 e user.quizTotalBasic < pgps.quizTotalBasicQueries  
-            apresenta opções [Retomar Teste Básico] [Revisar Respostas Básico]
+            $CENARIO::BEGINNER-RESUME
             exibe notificação de questões pendentes com valor: # user.quizTotalBasic ... pgps.quizTotalBasicQueries
+            apresenta opções [Retomar Teste Básico] [Revisar Respostas Básico]
             <stand-by>
 
-        $CENARIO::BEGINNER-RESTART
         ## USUÁRIO ACABOU DE FINALIZAR VERSÃO BASICA DO TESTE
         se user.quizVersion = 1 e user.quizTotalBasic = pgps.quizTotalBasicQueries  
+            $CENARIO::BEGINNER-RESTART
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
             apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
             <stand-by>
 
-        $CENARIO::MAJOR-NOTIFY
         ## USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
         se user.quizVersion > 1 e user.quizTotalDone = pgps.quizTotalBasicQueries  
+            $CENARIO::MAJOR-NOTIFY
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
             exibe notificação de novas questões com valor: + pgps.quizTotalExtraQueries    
             apresenta opções [Continuar Teste Extra] [Revisar Respostas Básico]
             <stand-by>
 
-        $CENARIO::MAJOR-RESUME
         ## USUÁRIO INICIOU VERSÃO EXTRA DO TESTE MAS NÃO FINALIZOU
         se user.quizVersion > 1 e user.quizTotalExtra < pgps.quizTotalExtraQueries  
+            $CENARIO::MAJOR-RESUME
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
             exibe notificação de questões pendentes com valor: # user.quizTotalExtra ... pgps.quizTotalExtraQueries
             apresenta opções [Retomar Teste Extra] [Revisar Respostas Extra]
             <stand-by>
 
-        $CENARIO::MAJOR-RESTART
         ## USUÁRIO ACABOU DE FINALIZAR VERSÃO EXTRA DO TESTE
         se user.quizVersion > 1 e user.quizTotalExtra = pgps.quizTotalExtraQueries
+            $CENARIO::MAJOR-RESTART
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
             apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
             <stand-by>
 
-        $CENARIO::MAJOR-NOTIFY
         ## USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
         se 1 < user.quizVersion < pgps.quizLastVersion e user.quizTotalExtra < pgps.quizTotalExtraQueries  
+            $CENARIO::MAJOR-NOTIFY
             exibe opções [Resultado] e [Doação]
                 obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
             exibe notificação de novas questões com valor: + pgps.quizTotalExtraQueries    
@@ -203,9 +210,9 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Refazer Teste Básico]
-    inicializa teste com questões de pgps.quizListBasicQueries
     limpa as respostas do usuário: quizTotalBasic, quizTotalExtra, quizUserOpts, quizDateFinal, 
                                    quizUserScore, quizHexColor, quizFileImage
+    inicializa teste com questões de pgps.quizListBasicQueries
     registra o início do teste: user.quizDateStart, user.quizFlagOpen
     
     $CENARIO::BEGINNER-TEST
@@ -257,8 +264,8 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Continuar Teste Extra]
-    inicializa teste com questões de pgps.quizListExtraQueries
     registra o início do teste: user.quizFlagOpen
+    inicializa teste com questões de pgps.quizListExtraQueries
 
     $CENARIO::MAJOR-TEST
     obtem 1ª questão do teste: query <- pgps.quizListExtraQueries
@@ -294,8 +301,8 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Retomar Teste Extra]
-    inicializa teste com questões de pgps.quizListExtraQueries
     identifica a última questão respondida pelo usuario: user.quizTotalExtra
+    inicializa teste com questões de pgps.quizListExtraQueries
 
     $CENARIO::MAJOR-TEST
     obtem próxima questão do teste: query <- pgps.quizListExtraQueries
@@ -346,8 +353,8 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Refazer Teste Completo]
-    inicializa teste com questões de (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
     registra o início do teste: user.quizDateStart, user.quizFlagOpen
+    inicializa teste com questões de (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
 
     $CENARIO::MAJOR-TEST
     obtem 1ª questão do teste: query <- (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
@@ -397,3 +404,4 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
 
 -------------------------------------------------------------------------------
+flag para desabilitar questão...
