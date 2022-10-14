@@ -5,10 +5,12 @@ class PoliticalGps {
     // propriedades publicas:
 
     // propriedades publicas:
-    quizVersion = 1.0; // numero da ultima versao do teste
+    quizLastVersion = 1.0; // numero da ultima versao do teste
     quizDateVersion = null; // data da liberacao desta versao do teste
-    quizTotalQueries = 0; // numero total de questoes do teste
-    quizListQueries = []; // lista de questoes a serem respondidas
+    quizTotalBasicQueries = 0; // numero total de questoes do teste
+    quizListBasicQueries = []; // lista de questoes a serem respondidas
+    quizTotalExtraQueries = 0; // numero total de questoes do teste
+    quizListExtraQueries = []; // lista de questoes a serem respondidas
 
     /**
      * Inicializacao de nova instancia.

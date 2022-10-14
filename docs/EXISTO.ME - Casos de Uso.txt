@@ -1,0 +1,142 @@
+
+CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
+===============================================
+
+    @NOME 
+    Entidade externa, considerada agente/atuante pela aplicação.
+
+    <token>
+    Ação executada por uma entidade externa ou pela aplicação.
+
+    [Título]
+    Botão ou opção de menu acessível pela entidade externa através do mouse ou teclado.
+
+    {Designação}
+    Possível estrutura de dados, classe ou arquivo - já implementado ou ainda a ser definido.
+
+    ## ...
+    COMENTÁRIOS, EM LETRA MAIÚSCULA PARA MAIOR DESTAQUE.
+
+    'uri'
+    Apóstrofos designam endereço (url) de web site ou qualquer outro recurso (uri) utilizado.
+
+    "Descrição"
+    Aspas designam qualquer literal cadeia de alfanumérica, manipulado como valor string.
+
+    * Números e Datas manipulados conforme regras gramaticais da língua portuguesa.
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <request-get> 'www.EXISTO.me'
+    renderiza tela principal (home)
+
+    obtém ultima versão da {estrutura-gps-politico}, sem cache
+        pgps = {estrutura-gps-politico}
+    
+    inicializa estrutura de dados do usuário
+        ## 1º ACESSO DO USUARIO
+        se {estrutura-usuario} não está armazenada no local-storage  
+            inicializa nova {estrutura-usuario} -> user
+            
+            ## PRIMEIRA VISITA DO USUÁRIO, NÃO INICIOU NENHUMA VERSÃO DO TESTE
+            estabelece versao primária (basic) para inicio dos testes
+                {estrutura-usuario}.quizVersion = 1
+            salva {estrutura-usuario} no local-storage
+        
+        ## NÃO É 1º ACESSO DO USUARIO
+        se {estrutura-usuario} já está armazenada no local-storage  
+            obtém do local-storage {estrutura-usuario} -> user
+            
+            ## USUÁRIO JÁ COMPLETOU VERSÃO BASICO DO TESTE
+            se user.quizVersion = 1 e user.quizTotalDone >= pgps.quizTotalBasicQueries
+                atualiza versao do teste do usuario: user.quizVersion = pgps.quizLastVersion
+                salva {estrutura-usuario} no local-storage
+            
+            ## USUÁRIO JÁ COMPLETOU VERSÃO EXTRA DO TESTE
+            se user.quizVersion > 1 e (user.quizTotalDone - pgps.quizTotalBasicQueries) = pgps.quizTotalBasicQueries  
+                atualiza versao do teste do usuario: user.quizVersion = pgps.quizLastVersion
+                salva {estrutura-usuario} no local-storage
+
+
+    identifica o cenário de uso pelo estado do usuário
+        ## CENÁRIO BEGINNER-START: PRIMEIRA VISITA DO USUARIO, NÃO INICIOU NENHUMA VERSÃO DO TESTE
+        se user.quizDateStart = null ou user.quizTotalDone = 0  
+            inicializa teste com questões de pgps.quizListBasicQueries
+            apresenta opções [Iniciar Teste Básico] [Como Funciona]
+            stand-by
+
+        ## CENÁRIO BEGINNER-RESUME: USUARIO INICIOU VERSÃO BASICO DO TESTE MAS NÃO FINALIZOU
+        se user.quizVersion = 1 e user.quizTotalDone < pgps.quizTotalBasicQueries  
+            inicializa teste com questões de pgps.quizListBasicQueries
+            apresenta opções [Retomar Teste Básico] [Revisar Respostas Básico]
+            stand-by
+
+        ## CENÁRIO BEGINNER-RESTART: USUÁRIO ACABOU DE FINALIZAR VERSÃO BASICO DO TESTE
+        se user.quizVersion = 1 e user.quizTotalDone = pgps.quizTotalBasicQueries  
+            exibe opções [Resultado] e [Doação]
+                obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+            inicializa teste com questões de pgps.quizListBasicQueries
+            apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
+            stand-by
+
+        ## CENÁRIO MAJOR-NOTIFY: USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
+        se user.quizVersion > 1 e user.quizTotalDone = pgps.quizTotalBasicQueries  
+            exibe opções [Resultado] e [Doação]
+                obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+            exibe notificação de novas questões com valor: pgps.quizTotalExtraQueries    
+            inicializa teste com questões de pgps.quizListExtraQueries
+            apresenta opções [Continuar Teste Extra] [Revisar Respostas Básico]
+            stand-by
+
+        ## CENÁRIO MAJOR-RESUME: USUÁRIO INICIOU VERSÃO EXTRA DO TESTE MAS NÃO FINALIZOU
+        se user.quizVersion > 1 e (user.quizTotalDone - pgps.quizTotalBasicQueries) < pgps.quizTotalExtraQueries  
+            exibe opções [Resultado] e [Doação]
+                obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+            exibe notificação de questões pendentes com valor: pgps.quizTotalExtraQueries - (user.quizTotalDone - pgps.quizTotalBasicQueries)
+            inicializa teste com questões de pgps.quizListExtraQueries
+            apresenta opções [Retomar Teste Extra] [Revisar Respostas Extra]
+            stand-by
+
+        ## CENÁRIO MAJOR-RESTART: USUÁRIO ACABOU DE FINALIZAR VERSÃO EXTRA DO TESTE
+        se user.quizVersion > 1 e (user.quizTotalDone - pgps.quizTotalBasicQueries) = pgps.quizTotalExtraQueries
+            exibe opções [Resultado] e [Doação]
+                obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+            inicializa teste com questões de (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
+            apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
+            stand-by
+
+        ## CENÁRIO MAJOR-NOTIFY: USUÁRIO É NOTIFICADO DE NOVAS QUESTÕES EXTRAS
+        se 1 < user.quizVersion < pgps.quizLastVersion e (user.quizTotalDone - pgps.quizTotalBasicQueries) < pgps.quizTotalExtraQueries  
+            exibe opções [Resultado] e [Doação]
+                obtém cor da pontuação do usuário e aplica cor nos ícones grid-3x3
+            exibe notificação de novas questões com valor: pgps.quizTotalExtraQueries    
+            inicializa teste com questões de pgps.quizListExtraQueries
+            apresenta opções [Continuar Teste Extra] [Revisar Respostas Completo]
+            stand-by
+
+
+
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Iniciar Teste]
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Retomar Teste]
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Refazer Teste]
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Revisar Respostas]
+
+
+-------------------------------------------------------------------------------
+@USUÁRIO <click-on> [Continuar Teste]
+    
+
+
+-------------------------------------------------------------------------------
