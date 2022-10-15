@@ -1,5 +1,4 @@
-A R T E F A T O :   C A S O S   D E   U S O
-===========================================
+# ARTEFATO: CASOS DE USO
 
 Este documento descreve os casos de uso do site EXISTO.me, detalhando os cenários e seus respectivos fluxos principal, alternativo e exceção. O fluxo principal da aplicação se mostrou bastante complexo em virtude dos vários cenários na inicialização da página principal (home). Este documento foi elaborado para facilitar a definição da lógica na aplicação do teste político e facilitar também eventual manutenção posterior. Da mesma forma, este artefato poderá auxiliar caso algum novo desenvolvedor queira contribuir com o projeto ou mesmo traduzi-lo (locale, i18n) para outro idioma_PAÍS.
 
@@ -12,8 +11,7 @@ Artefatos que auxiliam no projeto deveriam seguir o mesmo paradigma de um andaim
 No caso deste projeto, como haviam muitos cenários na inicialização da home, o detalhamento dos casos de uso se tornou útil. Mas a lógica em cada caso de uso é bastante simples, por isso o fluxo das atividades foi detalhado apenas aqui (Portugol). Se em algum momento houvesse uma lógica mais crítica em um determinado fluxo, talvez fosse então o caso de elaborar um diagrama de sequência. Se alguma entidade tivesse um número expressivo de estados, com uma lógica mais complexa para mudança entre os estados, então talvez fossse o caso de elaborar um diagrama de estados. A UML possui vários diagramas úteis e bastante interessantes, que podem ser utilizados em casos específicos, especialmente nos componentes mais críticos e complexos de um sistema.
 
 
-CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
-===============================================
+## CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
     ----------
     Tracejado indica o início de um caso de uso ou o fluxo de um cenário.
@@ -420,4 +418,3 @@ CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
 
 -------------------------------------------------------------------------------
-flag para desabilitar questão...
