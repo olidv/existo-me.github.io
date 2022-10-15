@@ -99,3 +99,6 @@ class CarouselWrapper {
         }
     }
 }
+
+// Cria instancia global para manipulacao do componente carrocel usado no teste politico:
+//var GlobalCarousel = new CarouselWrapper();

@@ -3,29 +3,27 @@
 /** Classe para armazenamento de informacoes e configuracoes do usuario. */
 class AppUser {
     // propriedades publicas: informacoes gerais
-    ids = null; // identificacao do usuario no local-storage.
     name = null; // nome do usuario para emissao de certificado
 
     // propriedades publicas: resultado do teste
-    quizVersion = 1; // numero da versao do teste respondido
+    quizVersion = 0.0; // numero da versao do teste respondido
     quizDateStart = null; // data em que iniciou o teste
     quizFlagOpen = false; // indica se o teste esta em andamento agora
     quizTotalBasic = 0; // numero de questoes do teste basico respondidas ate o momento
     quizTotalExtra = 0; // numero de questoes do teste extra respondidas ate o momento
     quizUserOpts = []; // respostas para as questoes respondidas
     quizDateFinal = null; // data em que finalizou o teste
-    quizUserScore = null; // pontuacao calculada para as respostas
+    quizUserScore = 0.0; // pontuacao calculada para as respostas
     quizCssColor = null; // coloracao correspondente a pontuacao obtida
     quizFileImage = null; // id do plano (figura) para a pontuacao obtida
 
     /**
      * Inicializacao de nova instancia.
      *
-     * @param  {string} id Nome do usuario ou apenas id para o local-storage.
+     * @param  {String} beginVersion Versao do teste para o caso do usuario ser iniciante.
      */
-    constructor(id) {
-        this.ids = id;
-        this.name = id; // por enquanto utiliza o id (default).
+    constructor(beginVersion) {
+        this.quizVersion = beginVersion;
     }
 
     /** Getter: numero total de questoes respondidas ate o momento. */
@@ -33,59 +31,44 @@ class AppUser {
         return this.quizTotalBasic + this.quizTotalExtra;
     }
 
-    /** Getter. */
-    get noQuizYet() {
-        return this.quizDateStart == null;
-    }
-
-    /** Getter. */
-    get isQuizOnGoing() {
-        return this.quizDateStart != null && this.quizFlagOpen;
-    }
-
-    /** Getter. */
-    get isQuizComplete() {
-        return this.quizDateStart != null && !this.quizFlagOpen && this.quizDateFinal != null;
-    }
-
-    /** Getter. */
-    get hasQuizUpdate() {
-        // TODO: Notificacao para novas questoes...
-        return false;
+    /**
+     * Salva esta instancia do AppUser no local-storage.
+     */
+    save() {
+        $.localStorage.set(LOCAL_STORAGE_ID, this);
+        console.table("Instancia corrente de AppUser armazenada no LocalStorage: ", this);
     }
 
     /**
-     * Getter da estrategia singleton para inicializacao do AppUser.
-     *
-     * @param  {String} objId Identificacao da instancia no local-storage.
+     * Identificacao utilizada para armazenar instancias no local-storage.
      */
-    static getObjectUser(objId) {
-        let objUser = new AppUser(objId);
+    static get LOCAL_STORAGE_ID() {
+        return "AppUser";
+    }
+
+    /**
+     * Carrega os dados anteriores da ultima sessao do usuario a partir do local-storage.
+     *
+     * @param  {String} beginVersion Versao do teste para o caso do usuario ser iniciante.
+     */
+    loadInstance(beginVersion) {
+        let newInstance = new AppUser(beginVersion);
 
         // se ja estivder salvo no local-storage, recupera as propriedades:
-        if ($.localStorage.isSet(objId)) {
-            let objStorage = $.localStorage.get(objId);
-            console.table("Valores de AppUser recuperados do LocalStorage: ", objStorage);
+        if ($.localStorage.isSet(LOCAL_STORAGE_ID)) {
+            let objStorage = $.localStorage.get(LOCAL_STORAGE_ID);
             // transfere os valores para uma nova instancia de AppUser...
-            // TODO: Poderia repassar objStorage no constructor, para associar la...
-            objUser = Object.assign(objUser, objStorage);
+            newInstance = Object.assign(newInstance, objStorage);
+            console.table("Valores de AppUser recuperados do LocalStorage: ", newInstance);
         } else {
-            console.table("Nova instancia de AppUser criada e armazenada no LocalStorage: ", objUser);
-            $.localStorage.set(objId, objUser);
-            return objUser;
+            $.localStorage.set(LOCAL_STORAGE_ID, newInstance);
+            console.table("Nova instancia de AppUser criada e armazenada no LocalStorage: ", newInstance);
         }
 
-        return objUser;
-    }
-
-    /**
-     * Setter da estrategia singleton para inicializacao do AppUser.
-     *
-     * @param  {String} objUser Instancia do AppUser para salvar no local-storage.
-     */
-    static setObjectUser(objUser) {
-        $.localStorage.set(objUser.ids, objUser);
-        console.table("Instancia corrente de AppUser armazenada no LocalStorage: ", objUser);
-        return objUser; // fluent-interface
+        return newInstance;
     }
 }
+
+// Cria instancia global para gerenciar o uso do web site pelo usuario:
+//$.localStorage.removeAll();  // reset do local-storage
+var GlobalUser = AppUser.loadInstance();

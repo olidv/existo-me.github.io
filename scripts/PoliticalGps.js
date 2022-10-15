@@ -1,9 +1,7 @@
 /* --- POLITICAL GPS CLASS ------------------------------------------------------------------ */
 
 /** Classe auxiliar na aplicacao do teste politico e gerenciamento das respostas. */
-class PoliticalGps {
-    // propriedades publicas:
-
+class PoliticalTest {
     // propriedades publicas:
     quizLastVersion = 1.0; // numero da ultima versao do teste
     quizDateVersion = null; // data da liberacao desta versao do teste
@@ -37,3 +35,6 @@ class PoliticalGps {
         return objQuiz;
     }
 }
+
+// Cria instancia global para gerenciar a aplicacao do teste politico:
+var GlobalTest = new PoliticalTest();

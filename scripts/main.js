@@ -4,15 +4,15 @@
 
 /* --- CURRENT QUIZ ------------------------------------------------------------------ */
 
-let objQuiz = PoliticalGps.loadDataQuiz(1.0);
+// let objQuiz = PoliticalGps.loadDataQuiz(1.0);
 //console.log("A versao atual do teste eh: ", objQuiz.quizVersion);
 //console.log("A data da versao atual do teste eh: ", objQuiz.quizDateVersion);
 
 /* --- CURRENT USER ------------------------------------------------------------------ */
 
 // obtem a instancia para o usuario corrente, ja existente ou nao (1a. vez)
-$.localStorage.removeAll();  // reset do local-storage
-let objUser = AppUser.getObjectUser("EXISTO.me"); // se nao existir, ja inicializa
+// $.localStorage.removeAll();  // reset do local-storage
+// let objUser = AppUser.getObjectUser("EXISTO.me"); // se nao existir, ja inicializa
 // console.log(`objUser.noQuizYet = ${objUser.noQuizYet}`);
 // console.log(`objUser.isQuizOnGoing = ${objUser.isQuizOnGoing}`);
 // console.log(`objUser.isQuizComplete = ${objUser.isQuizComplete}`);
@@ -45,8 +45,8 @@ $(document).ready(function () {
         GlobalPreferences.isSoundOn = this.checked;
     });
 
-    var crsWrap = new CarouselWrapper("#carouselTest");
-    crsWrap.showIntroSlide(objUser);
+    // var crsWrap = new CarouselWrapper("#carouselTest");
+    // crsWrap.showIntroSlide(objUser);
 
     // carousel.to(1);
     // carousel.pause();
