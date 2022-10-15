@@ -46,6 +46,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
     * Números e Datas são manipulados conforme regras gramaticais da língua portuguesa.
 
 
+## DETALHAMENTO DOS CASOS DE USO
+
+### Caso de Uso: Acesso ao Web Site
+
 -------------------------------------------------------------------------------
 @USUÁRIO <get-request> 'www.EXISTO.me'
     renderiza tela principal (home)
@@ -147,6 +151,8 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             apresenta opções [Continuar Teste Extra] [Revisar Respostas Completo]
             <stand-by>
 
+
+### Caso de Uso: Testes
 
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Iniciar Teste Básico]
