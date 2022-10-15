@@ -6,12 +6,6 @@ class AppUser {
     ids = null; // identificacao do usuario no local-storage.
     name = null; // nome do usuario para emissao de certificado
 
-    // propriedades publicas: preferencias
-    prefDarkTheme = false; // true=dark/escuro, false=light/claro
-    prefFontSized = 2; // 1=small/pequena, 2=normal/padrao, 3=big/grande, 4=bigger/maior
-    prefPlaySound = false; // true=on/ligado, false=off/desligado
-    prefDateReset = null; // null=never reset/nunca resetou, date=when reset/quando resetou
-
     // propriedades publicas: resultado do teste
     quizVersion = 1; // numero da versao do teste respondido
     quizDateStart = null; // data em que iniciou o teste

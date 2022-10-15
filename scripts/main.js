@@ -1,3 +1,7 @@
+
+
+
+
 /* --- CURRENT QUIZ ------------------------------------------------------------------ */
 
 let objQuiz = PoliticalGps.loadDataQuiz(1.0);
@@ -19,6 +23,27 @@ let objUser = AppUser.getObjectUser("EXISTO.me"); // se nao existir, ja iniciali
 // Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
 $(document).ready(function () {
     ("use strict"); // sempre!
+
+    // estado inicial das preferencias do usuario:
+    $("#switchSchemeColor").val(GlobalPreferences.isSchemeDark);
+    $("#rangeFontSize").val(GlobalPreferences.ordFontSize);
+    $("#switchSoundAlert").val(GlobalPreferences.isSoundOn);
+
+    // eventos para tratamento das alteracoes das preferencias:
+    $("#switchSchemeColor").change(function () {
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        GlobalPreferences.isSchemeDark = this.checked;
+    });
+    // eventos para tratamento das alteracoes das preferencias:
+    $("#rangeFontSize").change(function () {
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        GlobalPreferences.ordFontSize = this.value;
+    });
+    // eventos para tratamento das alteracoes das preferencias:
+    $("#switchSoundAlert").change(function () {
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        GlobalPreferences.isSoundOn = this.checked;
+    });
 
     var crsWrap = new CarouselWrapper("#carouselTest");
     crsWrap.showIntroSlide(objUser);

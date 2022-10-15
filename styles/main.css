@@ -1,3 +1,20 @@
+/*--- THEME COLOR-SCHEME --------------------------------------------------*/
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #eeeeee;
+        --tx-color: #212529;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #212529;
+        --tx-color: #eeeeee;
+    }
+}
+
+
 /*--- LAYOUT --------------------------------------------------*/
 
 html,body {
