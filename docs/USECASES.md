@@ -184,7 +184,7 @@
 
     se acabou as questões
         registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
-        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
         salva {estrutura-usuario} no local-storage
 
         $CENARIO::BEGINNER-RESTART
@@ -223,7 +223,7 @@
 
     se acabou as questões
         registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
-        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
         salva {estrutura-usuario} no local-storage
 
         $CENARIO::BEGINNER-RESTART
@@ -240,7 +240,7 @@
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Refazer Teste Básico]
     limpa as respostas do usuário: quizTotalBasic, quizTotalExtra, quizUserOpts, quizDateFinal, 
-                                   quizUserScore, quizHexColor, quizFileImage
+                                   quizUserScore, quizCssColor, quizFileImage
     inicializa teste com questões de pgps.quizListBasicQueries
     registra o início do teste: user.quizDateStart, user.quizFlagOpen
     
@@ -264,7 +264,7 @@
 
     se acabou as questões
         registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
-        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
         salva {estrutura-usuario} no local-storage
 
         $CENARIO::BEGINNER-RESTART
@@ -320,7 +320,7 @@
 
     se acabou as questões
         registra a conclusao do teste: user.quizFlagOpen
-        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
         salva {estrutura-usuario} no local-storage
 
         $CENARIO::MAJOR-RESTART
@@ -359,7 +359,7 @@
 
     se acabou as questões
         registra a conclusao do teste: user.quizFlagOpen
-        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
         salva {estrutura-usuario} no local-storage
 
         $CENARIO::MAJOR-RESTART
@@ -415,7 +415,7 @@
 
     se acabou as questões
         registra a conclusao do teste: user.quizFlagOpen, user.quizDateFinal
-        calcula a pontuacao do usuario -> quizUserScore, quizHexColor, quizFileImage
+        calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
         salva {estrutura-usuario} no local-storage
 
         $CENARIO::MAJOR-RESTART
