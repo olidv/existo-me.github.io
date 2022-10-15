@@ -13,6 +13,7 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
 
 ## CONVENÇÕES DE NOMENCLATURA PARA OS CASOS DE USO
 
+```
     ----------
     Tracejado indica o início de um caso de uso ou o fluxo de um cenário.
     
@@ -44,12 +45,14 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
     Aspas designam qualquer literal (cadeia de caracteres alfanumérico) manipulado como valor string.
 
     * Números e Datas são manipulados conforme regras gramaticais da língua portuguesa.
+```
 
 
 ## DETALHAMENTO DOS CASOS DE USO
 
 ### Caso de Uso: Acesso ao Web Site
 
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <get-request> 'www.EXISTO.me'
     renderiza tela principal (home)
@@ -150,10 +153,12 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             altera o título do site: (pgps.quizTotalExtraQueries) EXISTO.me • GPS Político
             apresenta opções [Continuar Teste Extra] [Revisar Respostas Completo]
             <stand-by>
+```
 
 
-### Caso de Uso: Testes
+### Casos de Uso: Acesso ao Teste Político
 
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Iniciar Teste Básico]
     inicializa teste com questões de pgps.quizListBasicQueries
@@ -189,8 +194,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             adiciona div como slide no carrocel e desloca para slide final
             apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
         <stand-by>
-    
+```
 
+
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Retomar Teste Básico]
     inicializa teste com questões de pgps.quizListBasicQueries
@@ -226,8 +233,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             adiciona div como slide no carrocel e desloca para slide final
             apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
         <stand-by>
-    
+```
 
+
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Refazer Teste Básico]
     limpa as respostas do usuário: quizTotalBasic, quizTotalExtra, quizUserOpts, quizDateFinal, 
@@ -265,8 +274,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             adiciona div como slide no carrocel e desloca para slide final
             apresenta opções [Refazer Teste Básico] [Revisar Respostas Básico]
         <stand-by>
-    
+```
 
+
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Revisar Respostas Básico]
     inicializa teste com questões de pgps.quizListBasicQueries
@@ -280,8 +291,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
     habilita navegação do carrocel com mouse ou teclado
     desloca para a primeira questão
     <stand-by>
+```
 
 
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Continuar Teste Extra]
     registra o início do teste: user.quizFlagOpen
@@ -317,8 +330,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             adiciona div como slide no carrocel e desloca para slide final
             apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
         <stand-by>
-        
+```
 
+
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Retomar Teste Extra]
     identifica a última questão respondida pelo usuario: user.quizTotalExtra
@@ -354,8 +369,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             adiciona div como slide no carrocel e desloca para slide final
             apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
         <stand-by>
-    
+```
 
+
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Revisar Respostas Extra]
     inicializa teste com questões de pgps.quizListExtraQueries
@@ -369,8 +386,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
     habilita navegação do carrocel com mouse ou teclado
     desloca para a primeira questão
     <stand-by>
+```
 
 
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Refazer Teste Completo]
     registra o início do teste: user.quizDateStart, user.quizFlagOpen
@@ -406,8 +425,10 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
             adiciona div como slide no carrocel e desloca para slide final
             apresenta opções [Refazer Teste Completo] [Revisar Respostas Completo]
         <stand-by>
-        
+```
 
+
+```
 -------------------------------------------------------------------------------
 @USUÁRIO <click-on> [Revisar Respostas Completo]
     inicializa teste com questões de (pgps.quizListBasicQueries + pgps.quizListExtraQueries)
@@ -421,6 +442,6 @@ No caso deste projeto, como haviam muitos cenários na inicialização da home, 
     habilita navegação do carrocel com mouse ou teclado
     desloca para a primeira questão
     <stand-by>
-
+```
 
 -------------------------------------------------------------------------------
