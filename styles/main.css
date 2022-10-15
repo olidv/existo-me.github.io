@@ -198,10 +198,6 @@ a i[class^='bi']:focus {
 
 /*--- MODAL --------------------------------------------------*/
 
-.modal .modal-content .modal-body h5 {
-    /* font-weight: bold; */
-}
-
 .modal .modal-content .modal-body p,
 .modal .modal-content .modal-body li {
     text-align: justify;
@@ -251,6 +247,10 @@ a i[class^='bi']:focus {
 
 .icon-social {
     color: #212529;
+    font-size: 1.8rem;
+}
+
+.icon-cc {
     font-size: 1.4rem;
 }
 

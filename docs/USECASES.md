@@ -17,19 +17,19 @@
     ----------
     Tracejado indica o início de um caso de uso ou o fluxo de um cenário.
     
-    @NOME 
+    @ACTOR
     Um ator ou agente/atuante, considerado como entidade externa pela aplicação.
 
-    $CENARIO::TITULO
+    $SCENARIO::TITLE
     Detalhamento de fluxo(s) principal, alternativo ou exceção do cenário especificado.
     
-    <ação>
+    <action-token>
     Indica uma ação executada por uma entidade externa (ator) ou pela aplicação.
 
-    [Componente]
+    [Component]
     Botão ou opção de menu acessível pela entidade externa (ator) através do mouse ou teclado.
 
-    {identificador}
+    {identifier}
     Possível estrutura de dados, classe ou arquivo - já implementado ou ainda a ser definido.
 
     ** ...
@@ -41,7 +41,7 @@
     'uri'
     Apóstrofos designam endereço (url) de web site ou qualquer outro recurso (uri) utilizado.
 
-    "Descrição"
+    "Description"
     Aspas designam qualquer literal (cadeia de caracteres alfanumérico) manipulado como valor string.
 
     * Números e Datas são manipulados conforme regras gramaticais da língua portuguesa.
