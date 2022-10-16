@@ -20,12 +20,12 @@ class StorageFacade {
      *
      * @param  {String} key .
      */
-    isSet(key) {
+    exist(key) {
         // eh preciso q a chave seja valida:
         if (key) {
             // verifica se ha algo valido armazenado sob a chave:
             let strValue = this.#store.getItem(key);
-            //console.log(`isSet(${key}) = _${strValue}_ of type: ${typeof strValue}`);
+            //console.log(`exist(${key}) = _${strValue}_ of type: ${typeof strValue}`);
             return strValue ? true : false;
         } else {
             // se a chave eh invalida, entao provavelmente o objeto nao existe:
@@ -236,7 +236,7 @@ class AppSetup {
      */
     save() {
         GlobalStore.set(AppSetup.name, this);
-        console.table("Instancia corrente de AppSetup armazenada no LocalStorage: ", this);
+        console.table("Instancia corrente de AppSetup armazenada no Storage com sucesso: ", this);
     }
 
     /**
@@ -246,16 +246,18 @@ class AppSetup {
         let newInstance = new AppSetup();
 
         // se ja estiver salvo no storage, recupera as propriedades:
-        if (GlobalStore.isSet(AppSetup.name)) {
+        if (GlobalStore.exist(AppSetup.name)) {
             let objStorage = GlobalStore.get(AppSetup.name);
             // transfere os valores para uma nova instancia de AppSetup:
             newInstance = Object.assign(newInstance, objStorage);
+
             // salva novamente, para o caso de se ter criado novas propriedades na classe:
-            GlobalStore.set(AppSetup.name, newInstance);
-            console.table("Valores de AppSetup recuperados do LocalStorage: ", newInstance);
+            newInstance.save();
+            console.info("Valores de AppSetup recuperados e atualizados no Storage com sucesso.");
         } else {
-            GlobalStore.set(AppSetup.name, newInstance);
-            console.table("Nova instancia de AppSetup criada e armazenada no LocalStorage: ", newInstance);
+            // como ainda nao existia no storage, salva para proximas sessoes:
+            newInstance.save();
+            console.info("Nova instancia de AppSetup criada e armazenada no Storage com sucesso.");
         }
 
         return newInstance;
@@ -265,3 +267,6 @@ class AppSetup {
 // Cria instancia global para manipular as preferencias do usuario:
 //GlobalStore.clear();  // reset do storage.
 var GlobalSetup = AppSetup.loadInstance();
+
+// de imediato efetiva as preferencias do usuario no web site:
+GlobalSetup.refresh();

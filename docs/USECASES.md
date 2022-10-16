@@ -15,7 +15,7 @@
 
 ```
     ----------
-    Tracejado indica o início de um caso de uso ou o fluxo de um cenário.
+    Tracejado indica o início de um caso de uso ou algum fluxo de determinado cenário.
     
     @ACTOR
     Um ator ou agente/atuante, considerado como entidade externa pela aplicação.

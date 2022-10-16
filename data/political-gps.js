@@ -1,3 +1,5 @@
+/* --- JSON DATA: POLITICAL GPS TEST --------------------------------------------------------- */
+
 /* Let the browser do the parsing, automatically. */
 var dataPoliticalGps = {
     quizLastVersion: 1.0,
@@ -7,5 +9,5 @@ var dataPoliticalGps = {
     quizListBasicQueries: [],
 
     quizTotalExtraQueries: 0,
-    quizListExtraQueries: []
+    quizListExtraQueries: [],
 };

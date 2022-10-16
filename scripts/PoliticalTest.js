@@ -24,10 +24,11 @@ class PoliticalTest {
      * @param  {Object} data Dados mais recentes do teste do GPS Politico.
      */
     static loadInstance(data) {
-        // transfere os valores recebidos para uma nova instancia de PoliticalTest...
         let newInstance = new PoliticalTest();
+
+        // transfere os valores recebidos para uma nova instancia de PoliticalTest...
         newInstance = Object.assign(newInstance, data);
-        console.table("Nova instancia de PoliticalTest criada: ", newInstance);
+        console.table("Nova instancia de PoliticalTest criada com sucesso: ", newInstance);
 
         return newInstance;
     }

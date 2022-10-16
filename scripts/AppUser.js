@@ -41,7 +41,7 @@ class AppUser {
      */
     save() {
         GlobalStore.set(AppUser.name, this);
-        console.table("Instancia corrente de AppUser armazenada no LocalStorage: ", this);
+        console.table("Instancia corrente de AppUser armazenada no Storage com sucesso: ", this);
     }
 
     /**
@@ -61,7 +61,7 @@ class AppUser {
 
         // ...e tambem limpa o local-storage:
         this.save();
-        console.log("Instancia corrente de AppUser reinicializada.");
+        console.info("Instancia corrente de AppUser reinicializada e atualizada no Storage com sucesso.");
     }
 
     /**
@@ -73,16 +73,18 @@ class AppUser {
         let newInstance = new AppUser(beginVersion);
 
         // se ja estiver salvo no local-storage, recupera as propriedades:
-        if (GlobalStore.isSet(AppUser.name)) {
+        if (GlobalStore.exist(AppUser.name)) {
             let objStorage = GlobalStore.get(AppUser.name);
-            // transfere os valores para uma nova instancia de AppUser...
+            // transfere os valores para uma nova instancia de AppUser:
             newInstance = Object.assign(newInstance, objStorage);
+
             // salva novamente, para o caso de se ter criado novas propriedades na classe:
-            GlobalStore.set(AppUser.name, newInstance);
-            console.table("Valores de AppUser recuperados do LocalStorage: ", newInstance);
+            newInstance.save();
+            console.info("Valores de AppUser recuperados e atualizados no Storage com sucesso.");
         } else {
-            GlobalStore.set(AppUser.name, newInstance);
-            console.table("Nova instancia de AppUser criada e armazenada no LocalStorage: ", newInstance);
+            // como ainda nao existia no storage, salva para proximas sessoes:
+            newInstance.save();
+            console.info("Nova instancia de AppUser criada e armazenada no Storage com sucesso.");
         }
 
         return newInstance;
@@ -91,4 +93,4 @@ class AppUser {
 
 // Cria instancia global para gerenciar o uso do web site pelo usuario:
 //GlobalStore.clear();  // reset do local-storage
-var GlobalUser = AppUser.loadInstance();
+var GlobalUser = AppUser.loadInstance(1.0);
