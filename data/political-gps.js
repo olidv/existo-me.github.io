@@ -2,14 +2,13 @@
 
 /* Let the browser do the parsing, automatically. */
 var dataPoliticalGps = {
-    quizBasicVersion: 1.0,
-    quizExtraVersion: 1.0,
-    quizDateVersion: new Date("2022-10-20T09:00:00.000Z"),
+    testDateVersion: new Date("2022-10-20T09:00:00.000Z"),
 
-    quizTotalBasicQueries: 5,
-    quizListBasicQueries: [
+    testBasicVersion: 1.0,
+    testBasicLength: 5,
+    testBasicQueries: [
         {
-            idquest: 1,
+            idQuery: 1,
             subject: "Assunto da 1ª Questão.",
             choices: [
                 { text: "Texto da 1ª opção.", rate: 2, side: -1 },
@@ -18,7 +17,7 @@ var dataPoliticalGps = {
             enabled: true,
         },
         {
-            idquest: 2,
+            idQuery: 2,
             subject: "Assunto da 2ª Questão.",
             choices: [
                 { text: "Texto da 1ª opção.", rate: 1, side: -1 },
@@ -27,7 +26,7 @@ var dataPoliticalGps = {
             enabled: true,
         },
         {
-            idquest: 3,
+            idQuery: 3,
             subject: "Assunto da 3ª Questão.",
             choices: [
                 { text: "Texto da 1ª opção.", rate: 2, side: -1 },
@@ -36,7 +35,7 @@ var dataPoliticalGps = {
             enabled: true,
         },
         {
-            idquest: 4,
+            idQuery: 4,
             subject: "Assunto da 4ª Questão.",
             choices: [
                 { text: "Texto da 1ª opção.", rate: 1, side: -1 },
@@ -45,7 +44,7 @@ var dataPoliticalGps = {
             enabled: true,
         },
         {
-            idquest: 5,
+            idQuery: 5,
             subject: "Assunto da 5ª Questão.",
             choices: [
                 { text: "Texto da 1ª opção.", rate: 2, side: -1 },
@@ -55,6 +54,7 @@ var dataPoliticalGps = {
         },
     ],
 
-    quizTotalExtraQueries: 0,
-    quizListExtraQueries: [],
+    testExtraVersion: 0,
+    testExtraLength: 0,
+    testExtraQueries: [],
 };

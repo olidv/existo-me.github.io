@@ -16,9 +16,10 @@ class DomHelper {
 
     // propriedades publicas: componente carrocel
     idCarousel;
-    divCarousel;
     bs5Carousel;
     innerCarousel;
+    prevControl;
+    nextControl;
 
     // propriedades publicas: slider de progresso do questionario
     rangeProgress;
@@ -42,16 +43,10 @@ class DomHelper {
         this.labelUserHistory = $("#labelUserHistory").text();
 
         // inicializa o componente carrocel e identifica seus elementos internos:
-        this.divCarousel = $(this.idCarousel);
-        this.bs5Carousel = $(this.idCarousel + " .carousel").carousel({
-            // interval: false,
-            // keyboard: false,
-            // pause: true,
-            // wrap: false,
-            interval: 60000,
-            wrap: true,
-        });
+        this.bs5Carousel = $(this.idCarousel);
         this.innerCarousel = $(this.idCarousel + " .carousel-inner");
+        this.prevControl = $(this.idCarousel + " .carousel-control-prev");
+        this.nextControl = $(this.idCarousel + " .carousel-control-next");
 
         // identifica o slider de progresso.
         this.rangeProgress = $("#rangeProgress");
@@ -82,10 +77,17 @@ class DomHelper {
     }
 
     /**
-     * Identifica o slide final, apos o usuario encerrar o teste politico.
+     * Adiciona o html de um novo slide no carrocel e avanca para o mesmo.
      */
-    getClosureSlide() {
-        return "#slideClosure";
+    nextSlide(htmlContent) {
+        // se nao fornecer o html, entao somente ira pular para o proximo slide:
+        if (htmlContent) {
+            // incorpora o slide ao final da sequencia corrente:
+            this.addSlide(htmlContent);
+        }
+
+        // e navega para o item, simulando um slide-next:
+        $("#carouselTest").carousel("next");
     }
 
     /**
@@ -118,20 +120,41 @@ class DomHelper {
         }
     }
 
+    
     /**
-     * Apresenta o slide final, apos o usuario encerrar o teste politico.
+     * Configura o carrocel para responder ao test.
      */
-    showClosureSlide(objUser) {
-        // O slide final sera apresentado com o resultado do teste:
-        let slideClosure = this.getClosureSlide();
-        // verifica se nao ha nenhuma inconsistencia nos dados, com cenario nao identificado:
-        if (slideClosure) {
-            //console.log(`slideClosure = ${slideClosure}`);
-            let htmlContent = $(slideClosure).html();
-            this.addSlide(htmlContent);
-        } else {
-            console.log("Nao foi possivel identificar o slide final pelo estado do usuario.");
-        }
+    initCarouselRespond() {
+        // reconfigura o carrocel para percorrer todas as respostas:
+        this.bs5Carousel.carousel({
+            interval: false,
+            pause: true,
+            ride: false,
+            keyboard: false,
+            wrap: false,
+        });
+
+        // inibe os controles de navegacao (prev, next):
+        this.prevControl.addClass("d-none");
+        this.nextControl.addClass("d-none");
+    }
+
+    /**
+     * Configura o carrocel para visualizacao das respostas.
+     */
+    initCarouselReview() {
+        // reconfigura o carrocel para percorrer todas as respostas:
+        this.bs5Carousel.carousel({
+            interval: false,
+            pause: false,
+            ride: false,
+            keyboard: true,
+            wrap: true,
+        });
+
+        // habilita os controles de navegacao (prev, next):
+        this.prevControl.removeClass("d-none");
+        this.nextControl.removeClass("d-none");
     }
 }
 

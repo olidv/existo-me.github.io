@@ -6,16 +6,15 @@ class AppUser {
     name = null; // nome do usuario para emissao de certificado
 
     // propriedades publicas: resultado do teste
-    quizVersion = 0.0; // numero da versao do teste respondido
-    quizDateStart = null; // data em que iniciou o teste
-    quizFlagOpen = false; // indica se o teste esta em andamento agora
-    quizTotalBasic = 0; // numero de questoes do teste basico respondidas ate o momento
-    quizTotalExtra = 0; // numero de questoes do teste extra respondidas ate o momento
-    quizUserOpts = []; // respostas para as questoes respondidas
-    quizDateFinal = null; // data em que finalizou o teste
-    quizUserScore = 0.0; // pontuacao calculada para as respostas
-    quizCssColor = null; // coloracao correspondente a pontuacao obtida
-    quizFileImage = null; // id do plano (figura) para a pontuacao obtida
+    testVersion = 0.0; // numero da versao do teste respondido
+    testDateStart = null; // data em que iniciou o teste
+    testFlagOpen = false; // indica se o teste esta em andamento agora
+    testTotalDone = 0; // numero de questoes do teste respondidas ate o momento
+    testUserOpts = []; // respostas para as questoes respondidas
+    testDateFinal = null; // data em que finalizou o teste
+    testUserScore = 0.0; // pontuacao calculada para as respostas
+    testCssColor = null; // coloracao correspondente a pontuacao obtida
+    testFileImage = null; // id do plano (figura) para a pontuacao obtida
 
     /**
      * Inicializacao de nova instancia.
@@ -23,17 +22,25 @@ class AppUser {
      * @param  {String} beginVersion Versao do teste para o caso do usuario ser iniciante.
      */
     constructor(beginVersion) {
-        this.quizVersion = beginVersion;
+        this.testVersion = beginVersion;
     }
 
-    /** Getter: numero total de questoes respondidas ate o momento. */
-    get quizTotalDone() {
-        return this.quizTotalBasic + this.quizTotalExtra;
+    /**
+     * .
+     */
+    startQuiz() {
+        // inicializa propriedades para sinalizar o inicio do teste politico:
+        this.testDateStart = new Date();
+        this.testFlagOpen = true; // teste em andamento
     }
 
-    /** Getter: numero total de questoes respondidas ate o momento. */
-    get isQuizDone() {
-        return this.quizTotalDone > 0;
+    /**
+     * .
+     */
+    stopQuiz() {
+        // inicializa propriedades para sinalizar o encerramento do teste politico:
+        this.testDateFinal = new Date();
+        this.testFlagOpen = false; // teste finalizado
     }
 
     /**
@@ -49,15 +56,14 @@ class AppUser {
      */
     clear() {
         // apaga as respostas do usuario...
-        this.quizDateStart = null;
-        this.quizFlagOpen = false;
-        this.quizTotalBasic = 0;
-        this.quizTotalExtra = 0;
-        this.quizUserOpts = [];
-        this.quizDateFinal = null;
-        this.quizUserScore = 0.0;
-        this.quizCssColor = null;
-        this.quizFileImage = null;
+        this.testDateStart = null;
+        this.testFlagOpen = false;
+        this.testTotalDone = 0;
+        this.testUserOpts = [];
+        this.testDateFinal = null;
+        this.testUserScore = 0.0;
+        this.testCssColor = null;
+        this.testFileImage = null;
 
         // ...e tambem limpa o local-storage:
         this.save();

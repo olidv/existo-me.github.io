@@ -16,7 +16,7 @@ function modalSetup_Refresh(event) {
     label = DOM.labelSoundAlert.replace("{0}", GlobalSetup.labelSoundAlert);
     $("#labelSoundAlert").text(label);
 
-    label = DOM.labelUserHistory.replace("{0}", GlobalUser.quizTotalDone);
+    label = DOM.labelUserHistory.replace("{0}", GlobalUser.testTotalDone);
     $("#labelUserHistory").text(label);
 }
 
@@ -35,7 +35,7 @@ function modalSetup_Show(event) {
     $("#switchSoundAlert").attr("checked", GlobalSetup.isSoundOn);
 
     // se o usuario ainda nao respondeu o teste, desabilita o botao:
-    $("#clearUserHistory").prop("disabled", !GlobalUser.isQuizDone);
+    $("#clearUserHistory").prop("disabled", GlobalUser.testTotalDone == 0);
 }
 
 /**
