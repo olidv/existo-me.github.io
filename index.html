@@ -114,7 +114,7 @@
         <link rel="stylesheet" href="styles/main.css" />
 
         <!-- Website Preferences -->
-        <script type="text/javascript" src="scripts/Preferences.js"></script>
+        <script type="text/javascript" src="scripts/head.js"></script>
     </head>
 
     <!-- Website Content -->
@@ -600,7 +600,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <b>Esquema de Cores &nbsp; [Claro]</b><br/>
+                                        <b id="labelSchemeColor">Esquema de Cores &nbsp; [{0}]</b><br/>
                                         <small>Alterna o tema de cores do site.</small>
                                     </td>
                                     <td class="text-end w-25">
@@ -611,7 +611,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b>Tamanho da Fonte &nbsp; [Padrão]</b><br/>
+                                        <b id="labelFontSize">Tamanho da Fonte &nbsp; [{0}]</b><br/>
                                         <small>Altera o tamanho da fonte do teste.</small>
                                     </td>
                                     <td class="text-end w-25">
@@ -620,7 +620,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b>Alertas Sonoros &nbsp; [Ligado]</b><br/>
+                                        <b id="labelSoundAlert">Alertas Sonoros &nbsp; [{0}]</b><br/>
                                         <small>Liga/desliga os sons do teste.</small>
                                     </td>
                                     <td class="text-end w-25">
@@ -631,11 +631,11 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <b>Histórico de Repostas &nbsp; [#60]</b><br/>
+                                        <b id="labelUserHistory">Histórico de Repostas &nbsp; [#{0}]</b><br/>
                                         <small>Limpa o armazenamento interno.</small>
                                     </td>
                                     <td class="text-end w-25">
-                                        <button type="button" class="btn btn-dark btn-sm" title="Clique para limpar o armazenamento interno."><span class="no-mobile"><i class="fa fa-trash-alt"></i>&nbsp; </span>Apagar</button>
+                                        <button id="clearUserHistory" type="button" class="btn btn-dark btn-sm" title="Clique para limpar o armazenamento interno."><span class="no-mobile"><i class="fa fa-trash-alt"></i>&nbsp; </span>Apagar</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -670,14 +670,14 @@
 
         <!-- Libraries Scripts -->
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-storage-api@1.9.4/jquery.storageapi.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
         <!-- Website Scripts: no-cache policy -->
         <script type="text/javascript" src="data/political-gps.js?quizVersion=1.0"></script>
-        <script type="text/javascript" src="scripts/PoliticalGps.js"></script>
-        <script type="text/javascript" src="scripts/CarouselWrapper.js"></script>
+        <script type="text/javascript" src="scripts/PoliticalTest.js"></script>
         <script type="text/javascript" src="scripts/AppUser.js"></script>
+        <script type="text/javascript" src="scripts/CarouselWrapper.js"></script>
+        <script type="text/javascript" src="scripts/modal.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
     </body>
 </html>

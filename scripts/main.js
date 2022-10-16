@@ -10,7 +10,6 @@
 
 /* --- CURRENT USER ------------------------------------------------------------------ */
 
-// obtem a instancia para o usuario corrente, ja existente ou nao (1a. vez)
 // $.localStorage.removeAll();  // reset do local-storage
 // let objUser = AppUser.getObjectUser("EXISTO.me"); // se nao existir, ja inicializa
 // console.log(`objUser.noQuizYet = ${objUser.noQuizYet}`);
@@ -24,26 +23,8 @@
 $(document).ready(function () {
     ("use strict"); // sempre!
 
-    // estado inicial das preferencias do usuario:
-    $("#switchSchemeColor").val(GlobalPreferences.isSchemeDark);
-    $("#rangeFontSize").val(GlobalPreferences.ordFontSize);
-    $("#switchSoundAlert").val(GlobalPreferences.isSoundOn);
-
-    // eventos para tratamento das alteracoes das preferencias:
-    $("#switchSchemeColor").change(function () {
-        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-        GlobalPreferences.isSchemeDark = this.checked;
-    });
-    // eventos para tratamento das alteracoes das preferencias:
-    $("#rangeFontSize").change(function () {
-        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-        GlobalPreferences.ordFontSize = this.value;
-    });
-    // eventos para tratamento das alteracoes das preferencias:
-    $("#switchSoundAlert").change(function () {
-        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-        GlobalPreferences.isSoundOn = this.checked;
-    });
+    // Cria instancia global para manipulacao do componente carrocel usado no teste politico:
+    var GlobalCarousel = new CarouselWrapper();
 
     // var crsWrap = new CarouselWrapper("#carouselTest");
     // crsWrap.showIntroSlide(objUser);
@@ -51,5 +32,4 @@ $(document).ready(function () {
     // carousel.to(1);
     // carousel.pause();
 
-    //alert("carrocel ok");
 });

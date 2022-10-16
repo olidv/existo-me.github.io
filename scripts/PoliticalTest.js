@@ -1,9 +1,9 @@
-/* --- POLITICAL GPS CLASS ------------------------------------------------------------------ */
+/* --- POLITICAL GPS TEST CLASS ------------------------------------------------------------------ */
 
 /** Classe auxiliar na aplicacao do teste politico e gerenciamento das respostas. */
 class PoliticalTest {
     // propriedades publicas:
-    quizLastVersion = 1.0; // numero da ultima versao do teste
+    quizLastVersion = 0.0; // numero da ultima versao do teste
     quizDateVersion = null; // data da liberacao desta versao do teste
     quizTotalBasicQueries = 0; // numero total de questoes do teste
     quizListBasicQueries = []; // lista de questoes a serem respondidas
@@ -12,29 +12,26 @@ class PoliticalTest {
 
     /**
      * Inicializacao de nova instancia.
-     *
-     * @param  {string} version Nome do usuario ou apenas id para o local-storage.
      */
-    constructor(version) {
+    constructor() {
         // a versao pode ser utilizada na notificacao de novas questoes.
-        this.quizVersion = version;
+        this.quizLastVersion = 1.0;
     }
 
     /**
      * Carrega a definicao do teste Gps Politico em nova instancia de PoliticalGps.
+     *
+     * @param  {Object} data Dados mais recentes do teste do GPS Politico.
      */
-    static loadDataQuiz(version) {
-        //console.table("Ultima versao do dataQuiz: ", dataQuiz);
+    static loadInstance(data) {
+        // transfere os valores recebidos para uma nova instancia de PoliticalTest...
+        let newInstance = new PoliticalTest();
+        newInstance = Object.assign(newInstance, data);
+        console.table("Nova instancia de PoliticalTest criada: ", newInstance);
 
-        // transfere os valores para uma nova instancia de PoliticalGps...
-        // TODO: Poderia repassar dataQuiz no constructor, para associar la...
-        let objQuiz = new PoliticalGps(version);
-        objQuiz = Object.assign(objQuiz, dataQuiz);
-        console.table("Nova instancia de PoliticalGps criada: ", objQuiz);
-
-        return objQuiz;
+        return newInstance;
     }
 }
 
 // Cria instancia global para gerenciar a aplicacao do teste politico:
-var GlobalTest = new PoliticalTest();
+var GlobalTest = PoliticalTest.loadInstance(dataPoliticalGps);

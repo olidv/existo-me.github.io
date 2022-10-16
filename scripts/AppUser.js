@@ -9,7 +9,7 @@ class AppUser {
     quizVersion = 0.0; // numero da versao do teste respondido
     quizDateStart = null; // data em que iniciou o teste
     quizFlagOpen = false; // indica se o teste esta em andamento agora
-    quizTotalBasic = 0; // numero de questoes do teste basico respondidas ate o momento
+    quizTotalBasic = 60; // numero de questoes do teste basico respondidas ate o momento
     quizTotalExtra = 0; // numero de questoes do teste extra respondidas ate o momento
     quizUserOpts = []; // respostas para as questoes respondidas
     quizDateFinal = null; // data em que finalizou o teste
@@ -31,19 +31,37 @@ class AppUser {
         return this.quizTotalBasic + this.quizTotalExtra;
     }
 
+    /** Getter: numero total de questoes respondidas ate o momento. */
+    get isQuizDone() {
+        return this.quizTotalDone > 0;
+    }
+
     /**
      * Salva esta instancia do AppUser no local-storage.
      */
     save() {
-        $.localStorage.set(LOCAL_STORAGE_ID, this);
+        GlobalStore.set(AppUser.name, this);
         console.table("Instancia corrente de AppUser armazenada no LocalStorage: ", this);
     }
 
     /**
-     * Identificacao utilizada para armazenar instancias no local-storage.
+     * Limpa o historico do teste.
      */
-    static get LOCAL_STORAGE_ID() {
-        return "AppUser";
+    clear() {
+        // apaga as respostas do usuario...
+        this.quizDateStart = null;
+        this.quizFlagOpen = false;
+        this.quizTotalBasic = 0;
+        this.quizTotalExtra = 0;
+        this.quizUserOpts = [];
+        this.quizDateFinal = null;
+        this.quizUserScore = 0.0;
+        this.quizCssColor = null;
+        this.quizFileImage = null;
+
+        // ...e tambem limpa o local-storage:
+        this.save();
+        console.log("Instancia corrente de AppUser reinicializada.");
     }
 
     /**
@@ -51,17 +69,19 @@ class AppUser {
      *
      * @param  {String} beginVersion Versao do teste para o caso do usuario ser iniciante.
      */
-    loadInstance(beginVersion) {
+    static loadInstance(beginVersion) {
         let newInstance = new AppUser(beginVersion);
 
-        // se ja estivder salvo no local-storage, recupera as propriedades:
-        if ($.localStorage.isSet(LOCAL_STORAGE_ID)) {
-            let objStorage = $.localStorage.get(LOCAL_STORAGE_ID);
+        // se ja estiver salvo no local-storage, recupera as propriedades:
+        if (GlobalStore.isSet(AppUser.name)) {
+            let objStorage = GlobalStore.get(AppUser.name);
             // transfere os valores para uma nova instancia de AppUser...
             newInstance = Object.assign(newInstance, objStorage);
+            // salva novamente, para o caso de se ter criado novas propriedades na classe:
+            GlobalStore.set(AppUser.name, newInstance);
             console.table("Valores de AppUser recuperados do LocalStorage: ", newInstance);
         } else {
-            $.localStorage.set(LOCAL_STORAGE_ID, newInstance);
+            GlobalStore.set(AppUser.name, newInstance);
             console.table("Nova instancia de AppUser criada e armazenada no LocalStorage: ", newInstance);
         }
 
@@ -70,5 +90,5 @@ class AppUser {
 }
 
 // Cria instancia global para gerenciar o uso do web site pelo usuario:
-//$.localStorage.removeAll();  // reset do local-storage
+//GlobalStore.clear();  // reset do local-storage
 var GlobalUser = AppUser.loadInstance();
