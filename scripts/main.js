@@ -17,14 +17,14 @@
 // console.log(`objUser.isQuizComplete = ${objUser.isQuizComplete}`);
 // console.log(`objUser.hasQuizUpdate = ${objUser.hasQuizUpdate}`);
 
-/* --- JQUERY READY ------------------------------------------------------------------ */
+/* --- JQUERY: DOM READY ------------------------------------------------------------------ */
 
 // Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
 $(document).ready(function () {
     ("use strict"); // sempre!
 
-    // Cria instancia global para manipulacao do componente carrocel usado no teste politico:
-    var GlobalCarousel = new CarouselWrapper();
+    // Instancia helper para manipulacao do painel central usado no teste politico:
+    var HomePanel = new HomePanelHelper();
 
     // var crsWrap = new CarouselWrapper("#carouselTest");
     // crsWrap.showIntroSlide(objUser);

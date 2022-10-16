@@ -1,14 +1,18 @@
 /* --- LOCAL STORAGE HELPER ------------------------------------------------------------------ */
 
-/** Classe helper para manipulacao e/ou armazenamento de valores e/ou objetos no local-storage. */
-class StorageHelper {
-    // propriedades publicas:
-    // TODO: poli...
+/** Classe helper para manutencao de valores e/ou objetos no storage do browser. */
+class StorageFacade {
+    // propriedades privadas:
+    #store;  // indica onde os dados serao salvos (local ou session).
+
     /**
      * Inicializacao de nova instancia.
+     *
+     * @param  {Boolean} noExpiration .
      */
-    constructor() {
-        // valores default:
+    constructor(noExpiration) {
+        // verifica onde os dados serao salvos:
+        this.#store = noExpiration ? window.localStorage : window.sessionStorage;
     }
 
     /**
@@ -20,7 +24,7 @@ class StorageHelper {
         // eh preciso q a chave seja valida:
         if (key) {
             // verifica se ha algo valido armazenado sob a chave:
-            let strValue = localStorage.getItem(key);
+            let strValue = this.#store.getItem(key);
             //console.log(`isSet(${key}) = _${strValue}_ of type: ${typeof strValue}`);
             return strValue ? true : false;
         } else {
@@ -37,7 +41,7 @@ class StorageHelper {
     get(key) {
         // eh preciso q a chave seja valida:
         if (key) {
-            let strValue = localStorage.getItem(key);
+            let strValue = this.#store.getItem(key);
             //console.log(`get(${key}) = _${strValue}_ of type: ${typeof strValue}`);
             // verifica se eh um valor valido e objeto json:
             if (strValue && strValue.indexOf("{") > -1) {
@@ -68,13 +72,13 @@ class StorageHelper {
                 // se o valor for um objeto, tem q fazer o str-parse antes:
                 if (typeof value === "object") {
                     let strObj = JSON.stringify(value);
-                    localStorage.setItem(key, strObj);
+                    this.#store.setItem(key, strObj);
                 } else {
-                    localStorage.setItem(key, value);
+                    this.#store.setItem(key, value);
                 }
             } else {
                 // se o valor for nulo/vazio, entao remove o item:
-                localStorage.removeItem(key);
+                this.#store.removeItem(key);
             }
         }
     }
@@ -87,7 +91,7 @@ class StorageHelper {
     del(key) {
         // eh preciso q a chave seja valida:
         if (key) {
-            localStorage.removeItem(key);
+            this.#store.removeItem(key);
         }
     }
 
@@ -95,19 +99,21 @@ class StorageHelper {
      * .
      */
     clear() {
-        localStorage.clear();
+        this.#store.clear();
     }
 }
 
-// Cria instancia global para manipular as preferencias do usuario:
-var GlobalStore = new StorageHelper();
+// Cria instancia global para manutencao de dados no storage (browser api):
+var GlobalStore = new StorageFacade(true);  // maior persistencia sem data de expiracao (local-storage).
 
 
-/* --- WEB SITE & USER PREFERENCES ------------------------------------------------------------------ */
+/* --- WEB SITE SETUP ------------------------------------------------------------------ */
 
-/** Classe para manipulacao e armazenamento das preferencias do usuario. */
-class UserPreferences {
-    // propriedades publicas: preferencias
+/** Classe para manipulacao e armazenamento das configuracoes da aplicacao e preferencias do usuario. */
+class AppSetup {
+    // propriedades publicas: configuracoes da aplicacao
+    //
+    // propriedades publicas: preferencias do usuario
     schemeColor; // esquema de cores: light, dark
     fontSize; // tamanho da fonte: small, normal, large, huge
     soundAlert; // alerta sonoro: on, off
@@ -211,7 +217,7 @@ class UserPreferences {
     }
 
     /**
-     * Aplica as preferencias do usuario no web site.
+     * Aplica as configuracoes da aplicacao e preferencias do usuario no web site.
      */
     refresh() {
         // elimina quaisquer estilos atualmente configurados:
@@ -226,30 +232,30 @@ class UserPreferences {
     }
 
     /**
-     * Salva as preferencias do usuario no local-storage.
+     * Salva as configuracoes da aplicacao e preferencias do usuario no storage.
      */
     save() {
-        GlobalStore.set(UserPreferences.name, this);
-        console.table("Instancia corrente de UserPreferences armazenada no LocalStorage: ", this);
+        GlobalStore.set(AppSetup.name, this);
+        console.table("Instancia corrente de AppSetup armazenada no LocalStorage: ", this);
     }
 
     /**
-     * Carrega as preferencias anteriores da ultima sessao do usuario a partir do local-storage.
+     * Carrega as configuracoes e preferencias anteriores da ultima sessao do usuario a partir do storage.
      */
     static loadInstance() {
-        let newInstance = new UserPreferences();
+        let newInstance = new AppSetup();
 
-        // se ja estiver salvo no local-storage, recupera as propriedades:
-        if (GlobalStore.isSet(UserPreferences.name)) {
-            let objStorage = GlobalStore.get(UserPreferences.name);
-            // transfere os valores para uma nova instancia de UserPreferences:
+        // se ja estiver salvo no storage, recupera as propriedades:
+        if (GlobalStore.isSet(AppSetup.name)) {
+            let objStorage = GlobalStore.get(AppSetup.name);
+            // transfere os valores para uma nova instancia de AppSetup:
             newInstance = Object.assign(newInstance, objStorage);
             // salva novamente, para o caso de se ter criado novas propriedades na classe:
-            GlobalStore.set(UserPreferences.name, newInstance);
-            console.table("Valores de UserPreferences recuperados do LocalStorage: ", newInstance);
+            GlobalStore.set(AppSetup.name, newInstance);
+            console.table("Valores de AppSetup recuperados do LocalStorage: ", newInstance);
         } else {
-            GlobalStore.set(UserPreferences.name, newInstance);
-            console.table("Nova instancia de UserPreferences criada e armazenada no LocalStorage: ", newInstance);
+            GlobalStore.set(AppSetup.name, newInstance);
+            console.table("Nova instancia de AppSetup criada e armazenada no LocalStorage: ", newInstance);
         }
 
         return newInstance;
@@ -257,5 +263,5 @@ class UserPreferences {
 }
 
 // Cria instancia global para manipular as preferencias do usuario:
-//GlobalStore.clear();  // reset do local-storage
-var GlobalPreferences = UserPreferences.loadInstance();
+//GlobalStore.clear();  // reset do storage.
+var GlobalSetup = AppSetup.loadInstance();

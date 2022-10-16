@@ -113,7 +113,7 @@
         <!-- Website Stylesheets -->
         <link rel="stylesheet" href="styles/main.css" />
 
-        <!-- Website Preferences -->
+        <!-- Website Setup -->
         <script type="text/javascript" src="scripts/head.js"></script>
     </head>
 
@@ -154,7 +154,7 @@
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x2-gap icon-nav icon-result"></i></a>
                     </li>
                     <li class="ms-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalPreferences" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-nav"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-nav"></i></a>
                     </li>
                     <li class="ms-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a central de ajuda do site."><i class="bi bi-question-circle icon-nav"></i></a>
@@ -188,7 +188,7 @@
                     </div>
 
                     <!--  -->
-                    <div id="progressRange" class="col-lg-10 d-none">
+                    <div id="rangeProgress" class="col-lg-10 d-none">
                         <p><input id="rangeTest" type="range" class="form-range" min="0" max="60" step="1" value="10" disabled></p>
                     </div>
                 </div>
@@ -469,12 +469,74 @@
             </div>
         </div>
 
+        <div id="modalSetup" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"><i class="bi bi-gear"></i>&nbsp; Preferências</h4>
+                        <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Se ficar em dúvida, consulte a central de ajuda.">
+                            <i class="fa-regular fa-circle-question"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table align-middle w-100">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <b id="labelSchemeColor">Esquema de Cores &nbsp; [{0}]</b><br/>
+                                        <small>Alterna o tema de cores do site.</small>
+                                    </td>
+                                    <td class="text-end w-25">
+                                        <div class="form-check form-switch">
+                                            <input id="switchSchemeColor" type="checkbox" class="form-check-input float-end" role="switch" title="Clique para alternar o tema de cores do site.">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b id="labelFontSize">Tamanho da Fonte &nbsp; [{0}]</b><br/>
+                                        <small>Altera o tamanho da fonte do teste.</small>
+                                    </td>
+                                    <td class="text-end w-25">
+                                        <input id="rangeFontSize" type="range" class="form-range" min="1" max="4" step="1" title="Deslize para alterar o tamanho da fonte do teste.">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b id="labelSoundAlert">Alertas Sonoros &nbsp; [{0}]</b><br/>
+                                        <small>Liga/desliga os sons do teste.</small>
+                                    </td>
+                                    <td class="text-end w-25">
+                                        <div class="form-check form-switch">
+                                            <input id="switchSoundAlert" type="checkbox" class="form-check-input float-end" role="switch" title="Clique para ligar ou desligar os sons do teste." checked>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <b id="labelUserHistory">Histórico de Repostas &nbsp; [#{0}]</b><br/>
+                                        <small>Limpa o armazenamento interno.</small>
+                                    </td>
+                                    <td class="text-end w-25">
+                                        <button id="clearUserHistory" type="button" class="btn btn-dark btn-sm" title="Clique para limpar o armazenamento interno."><span class="no-mobile"><i class="fa fa-trash-alt"></i>&nbsp; </span>Apagar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Clique para fechar"><i class="fa-solid fa-xmark"></i>&nbsp; Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="modalHelp" class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title"><i class="bi bi-question-circle"></i>&nbsp; Central de Ajuda</h4>
-                        <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalPreferences" title="Aproveite e ajuste as preferências como desejar.">
+                        <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Aproveite e ajuste as preferências como desejar.">
                             <i class="bi bi-gear"></i>
                         </button>
                     </div>
@@ -586,68 +648,6 @@
             </div>
         </div>
 
-        <div id="modalPreferences" class="modal fade" tabindex="-1">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title"><i class="bi bi-gear"></i>&nbsp; Preferências</h4>
-                        <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Se ficar em dúvida, consulte a central de ajuda.">
-                            <i class="fa-regular fa-circle-question"></i>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <table class="table align-middle w-100">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <b id="labelSchemeColor">Esquema de Cores &nbsp; [{0}]</b><br/>
-                                        <small>Alterna o tema de cores do site.</small>
-                                    </td>
-                                    <td class="text-end w-25">
-                                        <div class="form-check form-switch">
-                                            <input id="switchSchemeColor" type="checkbox" class="form-check-input float-end" role="switch" title="Clique para alternar o tema de cores do site.">
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b id="labelFontSize">Tamanho da Fonte &nbsp; [{0}]</b><br/>
-                                        <small>Altera o tamanho da fonte do teste.</small>
-                                    </td>
-                                    <td class="text-end w-25">
-                                        <input id="rangeFontSize" type="range" class="form-range" min="1" max="4" step="1" title="Deslize para alterar o tamanho da fonte do teste.">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b id="labelSoundAlert">Alertas Sonoros &nbsp; [{0}]</b><br/>
-                                        <small>Liga/desliga os sons do teste.</small>
-                                    </td>
-                                    <td class="text-end w-25">
-                                        <div class="form-check form-switch">
-                                            <input id="switchSoundAlert" type="checkbox" class="form-check-input float-end" role="switch" title="Clique para ligar ou desligar os sons do teste." checked>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <b id="labelUserHistory">Histórico de Repostas &nbsp; [#{0}]</b><br/>
-                                        <small>Limpa o armazenamento interno.</small>
-                                    </td>
-                                    <td class="text-end w-25">
-                                        <button id="clearUserHistory" type="button" class="btn btn-dark btn-sm" title="Clique para limpar o armazenamento interno."><span class="no-mobile"><i class="fa fa-trash-alt"></i>&nbsp; </span>Apagar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Clique para fechar"><i class="fa-solid fa-xmark"></i>&nbsp; Fechar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div id="modalDonate" class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
@@ -676,7 +676,7 @@
         <script type="text/javascript" src="data/political-gps.js?quizVersion=1.0"></script>
         <script type="text/javascript" src="scripts/PoliticalTest.js"></script>
         <script type="text/javascript" src="scripts/AppUser.js"></script>
-        <script type="text/javascript" src="scripts/CarouselWrapper.js"></script>
+        <script type="text/javascript" src="scripts/helper.js"></script>
         <script type="text/javascript" src="scripts/modal.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
     </body>

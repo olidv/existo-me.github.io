@@ -1,7 +1,7 @@
-/* --- MODAL PREFERENCES ------------------------------------------------------------------ */
+/* --- MODAL APP SETUP ------------------------------------------------------------------ */
 
 // .
-var modalPreferences = {
+var modalSetup = {
     labelSchemeColor: "",
     labelFontSize: "",
     labelSoundAlert: "",
@@ -13,13 +13,13 @@ var modalPreferences = {
  *
  * @param  {Object} event .
  */
-function modalPreferences_Load() {
+function modalSetup_Load() {
     // Na carga do site, obtem os templates para os rotulos a partir do html.
-    modalPreferences.labelSchemeColor = $("#labelSchemeColor").text();
-    modalPreferences.labelFontSize = $("#labelFontSize").text();
-    modalPreferences.labelSoundAlert = $("#labelSoundAlert").text();
-    modalPreferences.labelUserHistory = $("#labelUserHistory").text();
-    console.table("Carregados templates para rotulos da modalPreferences: ", modalPreferences);
+    modalSetup.labelSchemeColor = $("#labelSchemeColor").text();
+    modalSetup.labelFontSize = $("#labelFontSize").text();
+    modalSetup.labelSoundAlert = $("#labelSoundAlert").text();
+    modalSetup.labelUserHistory = $("#labelUserHistory").text();
+    console.table("Carregados templates para rotulos da modalSetup: ", modalSetup);
 }
 
 /**
@@ -27,20 +27,20 @@ function modalPreferences_Load() {
  *
  * @param  {Object} event .
  */
-function modalPreferences_Refresh(event) {
+function modalSetup_Refresh(event) {
     let label = '';
 
     // atualiza o label dos componentes baseando em seus valores atuais:
-    label = modalPreferences.labelSchemeColor;
-    $("#labelSchemeColor").text(label.replace("{0}", GlobalPreferences.labelSchemeColor));
+    label = modalSetup.labelSchemeColor;
+    $("#labelSchemeColor").text(label.replace("{0}", GlobalSetup.labelSchemeColor));
 
-    label = modalPreferences.labelFontSize;
-    $("#labelFontSize").text(label.replace("{0}", GlobalPreferences.labelFontSize));
+    label = modalSetup.labelFontSize;
+    $("#labelFontSize").text(label.replace("{0}", GlobalSetup.labelFontSize));
 
-    label = modalPreferences.labelSoundAlert;
-    $("#labelSoundAlert").text(label.replace("{0}", GlobalPreferences.labelSoundAlert));
+    label = modalSetup.labelSoundAlert;
+    $("#labelSoundAlert").text(label.replace("{0}", GlobalSetup.labelSoundAlert));
 
-    label = modalPreferences.labelUserHistory;
+    label = modalSetup.labelUserHistory;
     $("#labelUserHistory").text(label.replace("{0}", GlobalUser.quizTotalDone));
 }
 
@@ -49,14 +49,14 @@ function modalPreferences_Refresh(event) {
  *
  * @param  {Object} event .
  */
-function modalPreferences_Show(event) {
+function modalSetup_Show(event) {
     // atualiza os valores atuais das preferencias nos rotulos:
-    modalPreferences_Refresh(event);
+    modalSetup_Refresh(event);
 
     // estado inicial das preferencias do usuario:
-    $("#switchSchemeColor").attr("checked", GlobalPreferences.isSchemeDark);
-    $("#rangeFontSize").val(GlobalPreferences.ordFontSize);
-    $("#switchSoundAlert").attr("checked", GlobalPreferences.isSoundOn);
+    $("#switchSchemeColor").attr("checked", GlobalSetup.isSchemeDark);
+    $("#rangeFontSize").val(GlobalSetup.ordFontSize);
+    $("#switchSoundAlert").attr("checked", GlobalSetup.isSoundOn);
 
     // se o usuario ainda nao respondeu o teste, desabilita o botao:
     $("#clearUserHistory").prop("disabled", !GlobalUser.isQuizDone);
@@ -69,10 +69,10 @@ function modalPreferences_Show(event) {
  */
 function switchSchemeColor_Change(event) {
     // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-    GlobalPreferences.isSchemeDark = this.checked;
+    GlobalSetup.isSchemeDark = this.checked;
 
     // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
-    modalPreferences_Refresh(event);
+    modalSetup_Refresh(event);
 }
 
 /**
@@ -82,10 +82,10 @@ function switchSchemeColor_Change(event) {
  */
 function rangeFontSize_Change(event) {
     // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-    GlobalPreferences.ordFontSize = this.value;
+    GlobalSetup.ordFontSize = this.value;
 
     // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
-    modalPreferences_Refresh(event);
+    modalSetup_Refresh(event);
 }
 
 /**
@@ -95,10 +95,10 @@ function rangeFontSize_Change(event) {
  */
 function switchSoundAlert_Change(event) {
     // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-    GlobalPreferences.isSoundOn = this.checked;
+    GlobalSetup.isSoundOn = this.checked;
 
     // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
-    modalPreferences_Refresh(event);
+    modalSetup_Refresh(event);
 }
 
 /**
@@ -113,7 +113,7 @@ function clearUserHistory_Click(event) {
         GlobalUser.clear();
 
         // apos apagar o historico, limpa o valor de questoes respondidas no rotulo:
-        modalPreferences_Refresh(event);
+        modalSetup_Refresh(event);
         // como limpou o historico, nao ha mais respostas a limpar:
         $("#clearUserHistory").prop("disabled", true);
     }
@@ -122,17 +122,19 @@ function clearUserHistory_Click(event) {
 /* --- MODAL RESULTADO ------------------------------------------------------------------ */
 
 
+/* --- JQUERY: DOM READY ------------------------------------------------------------------ */
+
 // Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
 $(document).ready(function () {
     ("use strict"); // sempre!
 
-    /* --- MODAL PREFERENCES -------------------------------------------- */
+    /* --- MODAL SETUP -------------------------------------------- */
 
-    // inicializa a estrutura de dados da modal de preferencias:
-    modalPreferences_Load();
+    // inicializa a estrutura de dados da modal de setup:
+    modalSetup_Load();
 
-    // efetua bind dos eventos para a modal de preferencias:
-    $("#modalPreferences").on("show.bs.modal", modalPreferences_Show);
+    // efetua bind dos eventos para a modal de setup:
+    $("#modalSetup").on("show.bs.modal", modalSetup_Show);
     // eventos para tratamento das alteracoes das preferencias:
     $("#switchSchemeColor").change(switchSchemeColor_Change);
     $("#rangeFontSize").change(rangeFontSize_Change);

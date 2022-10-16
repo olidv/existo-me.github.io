@@ -1,20 +1,22 @@
 /* --- CAROUSEL CLASS ------------------------------------------------------------------ */
 
-/** Classe para manipulacao do carrocel utilizando jQuery. */
-class CarouselWrapper {
+/** Classe para manipulacao do painel central da pagina home, onde eh realizado o teste.
+ *  Controla o carrocel e tambem o slider de progresso, e qualquer outro componente associado. */
+class HomePanelHelper {
     // propriedades privadas:
     divCarousel;
-    innerCarousel;
     bs5Carousel;
+    innerCarousel;
+    rangeProgress;
 
     // propriedades publicas:
 
     /**
      * Inicializacao de nova instancia.
-     *
-     * @param  {string} idCarousel Identificacao da div contendo o carrocel.
      */
-    constructor(idCarousel) {
+    constructor() {
+        let idCarousel = "#carouselTest";
+
         // o id eh fornecido para localizar o carrocel na pagina (dom):
         this.divCarousel = $(idCarousel);
 
@@ -28,6 +30,7 @@ class CarouselWrapper {
             wrap: true,
         });
         this.innerCarousel = $(idCarousel + " .carousel-inner");
+        this.rangeProgress = $("#rangeProgress");
     }
 
     /**
