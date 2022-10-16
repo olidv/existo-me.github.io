@@ -221,50 +221,86 @@
 
         <!--- Carousel slides --------------------------------------------------->
 
-        <div id="slideIntroStart" class="d-none" tabindex="-1">
+        <div id="cenarioBeginnerStart" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
                 <p><i class="fa-solid fa-location-crosshairs fa-3x"></i></p>
                 <h2 class="text-uppercase mb-3">Teste do GPS Político</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
-                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title=""><i class="fa-solid fa-play"></i>&nbsp; Iniciar Teste</button>
-                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" data-bs-toggle="modal" data-bs-target="#modalHelp" title=""><i class="fa-regular fa-circle-question"></i>&nbsp; Como Funciona</button>
+                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para iniciar o teste do GPS Político." onclick="startTest('basic')"><i class="fa-solid fa-play"></i>&nbsp; Iniciar Teste</button>
+                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para saber como funciona o teste do GPS Político."><i class="fa-regular fa-circle-question"></i>&nbsp; Como Funciona</button>
                 </div>
             </div>
         </div>
 
-        <div id="slideIntroResume" class="d-none" tabindex="-1">
+        <div id="cenarioBeginnerResume" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-dark">#30...60</span></h2>
+                <h2 class="h-notify"><span class="badge text-bg-dark">#{0}...{1}</span></h2>
                 <h2 class="text-uppercase mb-3">Existem Questões Ainda Pendentes</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
-                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title=""><i class="fa-solid fa-forward"></i>&nbsp; Retomar Teste</button>
-                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title=""><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para retomar o teste do GPS Político de onde parou." onclick="resumeTest('basic')"><i class="fa-solid fa-forward"></i>&nbsp; Retomar Teste</button>
+                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title="Clique para revisar suas respostas do teste do GPS Político." onclick="reviewTest('basic')"><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
                 </div>
             </div>
         </div>
 
-        <div id="slideIntroNotify" class="d-none" tabindex="-1">
+        <div id="cenarioBeginnerRetake" class="d-none" tabindex="-1">
+            <div class="carousel-item text-center active">
+                <p><i class="fa-solid fa-table-cells fa-3x {0}"></i></p>
+                <h2 class="text-uppercase mb-3">Parabéns por Concluir o Teste!</h2>
+                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
+                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para refazer o teste do GPS Político" onclick="retakeTest('basic')"><i class="fa-solid fa-rotate-right"></i>&nbsp; Refazer Teste</button>
+                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title="Clique para revisar suas respostas do teste do GPS Político." onclick="reviewTest('basic')"><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cenarioBeginnerNotify" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
                 <h2 class="h-notify"><span class="badge text-bg-danger">+4</span></h2>
                 <h2 class="text-uppercase mb-3">Novas Questões para o Teste</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
-                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title=""><i class="fa-solid fa-forward"></i>&nbsp; Continuar Teste</button>
-                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title=""><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para continuar o teste do GPS Político." onclick="startTest('extra')"><i class="fa-solid fa-forward"></i>&nbsp; Continuar Teste</button>
+                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title="Clique para revisar suas respostas do teste do GPS Político." onclick="reviewTest('basic')"><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
                 </div>
             </div>
         </div>
 
-        <div id="slideIntroRestart" class="d-none" tabindex="-1">
+        <div id="cenarioMajorResume" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <p><i class="fa-solid fa-table-cells fa-3x icon-test"></i></p>
-                <h2 class="text-uppercase mb-3">Teste do GPS Político</h2>
+                <h2 class="h-notify"><span class="badge text-bg-dark">#30...60</span></h2>
+                <h2 class="text-uppercase mb-3">Existem Questões Ainda Pendentes</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
-                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title=""><i class="fa-solid fa-rotate-right"></i>&nbsp; Refazer Teste</button>
-                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title=""><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para retomar o teste do GPS Político de onde parou." onclick="resumeTest('extra')"><i class="fa-solid fa-forward"></i>&nbsp; Retomar Teste</button>
+                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title="Clique para revisar suas respostas do teste do GPS Político." onclick="reviewTest('all')"><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cenarioMajorRetake" class="d-none" tabindex="-1">
+            <div class="carousel-item text-center active">
+                <p><i class="fa-solid fa-table-cells fa-3x icon-test"></i></p>
+                <h2 class="text-uppercase mb-3">Parabéns por Concluir o Teste!</h2>
+                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
+                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para refazer o teste do GPS Político" onclick="retakeTest('all')"><i class="fa-solid fa-rotate-right"></i>&nbsp; Refazer Teste</button>
+                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title="Clique para revisar suas respostas do teste do GPS Político." onclick="reviewTest('all')"><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cenarioMajorNotify" class="d-none" tabindex="-1">
+            <div class="carousel-item text-center active">
+                <h2 class="h-notify"><span class="badge text-bg-danger">+4</span></h2>
+                <h2 class="text-uppercase mb-3">Novas Questões para o Teste</h2>
+                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
+                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para continuar o teste do GPS Político." onclick="startTest('extra')"><i class="fa-solid fa-forward"></i>&nbsp; Continuar Teste</button>
+                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title="Clique para revisar suas respostas do teste do GPS Político." onclick="reviewTest('all')"><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
                 </div>
             </div>
         </div>
@@ -272,7 +308,7 @@
         <div id="slideTemplate" class="d-none" tabindex="-1">
             <div class="carousel-item question-item">
                 <h2 class="text-center m-3"><span class="badge bg-dark">#1...60</span></h2>
-                <p class="lead text-justify mb-3"> Texto introdutório do teste...</p>
+                <p class="lead text-justify mb-3">Texto introdutório do teste...</p>
                 <div class="form-check m-3">
                     <input class="form-check-input" type="radio" name="inputRadio-1" id="inputRadio-11">
                     <label class="form-check-label lead" for="inputRadio-11">
@@ -287,19 +323,6 @@
                 </div>
             </div>
         </div>
-
-        <div id="slideClosure" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center">
-                <p><i class="fa-solid fa-flag-checkered fa-3x"></i></p>
-                <h2 class="text-uppercase mb-3">Parabéns por Concluir o Teste!</h2>
-                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
-                <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
-                    <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" data-bs-toggle="modal" data-bs-target="#modalResult" title=""><i class="bi bi-grid-3x2-gap-fill"></i>&nbsp; Exibir Resultado</button>
-                    <button type="button" class="btn btn-lg btn-outline-secondary text-dark px-4" title=""><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Respostas</button>
-                </div>
-            </div>
-        </div>
-
 
         <!--- Modal Dialogs --------------------------------------------------->
 
@@ -674,9 +697,9 @@
 
         <!-- Website Scripts: no-cache policy -->
         <script type="text/javascript" src="data/political-gps.js?quizVersion=1.0"></script>
-        <script type="text/javascript" src="scripts/PoliticalTest.js"></script>
         <script type="text/javascript" src="scripts/AppUser.js"></script>
         <script type="text/javascript" src="scripts/helper.js"></script>
+        <script type="text/javascript" src="scripts/PoliticalTest.js"></script>
         <script type="text/javascript" src="scripts/modal.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
     </body>

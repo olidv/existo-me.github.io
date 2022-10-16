@@ -254,7 +254,9 @@ a i[class^='bi']:focus {
     font-size: 1.4rem;
 }
 
-.icon-test {}
+.icon-test-red {
+    color: red;
+}
 
 .btn-nav {
     box-sizing: content-box;

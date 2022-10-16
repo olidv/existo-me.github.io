@@ -1,47 +1,23 @@
 /* --- MODAL APP SETUP ------------------------------------------------------------------ */
 
-// .
-var modalSetup = {
-    labelSchemeColor: "",
-    labelFontSize: "",
-    labelSoundAlert: "",
-    labelUserHistory: "",
-}
-
-/**
- * .
- *
- * @param  {Object} event .
- */
-function modalSetup_Load() {
-    // Na carga do site, obtem os templates para os rotulos a partir do html.
-    modalSetup.labelSchemeColor = $("#labelSchemeColor").text();
-    modalSetup.labelFontSize = $("#labelFontSize").text();
-    modalSetup.labelSoundAlert = $("#labelSoundAlert").text();
-    modalSetup.labelUserHistory = $("#labelUserHistory").text();
-    console.table("Carregados templates para rotulos da modalSetup: ", modalSetup);
-}
-
 /**
  * .
  *
  * @param  {Object} event .
  */
 function modalSetup_Refresh(event) {
-    let label = '';
-
     // atualiza o label dos componentes baseando em seus valores atuais:
-    label = modalSetup.labelSchemeColor;
-    $("#labelSchemeColor").text(label.replace("{0}", GlobalSetup.labelSchemeColor));
+    let label = DOM.labelSchemeColor.replace("{0}", GlobalSetup.labelSchemeColor);
+    $("#labelSchemeColor").text(label);
 
-    label = modalSetup.labelFontSize;
-    $("#labelFontSize").text(label.replace("{0}", GlobalSetup.labelFontSize));
+    label = DOM.labelFontSize.replace("{0}", GlobalSetup.labelFontSize);
+    $("#labelFontSize").text(label);
 
-    label = modalSetup.labelSoundAlert;
-    $("#labelSoundAlert").text(label.replace("{0}", GlobalSetup.labelSoundAlert));
+    label = DOM.labelSoundAlert.replace("{0}", GlobalSetup.labelSoundAlert);
+    $("#labelSoundAlert").text(label);
 
-    label = modalSetup.labelUserHistory;
-    $("#labelUserHistory").text(label.replace("{0}", GlobalUser.quizTotalDone));
+    label = DOM.labelUserHistory.replace("{0}", GlobalUser.quizTotalDone);
+    $("#labelUserHistory").text(label);
 }
 
 /**
@@ -129,9 +105,6 @@ $(document).ready(function () {
     ("use strict"); // sempre!
 
     /* --- MODAL SETUP -------------------------------------------- */
-
-    // inicializa a estrutura de dados da modal de setup:
-    modalSetup_Load();
 
     // efetua bind dos eventos para a modal de setup:
     $("#modalSetup").on("show.bs.modal", modalSetup_Show);

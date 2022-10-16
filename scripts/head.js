@@ -1,9 +1,28 @@
+/* --- UTILITARIOS ------------------------------------------------------------------ */
+
+String.prototype.formats = String.prototype.formats || function () {
+    "use strict";
+
+    var str = this.toString();
+    if (arguments.length) {
+        var t = typeof arguments[0];
+        var key;
+        var args = "string" === t || "number" === t ? Array.prototype.slice.call(arguments) : arguments[0];
+
+        for (key in args) {
+            str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+        }
+    }
+
+    return str;
+};
+
 /* --- LOCAL STORAGE HELPER ------------------------------------------------------------------ */
 
 /** Classe helper para manutencao de valores e/ou objetos no storage do browser. */
 class StorageFacade {
     // propriedades privadas:
-    #store;  // indica onde os dados serao salvos (local ou session).
+    #store; // indica onde os dados serao salvos (local ou session).
 
     /**
      * Inicializacao de nova instancia.
@@ -104,8 +123,7 @@ class StorageFacade {
 }
 
 // Cria instancia global para manutencao de dados no storage (browser api):
-var GlobalStore = new StorageFacade(true);  // maior persistencia sem data de expiracao (local-storage).
-
+var GlobalStore = new StorageFacade(true); // maior persistencia sem data de expiracao (local-storage).
 
 /* --- WEB SITE SETUP ------------------------------------------------------------------ */
 

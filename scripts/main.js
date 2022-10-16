@@ -1,5 +1,27 @@
 /* --- CURRENT QUIZ ------------------------------------------------------------------ */
 
+function startTest(stage) {
+    // "basic", "extra"
+};
+
+function resumeTest(stage) {
+    // "basic", "extra"
+};
+
+function reviewTest(stage) {
+    // "basic", "all"
+};
+
+function retakeTest(stage) {
+    // "basic", "all"
+};
+
+
+
+
+
+
+
 //console.log("A versao atual do teste eh: ", objQuiz.quizVersion);
 //console.log("A data da versao atual do teste eh: ", objQuiz.quizDateVersion);
 
@@ -16,13 +38,7 @@
 $(document).ready(function () {
     ("use strict"); // sempre!
 
-    // Instancia helper para manipulacao do painel central usado no teste politico:
-    var HomePanel = new HomePanelHelper();
-
-    // var crsWrap = new CarouselWrapper("#carouselTest");
-    // crsWrap.showIntroSlide(objUser);
-
+    // carousel.showIntroSlide(objUser);
     // carousel.to(1);
     // carousel.pause();
-
 });

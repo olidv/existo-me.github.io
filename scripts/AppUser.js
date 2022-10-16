@@ -9,7 +9,7 @@ class AppUser {
     quizVersion = 0.0; // numero da versao do teste respondido
     quizDateStart = null; // data em que iniciou o teste
     quizFlagOpen = false; // indica se o teste esta em andamento agora
-    quizTotalBasic = 60; // numero de questoes do teste basico respondidas ate o momento
+    quizTotalBasic = 0; // numero de questoes do teste basico respondidas ate o momento
     quizTotalExtra = 0; // numero de questoes do teste extra respondidas ate o momento
     quizUserOpts = []; // respostas para as questoes respondidas
     quizDateFinal = null; // data em que finalizou o teste
@@ -93,4 +93,4 @@ class AppUser {
 
 // Cria instancia global para gerenciar o uso do web site pelo usuario:
 //GlobalStore.clear();  // reset do local-storage
-var GlobalUser = AppUser.loadInstance(1.0);
+var GlobalUser = AppUser.loadInstance(0);  // considera um beginner, caso seja o primeiro acesso do usuario
