@@ -104,6 +104,10 @@ function clearUserHistory_Click(event) {
 /* --- JQUERY: DOM READY ------------------------------------------------------------------ */
 
 // Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
+/**
+ * .
+ *
+ */
 $(document).ready(function () {
     ("use strict"); // sempre!
 

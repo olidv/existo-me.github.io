@@ -2,6 +2,7 @@
 
 /**
  * Verifica o estado do usuario e atualiza a versao do teste politico.
+ *
  */
 function upgradeTest() {
     // primeiro atualiza o estado do usuario, para verificar em qual cenario se encontra:
@@ -20,14 +21,15 @@ function upgradeTest() {
 //
     } else if (GlobalUser.testVersion > 1.0 && GlobalUser.testTotalDone == GlobalTest.testAllLength) {
         // $CENARIO:MAJOR-RETAKE: USUARIO JA COMPLETOU VERSAO EXTRA DO TESTE
-        // CONTINUA ATUALIZANDO A VERSAO EXTRA, PARA NOTIFICAR NOVAS QUESTOES
-        GlobalUser.testVersion = GlobalTest.testExtraVersion;
+        // CONTINUA ATUALIZANDO PARA ULTIMA VERSAO, PARA NOTIFICAR NOVAS QUESTOES
+        GlobalUser.testVersion = GlobalTest.testLastVersion;
         GlobalUser.save();
     }
 }
 
 /**
  * A partir do estado do usuario, identifica qual painel introdutorio apresentar:.
+ * 
  */
 function showIntro() {
     // identifica o cenario de uso para definir qual painel introdutorio apresentar:
@@ -126,7 +128,7 @@ function showIntro() {
 function slideNextQuery() {
     // $CENARIO:BEGINNER-TEST: obtem 1ª questao do teste
     const query = GlobalTest.nextQuery();
-    //console.table("slideNextQuery: ", query);
+    console.table("slideNextQuery: ", query);
 
     // se ainda ha questoes a serem respondidas:
     if (query != null) {
@@ -153,6 +155,7 @@ function slideNextQuery() {
  * @param  {String} stage "basic", "extra".
  */
 function takeTest(stage) {
+    console.log(`takeTest(${stage})`);
     // registra o inicio do teste: user.quizDateStart, user.quizFlagOpen
     GlobalUser.startQuiz();
 
@@ -198,6 +201,7 @@ function respondTest(idQuery, item, rate, side) {
 
     // se ainda ha questoes a serem respondidas
     let hasNext = slideNextQuery();
+    console.log("hasNext = ", hasNext);
 
     // verifica se acabou as questoes:
     if (!hasNext) {
@@ -268,6 +272,9 @@ function retakeTest(stage) {
     // limpa as respostas anteriores do usuario
     GlobalUser.clear();
 
+    // a versao do teste do usuario sera correspondente ao estagio em que ele se encontra:
+    GlobalUser.testVersion = (stage == "basic") ? GlobalTest.testBasicVersion : GlobalTest.testExtraVersion;
+
     // inicializa teste:
     takeTest(stage);
 }
@@ -275,6 +282,10 @@ function retakeTest(stage) {
 /* --- JQUERY: DOM READY ------------------------------------------------------------------ */
 
 // Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
+/**
+ * .
+ *
+ */
 $(document).ready(function () {
     ("use strict"); // sempre!
 

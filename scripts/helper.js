@@ -32,6 +32,7 @@ class DomHelper {
 
     /**
      * Inicializacao de nova instancia.
+     *
      */
     constructor() {
         // Na carga do site, obtem os atributos da pagina:
@@ -40,6 +41,7 @@ class DomHelper {
 
     /**
      * .
+     *
      */
     ready() {
         // obtem as referencias para as opcoes principais manipuladas ao longo do teste politico:
@@ -67,6 +69,7 @@ class DomHelper {
 
     /**
      * .
+     *
      */
     getTitle() {
         return document.title;
@@ -74,6 +77,8 @@ class DomHelper {
 
     /**
      * .
+     *
+     * @param  {String} p .
      */
     setTitle(newTitle) {
         document.title = newTitle;
@@ -81,6 +86,8 @@ class DomHelper {
 
     /**
      * .
+     *
+     * @param  {String} p .
      */
     notifyTitle(note) {
         document.title = "(" + note + ") " + this.pageTitle;
@@ -88,6 +95,7 @@ class DomHelper {
 
     /**
      * .
+     *
      */
     resetTitle() {
         document.title = this.pageTitle;
@@ -97,6 +105,8 @@ class DomHelper {
 
     /**
      * .
+     *
+     * @param  {String} p .
      */
     showNavResulting(clsColor) {
         // apresenta as opcoes resultantes:
@@ -109,6 +119,7 @@ class DomHelper {
 
     /**
      * .
+     *
      */
     hideNavResulting() {
         // inibe as opcoes resultantes:
@@ -120,6 +131,7 @@ class DomHelper {
 
     /**
      * .
+     *
      */
     get lengthSlides() {
         return this.innerCarousel.children().length;
@@ -127,6 +139,8 @@ class DomHelper {
 
     /**
      * Adiciona o html de um novo slide no carrocel.
+     *
+     * @param  {String} p .
      */
     addSlide(htmlContent) {
         // incorpora o slide ao final da sequencia corrente:
@@ -135,6 +149,8 @@ class DomHelper {
 
     /**
      * Adiciona o html de um novo slide no carrocel, antes do ultimo elemento.
+     *
+     * @param  {String} p .
      */
     addBeforeSlide(htmlContent) {
         // incorpora o slide ao final da sequencia corrente, mas antes do slide introdutorio:
@@ -143,6 +159,8 @@ class DomHelper {
 
     /**
      * Adiciona o html de um novo slide no carrocel e avanca para o mesmo.
+     *
+     * @param  {String} p .
      */
     nextSlide(htmlContent) {
         // se nao fornecer o html, entao somente ira pular para o proximo slide:
@@ -166,6 +184,8 @@ class DomHelper {
 
     /**
      * .
+     *
+     * @param  {String} p .
      */
     getIntroHtml(selector) {
         return selector ? $(selector).html() : null;
@@ -173,6 +193,8 @@ class DomHelper {
 
     /**
      * Apresenta o slide introdutorio, conforme o cenario onde o usuario se encontra.
+     *
+     * @param  {String} p .
      */
     showIntroHtml(htmlContent) {
         // eh preciso eliminar qualquer slide ainda presente no carrocel:
@@ -220,6 +242,10 @@ class DomHelper {
 
     /**
      * Configura o range de progresso para que o usuario possa se situar.
+     *
+     * @param  {String} p .
+     * @param  {String} p .
+     * @param  {String} p .
      */
     showRangeProgress(minValue, maxValue, stepValue) {
         // exibe o range de progresso, para o usuario se situar:
@@ -241,6 +267,8 @@ class DomHelper {
 
     /**
      * .
+     *
+     * @param  {String} p .
      */
     updateRangeProgress(newValue) {
         this.rangeInput.val(newValue);

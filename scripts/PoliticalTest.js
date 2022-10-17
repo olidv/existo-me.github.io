@@ -1,6 +1,10 @@
 /* --- POLITICAL GPS TEST CLASS ------------------------------------------------------------------ */
 
 /** Classe auxiliar na aplicacao do teste politico e gerenciamento das respostas. */
+/**
+ * .
+ *
+ */
 class PoliticalTest {
     // propriedades publicas:
     testDateVersion = null; // data da liberacao desta versao do teste
@@ -15,6 +19,7 @@ class PoliticalTest {
 
     // propriedades privadas: controle do generator de quetoes:
     quizCurrentQuery = 0; // numero da questao corrente do teste em andamento
+    quizLengthQueries = 0; // tamanho da lista de questoes do teste em andamento
     quizTotalQueries = 0; // numero total de questoes do teste em andamento
     quizListQueries = []; // lista de questoes para o teste em andamento
 
@@ -44,6 +49,13 @@ class PoliticalTest {
     }
 
     /**
+     * TODO: pode ser que um atributo com a ultima versao seja melhor para as notificacoes.
+     */
+    get testLastVersion() {
+        return (this.testExtraVersion) ? this.testExtraVersion : this.testBasicVersion;
+    }
+
+    /**
      * .
      */
     get testAllLength() {
@@ -67,18 +79,21 @@ class PoliticalTest {
         switch (stage) {
             case "basic":
                 this.quizCurrentQuery = currentQuery;
-                this.quizTotalQueries = this.testBasicLength;
+                this.quizLengthQueries = this.testBasicLength;
                 this.quizListQueries = this.testBasicQueries;
+                this.quizTotalQueries = this.testBasicLength;
                 break;
             case "extra":
                 this.quizCurrentQuery = currentQuery - this.testBasicLength;
-                this.quizTotalQueries = this.testExtraLength;
+                this.quizLengthQueries = this.testExtraLength;
                 this.quizListQueries = this.testExtraQueries;
+                this.quizTotalQueries = this.testAllLength;
                 break;
             case "all":
                 this.quizCurrentQuery = currentQuery;
-                this.quizTotalQueries = this.testAllLength;
+                this.quizLengthQueries = this.testAllLength;
                 this.quizListQueries = this.testAllQueries;
+                this.quizTotalQueries = this.testAllLength;
                 break;
         }
     }
@@ -88,7 +103,7 @@ class PoliticalTest {
      *
      */
     nextQuery() {
-        if (this.quizCurrentQuery < this.quizTotalQueries) {
+        if (this.quizCurrentQuery < this.quizLengthQueries) {
             return this.quizListQueries[this.quizCurrentQuery++];
         } else {
             return null;

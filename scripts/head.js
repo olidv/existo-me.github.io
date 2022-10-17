@@ -1,5 +1,9 @@
 /* --- UTILITARIOS ------------------------------------------------------------------ */
 
+/**
+ * .
+ *
+ */
 String.prototype.formats = String.prototype.formats || function () {
     "use strict";
 
@@ -20,6 +24,10 @@ String.prototype.formats = String.prototype.formats || function () {
 /* --- LOCAL STORAGE HELPER ------------------------------------------------------------------ */
 
 /** Classe helper para manutencao de valores e/ou objetos no storage do browser. */
+/**
+ * .
+ *
+ */
 class StorageFacade {
     // propriedades privadas:
     #store; // indica onde os dados serao salvos (local ou session).
@@ -130,6 +138,9 @@ var GlobalStore = new StorageFacade(true); // maior persistencia sem data de exp
 /* --- WEB SITE SETUP ------------------------------------------------------------------ */
 
 /** Classe para manipulacao e armazenamento das configuracoes da aplicacao e preferencias do usuario. */
+/**
+ * .
+ */
 class AppSetup {
     // propriedades publicas: configuracoes da aplicacao
     //
@@ -175,11 +186,17 @@ class AppSetup {
     }
 
     /** Rotulo para a preferencia Esquema de Cores. */
+    /**
+     * .
+     */
     get labelSchemeColor() {
         return this.schemeColor == "dark" ? "Escuro" : "Claro";
     }
 
     /** Rotulo para a preferencia Esquema de Cores. */
+    /**
+     * .
+     */
     get labelFontSize() {
         switch (this.fontSize) {
             case "small": // 1 = small
@@ -194,11 +211,17 @@ class AppSetup {
     }
 
     /** Rotulo para a preferencia Esquema de Cores. */
+    /**
+     * .
+     */
     get labelSoundAlert() {
         return this.soundAlert == "on" ? "Ligado" : "Desligado";
     }
 
     /** Property: esquema de cores 'dark' habilitado. */
+    /**
+     * .
+     */
     get isSchemeDark() {
         return this.schemeColor == "dark";
     }
@@ -214,6 +237,9 @@ class AppSetup {
     }
 
     /** Property: valor ordinal do tamanho da fonte. */
+    /**
+     * .
+     */
     get ordFontSize() {
         switch (this.fontSize) {
             case "small": // 1 = small
@@ -248,6 +274,9 @@ class AppSetup {
     }
 
     /** Property: alerta sonoro habilitado 'on'. */
+    /**
+     * .
+     */
     get isSoundOn() {
         return this.soundAlert == "on";
     }

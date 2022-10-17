@@ -1,6 +1,9 @@
 /* --- USER CLASS ------------------------------------------------------------------ */
 
 /** Classe para armazenamento de informacoes e configuracoes do usuario. */
+/**
+ * .
+ */
 class AppUser {
     // propriedades publicas: informacoes gerais
     name = null; // nome do usuario para emissao de certificado
@@ -64,6 +67,10 @@ class AppUser {
 
     /**
      * .
+     *
+     * @param  {String} p .
+     * @param  {String} p .
+     * @param  {String} p .
      */
     addResponse(item, rate, side) {
         // deixa registrados todos os valores, para calcular a pontuacao posteriormente:
@@ -100,7 +107,7 @@ class AppUser {
      */
     clear() {
         // apaga as respostas do usuario...
-        this.testVersion = GlobalTest.testBasicVersion;  // volta para o teste basico.
+        this.testVersion = GlobalTest.testBasicVersion; // volta para o teste basico.
         this.testDateStart = null;
         this.testFlagOpen = false;
         this.testTotalDone = 0;
