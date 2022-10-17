@@ -71,10 +71,10 @@ class PoliticalTest {
      *
      */
     nextQuery() {
-        if (this.quizCurrentQuery >= this.quizTotalQueries) {
-            return null;
-        } else {
+        if (this.quizCurrentQuery < this.quizTotalQueries) {
             return this.quizListQueries[this.quizCurrentQuery++];
+        } else {
+            return null;
         }
     }
 

@@ -69,11 +69,34 @@ class DomHelper {
     }
 
     /**
+     * .
+     */
+    get lengthSlides() {
+        return this.innerCarousel.children().length;
+    }
+
+    /**
      * Adiciona o html de um novo slide no carrocel.
      */
     addSlide(htmlContent) {
         // incorpora o slide ao final da sequencia corrente:
         this.innerCarousel.append(htmlContent);
+    }
+
+    /**
+     * Adiciona o html de um novo slide no carrocel, antes do ultimo elemento.
+     */
+    addBeforeSlide(htmlContent) {
+        // incorpora o slide ao final da sequencia corrente, mas antes do slide introdutorio:
+        $(".carousel-inner > .carousel-item:last-child").before(htmlContent);
+    }
+
+    /**
+     * .
+     */
+    firstSlide() {
+        // e navega para o primeiro item diretamente, simulando um slide-next ou nao:
+        this.bs5Carousel.carousel(0);
     }
 
     /**
@@ -86,8 +109,17 @@ class DomHelper {
             this.addSlide(htmlContent);
         }
 
-        // e navega para o item, simulando um slide-next:
-        $("#carouselTest").carousel("next");
+        // se este for o primeiro slide, apenas navega para o mesmo:
+        if (this.lengthSlides == 1) {
+            // o slide inicial deve ter a class 'active':
+            $(".carousel-inner > .carousel-item:first-child").addClass("active");
+
+            // e navega para o primeiro item, simulando um slide-next:
+            this.bs5Carousel.carousel(0);
+        } else {
+            // se houver mais slides, navega para o item adicionado, simulando um slide-next:
+            this.bs5Carousel.carousel("next");
+        }
     }
 
     /**
@@ -96,6 +128,7 @@ class DomHelper {
     showIntroHtml(htmlContent) {
         // eh preciso eliminar qualquer slide ainda presente no carrocel:
         this.innerCarousel.empty();
+        console.log("Apagados todos os slides...");
 
         // verifica se nao ha nenhuma inconsistencia nos dados, com cenario nao identificado:
         if (htmlContent) {
@@ -120,18 +153,21 @@ class DomHelper {
         }
     }
 
-    
     /**
      * Configura o carrocel para responder ao test.
      */
     initCarouselRespond() {
+        // apaga os slides anteriores:
+        this.innerCarousel.empty();
+
         // reconfigura o carrocel para percorrer todas as respostas:
         this.bs5Carousel.carousel({
-            interval: false,
-            pause: true,
-            ride: false,
-            keyboard: false,
-            wrap: false,
+            // interval: 10000000,
+            // ride: false,
+            // keyboard: false,
+            // wrap: true,
+
+            pause: false,
         });
 
         // inibe os controles de navegacao (prev, next):
@@ -143,13 +179,17 @@ class DomHelper {
      * Configura o carrocel para visualizacao das respostas.
      */
     initCarouselReview() {
+        // apaga os slides anteriores:
+        //this.innerCarousel.empty();
+
         // reconfigura o carrocel para percorrer todas as respostas:
         this.bs5Carousel.carousel({
-            interval: false,
+            // interval: 10000000,
+            // ride: false,
+            // keyboard: false,
+            // wrap: true,
+
             pause: false,
-            ride: false,
-            keyboard: true,
-            wrap: true,
         });
 
         // habilita os controles de navegacao (prev, next):
@@ -160,13 +200,3 @@ class DomHelper {
 
 // Instancia helper para manipulacao do DOM (HTML Document Object Model) da pagina:
 var DOM = new DomHelper();
-
-/* --- JQUERY: DOM READY ------------------------------------------------------------------ */
-
-// Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
-$(document).ready(function () {
-    ("use strict"); // sempre!
-
-    // Efetua inicializacao das referencias internas do DOM.
-    DOM.ready();
-});

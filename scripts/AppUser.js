@@ -37,6 +37,22 @@ class AppUser {
     /**
      * .
      */
+    addResponse(item, rate, side) {
+        // deixa registrados todos os valores, para calcular a pontuacao posteriormente:
+        const option = {
+            item: item,
+            rate: rate,
+            side: side,
+        };
+
+        // adiciona mais uma resposta do usuario:
+        this.testTotalDone++;
+        this.testUserOpts.push(option);
+    }
+
+    /**
+     * .
+     */
     stopQuiz() {
         // inicializa propriedades para sinalizar o encerramento do teste politico:
         this.testDateFinal = new Date();

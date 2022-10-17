@@ -54,7 +54,7 @@ var dataPoliticalGps = {
         },
     ],
 
-    testExtraVersion: 0,
+    testExtraVersion: 1.0,
     testExtraLength: 0,
     testExtraQueries: [],
 };
