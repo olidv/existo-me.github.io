@@ -100,6 +100,7 @@ class AppUser {
      */
     clear() {
         // apaga as respostas do usuario...
+        this.testVersion = GlobalTest.testBasicVersion;  // volta para o teste basico.
         this.testDateStart = null;
         this.testFlagOpen = false;
         this.testTotalDone = 0;

@@ -98,7 +98,7 @@ class DomHelper {
     /**
      * .
      */
-    showResultingNav(clsColor) {
+    showNavResulting(clsColor) {
         // apresenta as opcoes resultantes:
         this.navResult.removeClass(); // limpa tudo, pq nao sabe qual a cor anterior
         this.navDonate.removeClass("d-none");
@@ -110,7 +110,7 @@ class DomHelper {
     /**
      * .
      */
-    hideResultingNav() {
+    hideNavResulting() {
         // inibe as opcoes resultantes:
         this.navResult.addClass("d-none");
         this.navDonate.addClass("d-none");
@@ -178,14 +178,18 @@ class DomHelper {
         // eh preciso eliminar qualquer slide ainda presente no carrocel:
         this.innerCarousel.empty();
 
-        // na apresentacao do slide introdutorio, nao precisa do range de progresso:
-        this.hideProgressRespond();
-
-        // verifica se nao ha nenhuma inconsistencia nos dados, com cenario nao identificado:
+        // verifica se o html eh valido:
         if (htmlContent) {
             // O slide introdutorio do teste sera incorporado e apresentado:
             this.addSlide(htmlContent);
         }
+
+        // na apresentacao do slide introdutorio, nao precisa dos controles de navegacao do carrocel:
+        this.prevControl.addClass("d-none");
+        this.nextControl.addClass("d-none");
+
+        // e nem o range de progresso:
+        this.hideRangeProgress();
     }
 
     /**
@@ -217,7 +221,7 @@ class DomHelper {
     /**
      * Configura o range de progresso para que o usuario possa se situar.
      */
-    initProgressRespond(minValue, maxValue, stepValue) {
+    showRangeProgress(minValue, maxValue, stepValue) {
         // exibe o range de progresso, para o usuario se situar:
         this.panelProgress.removeClass("d-none");
 
@@ -230,7 +234,7 @@ class DomHelper {
     /**
      * Inibe o range de progresso.
      */
-    hideProgressRespond() {
+    hideRangeProgress() {
         // inibe o range de progresso, pois o usuario nao precisa se situar:
         this.panelProgress.addClass("d-none");
     }
@@ -238,7 +242,7 @@ class DomHelper {
     /**
      * .
      */
-    updateProgress(newValue) {
+    updateRangeProgress(newValue) {
         this.rangeInput.val(newValue);
     }
 }

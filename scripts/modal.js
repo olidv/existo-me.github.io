@@ -18,6 +18,8 @@ function modalSetup_Refresh(event) {
 
     label = DOM.labelUserHistory.replace("{0}", GlobalUser.testTotalDone);
     $("#labelUserHistory").text(label);
+    $("#clearUserHistory").prop("disabled", GlobalUser.testTotalDone == 0);
+
 }
 
 /**
@@ -86,12 +88,13 @@ function clearUserHistory_Click(event) {
     // para evitar enganos, pede a confirmacao do usuario:
     let isOk = confirm("Por favor, confirme a exclusão do seu histórico de respostas para o teste do GPS Político:");
     if (isOk) {
+        // limpa todos os dados do teste do usuario:
         GlobalUser.clear();
-
         // apos apagar o historico, limpa o valor de questoes respondidas no rotulo:
         modalSetup_Refresh(event);
-        // como limpou o historico, nao ha mais respostas a limpar:
-        $("#clearUserHistory").prop("disabled", true);
+
+        // eh preciso atualizar o slide introdutorio, pq o usuario tem novo estado:
+        showIntro();
     }
 }
 
