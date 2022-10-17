@@ -214,8 +214,11 @@ function respondTest(idQuery, item, rate, side) {
         // salva {estrutura-usuario} no local-storage
         GlobalUser.save();
 
-        // avanca para o proximo cenario:
+        // aproveita para avancar para o proximo cenario:
         showIntro();
+
+        // ao final, exibe o resultado do teste para o usuario:
+        showModalResult();
     }
 }
 

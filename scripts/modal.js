@@ -100,6 +100,13 @@ function clearUserHistory_Click(event) {
 
 /* --- MODAL RESULTADO ------------------------------------------------------------------ */
 
+/**
+ * .
+ *
+ */
+function showModalResult() {
+    $("#modalResult").modal("show");
+}
 
 /* --- JQUERY: DOM READY ------------------------------------------------------------------ */
 
