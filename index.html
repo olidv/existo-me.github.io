@@ -150,8 +150,11 @@
                     </div>
                 </div>
                 <ul class="nav col-md-6 d-flex justify-content-end list-unstyled">
-                    <li class="ms-3 d-none">
+                    <li id="navResult" class="ms-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x2-gap icon-nav icon-result"></i></a>
+                    </li>
+                    <li id="navResultColor" class="ms-3">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x2-gap-fill icon-nav icon-result"></i></a>
                     </li>
                     <li class="ms-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-nav"></i></a>
@@ -159,7 +162,7 @@
                     <li class="ms-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a central de ajuda do site."><i class="bi bi-question-circle icon-nav"></i></a>
                     </li>
-                    <li class="ms-3 d-none">
+                    <li id="navDonate" class="ms-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Contribua com nossa iniciativa ajudando nosso projeto a crescer."><i class="bi bi-heart-pulse icon-nav"></i></a>
                     </li>
                 </ul>
@@ -189,7 +192,7 @@
 
                     <!--  -->
                     <div id="rangeProgress" class="col-lg-10 d-none">
-                        <p><input id="rangeTest" type="range" class="form-range" min="0" max="60" step="1" value="10" disabled></p>
+                        <p><input id="rangeTest" type="range" class="form-range" min="1" max="1" step="1" value="" disabled></p>
                     </div>
                 </div>
             </div>

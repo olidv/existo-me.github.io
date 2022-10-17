@@ -16,6 +16,8 @@ class AppUser {
     testCssColor = null; // coloracao correspondente a pontuacao obtida
     testFileImage = null; // id do plano (figura) para a pontuacao obtida
 
+    /* --- INITIALIZATION ------------------------------------------------------------------ */
+
     /**
      * Inicializacao de nova instancia.
      *
@@ -23,6 +25,32 @@ class AppUser {
      */
     constructor(beginVersion) {
         this.testVersion = beginVersion;
+    }
+
+    /**
+     * Carrega os dados anteriores da ultima sessao do usuario a partir do local-storage.
+     *
+     * @param  {String} beginVersion Versao do teste para o caso do usuario ser iniciante.
+     */
+    static loadInstance(beginVersion) {
+        let newInstance = new AppUser(beginVersion);
+
+        // se ja estiver salvo no local-storage, recupera as propriedades:
+        if (GlobalStore.exist(AppUser.name)) {
+            let objStorage = GlobalStore.get(AppUser.name);
+            // transfere os valores para uma nova instancia de AppUser:
+            newInstance = Object.assign(newInstance, objStorage);
+
+            // salva novamente, para o caso de se ter criado novas propriedades na classe:
+            newInstance.save();
+            console.info("Valores de AppUser recuperados e atualizados no Storage com sucesso.");
+        } else {
+            // como ainda nao existia no storage, salva para proximas sessoes:
+            newInstance.save();
+            console.info("Nova instancia de AppUser criada e armazenada no Storage com sucesso.");
+        }
+
+        return newInstance;
     }
 
     /**
@@ -84,32 +112,6 @@ class AppUser {
         // ...e tambem limpa o local-storage:
         this.save();
         console.info("Instancia corrente de AppUser reinicializada e atualizada no Storage com sucesso.");
-    }
-
-    /**
-     * Carrega os dados anteriores da ultima sessao do usuario a partir do local-storage.
-     *
-     * @param  {String} beginVersion Versao do teste para o caso do usuario ser iniciante.
-     */
-    static loadInstance(beginVersion) {
-        let newInstance = new AppUser(beginVersion);
-
-        // se ja estiver salvo no local-storage, recupera as propriedades:
-        if (GlobalStore.exist(AppUser.name)) {
-            let objStorage = GlobalStore.get(AppUser.name);
-            // transfere os valores para uma nova instancia de AppUser:
-            newInstance = Object.assign(newInstance, objStorage);
-
-            // salva novamente, para o caso de se ter criado novas propriedades na classe:
-            newInstance.save();
-            console.info("Valores de AppUser recuperados e atualizados no Storage com sucesso.");
-        } else {
-            // como ainda nao existia no storage, salva para proximas sessoes:
-            newInstance.save();
-            console.info("Nova instancia de AppUser criada e armazenada no Storage com sucesso.");
-        }
-
-        return newInstance;
     }
 }
 

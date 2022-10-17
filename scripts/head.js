@@ -24,6 +24,8 @@ class StorageFacade {
     // propriedades privadas:
     #store; // indica onde os dados serao salvos (local ou session).
 
+    /* --- INITIALIZATION ------------------------------------------------------------------ */
+
     /**
      * Inicializacao de nova instancia.
      *
@@ -136,6 +138,8 @@ class AppSetup {
     fontSize; // tamanho da fonte: small, normal, large, huge
     soundAlert; // alerta sonoro: on, off
 
+    /* --- INITIALIZATION ------------------------------------------------------------------ */
+
     /**
      * Inicializacao de nova instancia.
      */
@@ -144,6 +148,30 @@ class AppSetup {
         this.schemeColor = "light";
         this.fontSize = "normal";
         this.soundAlert = "on";
+    }
+
+    /**
+     * Carrega as configuracoes e preferencias anteriores da ultima sessao do usuario a partir do storage.
+     */
+    static loadInstance() {
+        let newInstance = new AppSetup();
+
+        // se ja estiver salvo no storage, recupera as propriedades:
+        if (GlobalStore.exist(AppSetup.name)) {
+            let objStorage = GlobalStore.get(AppSetup.name);
+            // transfere os valores para uma nova instancia de AppSetup:
+            newInstance = Object.assign(newInstance, objStorage);
+
+            // salva novamente, para o caso de se ter criado novas propriedades na classe:
+            newInstance.save();
+            console.info("Valores de AppSetup recuperados e atualizados no Storage com sucesso.");
+        } else {
+            // como ainda nao existia no storage, salva para proximas sessoes:
+            newInstance.save();
+            console.info("Nova instancia de AppSetup criada e armazenada no Storage com sucesso.");
+        }
+
+        return newInstance;
     }
 
     /** Rotulo para a preferencia Esquema de Cores. */
@@ -255,30 +283,6 @@ class AppSetup {
     save() {
         GlobalStore.set(AppSetup.name, this);
         console.table("Instancia corrente de AppSetup armazenada no Storage com sucesso: ", this);
-    }
-
-    /**
-     * Carrega as configuracoes e preferencias anteriores da ultima sessao do usuario a partir do storage.
-     */
-    static loadInstance() {
-        let newInstance = new AppSetup();
-
-        // se ja estiver salvo no storage, recupera as propriedades:
-        if (GlobalStore.exist(AppSetup.name)) {
-            let objStorage = GlobalStore.get(AppSetup.name);
-            // transfere os valores para uma nova instancia de AppSetup:
-            newInstance = Object.assign(newInstance, objStorage);
-
-            // salva novamente, para o caso de se ter criado novas propriedades na classe:
-            newInstance.save();
-            console.info("Valores de AppSetup recuperados e atualizados no Storage com sucesso.");
-        } else {
-            // como ainda nao existia no storage, salva para proximas sessoes:
-            newInstance.save();
-            console.info("Nova instancia de AppSetup criada e armazenada no Storage com sucesso.");
-        }
-
-        return newInstance;
     }
 }
 

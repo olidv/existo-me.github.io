@@ -23,6 +23,9 @@ class DomHelper {
 
     // propriedades publicas: slider de progresso do questionario
     rangeProgress;
+    rangeInput;
+
+    /* --- INITIALIZATION ------------------------------------------------------------------ */
 
     /**
      * Inicializacao de nova instancia.
@@ -50,7 +53,10 @@ class DomHelper {
 
         // identifica o slider de progresso.
         this.rangeProgress = $("#rangeProgress");
+        this.rangeInput = $("#rangeTest");
     }
+
+    /* --- PAGE/DOCUMENT TITLE ------------------------------------------------------------------ */
 
     getTitle() {
         return document.title;
@@ -64,9 +70,7 @@ class DomHelper {
         document.title = this.pageTitle;
     }
 
-    html(selector) {
-        return selector ? $(selector).html() : null;
-    }
+    /* --- BOOTSTRAP CAROUSEL ------------------------------------------------------------------ */
 
     /**
      * .
@@ -128,26 +132,14 @@ class DomHelper {
     showIntroHtml(htmlContent) {
         // eh preciso eliminar qualquer slide ainda presente no carrocel:
         this.innerCarousel.empty();
-        console.log("Apagados todos os slides...");
+
+        // na apresentacao do slide introdutorio, nao precisa do range de progresso:
+        this.hideRangeProgress();
 
         // verifica se nao ha nenhuma inconsistencia nos dados, com cenario nao identificado:
         if (htmlContent) {
             // O slide introdutorio do teste sera incorporado e apresentado:
             this.addSlide(htmlContent);
-        } else {
-            console.error("Nao foi possivel adicionar o slide introdutorio ao carrocel.");
-        }
-    }
-
-    /**
-     * Apresenta o slide introdutorio, conforme o cenario onde o usuario se encontra.
-     */
-    showIntroSlide(element) {
-        // verifica se nao ha nenhuma inconsistencia nos dados, com cenario nao identificado:
-        if (element) {
-            // O slide introdutorio do teste sera incorporado e apresentado:
-            let htmlContent = $(element).html();
-            this.showIntroHtml(htmlContent);
         } else {
             console.error("Nao foi possivel adicionar o slide introdutorio ao carrocel.");
         }
@@ -161,14 +153,7 @@ class DomHelper {
         this.innerCarousel.empty();
 
         // reconfigura o carrocel para percorrer todas as respostas:
-        this.bs5Carousel.carousel({
-            // interval: 10000000,
-            // ride: false,
-            // keyboard: false,
-            // wrap: true,
-
-            pause: false,
-        });
+        this.bs5Carousel.carousel("pause");
 
         // inibe os controles de navegacao (prev, next):
         this.prevControl.addClass("d-none");
@@ -179,22 +164,47 @@ class DomHelper {
      * Configura o carrocel para visualizacao das respostas.
      */
     initCarouselReview() {
-        // apaga os slides anteriores:
-        //this.innerCarousel.empty();
-
-        // reconfigura o carrocel para percorrer todas as respostas:
-        this.bs5Carousel.carousel({
-            // interval: 10000000,
-            // ride: false,
-            // keyboard: false,
-            // wrap: true,
-
-            pause: false,
-        });
-
         // habilita os controles de navegacao (prev, next):
         this.prevControl.removeClass("d-none");
         this.nextControl.removeClass("d-none");
+    }
+
+    /* --- INPUT RANGE PROGRESS ------------------------------------------------------------------ */
+
+    /**
+     * Configura o range de progresso para que o usuario possa se situar.
+     */
+    initRangeProgress(minValue, maxValue, stepValue) {
+        // exibe o range de progresso, para o usuario se situar:
+        this.rangeProgress.removeClass("d-none");
+
+        // parametriza os valores minimo e maximo da regua de progresso.
+        this.rangeInput.prop("min", minValue);
+        this.rangeInput.prop("max", maxValue);
+        this.rangeInput.prop("step", stepValue);
+    }
+
+    /**
+     * Inibe o range de progresso.
+     */
+    hideRangeProgress() {
+        // inibe o range de progresso, pois o usuario nao precisa se situar:
+        this.rangeProgress.addClass("d-none");
+    }
+
+    /**
+     * .
+     */
+    updateProgress(newValue) {
+        //this.rangeProgress.val(newValue);
+        this.rangeInput.val(newValue);
+        console.log(`updateProgress(${newValue}): ${$("#rangeTest").val()}`);
+    }
+
+    /* --- DOM UTILITIES ------------------------------------------------------------------ */
+
+    html(selector) {
+        return selector ? $(selector).html() : null;
     }
 }
 

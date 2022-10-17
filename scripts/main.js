@@ -103,6 +103,8 @@ function slideNextQuery() {
         htmlContent = htmlContent.formats(GlobalTest.quizTotalQueries, query.idQuery, query.subject, item0.text, item0.rate, item0.side, item1.text, item1.rate, item1.side);
         // adiciona div como slide no carrocel e desloca para a questao
         DOM.nextSlide(htmlContent);
+        // atualiza o range de progresso:
+        DOM.updateProgress(query.idQuery);
         // informa que processou proxima questao:
         return true;
     } else {
@@ -126,6 +128,9 @@ function takeTest(stage) {
     // desabilita a navegacao do carrocel com mouse ou teclado
     DOM.initCarouselRespond();
 
+    // configura o range de progresso, com o numero minimo e maximo das questoes:
+    DOM.initRangeProgress(1, GlobalTest.quizTotalQueries, 1);
+
     // exibe a primeira questao do teste:
     slideNextQuery();
 }
@@ -135,7 +140,7 @@ function takeTest(stage) {
  *
  */
 function calculateScore() {
-
+    // GlobalTest.calculateQuiz();
 }
 
 /**
@@ -185,7 +190,7 @@ function reviewTest(stage) {
     // somente adiciona as questoes se os slides das questoes ainda nao foram adicionados:
     if (DOM.lengthSlides <= 1) {
         // $CENARIO:BEGINNER-REVIEW
-        let idxOpts = 0;  // para obter as respostas do usuario
+        let idxOpts = 0; // para obter as respostas do usuario
         // loop de todas as questoes do teste: query <- pgps.quizListBasicQueries
         for (let query = GlobalTest.nextQuery(); query != null; query = GlobalTest.nextQuery()) {
             console.table(`reviewTest(${stage}): `, query);
@@ -196,8 +201,8 @@ function reviewTest(stage) {
 
             // identifica para a questao selecionada a resposta do usuario:
             const userOption = GlobalUser.testUserOpts[idxOpts++];
-            const item0Checked = (userOption.item == 0) ? "checked" : "";
-            const item1Checked = (userOption.item == 1) ? "checked" : "";
+            const item0Checked = userOption.item == 0 ? "checked" : "";
+            const item1Checked = userOption.item == 1 ? "checked" : "";
 
             // prepara template (read-only) de div para carrocel com dados da questao
             let htmlContent = DOM.html("#templateReviewQuestion");
@@ -208,10 +213,13 @@ function reviewTest(stage) {
         }
         // habilita navegacao do carrocel com mouse ou teclado
         DOM.initCarouselReview();
+
+        // para apenas visualizar as respostas, nao precisa do range de progresso:
+        DOM.hideRangeProgress();
     }
 
-    // desloca para a primeira questao
-    DOM.firstSlide();
+    // desloca para a primeira questao, que eh o proximo slide:
+    DOM.nextSlide();
 }
 
 /**

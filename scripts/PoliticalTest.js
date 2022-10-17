@@ -18,12 +18,29 @@ class PoliticalTest {
     quizTotalQueries = 0; // numero total de questoes do teste em andamento
     quizListQueries = []; // lista de questoes para o teste em andamento
 
+    /* --- INITIALIZATION ------------------------------------------------------------------ */
+
     /**
      * Inicializacao de nova instancia.
      */
     constructor() {
         // ??? a versao pode ser utilizada na notificacao de novas questoes?
         this.testDateVersion = new Date();
+    }
+
+    /**
+     * Carrega a definicao do teste Gps Politico em nova instancia de PoliticalGps.
+     *
+     * @param  {Object} data Dados mais recentes do teste do GPS Politico.
+     */
+    static loadInstance(data) {
+        let newInstance = new PoliticalTest();
+
+        // transfere os valores recebidos para uma nova instancia de PoliticalTest...
+        newInstance = Object.assign(newInstance, data);
+        console.table("Nova instancia de PoliticalTest criada com sucesso: ", newInstance);
+
+        return newInstance;
     }
 
     /**
@@ -79,19 +96,10 @@ class PoliticalTest {
     }
 
     /**
-     * Carrega a definicao do teste Gps Politico em nova instancia de PoliticalGps.
+     * .
      *
-     * @param  {Object} data Dados mais recentes do teste do GPS Politico.
      */
-    static loadInstance(data) {
-        let newInstance = new PoliticalTest();
-
-        // transfere os valores recebidos para uma nova instancia de PoliticalTest...
-        newInstance = Object.assign(newInstance, data);
-        console.table("Nova instancia de PoliticalTest criada com sucesso: ", newInstance);
-
-        return newInstance;
-    }
+    calculateQuiz() {}
 }
 
 // Cria instancia global para gerenciar a aplicacao do teste politico:
