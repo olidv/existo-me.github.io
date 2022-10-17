@@ -254,8 +254,14 @@ a i[class^='bi']:focus {
     font-size: 1.4rem;
 }
 
-.icon-test-red {
+.icon-result-red,
+.icon-result-red .icon-nav {
     color: red;
+}
+
+.icon-result-blue,
+.icon-result-blue .icon-nav {
+    color: blue;
 }
 
 .btn-nav {

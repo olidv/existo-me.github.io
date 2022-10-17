@@ -10,7 +10,7 @@ var dataPoliticalGps = {
         {
             idQuery: 1,
             subject: "Assunto da 1ª Questão.",
-            choices: [
+            options: [
                 { text: "Texto da 1ª opção.", rate: 2, side: -1 },
                 { text: "Texto da 2ª opção.", rate: 2, side: +1 },
             ],
@@ -19,7 +19,7 @@ var dataPoliticalGps = {
         {
             idQuery: 2,
             subject: "Assunto da 2ª Questão.",
-            choices: [
+            options: [
                 { text: "Texto da 1ª opção.", rate: 1, side: -1 },
                 { text: "Texto da 2ª opção.", rate: 1, side: +1 },
             ],
@@ -28,7 +28,7 @@ var dataPoliticalGps = {
         {
             idQuery: 3,
             subject: "Assunto da 3ª Questão.",
-            choices: [
+            options: [
                 { text: "Texto da 1ª opção.", rate: 2, side: -1 },
                 { text: "Texto da 2ª opção.", rate: 2, side: +1 },
             ],
@@ -37,7 +37,7 @@ var dataPoliticalGps = {
         {
             idQuery: 4,
             subject: "Assunto da 4ª Questão.",
-            choices: [
+            options: [
                 { text: "Texto da 1ª opção.", rate: 1, side: -1 },
                 { text: "Texto da 2ª opção.", rate: 1, side: +1 },
             ],
@@ -46,7 +46,7 @@ var dataPoliticalGps = {
         {
             idQuery: 5,
             subject: "Assunto da 5ª Questão.",
-            choices: [
+            options: [
                 { text: "Texto da 1ª opção.", rate: 2, side: -1 },
                 { text: "Texto da 2ª opção.", rate: 2, side: +1 },
             ],

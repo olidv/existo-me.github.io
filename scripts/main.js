@@ -3,7 +3,7 @@
 /**
  * .
  */
-function startTest() {
+function showIntro() {
     // primeiro atualiza o estado do usuario, para verificar em qual cenario se encontra:
     if (GlobalUser.testVersion == 0) {
         // $CENARIO::BEGINNER-START: PRIMEIRA VISITA DO USUARIO, NAO INICIOU NENHUMA VERSAO DO TESTE
@@ -11,11 +11,13 @@ function startTest() {
         // E NO PROXIMO ACESSO (OU APOS F5) TERAH ACESSO AS QUESTOES EXTRAS / INCREMENTAIS.
         GlobalUser.testVersion = GlobalTest.testBasicVersion;
         GlobalUser.save();
+//
     } else if (GlobalUser.testVersion == 1.0 && GlobalUser.testTotalDone == GlobalTest.testBasicLength) {
         // $CENARIO:BEGINNER-RETAKE: USUARIO JA COMPLETOU VERSAO BASICA DO TESTE
         // O USUARIO JA PODE RESOLVER AS QUESTOES EXTRAS DE AGORA EM DIANTE
         GlobalUser.testVersion = GlobalTest.testExtraVersion;
         GlobalUser.save();
+//
     } else if (GlobalUser.testVersion > 1.0 && GlobalUser.testTotalDone == GlobalTest.testAllLength) {
         // $CENARIO:MAJOR-RETAKE: USUARIO JA COMPLETOU VERSAO EXTRA DO TESTE
         // CONTINUA ATUALIZANDO A VERSAO EXTRA, PARA NOTIFICAR NOVAS QUESTOES
@@ -26,61 +28,88 @@ function startTest() {
     // em seguida, identifica o cenario de uso para definir qual painel introdutorio apresentar:
     if (GlobalUser.testDateStart == null || GlobalUser.testTotalDone == 0) {
         // $CENARIO:BEGINNER-START: PRIMEIRA VISITA DO USUARIO, NAO INICIOU NENHUMA VERSAO DO TESTE
+        // como nao tem nenhuma notificacao, restaura o titulo original do site:
+        DOM.resetTitle();
+        // como ainda nao tem resultado de teste, inibe as opcoes resultantes:
+        DOM.hideResultingNav();
+        // informa ao usuario o numero de questoes do teste basico:
+        let htmlContent = DOM.getIntroHtml("#cenarioBeginnerStart");
+        htmlContent = htmlContent.formats(GlobalTest.testBasicLength);
         // apresenta opcoes [Iniciar Teste Basico] [Como Funciona]
-        let htmlContent = DOM.html("#cenarioBeginnerStart");
-        //htmlContent = htmlContent.formats();
         DOM.showIntroHtml(htmlContent);
+        //
     } else if (GlobalUser.testVersion == 1.0 && GlobalUser.testTotalDone < GlobalTest.testBasicLength) {
         // $CENARIO:BEGINNER-RESUME: USUARIO INICIOU VERSAO BASICA DO TESTE MAS NAO FINALIZOU
+        // como nao tem nenhuma notificacao, restaura o titulo original do site:
+        DOM.resetTitle();
+        // como ainda nao tem resultado de teste, inibe as opcoes resultantes:
+        DOM.hideResultingNav();
         // exibe notificacao de questoes pendentes com valor: # user.testTotalBasic ... pgps.testBasicLength
-        let htmlContent = DOM.html("#cenarioBeginnerResume");
+        let htmlContent = DOM.getIntroHtml("#cenarioBeginnerResume");
         htmlContent = htmlContent.formats(GlobalTest.testBasicLength, GlobalUser.testTotalDone);
         // apresenta opcoes [Retomar Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
+//
     } else if (GlobalUser.testVersion == 1.0 && GlobalUser.testTotalDone == GlobalTest.testBasicLength) {
         // $CENARIO:BEGINNER-RETAKE: USUARIO ACABOU DE FINALIZAR VERSAO BASICA DO TESTE
-        // exibe opcoes [Resultado] e [Doacao]
-        //     obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        // como nao tem nenhuma notificacao, restaura o titulo original do site:
+        DOM.resetTitle();
+        // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        DOM.showResultingNav(GlobalUser.testCssColor);
+        // exibe a coloracao da pontuacao no slide intro:
+        let htmlContent = DOM.getIntroHtml("#cenarioBeginnerRetake");
+        htmlContent = htmlContent.formats(GlobalUser.testCssColor);
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
-        let htmlContent = DOM.html("#cenarioBeginnerRetake");
-        htmlContent = htmlContent.formats("icon-test-red");
         DOM.showIntroHtml(htmlContent);
+        //
     } else if (GlobalUser.testVersion > 1.0 && GlobalUser.testTotalDone == GlobalTest.testBasicLength) {
         // $CENARIO:BEGINNER-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
-        // exibe opcoes [Resultado] e [Doacao]
-        //     obtem cor da pontuacao do usuario e aplica cor nos icones grid - 3x3
+        let plusQueries = GlobalTest.testAllLength - GlobalUser.testTotalDone;
+        // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
+        DOM.notifyTitle("+" + plusQueries);
+        // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        DOM.showResultingNav(GlobalUser.testCssColor);
         // exibe notificacao de novas questoes com valor: + pgps.testExtraLength
-        // altera o titulo do site: (pgps.testExtraLength) EXISTO.me • GPS Politico
+        let htmlContent = DOM.getIntroHtml("#cenarioBeginnerNotify");
+        htmlContent = htmlContent.formats(plusQueries);
         // apresenta opcoes[Continuar Teste Extra] [Revisar Respostas Basico]
-        let htmlContent = DOM.html("#cenarioBeginnerNotify");
-        //htmlContent = htmlContent.formats();
         DOM.showIntroHtml(htmlContent);
+        //
     } else if (GlobalUser.testVersion > 1.0 && GlobalUser.testTotalDone < GlobalTest.testAllLength) {
         // $CENARIO:MAJOR-RESUME: USUARIO INICIOU VERSAO EXTRA DO TESTE MAS NAO FINALIZOU
-        // exibe opcoes [Resultado] e [Doacao]
-        //    obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        // como nao tem nenhuma notificacao, restaura o titulo original do site:
+        DOM.resetTitle();
+        // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        DOM.showResultingNav(GlobalUser.testCssColor);
         // exibe notificacao de questoes pendentes com valor: # user.testTotalExtra ... pgps.testExtraLength
+        let htmlContent = DOM.getIntroHtml("#cenarioMajorResume");
+        htmlContent = htmlContent.formats(GlobalTest.testAllLength, GlobalUser.testTotalDone);
         // apresenta opcoes [Retomar Teste Extra] [Revisar Respostas Extra]
-        let htmlContent = DOM.html("#cenarioMajorResume");
-        //htmlContent = htmlContent.formats();
         DOM.showIntroHtml(htmlContent);
+        //
     } else if (GlobalUser.testVersion > 1.0 && GlobalUser.testTotalDone == GlobalTest.testAllLength) {
         // $CENARIO:MAJOR-RETAKE: USUARIO ACABOU DE FINALIZAR VERSAO EXTRA DO TESTE
-        // exibe opcoes [Resultado] e [Doacao]
-        //    obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        // como nao tem nenhuma notificacao, restaura o titulo original do site:
+        DOM.resetTitle();
+        // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        DOM.showResultingNav(GlobalUser.testCssColor);
+        // exibe a coloracao da pontuacao no slide intro:
+        let htmlContent = DOM.getIntroHtml("#cenarioMajorRetake");
+        htmlContent = htmlContent.formats(GlobalUser.testCssColor);
         // apresenta opcoes [Refazer Teste Completo] [Revisar Respostas Completo]
-        let htmlContent = DOM.html("#cenarioMajorRetake");
-        //htmlContent = htmlContent.formats();
         DOM.showIntroHtml(htmlContent);
+        //
     } else if (GlobalUser.testVersion < GlobalTest.testExtraVersion && GlobalUser.testTotalDone < GlobalTest.testAllLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
-        // exibe opcoes [Resultado] e [Doacao]
-        //    obtem cor da pontuacao do usuario e aplica cor nos icones grid - 3x3
+        let plusQueries = GlobalTest.testAllLength - GlobalUser.testTotalDone;
+        // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
+        DOM.notifyTitle("+" + plusQueries);
+        // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        DOM.showResultingNav(GlobalUser.testCssColor);
         // exibe notificacao de novas questoes com valor: + pgps.testExtraLength
-        // altera o titulo do site: (pgps.testExtraLength) EXISTO.me • GPS Politico
+        let htmlContent = DOM.getIntroHtml("#cenarioMajorNotify");
+        htmlContent = htmlContent.formats(plusQueries);
         // apresenta opcoes[Continuar Teste Extra] [Revisar Respostas Completo]
-        let htmlContent = DOM.html("#cenarioMajorNotify");
-        //htmlContent = htmlContent.formats();
         DOM.showIntroHtml(htmlContent);
     }
 }
@@ -92,14 +121,14 @@ function startTest() {
 function slideNextQuery() {
     // $CENARIO:BEGINNER-TEST: obtem 1ª questao do teste
     const query = GlobalTest.nextQuery();
-    console.table("slideNextQuery: ", query);
+    //console.table("slideNextQuery: ", query);
 
     // se ainda ha questoes a serem respondidas:
     if (query != null) {
-        const item0 = query.choices[0];
-        const item1 = query.choices[1];
+        const item0 = query.options[0];
+        const item1 = query.options[1];
         // prepara template de div para carrocel com dados da questao
-        let htmlContent = DOM.html("#templateRespondQuestion");
+        let htmlContent = DOM.getIntroHtml("#templateRespondQuestion");
         htmlContent = htmlContent.formats(GlobalTest.quizTotalQueries, query.idQuery, query.subject, item0.text, item0.rate, item0.side, item1.text, item1.rate, item1.side);
         // adiciona div como slide no carrocel e desloca para a questao
         DOM.nextSlide(htmlContent);
@@ -129,7 +158,7 @@ function takeTest(stage) {
     DOM.initCarouselRespond();
 
     // configura o range de progresso, com o numero minimo e maximo das questoes:
-    DOM.initRangeProgress(1, GlobalTest.quizTotalQueries, 1);
+    DOM.initProgressRespond(1, GlobalTest.quizTotalQueries, 1);
 
     // exibe a primeira questao do teste:
     slideNextQuery();
@@ -141,13 +170,16 @@ function takeTest(stage) {
  */
 function calculateScore() {
     // GlobalTest.calculateQuiz();
+    GlobalUser.testUserScore = 123.45;
+    GlobalUser.testCssColor = "icon-result-blue";
+    GlobalUser.testFileImage = ``;
 }
 
 /**
  * .
  *
  * @param  {String} idQuery Numero da questao corrente.
- * @param  {String} item Sequencia da opcao (choice) escolhida: 0 ou 1.
+ * @param  {String} item Sequencia da opcao (options item) escolhida: 0 ou 1.
  * @param  {String} rate Valor da propriedade rate para calculo da pontuacao.
  * @param  {String} side Valor da propriedade side para calculo da pontuacao.
  */
@@ -174,7 +206,7 @@ function respondTest(idQuery, item, rate, side) {
         GlobalUser.save();
 
         // avanca para o proximo cenario:
-        startTest();
+        showIntro();
     }
 }
 
@@ -196,8 +228,8 @@ function reviewTest(stage) {
             console.table(`reviewTest(${stage}): `, query);
 
             // obtem o texto das opcoes:
-            const item0Text = query.choices[0].text;
-            const item1Text = query.choices[1].text;
+            const item0Text = query.options[0].text;
+            const item1Text = query.options[1].text;
 
             // identifica para a questao selecionada a resposta do usuario:
             const userOption = GlobalUser.testUserOpts[idxOpts++];
@@ -205,7 +237,7 @@ function reviewTest(stage) {
             const item1Checked = userOption.item == 1 ? "checked" : "";
 
             // prepara template (read-only) de div para carrocel com dados da questao
-            let htmlContent = DOM.html("#templateReviewQuestion");
+            let htmlContent = DOM.getIntroHtml("#templateReviewQuestion");
             htmlContent = htmlContent.formats(GlobalTest.quizTotalQueries, query.idQuery, query.subject, item0Text, item0Checked, item1Text, item1Checked);
 
             // adiciona div como slide no carrocel
@@ -215,7 +247,7 @@ function reviewTest(stage) {
         DOM.initCarouselReview();
 
         // para apenas visualizar as respostas, nao precisa do range de progresso:
-        DOM.hideRangeProgress();
+        DOM.hideProgressRespond();
     }
 
     // desloca para a primeira questao, que eh o proximo slide:
@@ -245,5 +277,5 @@ $(document).ready(function () {
     DOM.ready();
 
     // identifica o cenario de uso pelo estado do usuario, para definir qual painel introdutorio apresentar:
-    startTest();
+    showIntro();
 });

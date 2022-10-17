@@ -8,6 +8,10 @@ class DomHelper {
     // propriedades publicas: atributos do web site
     pageTitle;
 
+    // propriedades publicas: opcoes principais do site
+    navResult;
+    navDonate; // a opcao para doacao somente aparece apos o usuario concluir o teste.
+
     // propriedades publicas: componentes da modal setup
     labelSchemeColor;
     labelFontSize;
@@ -15,14 +19,13 @@ class DomHelper {
     labelUserHistory;
 
     // propriedades publicas: componente carrocel
-    idCarousel;
     bs5Carousel;
     innerCarousel;
     prevControl;
     nextControl;
 
     // propriedades publicas: slider de progresso do questionario
-    rangeProgress;
+    panelProgress;
     rangeInput;
 
     /* --- INITIALIZATION ------------------------------------------------------------------ */
@@ -33,12 +36,16 @@ class DomHelper {
     constructor() {
         // Na carga do site, obtem os atributos da pagina:
         this.pageTitle = document.title;
-
-        // o id eh utilizado para localizar o carrocel na pagina (dom):
-        this.idCarousel = "#carouselTest";
     }
 
+    /**
+     * .
+     */
     ready() {
+        // obtem as referencias para as opcoes principais manipuladas ao longo do teste politico:
+        this.navResult = $("#navResult");
+        this.navDonate = $("#navDonate");
+
         // obtem os templates para os rotulos a partir do proprio html.
         this.labelSchemeColor = $("#labelSchemeColor").text();
         this.labelFontSize = $("#labelFontSize").text();
@@ -46,28 +53,67 @@ class DomHelper {
         this.labelUserHistory = $("#labelUserHistory").text();
 
         // inicializa o componente carrocel e identifica seus elementos internos:
-        this.bs5Carousel = $(this.idCarousel);
-        this.innerCarousel = $(this.idCarousel + " .carousel-inner");
-        this.prevControl = $(this.idCarousel + " .carousel-control-prev");
-        this.nextControl = $(this.idCarousel + " .carousel-control-next");
+        this.bs5Carousel = $("#carouselTest");
+        this.innerCarousel = $("#carouselTest .carousel-inner");
+        this.prevControl = $("#carouselTest .carousel-control-prev");
+        this.nextControl = $("#carouselTest .carousel-control-next");
 
         // identifica o slider de progresso.
-        this.rangeProgress = $("#rangeProgress");
+        this.panelProgress = $("#panelProgress");
         this.rangeInput = $("#rangeTest");
     }
 
     /* --- PAGE/DOCUMENT TITLE ------------------------------------------------------------------ */
 
+    /**
+     * .
+     */
     getTitle() {
         return document.title;
     }
 
+    /**
+     * .
+     */
     setTitle(newTitle) {
         document.title = newTitle;
     }
 
-    resetTitle(newTitle) {
+    /**
+     * .
+     */
+    notifyTitle(note) {
+        document.title = "(" + note + ") " + this.pageTitle;
+    }
+
+    /**
+     * .
+     */
+    resetTitle() {
         document.title = this.pageTitle;
+    }
+
+    /* --- WEB SITE RESULT OPTIONS -------------------------------------------------------------- */
+
+    /**
+     * .
+     */
+    showResultingNav(clsColor) {
+        // apresenta as opcoes resultantes:
+        this.navResult.removeClass(); // limpa tudo, pq nao sabe qual a cor anterior
+        this.navDonate.removeClass("d-none");
+
+        // adiciona a coloracao para a opcao de resultado:
+        this.navResult.addClass("ms-3 " + clsColor); // adiciona 'ms-3' pq ja existia antes
+    }
+
+    /**
+     * .
+     */
+    hideResultingNav() {
+        // inibe as opcoes resultantes:
+        this.navResult.addClass("d-none");
+        this.navDonate.addClass("d-none");
     }
 
     /* --- BOOTSTRAP CAROUSEL ------------------------------------------------------------------ */
@@ -96,14 +142,6 @@ class DomHelper {
     }
 
     /**
-     * .
-     */
-    firstSlide() {
-        // e navega para o primeiro item diretamente, simulando um slide-next ou nao:
-        this.bs5Carousel.carousel(0);
-    }
-
-    /**
      * Adiciona o html de um novo slide no carrocel e avanca para o mesmo.
      */
     nextSlide(htmlContent) {
@@ -127,6 +165,13 @@ class DomHelper {
     }
 
     /**
+     * .
+     */
+    getIntroHtml(selector) {
+        return selector ? $(selector).html() : null;
+    }
+
+    /**
      * Apresenta o slide introdutorio, conforme o cenario onde o usuario se encontra.
      */
     showIntroHtml(htmlContent) {
@@ -134,14 +179,12 @@ class DomHelper {
         this.innerCarousel.empty();
 
         // na apresentacao do slide introdutorio, nao precisa do range de progresso:
-        this.hideRangeProgress();
+        this.hideProgressRespond();
 
         // verifica se nao ha nenhuma inconsistencia nos dados, com cenario nao identificado:
         if (htmlContent) {
             // O slide introdutorio do teste sera incorporado e apresentado:
             this.addSlide(htmlContent);
-        } else {
-            console.error("Nao foi possivel adicionar o slide introdutorio ao carrocel.");
         }
     }
 
@@ -174,9 +217,9 @@ class DomHelper {
     /**
      * Configura o range de progresso para que o usuario possa se situar.
      */
-    initRangeProgress(minValue, maxValue, stepValue) {
+    initProgressRespond(minValue, maxValue, stepValue) {
         // exibe o range de progresso, para o usuario se situar:
-        this.rangeProgress.removeClass("d-none");
+        this.panelProgress.removeClass("d-none");
 
         // parametriza os valores minimo e maximo da regua de progresso.
         this.rangeInput.prop("min", minValue);
@@ -187,24 +230,16 @@ class DomHelper {
     /**
      * Inibe o range de progresso.
      */
-    hideRangeProgress() {
+    hideProgressRespond() {
         // inibe o range de progresso, pois o usuario nao precisa se situar:
-        this.rangeProgress.addClass("d-none");
+        this.panelProgress.addClass("d-none");
     }
 
     /**
      * .
      */
     updateProgress(newValue) {
-        //this.rangeProgress.val(newValue);
         this.rangeInput.val(newValue);
-        console.log(`updateProgress(${newValue}): ${$("#rangeTest").val()}`);
-    }
-
-    /* --- DOM UTILITIES ------------------------------------------------------------------ */
-
-    html(selector) {
-        return selector ? $(selector).html() : null;
     }
 }
 
