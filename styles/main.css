@@ -158,6 +158,8 @@ a i[class^='bi']:focus {
 .h-notify .badge {
     font-size: 0.94em;
     line-height: 1em;
+    color: #fff !important;
+    background-color: #2FB56A !important;
 }
 
 

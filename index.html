@@ -31,7 +31,7 @@
         <meta name="nightmode" content="enable/disable" />
         <meta name="imagemode" content="force" />
         <meta name="format-detection" content="telephone=no" />
-        <link rel="manifest" href="app.webmanifest" />
+        <!-- <link rel="manifest" href="app.webmanifest" /> -->
 
         <!-- Favicons for Desktop Browsers -->
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -77,7 +77,7 @@
         <meta name="msapplication-square150x150logo" content="icons/ms-icon-150x150.png" />
         <meta name="msapplication-square310x310logo" content="icons/ms-icon-310x310.png" />
         <meta name="msapplication-wide310x150logo" content="icons/ms-icon-310x150.png" />
-        <meta name="msapplication-config" content="browserconfig.xml" />
+        <!-- <meta name="msapplication-config" content="browserconfig.xml" /> -->
 
         <!-- Share on Social Networks -->
         <meta property="og:site_name" content="EXISTO.me" />
@@ -235,7 +235,7 @@
 
         <div id="cenarioBeginnerResume" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
+                <h2 class="h-notify"><span class="badge">#{1}...{0}</span></h2>
                 <h2 class="text-uppercase mb-3">Existem Questões Ainda Pendentes</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
@@ -259,7 +259,7 @@
 
         <div id="cenarioBeginnerNotify" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-danger">+{0}</span></h2>
+                <h2 class="h-notify"><span class="badge">+{0}</span></h2>
                 <h2 class="text-uppercase mb-3">Novas Questões para o Teste</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
@@ -271,7 +271,7 @@
 
         <div id="cenarioMajorResume" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
+                <h2 class="h-notify"><span class="badge">#{1}...{0}</span></h2>
                 <h2 class="text-uppercase mb-3">Existem Questões Ainda Pendentes</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
@@ -295,7 +295,7 @@
 
         <div id="cenarioMajorNotify" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-danger">+{0}</span></h2>
+                <h2 class="h-notify"><span class="badge">+{0}</span></h2>
                 <h2 class="text-uppercase mb-3">Novas Questões para o Teste</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
@@ -701,6 +701,10 @@
                 </div>
             </div>
         </div>
+
+        <!-- Play Sound -->
+        <audio id="audioRespond" src="assets/respond.mp3" preload="auto"></audio>
+        <audio id="audioFinish" src="assets/finish.mp3" preload="auto"></audio>
 
         <!-- Libraries Scripts -->
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>

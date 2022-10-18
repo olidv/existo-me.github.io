@@ -47,6 +47,8 @@ function showIntro() {
         //
     } else if (GlobalUser.testVersion == 1.0 && GlobalUser.testTotalDone < GlobalTest.testBasicLength) {
         // $CENARIO:BEGINNER-RESUME: USUARIO INICIOU VERSAO BASICA DO TESTE MAS NAO FINALIZOU
+        // altera o titulo do site para alertar sobre as questoes pendentes:
+        DOM.notifyTitle("#" + GlobalUser.testTotalDone + "..." + GlobalTest.testBasicLength);
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
         DOM.resetTitle();
         // como ainda nao tem resultado de teste, inibe as opcoes resultantes:
@@ -56,7 +58,7 @@ function showIntro() {
         htmlContent = htmlContent.formats(GlobalTest.testBasicLength, GlobalUser.testTotalDone);
         // apresenta opcoes [Retomar Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
-//
+        //
     } else if (GlobalUser.testVersion == 1.0 && GlobalUser.testTotalDone == GlobalTest.testBasicLength) {
         // $CENARIO:BEGINNER-RETAKE: USUARIO ACABOU DE FINALIZAR VERSAO BASICA DO TESTE
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
@@ -81,11 +83,11 @@ function showIntro() {
         htmlContent = htmlContent.formats(plusQueries);
         // apresenta opcoes[Continuar Teste Extra] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
-        //
+        //???
     } else if (GlobalUser.testVersion > 1.0 && GlobalUser.testTotalDone < GlobalTest.testAllLength) {
         // $CENARIO:MAJOR-RESUME: USUARIO INICIOU VERSAO EXTRA DO TESTE MAS NAO FINALIZOU
-        // como nao tem nenhuma notificacao, restaura o titulo original do site:
-        DOM.resetTitle();
+        // altera o titulo do site para alertar sobre as questoes pendentes:
+        DOM.notifyTitle("#" + GlobalUser.testTotalDone + "..." + GlobalTest.testAllLength);
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
         DOM.showNavResulting(GlobalUser.testCssColor);
         // exibe notificacao de questoes pendentes com valor: # user.testTotalExtra ... pgps.testExtraLength
@@ -192,9 +194,12 @@ function calculateScore() {
  * @param  {String} side Valor da propriedade side para calculo da pontuacao.
  */
 function respondTest(idQuery, item, rate, side) {
-    console.log(`respondTest(${idQuery}, ${item}, ${rate}, ${side})`);
+    // emite alerta sonoro quando o usuario escolhe uma opcao:
+    DOM.playRespond();
+
     // coleta resposta do usuario -> quizUserOpts e quizTotalDone++
     GlobalUser.addResponse(+item, +rate, +side);  // tem q converter p/ numericos
+    //console.log(`respondTest(${idQuery}, ${item}, ${rate}, ${side})`);
 
     // salva {estrutura-usuario} no local-storage
     GlobalUser.save();
@@ -219,6 +224,9 @@ function respondTest(idQuery, item, rate, side) {
 
         // ao final, exibe o resultado do teste para o usuario:
         showModalResult();
+
+        // emite alerta sonoro quando o usuario finaliza o teste:
+        DOM.playFinish();
     }
 }
 

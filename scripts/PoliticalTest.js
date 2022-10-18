@@ -103,6 +103,8 @@ class PoliticalTest {
      *
      */
     nextQuery() {
+        console.log(`quizCurrentQuery = ${this.quizCurrentQuery}`);
+        console.log(`quizListQueries[${this.quizListQueries.length}]`);
         if (this.quizCurrentQuery < this.quizLengthQueries) {
             return this.quizListQueries[this.quizCurrentQuery++];
         } else {

@@ -5,28 +5,32 @@
  *  controla o carrocel, o slider de progresso e qualquer outro componente associado.
  */
 class DomHelper {
-    // propriedades publicas: atributos do web site
+    // propriedades privadas: atributos do web site
     pageTitle;
 
-    // propriedades publicas: opcoes principais do site
+    // propriedades privadas: menu funcional do site
     navResult;
     navDonate; // a opcao para doacao somente aparece apos o usuario concluir o teste.
+
+    // propriedades privadas: componente carrocel
+    bs5Carousel;
+    innerCarousel;
+    prevControl;
+    nextControl;
+
+    // propriedades privadas: slider de progresso do questionario
+    panelProgress;
+    rangeInput;
+
+    // propriedades privadas: audios
+    audioRespond;
+    audioFinish;
 
     // propriedades publicas: componentes da modal setup
     labelSchemeColor;
     labelFontSize;
     labelSoundAlert;
     labelUserHistory;
-
-    // propriedades publicas: componente carrocel
-    bs5Carousel;
-    innerCarousel;
-    prevControl;
-    nextControl;
-
-    // propriedades publicas: slider de progresso do questionario
-    panelProgress;
-    rangeInput;
 
     /* --- INITIALIZATION ------------------------------------------------------------------ */
 
@@ -63,6 +67,10 @@ class DomHelper {
         // identifica o slider de progresso.
         this.panelProgress = $("#panelProgress");
         this.rangeInput = $("#rangeTest");
+
+        // identifica os arquivos de audios:
+        this.audioRespond = document.querySelector("#audioRespond");
+        this.audioFinish = document.querySelector("#audioFinish");
     }
 
     /* --- PAGE/DOCUMENT TITLE ------------------------------------------------------------------ */
@@ -272,6 +280,22 @@ class DomHelper {
      */
     updateRangeProgress(newValue) {
         this.rangeInput.val(newValue);
+    }
+
+    /* --- AUDIOS: PLAY SOUND ------------------------------------------------------------------ */
+
+    playRespond() {
+        // apenas emite o som se estiver configurado para tal:
+        if (GlobalSetup.isSoundOn) {
+            this.audioRespond.play();
+        }
+    }
+
+    playFinish() {
+        // apenas emite o som se estiver configurado para tal:
+        if (GlobalSetup.isSoundOn) {
+            this.audioFinish.play();
+        }
     }
 }
 

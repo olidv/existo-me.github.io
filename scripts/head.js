@@ -21,6 +21,14 @@ String.prototype.formats = String.prototype.formats || function () {
     return str;
 };
 
+/*
+ * .
+ *
+ */
+
+
+
+
 /* --- LOCAL STORAGE HELPER ------------------------------------------------------------------ */
 
 /** Classe helper para manutencao de valores e/ou objetos no storage do browser. */
@@ -158,7 +166,7 @@ class AppSetup {
         // valores default:
         this.schemeColor = "light";
         this.fontSize = "normal";
-        this.soundAlert = "on";
+        this.soundAlert = "off";
     }
 
     /**
