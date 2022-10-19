@@ -2,132 +2,227 @@
 
 /**
  * .
- *
- * @param  {Object} event .
  */
-function modalSetup_Refresh(event) {
-    // atualiza o label dos componentes baseando em seus valores atuais:
-    let label = DOM.labelSchemeColor.replace("{0}", GlobalSetup.labelSchemeColor);
-    $("#labelSchemeColor").text(label);
+class ModalSetup {
+    // propriedades privadas: rotulos dos componentes da modal setup
+    labelSchemeColor;
+    labelFontSize;
+    labelSoundAlert;
+    labelUserHistory;
 
-    label = DOM.labelFontSize.replace("{0}", GlobalSetup.labelFontSize);
-    $("#labelFontSize").text(label);
+    /* --- INITIALIZATION ------------------------------------------------------------------ */
 
-    label = DOM.labelSoundAlert.replace("{0}", GlobalSetup.labelSoundAlert);
-    $("#labelSoundAlert").text(label);
+    /**
+     * Inicializacao de nova instancia.
+     */
+    constructor() {
+        //
+    }
 
-    label = DOM.labelUserHistory.replace("{0}", GlobalUser.testTotalDone);
-    $("#labelUserHistory").text(label);
-    $("#clearUserHistory").prop("disabled", GlobalUser.testTotalDone == 0);
+    /**
+     * Inicializacao dos componentes jQuery.
+     */
+    ready() {
+        // efetua bind dos eventos para a modal de setup:
+        $("#modalSetup").on("show.bs.modal", {self: this}, this.onShow);
 
-}
+        // eventos para tratamento das alteracoes das preferencias:
+        $("#switchSchemeColor").change({ self: this }, this.switchSchemeColor_onChange);
+        $("#rangeFontSize").change({ self: this }, this.rangeFontSize_onChange);
+        $("#switchSoundAlert").change({ self: this }, this.switchSoundAlert_onChange);
+        $("#clearUserHistory").click({ self: this }, this.clearUserHistory_onClick);
 
-/**
- * .
- *
- * @param  {Object} event .
- */
-function modalSetup_Show(event) {
-    // atualiza os valores atuais das preferencias nos rotulos:
-    modalSetup_Refresh(event);
+        // obtem os templates para os rotulos a partir do proprio html.
+        this.labelSchemeColor = $("#labelSchemeColor").text();
+        this.labelFontSize = $("#labelFontSize").text();
+        this.labelSoundAlert = $("#labelSoundAlert").text();
+        this.labelUserHistory = $("#labelUserHistory").text();
+    }
 
-    // estado inicial das preferencias do usuario:
-    $("#switchSchemeColor").attr("checked", GlobalSetup.isSchemeDark);
-    $("#rangeFontSize").val(GlobalSetup.ordFontSize);
-    $("#switchSoundAlert").attr("checked", GlobalSetup.isSoundOn);
+    /** Rotulo para a preferencia Esquema de Cores. */
+    /**
+     * .
+     */
+    get labelSchemeColor() {
+        return GlobalUser.prefSchemeColor == "dark" ? "Escuro" : "Claro";
+    }
 
-    // se o usuario ainda nao respondeu o teste, desabilita o botao:
-    $("#clearUserHistory").prop("disabled", GlobalUser.testTotalDone == 0);
-}
+    /** Rotulo para a preferencia Esquema de Cores. */
+    /**
+     * .
+     */
+    get labelFontSize() {
+        switch (GlobalUser.prefFontSize) {
+            case "small": // 1 = small
+                return "Pequena";
+            case "normal": // 2 = normal
+                return "Normal";
+            case "large": // 3 = large
+                return "Grande";
+            case "huge": // 4 = huge
+                return "Maior";
+        }
+    }
 
-/**
- * .
- *
- * @param  {Object} event .
- */
-function switchSchemeColor_Change(event) {
-    // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-    GlobalSetup.isSchemeDark = this.checked;
+    /** Rotulo para a preferencia Esquema de Cores. */
+    /**
+     * .
+     */
+    get labelSoundAlert() {
+        return GlobalUser.prefSoundAlert == "on" ? "Ligado" : "Desligado";
+    }
 
-    // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
-    modalSetup_Refresh(event);
-}
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    onRefresh(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
 
-/**
- * .
- *
- * @param  {Object} event .
- */
-function rangeFontSize_Change(event) {
-    // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-    GlobalSetup.ordFontSize = this.value;
+        // atualiza o label dos componentes baseando em seus valores atuais:
+        let label = self.labelSchemeColor.replace("{0}", self.labelSchemeColor);
+        $("#labelSchemeColor").text(label);
 
-    // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
-    modalSetup_Refresh(event);
-}
+        label = self.labelFontSize.replace("{0}", self.labelFontSize);
+        $("#labelFontSize").text(label);
 
-/**
- * .
- *
- * @param  {Object} event .
- */
-function switchSoundAlert_Change(event) {
-    // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-    GlobalSetup.isSoundOn = this.checked;
+        label = self.labelSoundAlert.replace("{0}", self.labelSoundAlert);
+        $("#labelSoundAlert").text(label);
 
-    // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
-    modalSetup_Refresh(event);
-}
+        label = self.labelUserHistory.replace("{0}", GlobalUser.testQuizLength);
+        $("#labelUserHistory").text(label);
+        $("#clearUserHistory").prop("disabled", GlobalUser.testQuizLength == 0);
+    }
 
-/**
- * .
- *
- * @param  {Object} event .
- */
-function clearUserHistory_Click(event) {
-    // para evitar enganos, pede a confirmacao do usuario:
-    let isOk = confirm("Por favor, confirme a exclusão do seu histórico de respostas para o teste do GPS Político:");
-    if (isOk) {
-        // limpa todos os dados do teste do usuario:
-        GlobalUser.clear();
-        // apos apagar o historico, limpa o valor de questoes respondidas no rotulo:
-        modalSetup_Refresh(event);
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    onShow(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
 
-        // eh preciso atualizar o slide introdutorio, pq o usuario tem novo estado:
-        showIntro();
+        // atualiza os valores atuais das preferencias nos rotulos:
+        self.onRefresh(event);
+
+        // estado inicial das preferencias do usuario:
+        $("#switchSchemeColor").attr("checked", GlobalUser.isSchemeDark);
+        $("#rangeFontSize").val(GlobalUser.ordFontSize);
+        $("#switchSoundAlert").attr("checked", GlobalUser.isSoundOn);
+
+        // se o usuario ainda nao respondeu o teste, desabilita o botao:
+        $("#clearUserHistory").prop("disabled", GlobalUser.testQuizLength == 0);
+    }
+
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    switchSchemeColor_onChange(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
+
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        GlobalUser.isSchemeDark = this.checked;
+
+        // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
+        self.onRefresh(event);
+    }
+
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    rangeFontSize_onChange(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
+
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        GlobalUser.ordFontSize = this.value;
+
+        // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
+        self.onRefresh(event);
+    }
+
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    switchSoundAlert_onChange(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
+
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        GlobalUser.isSoundOn = this.checked;
+
+        // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
+        self.onRefresh(event);
+    }
+
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    clearUserHistory_onClick(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
+
+        // para evitar enganos, pede a confirmacao do usuario:
+        let isOk = confirm("Por favor, confirme a exclusão do seu histórico de respostas para o teste do GPS Político:");
+        if (isOk) {
+            // limpa todos os dados do teste do usuario:
+            GlobalUser.clear();
+
+            // apos apagar o historico, limpa o valor de questoes respondidas no rotulo:
+            self.onRefresh(event);
+
+            // eh preciso atualizar o slide introdutorio, pq o usuario tem novo estado:
+            showIntro();
+        }
     }
 }
+
+// Cria instancia global para controle da modal de preferencias:
+var GlobalSetup = new ModalSetup();
+
 
 /* --- MODAL RESULTADO ------------------------------------------------------------------ */
 
 /**
  * .
- *
  */
-function showModalResult() {
-    $("#modalResult").modal("show");
+class ModalResult {
+    // propriedades privadas: componentes da modal result
+
+    /* --- INITIALIZATION ------------------------------------------------------------------ */
+
+    /**
+     * Inicializacao de nova instancia.
+     */
+    constructor() {
+        //
+    }
+
+    /**
+     * Inicializacao dos componentes jQuery.
+     */
+    ready() {}
+
+    /**
+     * .
+     *
+     */
+    show() {
+        $("#modalResult").modal("show");
+    }
 }
 
-/* --- JQUERY: DOM READY ------------------------------------------------------------------ */
-
-// Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
-/**
- * .
- *
- */
-$(document).ready(function () {
-    ("use strict"); // sempre!
-
-    /* --- MODAL SETUP -------------------------------------------- */
-
-    // efetua bind dos eventos para a modal de setup:
-    $("#modalSetup").on("show.bs.modal", modalSetup_Show);
-    // eventos para tratamento das alteracoes das preferencias:
-    $("#switchSchemeColor").change(switchSchemeColor_Change);
-    $("#rangeFontSize").change(rangeFontSize_Change);
-    $("#switchSoundAlert").change(switchSoundAlert_Change);
-    $("#clearUserHistory").click(clearUserHistory_Click);
-
-    /* --- MODAL RESULTADO ------------------------------------------------- */
-
-});
+// Cria instancia global para controle da modal de preferencias:
+var GlobalResult = new ModalResult();

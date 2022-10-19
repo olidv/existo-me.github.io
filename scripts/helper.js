@@ -26,12 +26,6 @@ class DomHelper {
     audioRespond;
     audioFinish;
 
-    // propriedades publicas: componentes da modal setup
-    labelSchemeColor;
-    labelFontSize;
-    labelSoundAlert;
-    labelUserHistory;
-
     /* --- INITIALIZATION ------------------------------------------------------------------ */
 
     /**
@@ -51,12 +45,6 @@ class DomHelper {
         // obtem as referencias para as opcoes principais manipuladas ao longo do teste politico:
         this.navResult = $("#navResult");
         this.navDonate = $("#navDonate");
-
-        // obtem os templates para os rotulos a partir do proprio html.
-        this.labelSchemeColor = $("#labelSchemeColor").text();
-        this.labelFontSize = $("#labelFontSize").text();
-        this.labelSoundAlert = $("#labelSoundAlert").text();
-        this.labelUserHistory = $("#labelUserHistory").text();
 
         // inicializa o componente carrocel e identifica seus elementos internos:
         this.bs5Carousel = $("#carouselTest");
@@ -286,14 +274,14 @@ class DomHelper {
 
     playRespond() {
         // apenas emite o som se estiver configurado para tal:
-        if (GlobalSetup.isSoundOn) {
+        if (GlobalUser.isSoundOn) {
             this.audioRespond.play();
         }
     }
 
     playFinish() {
         // apenas emite o som se estiver configurado para tal:
-        if (GlobalSetup.isSoundOn) {
+        if (GlobalUser.isSoundOn) {
             this.audioFinish.play();
         }
     }
