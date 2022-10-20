@@ -7,6 +7,7 @@
     --ex-menu-bg-color: #ffffff;
     --ex-btn-bg-color: #212529;
     --ex-next-bg-color: rgba(0, 0, 0, 0.2);
+    --ex-border-color: #CED2D6;
 
     --ex-tx-size: 1.25rem;
 }
@@ -17,6 +18,7 @@
     --ex-menu-bg-color: #4C555D;
     --ex-btn-bg-color: #000000;
     --ex-next-bg-color: rgba(0, 0, 0, 0.4);
+    --ex-border-color: #222326;
 }
 
 [data-fonts="small"] {
@@ -86,6 +88,7 @@ footer {
     max-height: 100% !important;
     color: var(--ex-tx-color);
     background-color: var(--ex-bg-color);
+    border: 1px solid var(--ex-border-color);
 }
 
 @media (orientation: portrait) {
