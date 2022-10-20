@@ -40,9 +40,10 @@ To create a new version of the website Existo.me for your country, ...
 
 If this sounds like *gibberish* to you, no worries, just send me an e-mail: **united.sapiens.br@gmail.com**. You can send me your idea and/or content and I'll see what I can do.
 
-I really appreciate your help.
+- - -
+<br />
 
+<h4 align="right">:vulcan_salute:&nbsp; I really appreciate your help.</h4>
+<br />
 
-<br /><hr /><br />
-
-![Repository Banner](/assets/repo-banner.jpg)
+![Repository Meme](/assets/repo-meme.gif)
