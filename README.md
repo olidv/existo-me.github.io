@@ -12,6 +12,11 @@ GitHub Pages for hosting the website **EXISTO.me** with the Brazilian version of
 if you are interested you can also contribute...   :thumbsup:
 
 
+## Why jQuery?
+
+As a full stack web developer, I have been using the Angular framework in the last 5 years. This year I started studying the React framework, which is very requested in job offers. These frameworks are very good, but they don't compare to jQuery in terms of market share: 77.4% of all websites on the Internet use jQuery (October, 2022). My choice to use jQuery was based on the large number of developers who are not yet familiar with these new frameworks.
+
+
 ## How You Can Contribute
 
 You can help if you want, by editing this repo and adding new content - text, images, videos, audios...
