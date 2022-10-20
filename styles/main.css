@@ -1,21 +1,34 @@
 /*--- WEB SITE SETUP --------------------------------------------------*/
 
+/* data-theme="light", data-fonts="normal" */
 :root {
-    /*
-    */
     --ex-bg-color: #eeeeee;
     --ex-tx-color: #212529;
-
     --ex-menu-bg-color: #ffffff;
     --ex-btn-bg-color: #212529;
+    --ex-next-bg-color: rgba(0, 0, 0, 0.2);
+
+    --ex-tx-size: 1.25rem;
 }
 
 [data-theme="dark"] {
     --ex-bg-color: #343746;
     --ex-tx-color: #eeeeee;
-
     --ex-menu-bg-color: #4C555D;
     --ex-btn-bg-color: #000000;
+    --ex-next-bg-color: rgba(0, 0, 0, 0.4);
+}
+
+[data-fonts="small"] {
+    --ex-tx-size: 1.0rem;
+}
+
+[data-fonts="large"] {
+    --ex-tx-size: 1.50rem;
+}
+
+[data-fonts="huge"] {
+    --ex-tx-size: 1.75rem;
 }
 
 
@@ -132,6 +145,10 @@ a i[class^='bi']:focus {
     /*filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));*/
 }
 
+.lead {
+    font-size: var(--ex-tx-size) !important;
+}
+
 .h-nav {
     margin-top: 0;
     margin-bottom: 0;
@@ -187,11 +204,11 @@ a i[class^='bi']:focus {
         border-radius: 3rem;
         width: 3rem;
         height: 3rem;
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: var(--ex-next-bg-color);
     }
     .carousel-control-prev .carousel-control-prev-icon:hover,
     .carousel-control-next .carousel-control-next-icon:hover {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px var(--ex-next-bg-color);
     }
 }
 

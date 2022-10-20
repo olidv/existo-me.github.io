@@ -5,10 +5,10 @@
  */
 class ModalSetup {
     // propriedades privadas: rotulos dos componentes da modal setup
-    labelThemeColor;
-    labelFontSize;
-    labelSoundAlert;
-    labelUserHistory;
+    textThemeColor;
+    textFontSize;
+    textSoundAlert;
+    textUserHistory;
 
     /* --- INITIALIZATION ------------------------------------------------------------------ */
 
@@ -24,7 +24,7 @@ class ModalSetup {
      */
     ready() {
         // efetua bind dos eventos para a modal de setup:
-        $("#modalSetup").on("show.bs.modal", {self: this}, this.onShow);
+        $("#modalSetup").on("show.bs.modal", { self: this }, this.onShow);
 
         // eventos para tratamento das alteracoes das preferencias:
         $("#switchThemeColor").change({ self: this }, this.switchThemeColor_onChange);
@@ -33,17 +33,17 @@ class ModalSetup {
         $("#clearUserHistory").click({ self: this }, this.clearUserHistory_onClick);
 
         // obtem os templates para os rotulos a partir do proprio html.
-        this.labelThemeColor = $("#labelThemeColor").text();
-        this.labelFontSize = $("#labelFontSize").text();
-        this.labelSoundAlert = $("#labelSoundAlert").text();
-        this.labelUserHistory = $("#labelUserHistory").text();
+        this.textThemeColor = $("#labelThemeColor").text();
+        this.textFontSize = $("#labelFontSize").text();
+        this.textSoundAlert = $("#labelSoundAlert").text();
+        this.textUserHistory = $("#labelUserHistory").text();
     }
 
     /** Rotulo para a preferencia Esquema de Cores. */
     /**
      * .
      */
-    get labelThemeColor() {
+    get tagThemeColor() {
         return GlobalUser.prefThemeColor == "dark" ? "Escuro" : "Claro";
     }
 
@@ -51,7 +51,7 @@ class ModalSetup {
     /**
      * .
      */
-    get labelFontSize() {
+    get tagFontSize() {
         switch (GlobalUser.prefFontSize) {
             case "small": // 1 = small
                 return "Pequena";
@@ -68,7 +68,7 @@ class ModalSetup {
     /**
      * .
      */
-    get labelSoundAlert() {
+    get tagSoundAlert() {
         return GlobalUser.prefSoundAlert == "on" ? "Ligado" : "Desligado";
     }
 
@@ -82,16 +82,16 @@ class ModalSetup {
         let self = event.data.self;
 
         // atualiza o label dos componentes baseando em seus valores atuais:
-        let label = self.labelThemeColor.replace("{0}", self.labelThemeColor);
+        let label = self.textThemeColor.replace("{0}", self.tagThemeColor);
         $("#labelThemeColor").text(label);
 
-        label = self.labelFontSize.replace("{0}", self.labelFontSize);
+        label = self.textFontSize.replace("{0}", self.tagFontSize);
         $("#labelFontSize").text(label);
 
-        label = self.labelSoundAlert.replace("{0}", self.labelSoundAlert);
+        label = self.textSoundAlert.replace("{0}", self.tagSoundAlert);
         $("#labelSoundAlert").text(label);
 
-        label = self.labelUserHistory.replace("{0}", GlobalUser.testQuizLength);
+        label = self.textUserHistory.replace("{0}", GlobalUser.testQuizLength);
         $("#labelUserHistory").text(label);
         $("#clearUserHistory").prop("disabled", GlobalUser.testQuizLength == 0);
     }

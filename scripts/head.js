@@ -275,16 +275,10 @@ class AppUser {
      * Aplica as configuracoes da aplicacao e preferencias do usuario no web site.
      */
     setup() {
-        // elimina quaisquer estilos atualmente configurados:
-//        const cls = ["theme-light", "theme-dark", "font-small", "font-normal", "font-large", "font-huge"];
-//        document.documentElement.classList.remove(...cls);
-
-        // aplica as preferencias:
-        //document.documentElement.classList.add("theme-" + this.prefThemeColor, "font-" + this.prefFontSize);
+        // aplica as preferencias atualmente configuradas:
         document.documentElement.setAttribute("data-theme", this.prefThemeColor);
         document.documentElement.setAttribute("data-fonts", this.prefFontSize);
         document.documentElement.setAttribute("data-sound", this.prefSoundAlert);
-
 
         // se esta aplicando novas preferencias, melhor ja salvar os novos valores:
         this.save();
