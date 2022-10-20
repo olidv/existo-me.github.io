@@ -31,21 +31,21 @@ function showIntro() {
         //
     } else if (GlobalUser.testQuizVersion <= GlobalTest.testVersion && GlobalUser.testQuizLength == GlobalTest.testLength) {
         // $CENARIO:MAJOR-RESTART: USUARIO ACABOU DE FINALIZAR VERSAO BASICA DO TESTE
-        let cssColor = `icon-result-${GlobalUser.testCssColor}`;
-        let imgResult = `<img src="images/result/${GlobalUser.testFileImage}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
+        let cssColor = `icon-score-${GlobalUser.testPlaneScore}`;
+        let imgPlane = `<img src="images/score/${GlobalUser.testPlaneScore}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
         DOM.resetTitle();
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
         DOM.showNavResulting(cssColor);
         // exibe o espectro resultante da pontuacao no slide intro:
         let htmlContent = DOM.getIntroHtml("#cenarioMajorRestart");
-        htmlContent = htmlContent.formats(imgResult);
+        htmlContent = htmlContent.formats(imgPlane);
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //
     } else if (GlobalUser.testQuizVersion < GlobalTest.testVersion && GlobalUser.testQuizLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
-        let cssColor = `icon-result-${GlobalUser.testCssColor}`;
+        let cssColor = `icon-score-${GlobalUser.testPlaneScore}`;
         let plusQueries = GlobalTest.testLength - GlobalUser.testQuizLength;
         // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
         DOM.notifyTitle("+" + plusQueries);
@@ -115,8 +115,7 @@ function takeTest() {
 function calculateScore() {
     // GlobalTest.calculateQuiz();
     GlobalUser.testTotalScore = 123.45;
-    GlobalUser.testCssColor = "blue";
-    GlobalUser.testFileImage = "12";
+    GlobalUser.testPlaneScore = "23";
 }
 
 /**

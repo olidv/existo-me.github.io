@@ -306,15 +306,12 @@ a i[class^='bi']:focus {
     font-size: 1.4rem;
 }
 
-.icon-result-red,
-.icon-result-red .icon-nav {
-    color: red;
-}
-
-.icon-result-blue,
-.icon-result-blue .icon-nav {
-    color: blue;
-}
+.icon-score-13 .icon-nav { color: #800000; }
+.icon-score-12 .icon-nav { color: #BB2020; }
+.icon-score-11 .icon-nav { color: #FF4040; }
+.icon-score-21 .icon-nav { color: #4040FF; }
+.icon-score-22 .icon-nav { color: #2020BB; }
+.icon-score-23 .icon-nav { color: #000080; }
 
 .img-inline {
     display: inline-block;

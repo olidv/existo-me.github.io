@@ -157,8 +157,7 @@ class AppUser {
     testQuizLength = 0; // numero de questoes do teste respondidas ate o momento
     testQuizQueries = []; // respostas para as questoes respondidas
     testTotalScore = 0.0; // pontuacao calculada para as respostas
-    testCssColor = null; // coloracao correspondente a pontuacao obtida
-    testFileImage = null; // id do plano (figura) para a pontuacao obtida
+    testPlaneScore = null; // id da coloracao correspondente a pontuacao obtida
 
     /* --- INITIALIZATION ------------------------------------------------------------------ */
 
@@ -344,8 +343,7 @@ class AppUser {
         this.testQuizLength = 0;
         this.testQuizQueries = [];
         this.testTotalScore = 0.0;
-        this.testCssColor = null;
-        this.testFileImage = null;
+        this.testPlaneScore = null;
 
         // ...e tambem limpa o local-storage:
         this.save();
