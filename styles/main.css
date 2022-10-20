@@ -1,17 +1,21 @@
-/*--- THEME COLOR-SCHEME --------------------------------------------------*/
+/*--- WEB SITE SETUP --------------------------------------------------*/
 
-@media (prefers-color-scheme: light) {
-    :root {
-        --bg-color: #eeeeee;
-        --tx-color: #212529;
-    }
+:root {
+    /*
+    */
+    --ex-bg-color: #eeeeee;
+    --ex-tx-color: #212529;
+
+    --ex-menu-bg-color: #ffffff;
+    --ex-btn-bg-color: #212529;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color: #212529;
-        --tx-color: #eeeeee;
-    }
+[data-theme="dark"] {
+    --ex-bg-color: #343746;
+    --ex-tx-color: #eeeeee;
+
+    --ex-menu-bg-color: #4C555D;
+    --ex-btn-bg-color: #000000;
 }
 
 
@@ -67,7 +71,8 @@ footer {
     height: 100% !important;
     min-height: 100vh !important;
     max-height: 100% !important;
-    background-color: #eeeeee;
+    color: var(--ex-tx-color);
+    background-color: var(--ex-bg-color);
 }
 
 @media (orientation: portrait) {
@@ -116,9 +121,9 @@ a:focus,
 a:link,
 a:active,
 a:visited {
-    color: black;
-    outline: none;
     text-decoration: none;
+    outline: none;
+    color: var(--ex-tx-color);
 }
 
 a i[class^='bi']:hover,
@@ -131,6 +136,7 @@ a i[class^='bi']:focus {
     margin-top: 0;
     margin-bottom: 0;
     white-space: nowrap;
+    color: var(--ex-tx-color);
 }
 .h-nav:hover,
 .h-nav:focus {
@@ -190,15 +196,39 @@ a i[class^='bi']:focus {
 }
 
 
-/*--- TOASTS --------------------------------------------------*/
+/*--- MENU & TOAST --------------------------------------------------*/
+
+.dropdown-menu {
+    background-color: var(--ex-menu-bg-color);
+}
+
+.dropdown-header {
+    color: var(--ex-disabled-color);
+}
 
 .toast-header,
 .toast-body {
     color: black;
 }
 
+.btn-dark {
+    background-color: var(--ex-btn-bg-color) !important;
+}
+
+.btn-close {
+    color: var(--ex-tx-color) !important;
+}
+
+.table-setup {
+    color: var(--ex-tx-color) !important;
+}
 
 /*--- MODAL --------------------------------------------------*/
+
+.modal-content {
+    color: var(--ex-tx-color);
+    background-color: var(--ex-menu-bg-color);
+}
 
 .modal .modal-content .modal-body p,
 .modal .modal-content .modal-body li {
@@ -228,8 +258,8 @@ a i[class^='bi']:focus {
 }
 
 .icon-nav {
-    color: #212529;
     font-size: 1.8rem;
+    color: var(--ex-tx-color);
 }
 
 .icon-menu {
@@ -248,8 +278,8 @@ a i[class^='bi']:focus {
 }
 
 .icon-social {
-    color: #212529;
     font-size: 1.8rem;
+    color: var(--ex-tx-color);
 }
 
 .icon-cc {
@@ -271,7 +301,7 @@ a i[class^='bi']:focus {
     width: 2em;
     height: 2em;
     padding: 0.25em 0.25em;
-    color: #000;
+    color: var(--ex-tx-color);
     border: 0;
     border-radius: 0.375rem;
     opacity: .6;

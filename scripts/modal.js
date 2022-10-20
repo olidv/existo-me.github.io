@@ -5,7 +5,7 @@
  */
 class ModalSetup {
     // propriedades privadas: rotulos dos componentes da modal setup
-    labelSchemeColor;
+    labelThemeColor;
     labelFontSize;
     labelSoundAlert;
     labelUserHistory;
@@ -27,13 +27,13 @@ class ModalSetup {
         $("#modalSetup").on("show.bs.modal", {self: this}, this.onShow);
 
         // eventos para tratamento das alteracoes das preferencias:
-        $("#switchSchemeColor").change({ self: this }, this.switchSchemeColor_onChange);
+        $("#switchThemeColor").change({ self: this }, this.switchThemeColor_onChange);
         $("#rangeFontSize").change({ self: this }, this.rangeFontSize_onChange);
         $("#switchSoundAlert").change({ self: this }, this.switchSoundAlert_onChange);
         $("#clearUserHistory").click({ self: this }, this.clearUserHistory_onClick);
 
         // obtem os templates para os rotulos a partir do proprio html.
-        this.labelSchemeColor = $("#labelSchemeColor").text();
+        this.labelThemeColor = $("#labelThemeColor").text();
         this.labelFontSize = $("#labelFontSize").text();
         this.labelSoundAlert = $("#labelSoundAlert").text();
         this.labelUserHistory = $("#labelUserHistory").text();
@@ -43,8 +43,8 @@ class ModalSetup {
     /**
      * .
      */
-    get labelSchemeColor() {
-        return GlobalUser.prefSchemeColor == "dark" ? "Escuro" : "Claro";
+    get labelThemeColor() {
+        return GlobalUser.prefThemeColor == "dark" ? "Escuro" : "Claro";
     }
 
     /** Rotulo para a preferencia Esquema de Cores. */
@@ -82,8 +82,8 @@ class ModalSetup {
         let self = event.data.self;
 
         // atualiza o label dos componentes baseando em seus valores atuais:
-        let label = self.labelSchemeColor.replace("{0}", self.labelSchemeColor);
-        $("#labelSchemeColor").text(label);
+        let label = self.labelThemeColor.replace("{0}", self.labelThemeColor);
+        $("#labelThemeColor").text(label);
 
         label = self.labelFontSize.replace("{0}", self.labelFontSize);
         $("#labelFontSize").text(label);
@@ -109,7 +109,7 @@ class ModalSetup {
         self.onRefresh(event);
 
         // estado inicial das preferencias do usuario:
-        $("#switchSchemeColor").attr("checked", GlobalUser.isSchemeDark);
+        $("#switchThemeColor").attr("checked", GlobalUser.isThemeDark);
         $("#rangeFontSize").val(GlobalUser.ordFontSize);
         $("#switchSoundAlert").attr("checked", GlobalUser.isSoundOn);
 
@@ -122,12 +122,12 @@ class ModalSetup {
      *
      * @param  {Object} event .
      */
-    switchSchemeColor_onChange(event) {
+    switchThemeColor_onChange(event) {
         // obtem a instancia da classe modal:
         let self = event.data.self;
 
         // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
-        GlobalUser.isSchemeDark = this.checked;
+        GlobalUser.isThemeDark = this.checked;
 
         // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
         self.onRefresh(event);

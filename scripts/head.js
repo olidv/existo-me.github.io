@@ -146,7 +146,7 @@ class AppUser {
     name = null; // nome do usuario para emissao de certificado
 
     // propriedades publicas: preferencias do usuario
-    prefSchemeColor; // esquema de cores: light, dark
+    prefThemeColor; // esquema de cores: light, dark
     prefFontSize; // tamanho da fonte: small, normal, large, huge
     prefSoundAlert; // alerta sonoro: on, off
 
@@ -167,7 +167,7 @@ class AppUser {
      */
     constructor() {
         // valores default para as preferencias:
-        this.prefSchemeColor = "light";
+        this.prefThemeColor = "light";
         this.prefFontSize = "normal";
         this.prefSoundAlert = "off";
     }
@@ -202,14 +202,14 @@ class AppUser {
     /**
      * .
      */
-    get isSchemeDark() {
-        return this.prefSchemeColor == "dark";
+    get isThemeDark() {
+        return this.prefThemeColor == "dark";
     }
-    set isSchemeDark(val) {
+    set isThemeDark(val) {
         if (val) {
-            this.prefSchemeColor = "dark";
+            this.prefThemeColor = "dark";
         } else {
-            this.prefSchemeColor = "light";
+            this.prefThemeColor = "light";
         }
 
         // ao alterar qualquer propriedade, aplica as preferencias modificadas no web site:
@@ -276,11 +276,15 @@ class AppUser {
      */
     setup() {
         // elimina quaisquer estilos atualmente configurados:
-        const cls = ["scheme-light", "scheme-dark", "font-small", "font-normal", "font-large", "font-huge"];
-        document.documentElement.classList.remove(...cls);
+//        const cls = ["theme-light", "theme-dark", "font-small", "font-normal", "font-large", "font-huge"];
+//        document.documentElement.classList.remove(...cls);
 
         // aplica as preferencias:
-        document.documentElement.classList.add("scheme-" + this.prefSchemeColor, "font-" + this.prefFontSize);
+        //document.documentElement.classList.add("theme-" + this.prefThemeColor, "font-" + this.prefFontSize);
+        document.documentElement.setAttribute("data-theme", this.prefThemeColor);
+        document.documentElement.setAttribute("data-fonts", this.prefFontSize);
+        document.documentElement.setAttribute("data-sound", this.prefSoundAlert);
+
 
         // se esta aplicando novas preferencias, melhor ja salvar os novos valores:
         this.save();
