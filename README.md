@@ -1,7 +1,5 @@
 ## https://Existo-me.github.io/
 
-<p align="right">:one: Project One: April/2022 – ...</p>
-
 GitHub Pages for hosting the website **EXISTO.me** with the Brazilian version of the Political Spectrum Test. This is a static website, made with HTML5, CSS3 and ES6. The following list presents other software used in the development of the website:
 
 - Libraries: [Font Awesome 6.1.1](https://fontawesome.com/), [jQuery 3.6.0](https://jquery.com/)
