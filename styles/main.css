@@ -313,6 +313,12 @@ a i[class^='bi']:focus {
     color: blue;
 }
 
+.img-inline {
+    display: inline-block;
+    width: auto;
+    height: 3em;
+}
+
 .btn-nav {
     box-sizing: content-box;
     width: 2em;

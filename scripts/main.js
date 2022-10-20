@@ -35,9 +35,9 @@ function showIntro() {
         DOM.resetTitle();
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
         DOM.showNavResulting(GlobalUser.testCssColor);
-        // exibe a coloracao da pontuacao no slide intro:
+        // exibe o espectro resultante da pontuacao no slide intro:
         let htmlContent = DOM.getIntroHtml("#cenarioMajorRestart");
-        htmlContent = htmlContent.formats(GlobalUser.testCssColor);
+        htmlContent = htmlContent.formats(GlobalUser.testFileImage);
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //
@@ -113,7 +113,7 @@ function calculateScore() {
     // GlobalTest.calculateQuiz();
     GlobalUser.testTotalScore = 123.45;
     GlobalUser.testCssColor = "icon-result-blue";
-    GlobalUser.testFileImage = ``;
+    GlobalUser.testFileImage = "12.png";
 }
 
 /**
