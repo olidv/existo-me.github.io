@@ -14,12 +14,12 @@ if you are interested you can also contribute...   :thumbsup:
 
 ## Why jQuery?
 
-As a full stack web developer, I have been using the Angular framework in the last 5 years. This year I started studying the React framework, which is very requested in job offers. These frameworks are very good, but they don't compare to jQuery in terms of market share: 77.4% of all websites on the Internet use jQuery (October, 2022). My choice to use jQuery was based on the large number of developers who are not yet familiar with these new frameworks.
+As a Full Stack Web Developer, I have been using the Angular framework in the last 5 years. This year I started studying the React framework, which is very requested in job offers. These frameworks are very good, but they don't compare to jQuery in terms of market share: 77.4% of all websites on the Internet use jQuery (October, 2022). My decision for using jQuery was based on the large number of developers who are not yet familiar with these new frameworks.
 
 
 ## How You Can Contribute
 
-You can help if you want, by editing this repo and adding new content - text, images, videos, audios...
+You can help if you want, by editing this repo and adding new content - text, scripts, styles, images, ...
 
 Just follow the steps below:
 
@@ -37,7 +37,7 @@ Congrats and Thanks!
 
 ## How To Include New Country
 
-To create a new version of the website Existo.me for your country, ...
+It is very difficult to design a political spectrum test with generic questions for all countries. Often the ideology of one wing of the political spectrum only applies to a particular country. The Political GPS test considers that the questions to identify a person's ideology should be based on the context in which he lives. To design a political test for your country, you can copy this entire repository and build another website, with your questions in context. Eventually I will use subdomains like "br.existo.me" to distinguish between countries. In this case, I'll just redirect the domain "www.existo.me" to your site using your country's code as a subdomain.
 
 
 ## What If I Don't Program
