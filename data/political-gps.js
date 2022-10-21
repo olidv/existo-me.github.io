@@ -8,7 +8,6 @@ var dataPoliticalGps = {
     testQueries: [
         {
             idQuery: 1,
-            effects
             subject: "Pra lá , depois divoltis porris, paradis.Si num tem leite então bota uma pinga aí cumpadi!",
             choices: [
                 { text: "Suco de cevadiss, é um leite divinis, qui tem lupuliz, matis, aguis e fermentis.", rate: 2, side: -1 },
