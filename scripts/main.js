@@ -5,7 +5,7 @@
  */
 function showIntro() {
     // identifica o cenario de uso para definir qual painel introdutorio apresentar:
-    if (GlobalUser.testQuizVersion == 0 || GlobalUser.testQuizLength == 0) {
+    if (GlobalUser.testVersion == 0 || GlobalUser.testLength == 0) {
         // $CENARIO:BEGINNER-START: PRIMEIRA VISITA DO USUARIO, NAO INICIOU O TESTE BASICO
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
         DOM.resetTitle();
@@ -17,22 +17,22 @@ function showIntro() {
         // apresenta opcoes [Iniciar Teste Basico] [Como Funciona]
         DOM.showIntroHtml(htmlContent);
         //
-    } else if (GlobalUser.testQuizVersion == GlobalTest.testVersion && GlobalUser.testQuizLength < GlobalTest.testLength) {
+    } else if (GlobalUser.testVersion == GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:BEGINNER-RESUME: USUARIO INICIOU VERSAO BASICA DO TESTE MAS NAO FINALIZOU
         // altera o titulo do site para alertar sobre as questoes pendentes:
-        DOM.notifyTitle("#" + GlobalUser.testQuizLength + "..." + GlobalTest.testLength);
+        DOM.notifyTitle("#" + GlobalUser.testLength + "..." + GlobalTest.testLength);
         // como ainda nao tem resultado de teste, inibe as opcoes resultantes:
         DOM.hideNavResulting();
         // exibe notificacao de questoes pendentes com valor: # user.testTotalBasic ... pgps.testBasicLength
         let htmlContent = DOM.getIntroHtml("#cenarioBeginnerResume");
-        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalUser.testQuizLength);
+        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalUser.testLength);
         // apresenta opcoes [Retomar Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //
-    } else if (GlobalUser.testQuizVersion <= GlobalTest.testVersion && GlobalUser.testQuizLength == GlobalTest.testLength) {
+    } else if (GlobalUser.testVersion <= GlobalTest.testVersion && GlobalUser.testLength == GlobalTest.testLength) {
         // $CENARIO:MAJOR-RESTART: USUARIO ACABOU DE FINALIZAR VERSAO BASICA DO TESTE
-        let cssColor = `icon-score-${GlobalUser.testPlaneScore}`;
-        let imgPlane = `<img src="images/score/${GlobalUser.testPlaneScore}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
+        let cssColor = `icon-score-${GlobalUser.testScore.zone}`;
+        let imgPlane = `<img src="images/score/${GlobalUser.testScore.zone}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
         DOM.resetTitle();
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
@@ -43,10 +43,10 @@ function showIntro() {
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //
-    } else if (GlobalUser.testQuizVersion < GlobalTest.testVersion && GlobalUser.testQuizLength < GlobalTest.testLength) {
+    } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
-        let cssColor = `icon-score-${GlobalUser.testPlaneScore}`;
-        let plusQueries = GlobalTest.testLength - GlobalUser.testQuizLength;
+        let cssColor = `icon-score-${GlobalUser.testScore.zone}`;
+        let plusQueries = GlobalTest.testLength - GlobalUser.testLength;
         // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
         DOM.notifyTitle("+" + plusQueries);
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
@@ -63,22 +63,22 @@ function showIntro() {
  * .
  *
  */
-function slideNextQuery() {
+function slideNextQuest() {
     // $CENARIO:BEGINNER-TEST: obtem 1ª questao do teste
-    const query = GlobalTest.nextQuery();
-    console.table("slideNextQuery: ", query);
+    const question = GlobalTest.nextQuest();
+    console.table("slideNextQuest: ", question);
 
     // se ainda ha questoes a serem respondidas:
-    if (query != null) {
-        const item0 = query.choices[0];
-        const item1 = query.choices[1];
+    if (question != null) {
+        const option0 = question.options[0];
+        const option1 = question.options[1];
         // prepara template de div para carrocel com dados da questao
         let htmlContent = DOM.getIntroHtml("#templateRespondQuestion");
-        htmlContent = htmlContent.formats(GlobalTest.testLength, query.idQuery, query.subject, item0.text, item0.rate, item0.side, item1.text, item1.rate, item1.side);
+        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalTest.currentQuest, question.subject, option0.text, option1.text);
         // adiciona div como slide no carrocel e desloca para a questao
         DOM.nextSlide(htmlContent);
         // atualiza o range de progresso:
-        DOM.updateRangeProgress(query.idQuery);
+        DOM.updateRangeProgress(GlobalTest.currentQuest);
         // informa que processou proxima questao:
         return true;
     } else {
@@ -96,7 +96,7 @@ function takeTest() {
     GlobalUser.startQuiz(GlobalTest.testVersion);
 
     // inicializa teste com questoes de pgps.quizListBasicQueries
-    GlobalTest.initQuiz(GlobalUser.testQuizLength);
+    GlobalTest.initQuiz(GlobalUser.testLength);
 
     // desabilita a navegacao do carrocel com mouse ou teclado
     DOM.initCarouselRespond();
@@ -105,7 +105,7 @@ function takeTest() {
     DOM.showRangeProgress(1, GlobalTest.testLength, 1);
 
     // exibe a primeira questao do teste:
-    slideNextQuery();
+    slideNextQuest();
 }
 
 /**
@@ -114,31 +114,36 @@ function takeTest() {
  */
 function calculateScore() {
     // GlobalTest.calculateQuiz();
-    GlobalUser.testTotalScore = 123.45;
-    GlobalUser.testPlaneScore = "23";
+    GlobalUser.testScore = {
+        name: "Social Democrata",
+        side: "Esquerda",
+        zone: "11",
+        econ: 20,
+        dipl: 30,
+        govt: 40,
+        scty: 50,
+    };
+
+    // apos calcular o score do usuario, salva seus dados por garantia:
+    GlobalUser.save();
 }
 
 /**
  * .
  *
- * @param  {String} idQuery Numero da questao corrente.
- * @param  {String} item Sequencia da opcao (choices item) escolhida: 0 ou 1.
- * @param  {String} rate Valor da propriedade rate para calculo da pontuacao.
- * @param  {String} side Valor da propriedade side para calculo da pontuacao.
+ * @param  {String} idQuest Numero da questao corrente.
+ * @param  {String} option Sequencia da opcao (options item) escolhida: 0 ou 1.
  */
-function respondTest(idQuery, item, rate, side) {
+function respondTest(idQuest, option) {
     // emite alerta sonoro quando o usuario escolhe uma opcao:
     DOM.playRespond();
 
     // coleta resposta do usuario -> quizUserOpts e quizTotalDone++
-    GlobalUser.addResponse(+item, +rate, +side);  // tem q converter p/ numericos
-    //console.log(`respondTest(${idQuery}, ${item}, ${rate}, ${side})`);
-
-    // salva {estrutura-usuario} no local-storage
-    GlobalUser.save();
+    GlobalUser.addResponse(option); // tem q converter p/ numericos
+    //console.log(`respondTest(${idQuest}, ${item}, ${rate}, ${side})`);
 
     // se ainda ha questoes a serem respondidas
-    let hasNext = slideNextQuery();
+    let hasNext = slideNextQuest();
     console.log("hasNext = ", hasNext);
 
     // verifica se acabou as questoes:
@@ -148,9 +153,6 @@ function respondTest(idQuery, item, rate, side) {
 
         // calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
         calculateScore();
-
-        // salva {estrutura-usuario} no local-storage
-        GlobalUser.save();
 
         // aproveita para avancar para o proximo cenario:
         showIntro();
@@ -173,23 +175,23 @@ function reviewTest() {
     // somente adiciona as questoes se os slides das questoes ainda nao foram adicionados:
     if (DOM.lengthSlides <= 1) {
         // $CENARIO:BEGINNER-REVIEW
-        let idxItem = 0; // para obter as respostas do usuario
-        // loop de todas as questoes do teste: query <- pgps.quizListBasicQueries
-        for (let query = GlobalTest.nextQuery(); query != null; query = GlobalTest.nextQuery()) {
-            console.table(`reviewTest(): `, query);
+        let idQuestion = 0;
+        // loop de todas as questoes do teste: question <- pgps.quizListBasicQueries
+        for (let question = GlobalTest.nextQuest(); question != null; question = GlobalTest.nextQuest()) {
+            console.table(`reviewTest(): `, question);
 
             // obtem o texto das opcoes:
-            const item0Text = query.choices[0].text;
-            const item1Text = query.choices[1].text;
+            const option0Text = question.options[0].text;
+            const option1Text = question.options[1].text;
 
             // identifica para a questao selecionada a resposta do usuario:
-            const userChoice = GlobalUser.testQuizQueries[idxItem++];
-            const item0Checked = userChoice.item == 0 ? "checked" : "disabled";
-            const item1Checked = userChoice.item == 1 ? "checked" : "disabled";
+            const userChoice = GlobalUser.testChoices[idQuestion++];
+            const option0Checked = userChoice == 0 ? "checked" : "disabled";
+            const option1Checked = userChoice == 1 ? "checked" : "disabled";
 
             // prepara template (read-only) de div para carrocel com dados da questao
             let htmlContent = DOM.getIntroHtml("#templateReviewQuestion");
-            htmlContent = htmlContent.formats(GlobalTest.testLength, query.idQuery, query.subject, item0Text, item0Checked, item1Text, item1Checked);
+            htmlContent = htmlContent.formats(GlobalTest.testLength, idQuestion, question.subject, option0Text, option0Checked, option1Text, option1Checked);
 
             // adiciona div como slide no carrocel
             DOM.addBeforeSlide(htmlContent);

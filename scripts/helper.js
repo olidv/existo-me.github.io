@@ -97,7 +97,7 @@ class DomHelper {
         document.title = this.pageTitle;
     }
 
-    /* --- WEB SITE RESULT OPTIONS -------------------------------------------------------------- */
+    /* --- WEB SITE RESULT MENU -------------------------------------------------------------- */
 
     /**
      * .

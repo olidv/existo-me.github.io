@@ -155,7 +155,7 @@
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-nav"></i></a>
                     </li>
                     <li class="ms-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a central de ajuda do site."><i class="bi bi-question-square icon-nav"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a central de ajuda do site."><i class="bi bi-question-circle icon-nav"></i></a>
                     </li>
                     <li id="navDonate" class="ms-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Contribua com nossa iniciativa ajudando nosso projeto a crescer."><i class="bi bi-heart-pulse icon-nav"></i></a>
@@ -275,12 +275,12 @@
                 <h2 class="text-center m-3"><span class="badge bg-dark">#{1}...{0}</span></h2>
                 <p class="lead text-justify mb-3">{2}</p>
                 <div class="form-check m-3">
-                    <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção." tabindex="31" onclick="respondTest('{1}', '0', '{4}', '{5}')">
+                    <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção." tabindex="31" onclick="respondTest('{1}', '0')">
                     <label for="inputRadio-{1}0" class="form-check-label lead text-justify" title="Clique aqui para selecionar esta opção.">{3}</label>
                 </div>
                 <div class="form-check m-3">
-                    <input id="inputRadio-{1}1" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção."  tabindex="32"onclick="respondTest('{1}', '1', '{7}', '{8}')">
-                    <label for="inputRadio-{1}1" class="form-check-label lead text-justify" title="Clique aqui para selecionar esta opção.">{6}</label>
+                    <input id="inputRadio-{1}1" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção."  tabindex="32" onclick="respondTest('{1}', '1')">
+                    <label for="inputRadio-{1}1" class="form-check-label lead text-justify" title="Clique aqui para selecionar esta opção.">{4}</label>
                 </div>
             </div>
         </div>
@@ -507,7 +507,7 @@
                     <div class="modal-header">
                         <h4 class="modal-title"><i class="bi bi-gear"></i>&nbsp; Preferências</h4>
                         <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Se ficar em dúvida, consulte a central de ajuda.">
-                            <i class="bi bi-question-square"></i>
+                            <i class="bi bi-question-circle"></i>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -567,7 +567,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"><i class="bi bi-question-square"></i>&nbsp; Central de Ajuda</h4>
+                        <h4 class="modal-title"><i class="bi bi-question-circle"></i>&nbsp; Central de Ajuda</h4>
                         <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Aproveite e ajuste as preferências como desejar.">
                             <i class="bi bi-gear"></i>
                         </button>
@@ -579,7 +579,7 @@
                                 <a class="nav-link active" data-bs-toggle="tab" aria-current="page" href="#tabHelpHome">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-bs-toggle="tab" href="#tabHelpOptions">Menu</a>
+                                <a class="nav-link" data-bs-toggle="tab" href="#tabHelpMenu">Menu</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn-sm" data-bs-toggle="tab" href="#tabHelpTest">Teste</a>
@@ -625,14 +625,14 @@
                                 <p class="">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
                             </div>
 
-                            <div id="tabHelpOptions" class="tab-pane p-3 fade">
+                            <div id="tabHelpMenu" class="tab-pane p-3 fade">
                                 <h5><i class="bi bi-list"></i>&nbsp; Menu Contextual</h5>
                                 <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
 
                                 <h5><i class="bi bi-grid-3x2-gap"></i>&nbsp; Resultado do Teste</h5>
                                 <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
 
-                                <h5><i class="bi bi-question-square"></i>&nbsp; Central de Ajuda</h5>
+                                <h5><i class="bi bi-question-circle"></i>&nbsp; Central de Ajuda</h5>
                                 <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
 
                                 <h5><i class="bi bi-gear"></i>&nbsp; Preferências</h5>

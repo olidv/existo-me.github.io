@@ -151,13 +151,21 @@ class AppUser {
     prefSoundAlert; // alerta sonoro: on, off
 
     // propriedades publicas: teste do gps politico
-    testQuizVersion = 0.0; // numero da versao do teste respondido
-    testQuizStart = null; // data-hora em que iniciou o teste
-    testQuizFinal = null; // data-hora em que finalizou o teste
-    testQuizLength = 0; // numero de questoes do teste respondidas ate o momento
-    testQuizQueries = []; // respostas para as questoes respondidas
-    testTotalScore = 0.0; // pontuacao calculada para as respostas
-    testPlaneScore = null; // id da coloracao correspondente a pontuacao obtida
+    testVersion = 0.0; // numero da versao do teste respondido
+    testStart = null; // data-hora em que iniciou o teste
+    testFinal = null; // data-hora em que finalizou o teste
+    testLength = 0; // numero de questoes do teste respondidas ate o momento
+    testChoices = []; // respostas para as questoes respondidas
+    // pontuacao calculada para as respostas
+    testScore = {
+        name: null,
+        side: null,
+        zone: null,
+        econ: 0,
+        dipl: 0,
+        govt: 0,
+        scty: 0,
+    };
 
     /* --- INITIALIZATION ------------------------------------------------------------------ */
 
@@ -292,28 +300,23 @@ class AppUser {
      */
     startQuiz(testVersion) {
         // inicializa propriedades para sinalizar o inicio do teste politico:
-        this.testQuizVersion = testVersion;
-        this.testQuizStart = new Date();
+        this.testVersion = testVersion;
+        this.testStart = new Date();
     }
 
     /**
      * .
      *
-     * @param  {String} p .
-     * @param  {String} p .
-     * @param  {String} p .
+     * @param  {String} option .
      */
-    addResponse(item, rate, side) {
-        // deixa registrados todos os valores, para calcular a pontuacao posteriormente:
-        const choice = {
-            item: item,
-            rate: rate,
-            side: side,
-        };
-
+    addResponse(option) {
         // adiciona mais uma resposta do usuario:
-        this.testQuizLength++;
-        this.testQuizQueries.push(choice);
+        this.testLength++;
+        // deixa registradas todas as escolhas, para calcular a pontuacao posteriormente:
+        this.testChoices.push(option);
+
+        // ao adicionar nova resposta, salva os dados do usuario por garantia:
+        this.save();
     }
 
     /**
@@ -321,7 +324,7 @@ class AppUser {
      */
     stopQuiz() {
         // inicializa propriedades para sinalizar o encerramento do teste politico:
-        this.testQuizFinal = new Date();
+        this.testFinal = new Date();
     }
 
     /**
@@ -337,13 +340,21 @@ class AppUser {
      */
     clear() {
         // apaga as respostas do usuario...
-        this.testUserVersion = 0.0;
-        this.testQuizStart = null;
-        this.testQuizFinal = null;
-        this.testQuizLength = 0;
-        this.testQuizQueries = [];
-        this.testTotalScore = 0.0;
-        this.testPlaneScore = null;
+        this.testVersion = 0.0; // numero da versao do teste respondido
+        this.testStart = null; // data-hora em que iniciou o teste
+        this.testFinal = null; // data-hora em que finalizou o teste
+        this.testLength = 0; // numero de questoes do teste respondidas ate o momento
+        this.testChoices = []; // respostas para as questoes respondidas
+        // pontuacao calculada para as respostas
+        this.testScore = {
+            name: null,
+            side: null,
+            zone: null,
+            econ: 0,
+            dipl: 0,
+            govt: 0,
+            scty: 0,
+        };
 
         // ...e tambem limpa o local-storage:
         this.save();

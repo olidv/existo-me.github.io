@@ -7,10 +7,12 @@ class PoliticalTest {
     // propriedades publicas:
     testVersion = 0.0; // numero da versao do teste
     testLength = 0; // numero total de questoes do teste
-    testQueries = []; // lista de questoes a serem respondidas
+    testQuests = []; // lista de questoes a serem respondidas
+    testLabels = []; // denominacao para os eixos conforme a pontuacao (outcome):
+    testIdeals = [];  // relacao de ideologias resultantes do teste:
 
     // propriedades privadas: controle do generator de quetoes:
-    quizCurrentQuery = 0; // numero da questao corrente do teste em andamento
+    currentQuest = 0; // numero da questao corrente do teste em andamento
 
     /* --- INITIALIZATION ------------------------------------------------------------------ */
 
@@ -42,16 +44,16 @@ class PoliticalTest {
      * @param  {Number} currentQuery .
      */
     initQuiz(currentQuery) {
-        this.quizCurrentQuery = currentQuery;
+        this.currentQuest = currentQuery;
     }
 
     /**
      * .
      *
      */
-    nextQuery() {
-        if (this.quizCurrentQuery < this.testLength) {
-            return this.testQueries[this.quizCurrentQuery++];
+    nextQuest() {
+        if (this.currentQuest < this.testLength) {
+            return this.testQuests[this.currentQuest++];
         } else {
             return null;
         }
@@ -61,7 +63,7 @@ class PoliticalTest {
      * .
      *
      */
-    calculateQuiz() {}
+    calculateScore() {}
 }
 
 // Cria instancia global para gerenciar a aplicacao do teste politico:

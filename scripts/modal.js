@@ -91,9 +91,9 @@ class ModalSetup {
         label = self.textSoundAlert.replace("{0}", self.tagSoundAlert);
         $("#labelSoundAlert").text(label);
 
-        label = self.textUserHistory.replace("{0}", GlobalUser.testQuizLength);
+        label = self.textUserHistory.replace("{0}", GlobalUser.testLength);
         $("#labelUserHistory").text(label);
-        $("#clearUserHistory").prop("disabled", GlobalUser.testQuizLength == 0);
+        $("#clearUserHistory").prop("disabled", GlobalUser.testLength == 0);
     }
 
     /**
@@ -114,7 +114,7 @@ class ModalSetup {
         $("#switchSoundAlert").attr("checked", GlobalUser.isSoundOn);
 
         // se o usuario ainda nao respondeu o teste, desabilita o botao:
-        $("#clearUserHistory").prop("disabled", GlobalUser.testQuizLength == 0);
+        $("#clearUserHistory").prop("disabled", GlobalUser.testLength == 0);
     }
 
     /**
