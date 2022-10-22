@@ -96,7 +96,7 @@ function takeTest() {
     GlobalUser.startQuiz(GlobalTest.testVersion);
 
     // inicializa teste com questoes de pgps.quizListBasicQueries
-    GlobalTest.initQuiz(GlobalUser.testLength);
+    GlobalTest.initQuiz(GlobalUser.testLength, GlobalUser.testChoices);
 
     // desabilita a navegacao do carrocel com mouse ou teclado
     DOM.initCarouselRespond();
@@ -111,26 +111,6 @@ function takeTest() {
 /**
  * .
  *
- */
-function calculateScore() {
-    // GlobalTest.calculateQuiz();
-    GlobalUser.testScore = {
-        name: "Social Democrata",
-        side: "Esquerda",
-        zone: "11",
-        econ: 20,
-        dipl: 30,
-        govt: 40,
-        scty: 50,
-    };
-
-    // apos calcular o score do usuario, salva seus dados por garantia:
-    GlobalUser.save();
-}
-
-/**
- * .
- *
  * @param  {String} idQuest Numero da questao corrente.
  * @param  {String} option Sequencia da opcao (options item) escolhida: 0 ou 1.
  */
@@ -139,7 +119,9 @@ function respondTest(idQuest, option) {
     DOM.playRespond();
 
     // coleta resposta do usuario -> quizUserOpts e quizTotalDone++
-    GlobalUser.addResponse(option); // tem q converter p/ numericos
+    let idx = idQuest - 1;
+    GlobalTest.updateRate(idx, option);  // 0 index
+    GlobalUser.addChoice(option); // tem q converter p/ numericos
     //console.log(`respondTest(${idQuest}, ${item}, ${rate}, ${side})`);
 
     // se ainda ha questoes a serem respondidas
@@ -148,11 +130,11 @@ function respondTest(idQuest, option) {
 
     // verifica se acabou as questoes:
     if (!hasNext) {
-        // registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
-        GlobalUser.stopQuiz();
-
         // calcula a pontuacao do usuario -> quizUserScore, quizCssColor, quizFileImage
-        calculateScore();
+        let testScore = GlobalTest.calculateScore();
+
+        // registra a conclusao do teste: user.quizFlagOpen, quizDateFinal
+        GlobalUser.stopQuiz(testScore);
 
         // aproveita para avancar para o proximo cenario:
         showIntro();
@@ -170,7 +152,7 @@ function respondTest(idQuest, option) {
  */
 function reviewTest() {
     // inicializa teste com questoes de pgps.quizListBasicQueries
-    GlobalTest.initQuiz(0);
+    GlobalTest.initQuiz(0, []);
 
     // somente adiciona as questoes se os slides das questoes ainda nao foram adicionados:
     if (DOM.lengthSlides <= 1) {

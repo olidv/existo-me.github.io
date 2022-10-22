@@ -309,7 +309,7 @@ class AppUser {
      *
      * @param  {String} option .
      */
-    addResponse(option) {
+    addChoice(option) {
         // adiciona mais uma resposta do usuario:
         this.testLength++;
         // deixa registradas todas as escolhas, para calcular a pontuacao posteriormente:
@@ -322,9 +322,13 @@ class AppUser {
     /**
      * .
      */
-    stopQuiz() {
+    stopQuiz(score) {
         // inicializa propriedades para sinalizar o encerramento do teste politico:
         this.testFinal = new Date();
+        this.testScore = score;
+
+        // apos finalizar o teste, salva seus dados por garantia:
+        GlobalUser.save();
     }
 
     /**
