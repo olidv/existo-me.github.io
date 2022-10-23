@@ -200,6 +200,23 @@ var GlobalSetup = new ModalSetup();
  */
 class ModalResult {
     // propriedades privadas: componentes da modal result
+    btnShare;
+
+    // propriedades privadas: pontuacao do usuario nos eixos
+    equality;
+    peace;
+    liberty;
+    progress;
+    wealth;
+    might;
+    authority;
+    tradition;
+
+    // propriedades privadas: rotulos para os eixos
+    label_econ;
+    label_dipl;
+    label_govt;
+    label_scty;
 
     /* --- INITIALIZATION ------------------------------------------------------------------ */
 
@@ -213,7 +230,11 @@ class ModalResult {
     /**
      * Inicializacao dos componentes jQuery.
      */
-    ready() {}
+    ready() {
+        // efetua bind dos eventos para a modal de resultado:
+        $("#modalResult").on("show.bs.modal", { self: this }, this.onShow);
+        $("#btnShare").click({ self: this }, this.btnShare_onClick);
+    }
 
     /**
      * .
@@ -221,6 +242,80 @@ class ModalResult {
      */
     show() {
         $("#modalResult").modal("show");
+    }
+
+    /**
+     * .
+     *
+     */
+    #setBarValue(name, value) {
+        let bar = document.getElementById("bar-" + name);
+        bar.style.width = value + "%";
+
+        let rate = document.getElementById("rate-" + name);
+        rate.innerHTML = value + "%";
+
+        // se o valor for abaixo de 12%, nao vai caber:
+        if (value < 12) {
+            rate.style.visibility = "hidden";
+        }
+        // console.log(`rate.offsetWidth = ${rate.offsetWidth}`);
+        // console.log(`bar.offsetWidth = ${bar.offsetWidth}`);
+    }
+
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    onShow(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
+
+        // atualiza os valores dos rotulos dos eixos conforme score do usuario:
+        self.equality = 11.9;  //GlobalUser.testScore.econ;
+        self.wealth = 88.1;  //(100 - self.equality).toFixed(1);
+        self.peace = 40; // GlobalUser.testScore.dipl;
+        self.might = 60;  //(100 - self.peace).toFixed(1);
+        self.liberty = 25;  // GlobalUser.testScore.govt;
+        self.authority = 75;  // (100 - self.liberty).toFixed(1);
+        self.progress = 40;  // GlobalUser.testScore.scty;
+        self.tradition = 60;  // (100 - self.progress).toFixed(1);
+
+        // obtem os rotulos para os eixos:
+        self.label_econ = GlobalTest.getLabelEcon(GlobalUser.testScore.econ);
+        self.label_dipl = GlobalTest.getLabelDipl(GlobalUser.testScore.dipl);
+        self.label_govt = GlobalTest.getLabelGovt(GlobalUser.testScore.govt);
+        self.label_scty = GlobalTest.getLabelScty(GlobalUser.testScore.scty);
+
+        // aplica os valores a modal:
+        self.#setBarValue("equality", self.equality);
+        self.#setBarValue("wealth", self.wealth);
+        self.#setBarValue("peace", self.peace);
+        self.#setBarValue("might", self.might);
+        self.#setBarValue("liberty", self.liberty);
+        self.#setBarValue("authority", self.authority);
+        self.#setBarValue("progress", self.progress);
+        self.#setBarValue("tradition", self.tradition);
+
+        // obtem os rotulos para os eixos:
+        $("#economic-label").html(self.label_econ);
+        $("#diplomatic-label").html(self.label_dipl);
+        $("#state-label").html(self.label_govt);
+        $("#society-label").html(self.label_scty);
+
+        // informa a ideologia do usuario:
+        $("#ideology-label").html(GlobalUser.testScore.name);
+    }
+
+    /**
+     * .
+     *
+     * @param  {Object} event .
+     */
+    btnShare_onClick(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
     }
 }
 

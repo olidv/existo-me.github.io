@@ -149,7 +149,7 @@
                 </div>
                 <ul class="nav col-md-6 d-flex justify-content-end list-unstyled">
                     <li id="navResult" class="ms-3">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap-fill icon-nav"></i></a>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap icon-nav"></i></a>
                     </li>
                     <li class="ms-3">
                         <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-nav"></i></a>
@@ -483,18 +483,52 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"><i class="bi bi-grid-3x2-gap-fill icon-nav"></i>&nbsp; Resultado do Teste</h4>
+                        <h4 class="modal-title"><i class="bi bi-grid-3x3-gap icon-nav"></i>&nbsp; Resultado do Teste</h4>
                         <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Gostou do site? Que tal ajudar nosso projeto a crescer.">
                             <i class="bi bi-heart-pulse"></i>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h5>Título</h5>
-                        <p>...</p>
-                        <p>...</p>
-                        <br />
+
+<div class="alert alert-side alert-danger" role="alert">
+    <h5 class="h-axis text-danger text-center">Esquerda: <span id="ideology-label" class="weight-300"></span></h5>
+</div>
+
+<h5 class="h-axis">Eixo Econômico: <span id="economic-label" class="weight-300"></span></h5>
+<div class="axis">
+    <img class="img-axis" src="images/score/equality.svg"/>
+    <div id="bar-equality" class="bar bar-equality"><div id="rate-equality" class="text-rate">dfdf</div></div>
+    <div id="bar-wealth" class="bar bar-wealth"><div id="rate-wealth" class="text-rate"></div></div>
+    <img class="img-axis" src="images/score/markets.svg"/>
+</div>
+
+<h5 class="h-axis">Eixo Diplomático: <span id="diplomatic-label" class="weight-300"></span></h5>
+<div class="axis">
+    <img class="img-axis" src="images/score/nation.svg"/>
+    <div id="bar-might" class="bar bar-might"><div id="rate-might" class="text-rate"></div></div>
+    <div id="bar-peace" class="bar bar-peace"><div id="rate-peace" class="text-rate"></div></div>
+    <img class="img-axis" src="images/score/globe.svg"/>
+</div>
+
+<h5 class="h-axis">Eixo Civil: <span id="state-label" class="weight-300"></span></h5>
+<div class="axis">
+    <img class="img-axis" src="images/score/liberty.svg"/>
+    <div id="bar-liberty" class="bar bar-liberty"><div id="rate-liberty" class="text-rate"></div></div>
+    <div id="bar-authority" class="bar bar-authority"><div id="rate-authority" class="text-rate text-white"></div></div>
+    <img class="img-axis" src="images/score/authority.svg"/>
+</div>
+
+<h5 class="h-axis">Eixo Social: <span id="society-label" class="weight-300"></span></h5>
+<div class="axis">
+    <img class="img-axis" src="images/score/tradition.svg"/>
+    <div id="bar-tradition" class="bar bar-tradition"><div id="rate-tradition" class="text-rate"></div></div>
+    <div id="bar-progress" class="bar bar-progress"><div id="rate-progress" class="text-rate"></div></div>
+    <img class="img-axis" src="images/score/progress.svg"/>
+</div>
+
                     </div>
                     <div class="modal-footer">
+                        <button id="btnShare" type="button" class="btn btn-primary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-trigger="focus" data-bs-content="" title="O resultado do teste foi copiado para a área de transferência..."><i class="bi bi-share-fill"></i>&nbsp; Compartilhar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Clique para fechar"><i class="fa-solid fa-xmark"></i>&nbsp; Fechar</button>
                     </div>
                 </div>
@@ -629,7 +663,7 @@
                                 <h5><i class="bi bi-list"></i>&nbsp; Menu Contextual</h5>
                                 <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
 
-                                <h5><i class="bi bi-grid-3x2-gap"></i>&nbsp; Resultado do Teste</h5>
+                                <h5><i class="bi bi-grid-3x3-gap"></i>&nbsp; Resultado do Teste</h5>
                                 <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
 
                                 <h5><i class="bi bi-question-circle"></i>&nbsp; Central de Ajuda</h5>

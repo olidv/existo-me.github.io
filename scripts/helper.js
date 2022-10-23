@@ -104,13 +104,10 @@ class DomHelper {
      *
      * @param  {String} p .
      */
-    showNavResulting(cssColor) {
+    showNavResulting() {
         // apresenta as opcoes resultantes:
-        this.navResult.removeClass(); // limpa tudo, pq nao sabe qual a cor anterior
+        this.navResult.removeClass("d-none"); // limpa tudo, pq nao sabe qual a cor anterior
         this.navDonate.removeClass("d-none");
-
-        // adiciona a coloracao para a opcao de resultado:
-        this.navResult.addClass("ms-3 " + cssColor); // adiciona 'ms-3' pq ja existia antes
     }
 
     /**

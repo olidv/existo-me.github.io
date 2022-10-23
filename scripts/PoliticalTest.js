@@ -99,6 +99,10 @@ class PoliticalTest {
         }
     }
 
+    /**
+     * .
+     *
+     */
     updateRate(idx, option) {
         // identifica a questao e a respectiva escolha do usuario:
         let question = this.testQuests[idx];
@@ -114,20 +118,8 @@ class PoliticalTest {
      * .
      *
      */
-    calculateRate(sum, max) {
+    #calculateRate(sum, max) {
         return ((100 * (max + sum)) / (2 * max)).toFixed(1);
-    }
-
-    getLabel(val, axe) {
-        if (val > 100) { return "" } else
-        if (val > 90) { return axe[0]; } else
-        if (val > 75) { return axe[1]; } else
-        if (val > 60) { return axe[2]; } else
-        if (val >= 40) { return axe[3]; } else
-        if (val >= 25) { return axe[4]; } else
-        if (val >= 10) { return axe[5]; } else
-        if (val >= 0) { return axe[6]; } else
-        	{return ""}
     }
 
     /**
@@ -153,14 +145,14 @@ class PoliticalTest {
         let sum_scty = this.val_scty.reduce((a, b) => a + b, 0);
 
         // calcula os rates dos eixos:
-        userScore.econ = this.calculateRate(sum_econ, this.max_econ);
-        userScore.dipl = this.calculateRate(sum_dipl, this.max_dipl);
-        userScore.govt = this.calculateRate(sum_govt, this.max_govt);
-        userScore.scty = this.calculateRate(sum_scty, this.max_scty);
+        userScore.econ = this.#calculateRate(sum_econ, this.max_econ);
+        userScore.dipl = this.#calculateRate(sum_dipl, this.max_dipl);
+        userScore.govt = this.#calculateRate(sum_govt, this.max_govt);
+        userScore.scty = this.#calculateRate(sum_scty, this.max_scty);
 
         // identifica a ideologia do usuario:
         let userIdeal = null;
-        let ideodist = Infinity;
+        let minDist = Infinity;
         for (let i = 0; i < this.testIdeals.length; i++) {
             let ideal = this.testIdeals[i];
 
@@ -169,8 +161,8 @@ class PoliticalTest {
             dist += Math.pow(Math.abs(ideal.rate.dipl - userScore.dipl), 1.73856063);
             dist += Math.pow(Math.abs(ideal.rate.govt - userScore.govt), 2);
             dist += Math.pow(Math.abs(ideal.rate.scty - userScore.scty), 1.73856063);
-            if (dist < ideodist) {
-                ideodist = dist;
+            if (dist < minDist) {
+                minDist = dist;
                 userIdeal = ideal;
             }
         }
@@ -180,6 +172,64 @@ class PoliticalTest {
         userScore.zone = userIdeal.zone;
 
         return userScore;
+    }
+
+    /**
+     * .
+     *
+     */
+    #getLabel(val, axis) {
+        if (val > 100) {
+            return "";
+        } else if (val > 90) {
+            return axis[0];
+        } else if (val > 75) {
+            return axis[1];
+        } else if (val > 60) {
+            return axis[2];
+        } else if (val >= 40) {
+            return axis[3];
+        } else if (val >= 25) {
+            return axis[4];
+        } else if (val >= 10) {
+            return axis[5];
+        } else if (val >= 0) {
+            return axis[6];
+        } else {
+            return "";
+        }
+    }
+
+    /**
+     * .
+     *
+     */
+    getLabelEcon(val) {
+        return this.#getLabel(val, this.testLabels.econ);
+    }
+
+    /**
+     * .
+     *
+     */
+    getLabelDipl(val) {
+        return this.#getLabel(val, this.testLabels.dipl);
+    }
+
+    /**
+     * .
+     *
+     */
+    getLabelGovt(val) {
+        return this.#getLabel(val, this.testLabels.govt);
+    }
+
+    /**
+     * .
+     *
+     */
+    getLabelScty(val) {
+        return this.#getLabel(val, this.testLabels.scty);
     }
 }
 

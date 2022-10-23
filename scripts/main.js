@@ -31,12 +31,11 @@ function showIntro() {
         //
     } else if (GlobalUser.testVersion <= GlobalTest.testVersion && GlobalUser.testLength == GlobalTest.testLength) {
         // $CENARIO:MAJOR-RESTART: USUARIO ACABOU DE FINALIZAR VERSAO BASICA DO TESTE
-        let cssColor = `icon-score-${GlobalUser.testScore.zone}`;
         let imgPlane = `<img src="images/score/${GlobalUser.testScore.zone}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
         DOM.resetTitle();
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
-        DOM.showNavResulting(cssColor);
+        DOM.showNavResulting();
         // exibe o espectro resultante da pontuacao no slide intro:
         let htmlContent = DOM.getIntroHtml("#cenarioMajorRestart");
         htmlContent = htmlContent.formats(imgPlane);
@@ -45,12 +44,11 @@ function showIntro() {
         //
     } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
-        let cssColor = `icon-score-${GlobalUser.testScore.zone}`;
         let plusQueries = GlobalTest.testLength - GlobalUser.testLength;
         // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
         DOM.notifyTitle("+" + plusQueries);
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
-        DOM.showNavResulting(cssColor);
+        DOM.showNavResulting();
         // exibe notificacao de novas questoes com valor: + pgps.testExtraLength
         let htmlContent = DOM.getIntroHtml("#cenarioMajorNotify");
         htmlContent = htmlContent.formats(plusQueries);
@@ -209,6 +207,9 @@ function retakeTest() {
  */
 $(document).ready(function () {
     ("use strict"); // sempre!
+
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map((popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl));
 
     // Efetua inicializacao das referencias internas do DOM.
     DOM.ready();
