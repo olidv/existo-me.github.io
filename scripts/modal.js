@@ -200,16 +200,16 @@ var GlobalSetup = new ModalSetup();
  */
 class ModalResult {
     // propriedades privadas: componentes da modal result
-    btnShare;
-
+    clipboard;
+    
     // propriedades privadas: pontuacao do usuario nos eixos
     equality;
-    peace;
+    market;
+    global;
+    national;
     liberty;
-    progress;
-    wealth;
-    might;
     authority;
+    progress;
     tradition;
 
     // propriedades privadas: rotulos para os eixos
@@ -233,7 +233,7 @@ class ModalResult {
     ready() {
         // efetua bind dos eventos para a modal de resultado:
         $("#modalResult").on("show.bs.modal", { self: this }, this.onShow);
-        $("#btnShare").click({ self: this }, this.btnShare_onClick);
+        //$("#btnShare").click({ self: this }, this.btnShare_onClick);
     }
 
     /**
@@ -259,8 +259,6 @@ class ModalResult {
         if (value < 12) {
             rate.style.visibility = "hidden";
         }
-        // console.log(`rate.offsetWidth = ${rate.offsetWidth}`);
-        // console.log(`bar.offsetWidth = ${bar.offsetWidth}`);
     }
 
     /**
@@ -273,14 +271,14 @@ class ModalResult {
         let self = event.data.self;
 
         // atualiza os valores dos rotulos dos eixos conforme score do usuario:
-        self.equality = 11.9;  //GlobalUser.testScore.econ;
-        self.wealth = 88.1;  //(100 - self.equality).toFixed(1);
-        self.peace = 40; // GlobalUser.testScore.dipl;
-        self.might = 60;  //(100 - self.peace).toFixed(1);
-        self.liberty = 25;  // GlobalUser.testScore.govt;
-        self.authority = 75;  // (100 - self.liberty).toFixed(1);
-        self.progress = 40;  // GlobalUser.testScore.scty;
-        self.tradition = 60;  // (100 - self.progress).toFixed(1);
+        self.equality = GlobalUser.testScore.econ;
+        self.market = (100 - self.equality).toFixed(1);
+        self.global = GlobalUser.testScore.dipl;
+        self.national = (100 - self.global).toFixed(1);
+        self.liberty = GlobalUser.testScore.govt;
+        self.authority = (100 - self.liberty).toFixed(1);
+        self.progress = GlobalUser.testScore.scty;
+        self.tradition = (100 - self.progress).toFixed(1);
 
         // obtem os rotulos para os eixos:
         self.label_econ = GlobalTest.getLabelEcon(GlobalUser.testScore.econ);
@@ -290,13 +288,13 @@ class ModalResult {
 
         // aplica os valores a modal:
         self.#setBarValue("equality", self.equality);
-        self.#setBarValue("wealth", self.wealth);
-        self.#setBarValue("peace", self.peace);
-        self.#setBarValue("might", self.might);
+        self.#setBarValue("market", self.market);
+        self.#setBarValue("national", self.national);
+        self.#setBarValue("global", self.global);
         self.#setBarValue("liberty", self.liberty);
         self.#setBarValue("authority", self.authority);
-        self.#setBarValue("progress", self.progress);
         self.#setBarValue("tradition", self.tradition);
+        self.#setBarValue("progress", self.progress);
 
         // obtem os rotulos para os eixos:
         $("#economic-label").html(self.label_econ);
@@ -304,8 +302,26 @@ class ModalResult {
         $("#state-label").html(self.label_govt);
         $("#society-label").html(self.label_scty);
 
-        // informa a ideologia do usuario:
-        $("#ideology-label").html(GlobalUser.testScore.name);
+        // informa a ideologia de esquerda do usuario:
+        if (GlobalUser.testScore.side == 1) {
+            // apresenta apenas o alerta da esquerda:
+            $("#alert-left").removeClass("d-none");
+            $("#alert-right").addClass("d-none");
+            // informa a ideologia do usuario:
+            $("#label-left").text(GlobalUser.testScore.name);
+        }
+        // informa a ideologia de direita do usuario:
+        else {
+            // apresenta apenas o alerta da direita:
+            $("#alert-left").removeClass("d-none");
+            $("#alert-right").addClass("d-none");
+            // informa a ideologia do usuario:
+            $("#label-right").text(GlobalUser.testScore.name);
+        }
+
+        // elabora o texto para o clipboard:
+        let clip = $("#alert-left").data("emoji");
+        console.log("data = ", clip);
     }
 
     /**
@@ -313,10 +329,13 @@ class ModalResult {
      *
      * @param  {Object} event .
      */
-    btnShare_onClick(event) {
-        // obtem a instancia da classe modal:
-        let self = event.data.self;
-    }
+    // btnShare_onClick(event) {
+    //     // obtem a instancia da classe modal:
+    //     let self = event.data.self;
+
+    //     //
+
+    // }
 }
 
 // Cria instancia global para controle da modal de preferencias:

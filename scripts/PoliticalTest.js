@@ -67,6 +67,10 @@ class PoliticalTest {
             this.max_govt += Math.abs(this.testQuests[i].outcome.govt);
             this.max_scty += Math.abs(this.testQuests[i].outcome.scty);
         }
+        console.log("this.max_econ = ", this.max_econ);
+        console.log("this.max_dipl = ", this.max_dipl);
+        console.log("this.max_govt = ", this.max_govt);
+        console.log("this.max_scty = ", this.max_scty);
 
         // inicializa os arrays de soma da pontuacao:
         this.val_econ = new Array(this.testlength);
@@ -137,30 +141,45 @@ class PoliticalTest {
             govt: 0,
             scty: 0,
         };
+        console.table("this.val_econ = ", this.val_econ);
+        console.table("this.val_dipl = ", this.val_dipl);
+        console.table("this.val_govt = ", this.val_govt);
+        console.table("this.val_scty = ", this.val_scty);
 
         // soma todos os scores dos 4 eixos
         let sum_econ = this.val_econ.reduce((a, b) => a + b, 0);
         let sum_dipl = this.val_dipl.reduce((a, b) => a + b, 0);
         let sum_govt = this.val_govt.reduce((a, b) => a + b, 0);
         let sum_scty = this.val_scty.reduce((a, b) => a + b, 0);
+        console.log("sum_econ = ", sum_econ);
+        console.log("sum_dipl = ", sum_dipl);
+        console.log("sum_govt = ", sum_govt);
+        console.log("sum_scty = ", sum_scty);
 
         // calcula os rates dos eixos:
         userScore.econ = this.#calculateRate(sum_econ, this.max_econ);
         userScore.dipl = this.#calculateRate(sum_dipl, this.max_dipl);
         userScore.govt = this.#calculateRate(sum_govt, this.max_govt);
         userScore.scty = this.#calculateRate(sum_scty, this.max_scty);
+        console.table("userScore = ", userScore);
 
         // identifica a ideologia do usuario:
         let userIdeal = null;
         let minDist = Infinity;
         for (let i = 0; i < this.testIdeals.length; i++) {
             let ideal = this.testIdeals[i];
+            console.table("ideal = ", ideal);
 
             let dist = 0;
             dist += Math.pow(Math.abs(ideal.rate.econ - userScore.econ), 2);
+            console.log(`dist = ${dist}`);
             dist += Math.pow(Math.abs(ideal.rate.dipl - userScore.dipl), 1.73856063);
+            console.log(`dist = ${dist}`);
             dist += Math.pow(Math.abs(ideal.rate.govt - userScore.govt), 2);
+            console.log(`dist = ${dist}`);
             dist += Math.pow(Math.abs(ideal.rate.scty - userScore.scty), 1.73856063);
+            console.log(`dist = ${dist}`);
+            console.log("--------------------------------");
             if (dist < minDist) {
                 minDist = dist;
                 userIdeal = ideal;

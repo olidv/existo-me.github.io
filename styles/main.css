@@ -516,44 +516,44 @@ div.bar {
     width: 50%;
 }
 div.bar-equality {
-    background-color: #f44336;
+    background-color: #FDCB58;
     text-align: left;
     border-right-style: solid;
 }
-div.bar-wealth {
-    background-color: #00897b;
+div.bar-market {
+    background-color: #C1694F;
+    text-align: right;
+    border-left-style: solid;
+}
+div.bar-global {
+    background-color: #78B159;
+    text-align: left;
+    border-right-style: solid;
+}
+div.bar-national {
+    background-color: #AA8ED6;
     text-align: right;
     border-left-style: solid;
 }
 div.bar-liberty {
-    background-color: #ffeb3b;
+    background-color: #F4900C;
     text-align: left;
     border-right-style: solid;
 }
 div.bar-authority {
-    background-color: #3f51b5;
+    background-color: #61676D;
     text-align: right;
     border-left-style: solid;
-}
-div.bar-peace {
-    background-color: #03a9f4;
-    text-align: right;
-    border-left-style: solid;
-}
-div.bar-might {
-    background-color: #ff9800;
-    text-align: left;
-    border-right-style: solid;
 }
 div.bar-progress {
-    background-color: #9c27b0;
-    text-align: right;
-    border-left-style: solid;
-}
-div.bar-tradition {
-    background-color: #8bc34a;
+    background-color: #DD2E44;
     text-align: left;
     border-right-style: solid;
+}
+div.bar-tradition {
+    background-color: #55ACEE;
+    text-align: right;
+    border-left-style: solid;
 }
 
 
