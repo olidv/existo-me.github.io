@@ -148,6 +148,16 @@ a i[class^='bi']:focus {
     /*filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));*/
 }
 
+#modalHelp .modal-body a,
+#modalHelp .modal-body a:hover,
+#modalHelp .modal-body a:focus,
+#modalHelp .modal-body a:link,
+#modalHelp .modal-body a:active,
+#modalHelp .modal-body a:visited {
+    color: #186A3B;
+    text-decoration: underline;
+}
+
 .lead {
     font-size: var(--ex-tx-size) !important;
 }
@@ -184,8 +194,8 @@ a i[class^='bi']:focus {
 .h-notify .badge {
     font-size: 0.94em;
     line-height: 1em;
-    color: #fff !important;
-    background-color: #2FB56A !important;
+    /* color: #fff !important;
+    background-color: #2FB56A !important; */
 }
 
 .em-obras {

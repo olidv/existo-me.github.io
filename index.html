@@ -233,7 +233,7 @@
 
         <div id="cenarioBeginnerResume" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge">#{1}...{0}</span></h2>
+                <h2 class="h-notify"><span class="badge text-bg-warning">#{1}...{0}</span></h2>
                 <h2 class="text-uppercase mb-3">Existem Questões Ainda Pendentes</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
@@ -259,7 +259,7 @@
 
         <div id="cenarioMajorNotify" class="d-none" tabindex="-1">
             <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge">+{0}</span></h2>
+                <h2 class="h-notify"><span class="badge text-bg-warning">+{0}</span></h2>
                 <h2 class="text-uppercase mb-3">Novas Questões para o Teste</h2>
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
@@ -272,7 +272,7 @@
 
         <div id="templateRespondQuestion" class="d-none" tabindex="-1">
             <div class="carousel-item text-center">
-                <h2 class="text-center m-3"><span class="badge bg-dark">#{1}...{0}</span></h2>
+                <h2 class="text-center m-3"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
                 <p class="lead text-justify mb-3">{2}</p>
                 <div class="form-check m-3">
                     <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção." tabindex="31" onclick="respondTest('{1}', '0')">
@@ -287,7 +287,7 @@
 
         <div id="templateReviewQuestion" class="d-none" tabindex="-1">
             <div class="carousel-item text-center">
-                <h2 class="text-center m-3"><span class="badge bg-dark">#{1}...{0}</span></h2>
+                <h2 class="text-center m-3"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
                 <p class="lead text-justify mb-3">{2}</p>
                 <div class="form-check m-3">
                     <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" {4}>
@@ -623,86 +623,95 @@
                         <div class="tab-content">
                             <div id="tabHelpHome" class="tab-pane p-3 active">
                                 <h5>Layout do Site</h5>
-                                <p>Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-                                <img src="images/layout-banner.jpg" class="img-fluid img-thumbnail mb-5" alt="Layout do Site" />
+                                <p>O web site EXISTO.me é uma aplicação composta por uma única página principal, chamada Home. Em termos mais técnicos, o site é considerado uma “<a href="https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica" title="https://pt.wikipedia.org/wiki/Aplicativo_de_p%C3%A1gina_%C3%BAnica" target="_blank">Single Page Application</a>” (SPA), ou aplicação de página única. Não há abertura ou redirecionamento para outras páginas (dentro do domínio www.existo.me) ao utilizar o site, toda a operação e navegação no site é feita em uma única página designada “index.html”.</p>
+                                <p>A página principal é formada por três seções com subdivisões: (1) Menu Principal (dividido entre Menu de Contexto e Menu Funcional), (2) Conteúdo Principal onde é aplicado o Teste GPS Político e (3) Barra Expediente (dividida entre Autoria do Site e Redes Sociais). A figura abaixo indica as subdivisões da Home.</p>
+
+                                <img src="images/layout-banner.jpg" class="img-fluid img-thumbnail mb-4" alt="Layout do Site" />
 
                                 <h5>1. Menu Contextual</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">Ao clicar no ícone [ <i class="fa-solid fa-bars"></i> ] o menu contextual é aberto, apresentando algumas opções sobre o EXISTO.me, voltadas à descrição da aplicação, e sobre a “<a href="https://github.com/united-sapiens" title="https://github.com/united-sapiens" target="_blank">United Sapiens</a>”, a iniciativa por trás do projeto.</p>
 
                                 <h5>2. Menu Funcional</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">O menu funcional é composto por uma relação de ícones intuitivos, onde cada ícone executa uma funcionalidade distinta. Alguns ícones possuem funcionalidade atrelada à aplicação do teste, e somente são exibidos após o usuário completar o teste político.</p>
 
                                 <h5>3. Teste GPS Político</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">O teste do GPS Político é aplicado na parte central da página, onde se encontram os textos explicativos e botões de navegação. O conteúdo apresentado se modifica conforme o usuário inicia e conclui o teste.</p>
 
                                 <h5>4. Autoria do Site</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">Na barra de expediente à esquerda é apresentado o nome do desenvolvedor, e um indicativo de que o conteúdo do site está licenciado pela <a href="https://creativecommons.org/licenses/by/4.0/" title="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons BY</a>. Esta licença permite que outros desenvolvedores distribuam, adaptem e criem a partir deste trabalho, mesmo para fins comerciais, desde que lhe atribuam o devido crédito pela criação original. Ao clicar autoria do site, a página no GitHub do desenvolvedor é aberta em outra aba.</p>
 
                                 <h5>5. Redes Sociais</h5>
-                                <p class="">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-                            </div>
-
-                            <div id="tabHelpTest" class="tab-pane p-3 fade">
-                                <h5>Título</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-
-                                <h5>Título</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-
-                                <h5>Título</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-
-                                <h5>Título</h5>
-                                <p class="">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">A iniciativa United Sapiens, responsável por este projeto, está presente em algumas redes sociais, cujos ícones são relacionados na barra de expediente à direita. Cada ícone direciona para a respectiva rede social.</p>
                             </div>
 
                             <div id="tabHelpMenu" class="tab-pane p-3 fade">
-                                <h5><i class="bi bi-list"></i>&nbsp; Menu Contextual</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <h5>Acesso aos Menus</h5>
+                                <p class="mb-4">O menu da aplicação pode ser acessado utilizando-se o mouse para clicar sobre cada opção/ícone. Também é possível utilizar o teclado, através da tecla [TAB], para navegar entre as opções/ícones e em seguida [ENTER] para selecionar a opção.</p>
+
+                                <h5><i class="bi bi-list"></i>&nbsp; Opções do Menu Contextual</h5>
+                                <p class="mb-4">Cada opção do menu contextual abre uma pequena janela popup (modal) onde é apresentado um texto descritivo de determinado tópico. Acima do título em cada janela popup é disponibilizado um ícone [<i class="fa-solid fa-forward"></i>] para navegar entre os tópicos. As opções para descrição da iniciativa United Sapiens abrem páginas externas, sempre em outra aba. A última opção do menu contextual é um link para envio de e-mail ao autor do site, caso tenha alguma observação, crítica, sugestão ou dúvida sobre a aplicação e/ou projeto.</p>
 
                                 <h5><i class="bi bi-grid-3x3-gap"></i>&nbsp; Resultado do Teste</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">Esta opção somente é apresentada após o usuário finalizar o teste. É aberta uma janela popup (modal) apresentando as estatísticas resultantes do teste do GPS político. Se o usuário desejar compartilhar seu resultado, basta clicar no botão [COMPARTILHAR] na parte inferior da janela. Um pequeno texto formatado é copiado para a área de transferência – o usuário pode postar este conteúdo em suas redes sociais. Este conteúdo possui caracteres especiais de emojis, nem todas as redes sociais suportam a digitação de caracteres de emoji. Até o momento foram realizados testes com sucesso com o Twitter, Facebook, WhatsApp e Telegram. Estamos prosseguindo com mais testes...</p>
 
                                 <h5><i class="bi bi-question-circle"></i>&nbsp; Central de Ajuda</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">A opção de ajuda abre esta janela popup. Caso o usuário não consiga dirimir suas dúvidas com o conteúdo aqui exposta, pode clicar no botão [DÚVIDAS?] na parte inferior para enviar e-mail ao desenvolvedor. Por favor, se presenciar algum erro ou “bug” na aplicação, não esqueça de mencionar a sequência de passos efetuados para que possamos repetir o erro no ambiente de desenvolvimento.</p>
 
                                 <h5><i class="bi bi-gear"></i>&nbsp; Preferências</h5>
-                                <p class="mb-5">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p>A janela de preferências permite ao usuário customizar sua experiência de uso da aplicação.</p>
+
+                                <ul class="mb-4">
+                                    <li>A opção [Esquema de Cores] permite alternar o esquema de cores da aplicação, entre claro e escuro.</li>
+                                    <li>A opção [Tamanho da Fonte] permite aumentar ou reduzir o tamanho do texto para melhorar a legibilidade dos testes.</li>
+                                    <li>A opção [Alertas Sonoros] permite ligar ou desligar a emissão de sons durante a execução do teste.</li>
+                                    <li>A opção [Histórico de Respostas] permite limpar o histórico de respostas do usuário, caso não queira que suas respostas permaneçam armazenadas no dispositivo.</li>
+                                </ul>
 
                                 <h5><i class="bi bi-heart-pulse"></i>&nbsp; Ajude Nosso Projeto a Crescer</h5>
-                                <p class="">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <p class="mb-4">A última opção do menu funcional abre janela popup contendo a apresentação da campanha de crowdfunding para a iniciativa United Sapiens. Atualmente a campanha está cadastrada no site <a href="https://www.vakinha.com.br/" title="https://www.vakinha.com.br/" target="_blank">Vakinha</a>. Caso queira contribuir com a campanha, basta realizar um PIX utilizando a chave apresentada na janela.</p>
+                            </div>
+
+                            <div id="tabHelpTest" class="tab-pane p-3 fade">
+                                <h5>Iniciar Teste</h5>
+                                <p class="mb-4">Ao acessar o site EXISTO.me pela primeira vez, são apresentadas duas opções para o usuário: [INICIAR TESTE] e [COMO FUNCIONA]. A primeira opção inicia o teste político, enquanto que a segunda opção abre esta janela popup contendo a central de ajuda do site. Ao responder as questões, leia atentamente o enunciado e escolha a opção que esteja de acordo com sua visão de mundo, seus valores pessoais e suas escolhas de vida. Aqui apenas a sua opinião importa, e é imprescindível que você seja o mais sincero para que o resultado do teste possa refletir sua ideologia política.</p>
+
+                                <h5>Tela da Questão</h5>
+                                <p class="mb-4">O teste utiliza um componente “carrossel” para navegar entre as questões. Assim que você escolhe a sua resposta, entre as duas opções apresentadas, a tela avança para a próxima questão. Você pode acompanhar pelo título onde é apresentada a questão atual e o número total de questões, ou pela barra de slider abaixo do teste. Não se preocupe se por ventura achar que não escolheu a opção correta, ao final do teste é possível revisar suas respostas. Caso queira, também é possível refazer o teste.</p>
+
+                                <h5>Questões Pendentes</h5>
+                                <p class="mb-4">As respostas do teste são salvas na área local de armazenamento do navegador. Caso não consiga realizar o teste, ao retornar ao site você é informado que existem questões pendentes. O número da última questão respondida é apresentado no título em amarelo. Basta clicar em [RETOMAR TESTE] para prosseguir de onde parou, até concluir o teste.</p>
+
+                                <h5>Tela de Resultado</h5>
+                                <p class="mb-4">Imediatamente após concluir o teste, respondendo à última questão, é apresentada uma janela popup com as estatísticas de seu resultado. Nesta tela é apresentada a ideologia política que mais se “enquadra” às suas respostas: Esquerda ou Direita. Também são apresentados os valores para os eixos políticos Econômico, Diplomático, Civil e Social. Caso queira compartilhar seu resultado em redes sociais, clique no botão [COMPARTILHAR] na parte inferior. Um pequeno texto, resumido e formatado, será copiado para a área de transferência. Você poderá postar esse conteúdo em qualquer rede social que desejar. Até o momento foram realizados testes com sucesso com o Twitter, Facebook, WhatsApp e Telegram. Estamos prosseguindo com mais testes.</p>
+
+                                <h5>Novas Questões</h5>
+                                <p class="mb-4">O teste ainda se encontra em evolução, com novas questões sendo adicionadas diariamente ou semanalmente. Caso retorne ao site e visualize uma notificação de novas questões, em amarelo, você tem a opção de prosseguir com o teste para responder estas nova questões, ou pode simplesmente ignorar. Mas tenha em mente que um maior número de questões respondidas pode melhorar a precisão do resultado. Eventualmente retorne ao site para verifica ser há novas questões. Estaremos constantemente utilizando acontecimentos de nosso dia-a-dia no Brasil para avaliar a ideologia dos cidadãos.</p>
+
+                                <h5>E se eu não concordar com o resultado?</h5>
+                                <p class="mb-4">A correspondência ideológica do teste ainda é um trabalho em andamento; é muito menos preciso do que os valores e eixos. Você pode enviar esses resultados por e-mail, “printando” a tela de seu resultado e colando no corpo do e-mail ou enviando-a como anexo.</p>
+
+                                <h5>Posso ajudar a calibrar o teste?</h5>
+                                <p class="mb-4">Neste momento, toda ajuda será bem-vinda. Envie o resultado por e-mail, pode ser um print da tela, e descreva sua ideologia política para nós. Comentários, perguntas ou críticas também ajuda muito.</p>
                             </div>
 
                             <div id="tabHelpFaq" class="tab-pane p-3 fade">
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <h5>Este site utiliza Cookies?</h5>
+                                <p class="mb-4">Não, este site não utiliza cookies ou qualquer outro meio para rastrear o usuário. Nenhuma informação sobre a pessoa do usuário, sua localização, seu equipamento ou dispositivo utilizado para acesso, ou mesmo seu endereço IP, é acessado e/ou armazenado. Pelo fato da aplicação ser uma “Single Page Application”, não há uma segunda aplicação de retaguarda com a qual o site se comunica. Apenas o resultado do teste é armazenado na área de armazenamento local do navegador (local storage). Se o usuário não quiser deixar seu resultado salvo no navegador, basta apagar o histórico do navegador, ou utilizar a opção [APAGAR] na janela de preferências.</p>
 
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <h5>Qual a teoria política por trás do teste?</h5>
+                                <p class="mb-4">Este site é baseado no site <a href="https://8values.github.io/" title="https://8values.github.io/" target="_blank">8values</a>, criado pelo desenvolvedor <a href="https://github.com/TristanBomb" title="https://github.com/TristanBomb" target="_blank">TristanBomb</a>. Foram feitas modificações nas questões para se adaptarem à realidade brasileira. Também optou-se por substituir a <a href="https://pt.wikipedia.org/wiki/Escala_Likert" title="https://pt.wikipedia.org/wiki/Escala_Likert" target="_blank">Escala Likert</a> das respostas (concordo, concordo fortemente, etc) por apenas duas escolhas contraditórias (concordo, discordo).</p>
 
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <h5>Como são elaboradas as questões?</h5>
+                                <p class="mb-4">As questões originais do teste no 8values são bastante genéricas, adotando uma abordagem de senso comum entre países. Mas a realidade no Brasil é bem distinta, estamos discutindo satanismo, maçonaria, canibalismo e pedofilia nas eleições. Desde 2018 as eleições no Brasil são um circo dos horrores. Por esses motivos, optou-se por utilizar questões do dia-a-dia para tornar o teste mais familiar para o público brasileiro.</p>
 
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <h5>Quem está por trás do site?</h5>
+                                <p class="mb-4">Eu me chamo Raul Bras, sou desenvolvedor web e atualmente resido no Brasil entre os habitantes paulistas do mundo de Oz. Esta aplicação é o segundo site lançado pela iniciativa United Sapiens, da qual faço parte e contribuo como programador.</p>
 
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <h5>Como o site EXISTO.me está licenciado?</h5>
+                                <p class="mb-4">o conteúdo textual do web site e o cálculo parametrizado do teste do GPS Político estão licenciados pela <a href="https://creativecommons.org/licenses/by/4.0/" title="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons BY</a>. O código fonte do web site é disponibilizado sob a licença <a href="https://opensource.org/licenses/MIT" title="https://opensource.org/licenses/MIT" target="_blank">MIT</a>.</p>
 
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-
-                                <h5>Pergunta?</h5>
-                                <p class="mb-4">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
-
-                                <h5>Pergunta?</h5>
-                                <p class="">Este é o texto deste paragrafo. Este é o texto deste paragrafo. Este é o texto deste paragrafo.</p>
+                                <h5>Existe algum risco de vírus?</h5>
+                                <p class="mb-4">Neste site não. Mas depende de onde você se conecta e navega na web.</p>
                             </div>
                         </div>
                     </div>
