@@ -199,9 +199,6 @@ var GlobalSetup = new ModalSetup();
  * .
  */
 class ModalResult {
-    // propriedades privadas: componentes da modal result
-    clipboard;
-    
     // propriedades privadas: pontuacao do usuario nos eixos
     equality;
     market;
@@ -233,7 +230,12 @@ class ModalResult {
     ready() {
         // efetua bind dos eventos para a modal de resultado:
         $("#modalResult").on("show.bs.modal", { self: this }, this.onShow);
-        //$("#btnShare").click({ self: this }, this.btnShare_onClick);
+        $("#modalResult").on("hide.bs.modal", { self: this }, this.onHide);
+
+        // vai exibir tooltip do tipo popover ao copiar para area de transferencia.
+        $("#btnShare").popover({
+            delay: { show: 1000, hide:2000 },
+        });
     }
 
     /**
@@ -259,6 +261,14 @@ class ModalResult {
         if (value < 12) {
             rate.style.visibility = "hidden";
         }
+    }
+
+    /**
+     * .
+     *
+     */
+    #dataEmoji(element) {
+        return $(element).attr("data-emoji");
     }
 
     /**
@@ -319,9 +329,31 @@ class ModalResult {
             $("#label-right").text(GlobalUser.testScore.name);
         }
 
-        // elabora o texto para o clipboard:
-        let clip = $("#alert-left").data("emoji");
-        console.log("data = ", clip);
+        // obtem os emojis para elaborar o texto para o clipboard:
+        let siteTitle = self.#dataEmoji(".btn-clipboard");
+        let hashIdeal = GlobalUser.testScore.name.replace(/\s+/g, "");
+        let lineSide = GlobalUser.testScore.side == 1 ? self.#dataEmoji("#alert-left") : self.#dataEmoji("#alert-right");
+        let line1 = self.equality >= self.market ? self.#dataEmoji("#bar-equality") : self.#dataEmoji("#bar-market");
+        let line2 = self.global >= self.national ? self.#dataEmoji("#bar-global") : self.#dataEmoji("#bar-national");
+        let line3 = self.liberty >= self.authority ? self.#dataEmoji("#bar-liberty") : self.#dataEmoji("#bar-authority");
+        let line4 = self.progress >= self.tradition ? self.#dataEmoji("#bar-progress") : self.#dataEmoji("#bar-tradition");
+
+        // cria o texto final com os rotulos da pontuacao:
+        const clip = `${siteTitle} #${hashIdeal}\n\n${lineSide}\n\n${line1} ${self.label_econ}\n${line2} ${self.label_dipl}\n${line3} ${self.label_govt}\n${line4} ${self.label_scty}\n`;
+        $(".btn-clipboard").attr("data-clipboard-text", clip);
+
+        // inicializa componente para manipulacao do clipboard:
+        window.clipboard = new ClipboardJS(".btn-clipboard", {
+            container: document.getElementById("modalResult"),
+        });
+        // ao efetuar a copia, exibe mensagem informando o usuario:
+        clipboard.on("success", function (e) {
+            $("#btnShare").popover("show");
+            
+            setTimeout(function () {
+                $("#btnShare").popover("hide");
+            }, 3000);
+        });
     }
 
     /**
@@ -329,14 +361,16 @@ class ModalResult {
      *
      * @param  {Object} event .
      */
-    // btnShare_onClick(event) {
-    //     // obtem a instancia da classe modal:
-    //     let self = event.data.self;
+    onHide(event) {
+        // obtem a instancia da classe modal:
+        let self = event.data.self;
 
-    //     //
-
-    // }
+        // managing the lifecycle of the DOM:
+        window.clipboard.destroy();
+    }
 }
 
 // Cria instancia global para controle da modal de preferencias:
 var GlobalResult = new ModalResult();
+
+

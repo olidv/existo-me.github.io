@@ -208,14 +208,9 @@ function retakeTest() {
 $(document).ready(function () {
     ("use strict"); // sempre!
 
+    // habilita funcionalidade de popover:
     // const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
     // const popoverList = [...popoverTriggerList].map((popoverTriggerEl) => new bootstrap.Popover(popoverTriggerEl));
-
-    // componente para manipulacao do clipboard:
-    var clipboard = new ClipboardJS(".btn");
-    clipboard.on("success", function (e) {
-        console.log(e);
-    });
 
     // Efetua inicializacao das referencias internas do DOM.
     DOM.ready();
