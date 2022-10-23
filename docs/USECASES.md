@@ -448,6 +448,5 @@ Ao implementar os casos de uso, eu acabei adotando uma estratégia MVP (Produto 
 
 Apesar da mudança, eu não atualizei os casos de uso, pois já havia iniciado a codificação. Eu tenho o hábito de iniciar a codificação pelos detalhamentos de casos de uso como comentários iniciais. Me ajuda muito em estruturar o código em blocos e sub-rotinas. Deixo abaixo um print da tela a partir do momento em que iniciei a codificação. A atual implementação já está bem modificada...
 
-![VS Code Print](https://raw.githubusercontent.com/existo-me/existo-me.github.io/blob/main/docs/UseCase-To-Code.png)
+![VS Code Print](https://raw.githubusercontent.com/existo-me/existo-me.github.io/main/docs/UseCase-To-Code.png)
 
----
