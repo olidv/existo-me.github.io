@@ -4,7 +4,7 @@
 
 <p align="justify">As convenções de nomenclatura abaixo são um apanhado de lições aprendidas ao longo de anos atuando como analista de sistemas. Normalmente as empresas gostam de elaborar artefatos mais "formais" como um documento MS Word, uma planilha MS Excel ou até mesmo diagramação em alguma ferramenta UML como o System Architect. Particularmente eu sempre achei que este tipo de documentação possui um propósito único de auxiliar no desenvolvimento, não tendo um fim em si. Existe enquanto necessária para esclarecer a lógica na cabeça do analista e/ou desenvolvedor, discutir com integrantes da equipe, dirimir dúvidas com o usuário, etc. Mas sempre usando o clássico "papel de pão".</p>
 
-<p align="justify">A todo momento estamos discutindo na área de TI como o projeto de um sistema de software poderia ser comparado ao projeto de um edifício na área de engenharia civil. No entanto, a lição mais importante da engenharia civil na minha opinião é o ANDAIME. É algo muito simples, ágil por ser fácil de montar e desmontável com igual praticidade. Qualquer auxiliar de pedreiro pode ajudar na montagem do andaime, que permanece em uma obra enquanto necessário. Quando não mais necessário, o andaime é desmontado ao final da obra. Ninguém se preocupa com a cor do andaime, se tem sujeira superficial, se a tubulação é redonda ou quadrada, etc. Basta que seja firme, seguro e alcance todos os andares do prédio.</p>
+<p align="justify">A todo momento estamos discutindo na área de TI como o projeto de um sistema de software poderia ser comparado ao projeto de um edifício na área de engenharia civil. No entanto, a lição mais importante da engenharia civil na minha opinião é o ANDAIME. É algo muito simples, ágil por ser fácil de montar e desmontável com igual praticidade. Qualquer auxiliar de pedreiro pode ajudar na montagem do andaime, que permanece em uma obra enquanto necessário. Quando não mais necessário, o andaime é desmontado ao final da obra. Ninguém se preocupa com a cor ou formato do andaime, se tem sujeira superficial, se a tubulação é redonda ou quadrada, etc. Basta que seja firme, seguro e alcance todos os andares do prédio.</p>
 
 <p align="justify">Artefatos que auxiliam no projeto deveriam seguir o mesmo paradigma de um andaime: serem simples e fáceis de elaborar, não precisarem de formatação "apresentável", aplicáveis a uma situação específica e descartáveis ao final do projeto. Talvez alguns artefatos possam ser mantidos, mas a grande maioria não se justifica porque "morrem" e se tornam defuntos quando o sistema entra em operação. A documentação de um sistema ou projeto raramente é "visitada" no futuro, e muitas vezes nem é atualizada na manutenção posterior. Em nosso dia-a-dia, todos sabemos que as decisões muitas vezes são tomadas pelo programador durante a codificação. Manter então os artefatos de forma simples (em arquivos texto) e próximos ao código (no mesmo repositório) acaba se tornando uma solução mais eficaz para "documentar" um projeto/software.</p>
 
@@ -441,3 +441,13 @@
 ```
 
 -------------------------------------------------------------------------------
+
+### Nota Póstuma
+
+Ao implementar os casos de uso, eu acabei adotando uma estratégia MVP (Produto viável mínimo) para lançar o site mais rapidamente. A abordagem anterior, utilizando perfis de usuários iniciante e avançado, poderiam complicar o entendimento do teste político. O site em si possui finalidade educacional, para orientar as pessoas sobre ideologias políticas. Manter 2 perfis de usuários poderia complicar a aplicação do teste político e prejudicar o aprendizado. 
+
+Apesar da mudança, eu não atualizei os casos de uso, pois já havia iniciado a codificação. Eu tenho o hábito de iniciar a codificação pelos detalhamentos de casos de uso como comentários iniciais. Me ajuda muito em estruturar o código em blocos e sub-rotinas. Deixo abaixo um print da tela a partir do momento em que iniciei a codificação. A atual implementação já está bem modificada...
+
+![VS Code Print](https://raw.githubusercontent.com/existo-me/existo-me.github.io/blob/main/docs/UseCase-To-Code.png)
+
+---
