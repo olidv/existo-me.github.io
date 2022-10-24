@@ -402,7 +402,7 @@ var dataPoliticalGps = {
         },
         {
             name: "Tecnocrata",
-            side: 2,
+            side: 0,
             rate: {
                 econ: 60,
                 dipl: 60,
@@ -410,16 +410,16 @@ var dataPoliticalGps = {
                 scty: 70,
             },
         },
-        // {
-        //     name: "Centrista",
-        //     side: 1,
-        //     rate: {
-        //         econ: 50,
-        //         dipl: 50,
-        //         govt: 50,
-        //         scty: 50,
-        //     },
-        // },
+        {
+            name: "Centrista",
+            side: 0,
+            rate: {
+                econ: 50,
+                dipl: 50,
+                govt: 50,
+                scty: 50,
+            },
+        },
         {
             name: "Liberal",
             side: 2,

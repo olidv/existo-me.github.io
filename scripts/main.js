@@ -885,15 +885,26 @@ class ModalResult {
         if (GlobalUser.testScore.side == 1) {
             // apresenta apenas o alerta da esquerda:
             $("#alert-left").removeClass("d-none");
+            $("#alert-center").addClass("d-none");
             $("#alert-right").addClass("d-none");
             // informa a ideologia do usuario:
             $("#label-left").text(GlobalUser.testScore.name);
         }
+        // informa a ideologia de centro do usuario:
+        else if (GlobalUser.testScore.side == 0) {
+            // apresenta apenas o alerta da direita:
+            $("#alert-left").addClass("d-none");
+            $("#alert-center").removeClass("d-none");
+            $("#alert-right").addClass("d-none");
+            // informa a ideologia do usuario:
+            $("#label-center").text(GlobalUser.testScore.name);
+        }
         // informa a ideologia de direita do usuario:
         else {
             // apresenta apenas o alerta da direita:
-            $("#alert-right").removeClass("d-none");
             $("#alert-left").addClass("d-none");
+            $("#alert-center").addClass("d-none");
+            $("#alert-right").removeClass("d-none");
             // informa a ideologia do usuario:
             $("#label-right").text(GlobalUser.testScore.name);
         }
@@ -901,7 +912,7 @@ class ModalResult {
         // obtem os emojis para elaborar o texto para o clipboard:
         let siteTitle = self.#dataEmoji(".btn-clipboard");
         let hashIdeal = GlobalUser.testScore.name.hashtag();
-        let lineSide = GlobalUser.testScore.side == 1 ? self.#dataEmoji("#alert-left") : self.#dataEmoji("#alert-right");
+        let lineSide = GlobalUser.testScore.side == 1 ? self.#dataEmoji("#alert-left") : GlobalUser.testScore.side == 0 ? self.#dataEmoji("#alert-center") : self.#dataEmoji("#alert-right");
         let line1 = self.equality >= self.market ? self.#dataEmoji("#bar-equality") : self.#dataEmoji("#bar-market");
         let line2 = self.global >= self.national ? self.#dataEmoji("#bar-global") : self.#dataEmoji("#bar-national");
         let line3 = self.liberty >= self.authority ? self.#dataEmoji("#bar-liberty") : self.#dataEmoji("#bar-authority");
