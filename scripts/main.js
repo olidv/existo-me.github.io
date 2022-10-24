@@ -1235,5 +1235,5 @@ $(document).ready(function () {
     showIntro();
 
     // Exibe a toast com o alerta de que ainda estamos em obras:
-    DOM.toastSorry();
+    //DOM.toastSorry();
 });

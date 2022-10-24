@@ -148,12 +148,12 @@ a i[class^='bi']:focus {
     /*filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));*/
 }
 
-#modalHelp .modal-body a,
-#modalHelp .modal-body a:hover,
-#modalHelp .modal-body a:focus,
-#modalHelp .modal-body a:link,
-#modalHelp .modal-body a:active,
-#modalHelp .modal-body a:visited {
+.modal-body.link-gold a,
+.modal-body.link-gold a:hover,
+.modal-body.link-gold a:focus,
+.modal-body.link-gold a:link,
+.modal-body.link-gold a:active,
+.modal-body.link-gold a:visited {
     color: #D3A303; /* #FF8000, #F78E04 */
     text-decoration: underline;
 }
