@@ -154,7 +154,7 @@ a i[class^='bi']:focus {
 #modalHelp .modal-body a:link,
 #modalHelp .modal-body a:active,
 #modalHelp .modal-body a:visited {
-    color: #186A3B;
+    color: #D3A303; /* #FF8000, #F78E04 */
     text-decoration: underline;
 }
 

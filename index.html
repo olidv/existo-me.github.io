@@ -125,7 +125,7 @@
                 <div class="col-md-6 d-flex dropdown">
                     <a id="HMenuDropdown" href="#" class="dropdown" data-bs-toggle="dropdown" data-toggle="dropdown" title="Clique para abrir o menu principal.">
                         <h2 class="h-nav"><i class="bi bi-list"></i>&nbsp;
-                            <img src="images/existome-icon.png" class="icon-inline" alt="Logo do EXISTO.me" draggable="false" />
+                            <img src="images/br-icon.png" class="icon-inline" alt="Bandeira do Brasil" draggable="false" />
                             <b>EXISTO.me</b>
                         </h2>
                     </a>
@@ -226,7 +226,7 @@
                 <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Composto de {0} questões. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para iniciar o teste do GPS Político." onclick="takeTest()"><i class="fa-solid fa-play"></i>&nbsp; Iniciar Teste</button>
-                    <a href="#" class="btn btn-lg btn-outline-secondary px4" role="button" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para saber como funciona o teste do GPS Político."><i class="fa-solid fa-question"></i>&nbsp; Como Funciona</a>
+                    <a href="#" class="btn btn-lg btn-outline-secondary px4" role="button" data-bs-toggle="modal" data-bs-target="#modalIntro" title="Clique para saber como funciona o teste do GPS Político."><i class="fa-solid fa-question"></i>&nbsp; Como Funciona</a>
                 </div>
             </div>
         </div>
@@ -697,12 +697,6 @@
 
                                 <h5>Novas Questões</h5>
                                 <p class="mb-4">O teste ainda se encontra em evolução, com novas questões sendo adicionadas diariamente ou semanalmente. Caso retorne ao site e visualize uma notificação de novas questões, em amarelo, você tem a opção de prosseguir com o teste para responder estas nova questões, ou pode simplesmente ignorar. Mas tenha em mente que um maior número de questões respondidas pode melhorar a precisão do resultado. Eventualmente retorne ao site para verifica ser há novas questões. Estaremos constantemente utilizando acontecimentos de nosso dia-a-dia no Brasil para avaliar a ideologia dos cidadãos.</p>
-
-                                <h5>E se eu não concordar com o resultado?</h5>
-                                <p class="mb-4">A correspondência ideológica do teste ainda é um trabalho em andamento; é muito menos preciso do que os valores e eixos. Você pode enviar esses resultados por e-mail, “printando” a tela de seu resultado e colando no corpo do e-mail ou enviando-a como anexo.</p>
-
-                                <h5>Posso ajudar a calibrar o teste?</h5>
-                                <p class="mb-4">Neste momento, toda ajuda será bem-vinda. Envie o resultado por e-mail, pode ser um print da tela, e descreva sua ideologia política para nós. Comentários, perguntas ou críticas também ajuda muito.</p>
                             </div>
 
                             <div id="tabHelpFaq" class="tab-pane p-3 fade">
@@ -715,11 +709,17 @@
                                 <h5>Como são elaboradas as questões?</h5>
                                 <p class="mb-4">As questões originais do teste no 8values são bastante genéricas, adotando uma abordagem de senso comum entre países. Mas a realidade no Brasil é bem distinta, estamos discutindo satanismo, maçonaria, canibalismo e pedofilia nas eleições. Desde 2018 as eleições no Brasil são um circo dos horrores. Por esses motivos, optou-se por utilizar questões do dia-a-dia para tornar o teste mais familiar para o público brasileiro.</p>
 
+                                <h5>E se eu não concordar com o resultado?</h5>
+                                <p class="mb-4">A correspondência ideológica do teste ainda é um trabalho em andamento; é muito menos preciso do que os valores e eixos. Você pode enviar esses resultados por e-mail, “printando” a tela de seu resultado e colando no corpo do e-mail ou enviando-a como anexo.</p>
+
                                 <h5>Quem está por trás do site?</h5>
                                 <p class="mb-4">Eu me chamo Raul Bras, sou desenvolvedor web e atualmente resido no Brasil entre os habitantes paulistas do mundo de Oz. Esta aplicação é o segundo site lançado pela iniciativa United Sapiens, da qual faço parte e contribuo como programador.</p>
 
                                 <h5>Como o site EXISTO.me está licenciado?</h5>
                                 <p class="mb-4">o conteúdo textual do web site e o cálculo parametrizado do teste do GPS Político estão licenciados pela <a href="https://creativecommons.org/licenses/by/4.0/" title="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons BY</a>. O código fonte do web site é disponibilizado sob a licença <a href="https://opensource.org/licenses/MIT" title="https://opensource.org/licenses/MIT" target="_blank">MIT</a>.</p>
+
+                                <h5>Posso ajudar a calibrar o teste?</h5>
+                                <p class="mb-4">Neste momento, toda ajuda será bem-vinda. Envie o resultado por e-mail, pode ser um print da tela, e descreva sua ideologia política para nós. Comentários, perguntas ou críticas também ajuda muito.</p>
 
                                 <h5>Existe algum risco de vírus?</h5>
                                 <p class="mb-4">Neste site não. Mas depende de onde você se conecta e navega na web.</p>
@@ -756,7 +756,21 @@
             </div>
         </div>
 
+        <!-- Toast: Estamos em Obras -->
+        <div class="position-fixed top-0 p-2" style="z-index: 999">
+            <div id="underConstructionToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header text-bg-warning">
+                    <i class="fa-solid fa-person-digging"></i> &nbsp; &nbsp; <strong class="me-auto">ATENÇÃO: ESTAMOS EM OBRAS...</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" title="Close this"></button>
+                </div>
+                <div class="toast-body fs-6">
+                    <p>Pedimos desculpas por qualquer transtorno. O lançamento oficial será no próximo 01/Novembro.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Play Sound -->
+        <audio id="audioStart" src="assets/start.mp3" preload="auto"></audio>
         <audio id="audioRespond" src="assets/respond.mp3" preload="auto"></audio>
         <audio id="audioFinish" src="assets/finish.mp3" preload="auto"></audio>
 

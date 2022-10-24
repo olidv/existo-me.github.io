@@ -56,7 +56,7 @@ class PoliticalTest {
      * .
      *
      * @param  {Number} currentQuery .
-     * @param  {String} choices .
+     * @param  {array} choices .
      */
     initQuiz(currentQuery, choices) {
         // posiciona na proxima questao, conforme onde o usuario se encontrava.
@@ -86,10 +86,10 @@ class PoliticalTest {
             // soma ate onde parou:
             for (let i = 0; i < currentQuery; i++) {
                 // identifica para a questao a respectiva escolha do usuario:
-                let option = choices[i];
+                let choice = choices[i];
 
                 // realiza a atualizacao dos rates:
-                this.updateRate(i, option);
+                this.updateRate(i, choice.optn);
             }
         }
     }
@@ -293,7 +293,11 @@ class DomHelper {
     panelProgress;
     rangeInput;
 
+    // propriedades privadas: toasts e popovers
+    toastUnderConstruction;
+
     // propriedades privadas: audios
+    audioStart;
     audioRespond;
     audioFinish;
 
@@ -327,7 +331,11 @@ class DomHelper {
         this.panelProgress = $("#panelProgress");
         this.rangeInput = $("#rangeTest");
 
+        // identifica as toasts e popovers:
+        this.toastUnderConstruction = document.getElementById("underConstructionToast");
+
         // identifica os arquivos de audios:
+        this.audioStart = document.querySelector("#audioStart");
         this.audioRespond = document.querySelector("#audioRespond");
         this.audioFinish = document.querySelector("#audioFinish");
     }
@@ -540,8 +548,34 @@ class DomHelper {
         this.rangeInput.val(newValue);
     }
 
+    /* --- TOAST AND POPOVER ----------------------------------------------- */
+
+    /**
+     * Exibe a toast com o alerta de que ainda estamos em obras.
+     *
+     */
+    toastSorry() {
+        const nvToast = new bootstrap.Toast(this.toastUnderConstruction);
+        nvToast.show();
+    }
+
     /* --- AUDIOS: PLAY SOUND ---------------------------------------------- */
 
+    /**
+     * .
+     *
+     */
+    playStart() {
+        // apenas emite o som se estiver configurado para tal:
+        if (GlobalUser.isSoundOn) {
+            this.audioStart.play();
+        }
+    }
+
+    /**
+     * .
+     *
+     */
     playRespond() {
         // apenas emite o som se estiver configurado para tal:
         if (GlobalUser.isSoundOn) {
@@ -549,6 +583,10 @@ class DomHelper {
         }
     }
 
+    /**
+     * .
+     *
+     */
     playFinish() {
         // apenas emite o som se estiver configurado para tal:
         if (GlobalUser.isSoundOn) {
@@ -1070,6 +1108,9 @@ function takeTest() {
     // configura o range de progresso, com o numero minimo e maximo das questoes:
     DOM.showRangeProgress(1, GlobalTest.testLength, 1);
 
+    // emite alerta sonoro quando o usuario inicia o teste:
+    DOM.playStart();
+
     // exibe a primeira questao do teste:
     slideNextQuest();
 }
@@ -1087,7 +1128,12 @@ function respondTest(idQuest, option) {
     // coleta resposta do usuario -> quizUserOpts e quizTotalDone++
     let idx = idQuest - 1;
     GlobalTest.updateRate(idx, option); // 0 index
-    GlobalUser.addChoice(option); // tem q converter p/ numericos
+    let choice = {
+        // registra o numero da questao porque pode ficar aleatorio no futuro.
+        item: idQuest,
+        optn: option
+    };
+    GlobalUser.addChoice(choice); // tem q converter p/ objeto
     //console.log(`respondTest(${idQuest}, ${item}, ${rate}, ${side})`);
 
     // se ainda ha questoes a serem respondidas
@@ -1135,8 +1181,8 @@ function reviewTest() {
 
             // identifica para a questao selecionada a resposta do usuario:
             const userChoice = GlobalUser.testChoices[idQuestion++];
-            const option0Checked = userChoice == 0 ? "checked" : "disabled";
-            const option1Checked = userChoice == 1 ? "checked" : "disabled";
+            const option0Checked = userChoice.optn == 0 ? "checked" : "disabled";
+            const option1Checked = userChoice.optn == 1 ? "checked" : "disabled";
 
             // prepara template (read-only) de div para carrocel com dados da questao
             let htmlContent = DOM.getIntroHtml("#templateReviewQuestion");
@@ -1151,6 +1197,9 @@ function reviewTest() {
         // para apenas visualizar as respostas, nao precisa do range de progresso:
         DOM.hideRangeProgress();
     }
+
+    // emite alerta sonoro quando o usuario inicia a revisao do teste:
+    DOM.playStart();
 
     // desloca para a primeira questao, que eh o proximo slide:
     DOM.nextSlide();
@@ -1184,4 +1233,7 @@ $(document).ready(function () {
 
     // a partir do estado do usuario, identifica qual painel introdutorio apresentar:
     showIntro();
+
+    // Exibe a toast com o alerta de que ainda estamos em obras:
+    DOM.toastSorry();
 });

@@ -343,13 +343,13 @@ class AppUser {
     /**
      * .
      *
-     * @param  {String} option .
+     * @param  {String} choice .
      */
-    addChoice(option) {
+    addChoice(choice) {
         // adiciona mais uma resposta do usuario:
         this.testLength++;
         // deixa registradas todas as escolhas, para calcular a pontuacao posteriormente:
-        this.testChoices.push(option);
+        this.testChoices.push(choice);
 
         // ao adicionar nova resposta, salva os dados do usuario por garantia:
         this.save();
