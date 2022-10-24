@@ -1,8 +1,9 @@
-/* --- UTILITARIOS ------------------------------------------------------------------ */
+/* --- UTILITARIOS --------------------------------------------------------- */
 
 /**
  * .
  *
+ * @param  {String} value .
  */
 String.prototype.formats = String.prototype.formats || function () {
     "use strict";
@@ -22,7 +23,25 @@ String.prototype.formats = String.prototype.formats || function () {
 };
 
 
-/* --- LOCAL STORAGE HELPER ------------------------------------------------------------------ */
+/**
+ * .
+ *
+ */
+(function (original) {
+    console.enableLogging = function () {
+        console.log = original;
+    };
+    console.disableLogging = function () {
+        console.log = function () {};
+    };
+})(console.log);
+
+// habilita ou desabilita o logging:
+console.enableLogging();
+// console.disableLogging();
+
+
+/* --- LOCAL STORAGE HELPER ------------------------------------------------ */
 
 /**
  * Classe helper para manutencao de valores e/ou objetos no storage do browser.
@@ -32,7 +51,7 @@ class StorageFacade {
     // propriedades privadas:
     #store; // indica onde os dados serao salvos (local ou session).
 
-    /* --- INITIALIZATION ------------------------------------------------------------------ */
+    /* --- INITIALIZATION -------------------------------------------------- */
 
     /**
      * Inicializacao de nova instancia.
@@ -126,6 +145,7 @@ class StorageFacade {
 
     /**
      * .
+     *
      */
     clear() {
         this.#store.clear();
@@ -136,10 +156,11 @@ class StorageFacade {
 var GlobalStore = new StorageFacade(true); // maior persistencia sem data de expiracao (local-storage).
 
 
-/* --- APPLICATION USER CLASS ------------------------------------------------------------------ */
+/* --- APPLICATION USER CLASS ---------------------------------------------- */
 
 /**
  * Classe para armazenamento de informacoes e configuracoes do usuario.
+ *
  */
 class AppUser {
     // propriedades publicas: informacoes gerais
@@ -166,10 +187,11 @@ class AppUser {
         scty: 0,
     };
 
-    /* --- INITIALIZATION ------------------------------------------------------------------ */
+    /* --- INITIALIZATION -------------------------------------------------- */
 
     /**
      * Inicializacao de nova instancia.
+     *
      */
     constructor() {
         // valores default para as preferencias:
@@ -180,6 +202,7 @@ class AppUser {
 
     /**
      * Carrega os dados anteriores da ultima sessao do usuario a partir do local-storage.
+     *
      */
     static loadInstance() {
         let newInstance = new AppUser();
@@ -192,21 +215,21 @@ class AppUser {
 
             // salva novamente, para o caso de se ter criado novas propriedades na classe:
             newInstance.save();
-            console.info("Valores de AppUser recuperados e atualizados no Storage com sucesso.");
+            console.log("Valores de AppUser recuperados e atualizados no Storage com sucesso.");
         } else {
             // como ainda nao existia no storage, salva para proximas sessoes:
             newInstance.save();
-            console.info("Nova instancia de AppUser criada e armazenada no Storage com sucesso.");
+            console.log("Nova instancia de AppUser criada e armazenada no Storage com sucesso.");
         }
 
         return newInstance;
     }
 
-    /* --- WEB SITE SETUP ------------------------------------------------------------------ */
+    /* --- WEB SITE SETUP -------------------------------------------------- */
 
-    /** Property: esquema de cores 'dark' habilitado. */
     /**
-     * .
+     * Property: esquema de cores 'dark' habilitado.
+     *
      */
     get isThemeDark() {
         return this.prefThemeColor == "dark";
@@ -222,9 +245,9 @@ class AppUser {
         this.setup();
     }
 
-    /** Property: valor ordinal do tamanho da fonte. */
     /**
-     * .
+     * Property: valor ordinal do tamanho da fonte.
+     *
      */
     get ordFontSize() {
         switch (this.prefFontSize) {
@@ -259,9 +282,9 @@ class AppUser {
         this.setup();
     }
 
-    /** Property: alerta sonoro habilitado 'on'. */
     /**
-     * .
+     * Property: alerta sonoro habilitado 'on'.
+     *
      */
     get isSoundOn() {
         return this.prefSoundAlert == "on";
@@ -279,6 +302,7 @@ class AppUser {
 
     /**
      * Aplica as configuracoes da aplicacao e preferencias do usuario no web site.
+     *
      */
     setup() {
         // aplica as preferencias atualmente configuradas:
@@ -290,12 +314,12 @@ class AppUser {
         this.save();
     }
 
-    /* --- TESTE GPS POLITICO  -------------------------------------------------------------- */
+    /* --- TESTE GPS POLITICO  --------------------------------------------- */
 
     /**
      * .
      *
-     * @param  {String} p .
+     * @param  {String} testVersion .
      */
     startQuiz(testVersion) {
         // inicializa propriedades para sinalizar o inicio do teste politico:
@@ -320,6 +344,8 @@ class AppUser {
 
     /**
      * .
+     *
+     * @param  {String} score .
      */
     stopQuiz(score) {
         // inicializa propriedades para sinalizar o encerramento do teste politico:
@@ -332,6 +358,7 @@ class AppUser {
 
     /**
      * Salva esta instancia do AppUser no local-storage.
+     *
      */
     save() {
         GlobalStore.set(AppUser.name, this);
@@ -340,6 +367,7 @@ class AppUser {
 
     /**
      * Limpa o historico do teste.
+     *
      */
     clear() {
         // apaga as respostas do usuario...
@@ -360,7 +388,7 @@ class AppUser {
 
         // ...e tambem limpa o local-storage:
         this.save();
-        console.info("Instancia corrente de AppUser reinicializada e atualizada no Storage com sucesso.");
+        console.log("Instancia corrente de AppUser reinicializada e atualizada no Storage com sucesso.");
     }
 }
 

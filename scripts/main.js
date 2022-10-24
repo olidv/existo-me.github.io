@@ -1,7 +1,8 @@
-/* --- POLITICAL GPS TEST CLASS ------------------------------------------------------------------ */
+/* --- POLITICAL GPS TEST CLASS -------------------------------------------- */
 
 /**
  * Classe auxiliar na aplicacao do teste politico e gerenciamento das respostas.
+ *
  */
 class PoliticalTest {
     // propriedades publicas:
@@ -26,10 +27,11 @@ class PoliticalTest {
     val_govt = [];
     val_scty = [];
 
-    /* --- INITIALIZATION ------------------------------------------------------------------ */
+    /* --- INITIALIZATION -------------------------------------------------- */
 
     /**
      * Inicializacao de nova instancia.
+     *
      */
     constructor() {
         this.testVersion = 1.0; // numero da versao basica do teste.
@@ -54,6 +56,7 @@ class PoliticalTest {
      * .
      *
      * @param  {Number} currentQuery .
+     * @param  {String} choices .
      */
     initQuiz(currentQuery, choices) {
         // posiciona na proxima questao, conforme onde o usuario se encontrava.
@@ -86,7 +89,7 @@ class PoliticalTest {
                 let option = choices[i];
 
                 // realiza a atualizacao dos rates:
-                updateRate(i, option);
+                this.updateRate(i, option);
             }
         }
     }
@@ -106,6 +109,8 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} idx .
+     * @param  {String} option .
      */
     updateRate(idx, option) {
         // identifica a questao e a respectiva escolha do usuario:
@@ -121,6 +126,8 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} sum .
+     * @param  {String} max .
      */
     #calculateRate(sum, max) {
         return ((100 * (max + sum)) / (2 * max)).toFixed(1);
@@ -195,6 +202,8 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} val .
+     * @param  {String} axis .
      */
     #getLabel(val, axis) {
         if (val > 100) {
@@ -221,6 +230,7 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} val .
      */
     getLabelEcon(val) {
         return this.#getLabel(val, this.testLabels.econ);
@@ -229,6 +239,7 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} val .
      */
     getLabelDipl(val) {
         return this.#getLabel(val, this.testLabels.dipl);
@@ -237,6 +248,7 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} val .
      */
     getLabelGovt(val) {
         return this.#getLabel(val, this.testLabels.govt);
@@ -245,6 +257,7 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} val .
      */
     getLabelScty(val) {
         return this.#getLabel(val, this.testLabels.scty);
@@ -255,11 +268,12 @@ class PoliticalTest {
 var GlobalTest = PoliticalTest.loadInstance(dataPoliticalGps);
 
 
-/* --- DOM HELPER CLASS ------------------------------------------------------------------ */
+/* --- DOM HELPER CLASS ---------------------------------------------------- */
 
 /** Classe utilitaria (e unica) para manipulacao do HTML DOM da pagina.
  *  Auxilia na apresentacao do painel central, onde eh realizado o teste,
  *  controla o carrocel, o slider de progresso e qualquer outro componente associado.
+ *
  */
 class DomHelper {
     // propriedades privadas: atributos do web site
@@ -283,7 +297,7 @@ class DomHelper {
     audioRespond;
     audioFinish;
 
-    /* --- INITIALIZATION ------------------------------------------------------------------ */
+    /* --- INITIALIZATION -------------------------------------------------- */
 
     /**
      * Inicializacao de nova instancia.
@@ -318,7 +332,7 @@ class DomHelper {
         this.audioFinish = document.querySelector("#audioFinish");
     }
 
-    /* --- PAGE/DOCUMENT TITLE ------------------------------------------------------------------ */
+    /* --- PAGE/DOCUMENT TITLE --------------------------------------------- */
 
     /**
      * .
@@ -331,7 +345,7 @@ class DomHelper {
     /**
      * .
      *
-     * @param  {String} p .
+     * @param  {String} newTitle .
      */
     setTitle(newTitle) {
         document.title = newTitle;
@@ -340,7 +354,7 @@ class DomHelper {
     /**
      * .
      *
-     * @param  {String} p .
+     * @param  {String} note .
      */
     notifyTitle(note) {
         document.title = "(" + note + ") " + this.pageTitle;
@@ -354,12 +368,11 @@ class DomHelper {
         document.title = this.pageTitle;
     }
 
-    /* --- WEB SITE RESULT MENU -------------------------------------------------------------- */
+    /* --- WEB SITE RESULT MENU -------------------------------------------- */
 
     /**
      * .
      *
-     * @param  {String} p .
      */
     showNavResulting() {
         // apresenta as opcoes resultantes:
@@ -377,7 +390,7 @@ class DomHelper {
         this.navDonate.addClass("d-none");
     }
 
-    /* --- BOOTSTRAP CAROUSEL ------------------------------------------------------------------ */
+    /* --- BOOTSTRAP CAROUSEL ---------------------------------------------- */
 
     /**
      * .
@@ -390,7 +403,7 @@ class DomHelper {
     /**
      * Adiciona o html de um novo slide no carrocel.
      *
-     * @param  {String} p .
+     * @param  {String} htmlContent .
      */
     addSlide(htmlContent) {
         // incorpora o slide ao final da sequencia corrente:
@@ -400,7 +413,7 @@ class DomHelper {
     /**
      * Adiciona o html de um novo slide no carrocel, antes do ultimo elemento.
      *
-     * @param  {String} p .
+     * @param  {String} htmlContent .
      */
     addBeforeSlide(htmlContent) {
         // incorpora o slide ao final da sequencia corrente, mas antes do slide introdutorio:
@@ -410,7 +423,7 @@ class DomHelper {
     /**
      * Adiciona o html de um novo slide no carrocel e avanca para o mesmo.
      *
-     * @param  {String} p .
+     * @param  {String} htmlContent .
      */
     nextSlide(htmlContent) {
         // se nao fornecer o html, entao somente ira pular para o proximo slide:
@@ -435,7 +448,7 @@ class DomHelper {
     /**
      * .
      *
-     * @param  {String} p .
+     * @param  {String} selector .
      */
     getIntroHtml(selector) {
         return selector ? $(selector).html() : null;
@@ -444,7 +457,7 @@ class DomHelper {
     /**
      * Apresenta o slide introdutorio, conforme o cenario onde o usuario se encontra.
      *
-     * @param  {String} p .
+     * @param  {String} htmlContent .
      */
     showIntroHtml(htmlContent) {
         // eh preciso eliminar qualquer slide ainda presente no carrocel:
@@ -466,6 +479,7 @@ class DomHelper {
 
     /**
      * Configura o carrocel para responder ao test.
+     *
      */
     initCarouselRespond() {
         // apaga os slides anteriores:
@@ -481,6 +495,7 @@ class DomHelper {
 
     /**
      * Configura o carrocel para visualizacao das respostas.
+     *
      */
     initCarouselReview() {
         // habilita os controles de navegacao (prev, next):
@@ -488,14 +503,14 @@ class DomHelper {
         this.nextControl.removeClass("d-none");
     }
 
-    /* --- INPUT RANGE PROGRESS ------------------------------------------------------------------ */
+    /* --- INPUT RANGE PROGRESS -------------------------------------------- */
 
     /**
      * Configura o range de progresso para que o usuario possa se situar.
      *
-     * @param  {String} p .
-     * @param  {String} p .
-     * @param  {String} p .
+     * @param  {String} minValue .
+     * @param  {String} maxValue .
+     * @param  {String} stepValue .
      */
     showRangeProgress(minValue, maxValue, stepValue) {
         // exibe o range de progresso, para o usuario se situar:
@@ -509,6 +524,7 @@ class DomHelper {
 
     /**
      * Inibe o range de progresso.
+     *
      */
     hideRangeProgress() {
         // inibe o range de progresso, pois o usuario nao precisa se situar:
@@ -518,13 +534,13 @@ class DomHelper {
     /**
      * .
      *
-     * @param  {String} p .
+     * @param  {String} newValue .
      */
     updateRangeProgress(newValue) {
         this.rangeInput.val(newValue);
     }
 
-    /* --- AUDIOS: PLAY SOUND ------------------------------------------------------------------ */
+    /* --- AUDIOS: PLAY SOUND ---------------------------------------------- */
 
     playRespond() {
         // apenas emite o som se estiver configurado para tal:
@@ -544,7 +560,7 @@ class DomHelper {
 // Instancia helper para manipulacao do DOM (HTML Document Object Model) da pagina:
 var DOM = new DomHelper();
 
-/* --- MODAL APP SETUP ------------------------------------------------------------------ */
+/* --- MODAL APP SETUP ----------------------------------------------------- */
 
 /**
  * .
@@ -556,10 +572,11 @@ class ModalSetup {
     textSoundAlert;
     textUserHistory;
 
-    /* --- INITIALIZATION ------------------------------------------------------------------ */
+    /* --- INITIALIZATION -------------------------------------------------- */
 
     /**
      * Inicializacao de nova instancia.
+     *
      */
     constructor() {
         //
@@ -567,6 +584,7 @@ class ModalSetup {
 
     /**
      * Inicializacao dos componentes jQuery.
+     *
      */
     ready() {
         // efetua bind dos eventos para a modal de setup:
@@ -585,17 +603,17 @@ class ModalSetup {
         this.textUserHistory = $("#labelUserHistory").text();
     }
 
-    /** Rotulo para a preferencia Esquema de Cores. */
     /**
-     * .
+     * Rotulo para a preferencia Esquema de Cores.
+     *
      */
     get tagThemeColor() {
         return GlobalUser.prefThemeColor == "dark" ? "Escuro" : "Claro";
     }
 
-    /** Rotulo para a preferencia Esquema de Cores. */
     /**
-     * .
+     * Rotulo para a preferencia Esquema de Cores.
+     *
      */
     get tagFontSize() {
         switch (GlobalUser.prefFontSize) {
@@ -610,9 +628,9 @@ class ModalSetup {
         }
     }
 
-    /** Rotulo para a preferencia Esquema de Cores. */
     /**
-     * .
+     * Rotulo para a preferencia Esquema de Cores.
+     *
      */
     get tagSoundAlert() {
         return GlobalUser.prefSoundAlert == "on" ? "Ligado" : "Desligado";
@@ -738,10 +756,11 @@ class ModalSetup {
 // Cria instancia global para controle da modal de preferencias:
 var GlobalSetup = new ModalSetup();
 
-/* --- MODAL RESULTADO ------------------------------------------------------------------ */
+/* --- MODAL RESULTADO ----------------------------------------------------- */
 
 /**
  * .
+ * 
  */
 class ModalResult {
     // propriedades privadas: pontuacao do usuario nos eixos
@@ -760,10 +779,11 @@ class ModalResult {
     label_govt;
     label_scty;
 
-    /* --- INITIALIZATION ------------------------------------------------------------------ */
+    /* --- INITIALIZATION -------------------------------------------------- */
 
     /**
      * Inicializacao de nova instancia.
+     *
      */
     constructor() {
         //
@@ -771,6 +791,7 @@ class ModalResult {
 
     /**
      * Inicializacao dos componentes jQuery.
+     *
      */
     ready() {
         // efetua bind dos eventos para a modal de resultado:
@@ -794,6 +815,8 @@ class ModalResult {
     /**
      * .
      *
+     * @param  {String} name .
+     * @param  {String} value .
      */
     #setBarValue(name, value) {
         let bar = document.getElementById("bar-" + name);
@@ -811,6 +834,7 @@ class ModalResult {
     /**
      * .
      *
+     * @param  {String} element .
      */
     #dataEmoji(element) {
         return $(element).attr("data-emoji");
@@ -918,10 +942,11 @@ class ModalResult {
 // Cria instancia global para controle da modal de preferencias:
 var GlobalResult = new ModalResult();
 
-/* --- CURRENT QUIZ ------------------------------------------------------------------ */
+/* --- CURRENT QUIZ -------------------------------------------------------- */
 
 /**
  * A partir do estado do usuario, identifica qual painel introdutorio apresentar.
+ * 
  */
 function showIntro() {
     // identifica o cenario de uso para definir qual painel introdutorio apresentar:
@@ -1007,6 +1032,7 @@ function slideNextQuest() {
 
 /**
  * .
+ * 
  */
 function takeTest() {
     console.log(`takeTest()`);
@@ -1067,6 +1093,7 @@ function respondTest(idQuest, option) {
 
 /**
  * .
+ * 
  */
 function reviewTest() {
     // inicializa teste com questoes de pgps.quizListBasicQueries
@@ -1109,6 +1136,7 @@ function reviewTest() {
 
 /**
  * .
+ * 
  */
 function retakeTest() {
     // limpa as respostas anteriores do usuario
@@ -1118,7 +1146,7 @@ function retakeTest() {
     takeTest();
 }
 
-/* --- JQUERY: DOM READY ------------------------------------------------------------------ */
+/* --- JQUERY: DOM READY --------------------------------------------------- */
 
 /**
  * Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
