@@ -151,9 +151,8 @@ var dataPoliticalGps = {
     // relacao de ideologias resultantes do teste:
     testIdeals: [
         {
-            name: "Anarcocomunismo",
+            name: "Anarco-Comunista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 50,
@@ -162,9 +161,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Comunismo Libertário",
+            name: "Comunista Libertário",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 70,
@@ -173,9 +171,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Trotskismo",
+            name: "Trotskista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 100,
@@ -184,9 +181,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Marxismo",
+            name: "Marxista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 70,
@@ -195,9 +191,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "De Leonismo",
+            name: "De Leonista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 30,
@@ -206,9 +201,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Leninismo",
+            name: "Leninista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 40,
@@ -217,9 +211,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Stalinismo/Maoismo",
+            name: "Stalinista Maoista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 20,
@@ -228,9 +221,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Comunismo Reliogioso",
+            name: "Comunista Religioso",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 100,
                 dipl: 50,
@@ -239,9 +231,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Socialismo de Estado",
+            name: "Socialista De Estado",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 80,
                 dipl: 30,
@@ -250,9 +241,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Socialismo Teocrático",
+            name: "Socialista Teocrático",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 80,
                 dipl: 50,
@@ -261,9 +251,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Socialismo Religioso",
+            name: "Socialista Religioso",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 80,
                 dipl: 50,
@@ -272,9 +261,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Socialismo Democrático",
+            name: "Socialista Democrático",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 80,
                 dipl: 50,
@@ -283,9 +271,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Socialismo Revolucionário",
+            name: "Socialista Revolucionário",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 80,
                 dipl: 20,
@@ -294,9 +281,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Socialismo Libertário",
+            name: "Socialista Libertário",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 80,
                 dipl: 80,
@@ -305,9 +291,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Anarcosindicalismo",
+            name: "Anarco-Sindicalista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 80,
                 dipl: 50,
@@ -316,9 +301,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Populismo de Esquerda",
+            name: "Populista De Esquerda",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 60,
                 dipl: 40,
@@ -327,9 +311,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Distributismo Teocrático",
+            name: "Distributista Teocrático",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 60,
                 dipl: 40,
@@ -338,9 +321,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Distributismo",
+            name: "Distributista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 60,
                 dipl: 50,
@@ -349,9 +331,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Liberalismo Social",
-            side: 1,
-            zone: 11,
+            name: "Liberal Social",
+            side: 2,
             rate: {
                 econ: 60,
                 dipl: 60,
@@ -360,9 +341,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Democracia Cristã",
-            side: 1,
-            zone: 11,
+            name: "Democrata Cristão",
+            side: 2,
             rate: {
                 econ: 60,
                 dipl: 60,
@@ -371,9 +351,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Social Democracia",
+            name: "Social Democrata",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 60,
                 dipl: 70,
@@ -382,9 +361,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Progressivismo",
+            name: "Progressivista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 60,
                 dipl: 80,
@@ -393,9 +371,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Anarcomutualismo",
+            name: "Anarco-Mutualista",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 60,
                 dipl: 50,
@@ -404,9 +381,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Totalitarismo Nacionalista",
-            side: 1,
-            zone: 11,
+            name: "Totalitarista Nacionalista",
+            side: 2,
             rate: {
                 econ: 50,
                 dipl: 20,
@@ -415,9 +391,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Totalitarismo Globalista",
-            side: 1,
-            zone: 11,
+            name: "Totalitarista Globalista",
+            side: 2,
             rate: {
                 econ: 50,
                 dipl: 80,
@@ -426,9 +401,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Tecnocracia",
-            side: 1,
-            zone: 11,
+            name: "Tecnocrata",
+            side: 2,
             rate: {
                 econ: 60,
                 dipl: 60,
@@ -436,21 +410,19 @@ var dataPoliticalGps = {
                 scty: 70,
             },
         },
+        // {
+        //     name: "Centrista",
+        //     side: 1,
+        //     rate: {
+        //         econ: 50,
+        //         dipl: 50,
+        //         govt: 50,
+        //         scty: 50,
+        //     },
+        // },
         {
-            name: "Centrista",
-            side: 1,
-            zone: 11,
-            rate: {
-                econ: 50,
-                dipl: 50,
-                govt: 50,
-                scty: 50,
-            },
-        },
-        {
-            name: "Liberalismo",
-            side: 1,
-            zone: 11,
+            name: "Liberal",
+            side: 2,
             rate: {
                 econ: 50,
                 dipl: 60,
@@ -459,9 +431,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Anarquismo Religioso",
+            name: "Anarquista Religioso",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 50,
                 dipl: 50,
@@ -470,9 +441,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Populismo de Direita",
-            side: 1,
-            zone: 11,
+            name: "Populista de Direita",
+            side: 2,
             rate: {
                 econ: 40,
                 dipl: 30,
@@ -481,9 +451,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Conservadorismo Moderado",
-            side: 1,
-            zone: 11,
+            name: "Conservador Moderado",
+            side: 2,
             rate: {
                 econ: 40,
                 dipl: 40,
@@ -493,8 +462,7 @@ var dataPoliticalGps = {
         },
         {
             name: "Reacionário",
-            side: 1,
-            zone: 11,
+            side: 2,
             rate: {
                 econ: 40,
                 dipl: 40,
@@ -503,9 +471,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Social Libertarianismo",
+            name: "Social Libertário",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 60,
                 dipl: 70,
@@ -514,9 +481,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Libertarianismo",
+            name: "Libertário",
             side: 1,
-            zone: 11,
             rate: {
                 econ: 40,
                 dipl: 60,
@@ -525,9 +491,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Anarcoegoísmo",
-            side: 1,
-            zone: 11,
+            name: "Anarco-Egoísta",
+            side: 2,
             rate: {
                 econ: 40,
                 dipl: 50,
@@ -536,9 +501,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Nazismo",
-            side: 1,
-            zone: 11,
+            name: "Nazista",
+            side: 2,
             rate: {
                 econ: 40,
                 dipl: 0,
@@ -547,9 +511,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Autocrácia",
-            side: 1,
-            zone: 11,
+            name: "Autocrata",
+            side: 2,
             rate: {
                 econ: 50,
                 dipl: 20,
@@ -558,9 +521,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Fascismo",
-            side: 1,
-            zone: 11,
+            name: "Fascista",
+            side: 2,
             rate: {
                 econ: 40,
                 dipl: 20,
@@ -569,9 +531,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Fascismo Capitalista",
-            side: 1,
-            zone: 11,
+            name: "Fascista Capitalista",
+            side: 2,
             rate: {
                 econ: 20,
                 dipl: 20,
@@ -580,9 +541,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Conservadorismo",
-            side: 1,
-            zone: 11,
+            name: "Conservador",
+            side: 2,
             rate: {
                 econ: 30,
                 dipl: 40,
@@ -591,9 +551,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Neoliberalismo",
-            side: 1,
-            zone: 11,
+            name: "Neoliberal",
+            side: 2,
             rate: {
                 econ: 30,
                 dipl: 30,
@@ -602,9 +561,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Liberalismo Clássico",
-            side: 1,
-            zone: 11,
+            name: "Liberal Clássico",
+            side: 2,
             rate: {
                 econ: 30,
                 dipl: 60,
@@ -613,9 +571,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Capitalismo Autoritário",
-            side: 1,
-            zone: 11,
+            name: "Capitalista Autoritário",
+            side: 2,
             rate: {
                 econ: 20,
                 dipl: 30,
@@ -624,9 +581,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Capitalismo de Estado",
-            side: 1,
-            zone: 11,
+            name: "Capitalista De Estado",
+            side: 2,
             rate: {
                 econ: 20,
                 dipl: 50,
@@ -635,9 +591,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Neoconservadorismo",
-            side: 1,
-            zone: 11,
+            name: "Neoconservador",
+            side: 2,
             rate: {
                 econ: 20,
                 dipl: 20,
@@ -646,9 +601,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Fundamentalismo",
-            side: 1,
-            zone: 11,
+            name: "Fundamentalista",
+            side: 2,
             rate: {
                 econ: 20,
                 dipl: 30,
@@ -657,9 +611,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Capitalismo Libertário",
-            side: 1,
-            zone: 11,
+            name: "Capitalista Libertário",
+            side: 2,
             rate: {
                 econ: 20,
                 dipl: 50,
@@ -668,9 +621,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Anarquismo de Mercado",
-            side: 1,
-            zone: 11,
+            name: "Anarquista De Mercado",
+            side: 2,
             rate: {
                 econ: 20,
                 dipl: 50,
@@ -679,9 +631,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Objetivismo",
-            side: 1,
-            zone: 11,
+            name: "Objetivista",
+            side: 2,
             rate: {
                 econ: 10,
                 dipl: 50,
@@ -690,9 +641,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Capitalismo Totalitário",
-            side: 1,
-            zone: 11,
+            name: "Capitalista Totalitário",
+            side: 2,
             rate: {
                 econ: 0,
                 dipl: 30,
@@ -701,9 +651,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Ultracapitalismo",
-            side: 1,
-            zone: 11,
+            name: "Ultracapitalista",
+            side: 2,
             rate: {
                 econ: 0,
                 dipl: 40,
@@ -712,9 +661,8 @@ var dataPoliticalGps = {
             },
         },
         {
-            name: "Anarcocapitalismo",
-            side: 1,
-            zone: 11,
+            name: "Anarco-Capitalista",
+            side: 2,
             rate: {
                 econ: 0,
                 dipl: 50,

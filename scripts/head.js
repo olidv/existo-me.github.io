@@ -75,7 +75,7 @@ class StorageFacade {
             // verifica se eh um valor valido e objeto json:
             if (strValue && strValue.indexOf("{") > -1) {
                 let objValue = JSON.parse(strValue);
-                //console.table(`get(${key}) = _${objValue}_ of type: ${typeof objValue}`);
+                //console.log(`get(${key}) = _${objValue}_ of type: ${typeof objValue}`);
                 return objValue;
             } else {
                 return strValue;
@@ -94,7 +94,7 @@ class StorageFacade {
      */
     set(key, value) {
         // eh preciso q a chave seja valida:
-        //console.table(`set(${key}, ${typeof value})`, value);
+        //console.log(`set(${key}, ${typeof value})`, value);
         if (key) {
             // apenas salve se o valor nao for nulo/vazio:
             if (value) {
@@ -160,7 +160,6 @@ class AppUser {
     testScore = {
         name: null,
         side: null,
-        zone: null,
         econ: 0,
         dipl: 0,
         govt: 0,
@@ -336,7 +335,7 @@ class AppUser {
      */
     save() {
         GlobalStore.set(AppUser.name, this);
-        console.table("Instancia corrente de AppUser armazenada no Storage com sucesso: ", this);
+        console.log("Instancia corrente de AppUser armazenada no Storage com sucesso: ", this);
     }
 
     /**
@@ -353,7 +352,6 @@ class AppUser {
         this.testScore = {
             name: null,
             side: null,
-            zone: null,
             econ: 0,
             dipl: 0,
             govt: 0,

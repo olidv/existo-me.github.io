@@ -45,7 +45,7 @@ class PoliticalTest {
 
         // transfere os valores recebidos para uma nova instancia de PoliticalTest...
         newInstance = Object.assign(newInstance, data);
-        console.table("Nova instancia de PoliticalTest criada com sucesso: ", newInstance);
+        console.log("Nova instancia de PoliticalTest criada com sucesso: ", newInstance);
 
         return newInstance;
     }
@@ -134,17 +134,16 @@ class PoliticalTest {
         // inicializa estrutura para a pontuacao a ser calculada para as respostas:
         let userScore = {
             name: null,
-            side: null,
-            zone: null,
+            side: 0,
             econ: 0,
             dipl: 0,
             govt: 0,
             scty: 0,
         };
-        console.table("this.val_econ = ", this.val_econ);
-        console.table("this.val_dipl = ", this.val_dipl);
-        console.table("this.val_govt = ", this.val_govt);
-        console.table("this.val_scty = ", this.val_scty);
+        console.log("this.val_econ = ", this.val_econ);
+        console.log("this.val_dipl = ", this.val_dipl);
+        console.log("this.val_govt = ", this.val_govt);
+        console.log("this.val_scty = ", this.val_scty);
 
         // soma todos os scores dos 4 eixos
         let sum_econ = this.val_econ.reduce((a, b) => a + b, 0);
@@ -161,25 +160,25 @@ class PoliticalTest {
         userScore.dipl = this.#calculateRate(sum_dipl, this.max_dipl);
         userScore.govt = this.#calculateRate(sum_govt, this.max_govt);
         userScore.scty = this.#calculateRate(sum_scty, this.max_scty);
-        console.table("userScore = ", userScore);
+        console.log("(antes) userScore = ", JSON.stringify(userScore));
 
         // identifica a ideologia do usuario:
         let userIdeal = null;
         let minDist = Infinity;
         for (let i = 0; i < this.testIdeals.length; i++) {
             let ideal = this.testIdeals[i];
-            console.table("ideal = ", ideal);
+            console.log("ideal = ", ideal);
 
             let dist = 0;
             dist += Math.pow(Math.abs(ideal.rate.econ - userScore.econ), 2);
-            console.log(`dist = ${dist}`);
+            // console.log(`dist = ${dist}`);
             dist += Math.pow(Math.abs(ideal.rate.dipl - userScore.dipl), 1.73856063);
-            console.log(`dist = ${dist}`);
+            // console.log(`dist = ${dist}`);
             dist += Math.pow(Math.abs(ideal.rate.govt - userScore.govt), 2);
-            console.log(`dist = ${dist}`);
+            // console.log(`dist = ${dist}`);
             dist += Math.pow(Math.abs(ideal.rate.scty - userScore.scty), 1.73856063);
-            console.log(`dist = ${dist}`);
-            console.log("--------------------------------");
+            console.log(`dist = ${dist} .:. minDist = ${minDist}`);
+            // console.log("--------------------------------");
             if (dist < minDist) {
                 minDist = dist;
                 userIdeal = ideal;
@@ -188,7 +187,7 @@ class PoliticalTest {
         // obtem os parametros da ideologia do usuario:
         userScore.name = userIdeal.name;
         userScore.side = userIdeal.side;
-        userScore.zone = userIdeal.zone;
+        console.log("(depois) userScore = ", JSON.stringify(userScore));
 
         return userScore;
     }
@@ -869,15 +868,15 @@ class ModalResult {
         // informa a ideologia de direita do usuario:
         else {
             // apresenta apenas o alerta da direita:
-            $("#alert-left").removeClass("d-none");
-            $("#alert-right").addClass("d-none");
+            $("#alert-right").removeClass("d-none");
+            $("#alert-left").addClass("d-none");
             // informa a ideologia do usuario:
             $("#label-right").text(GlobalUser.testScore.name);
         }
 
         // obtem os emojis para elaborar o texto para o clipboard:
         let siteTitle = self.#dataEmoji(".btn-clipboard");
-        let hashIdeal = GlobalUser.testScore.name.replace(/\s+/g, "");
+        let hashIdeal = GlobalUser.testScore.name.replace(/-|\s+/g, "");
         let lineSide = GlobalUser.testScore.side == 1 ? self.#dataEmoji("#alert-left") : self.#dataEmoji("#alert-right");
         let line1 = self.equality >= self.market ? self.#dataEmoji("#bar-equality") : self.#dataEmoji("#bar-market");
         let line2 = self.global >= self.national ? self.#dataEmoji("#bar-global") : self.#dataEmoji("#bar-national");
@@ -952,7 +951,7 @@ function showIntro() {
         //
     } else if (GlobalUser.testVersion <= GlobalTest.testVersion && GlobalUser.testLength == GlobalTest.testLength) {
         // $CENARIO:MAJOR-RESTART: USUARIO ACABOU DE FINALIZAR VERSAO BASICA DO TESTE
-        let imgPlane = `<img src="images/score/${GlobalUser.testScore.zone}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
+        let imgPlane = `<img src="images/score/${GlobalUser.testScore.side}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
         DOM.resetTitle();
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
@@ -985,7 +984,7 @@ function showIntro() {
 function slideNextQuest() {
     // $CENARIO:BEGINNER-TEST: obtem 1ª questao do teste
     const question = GlobalTest.nextQuest();
-    console.table("slideNextQuest: ", question);
+    console.log("slideNextQuest: ", question);
 
     // se ainda ha questoes a serem respondidas:
     if (question != null) {
@@ -1079,7 +1078,7 @@ function reviewTest() {
         let idQuestion = 0;
         // loop de todas as questoes do teste: question <- pgps.quizListBasicQueries
         for (let question = GlobalTest.nextQuest(); question != null; question = GlobalTest.nextQuest()) {
-            console.table(`reviewTest(): `, question);
+            console.log(`reviewTest(): `, question);
 
             // obtem o texto das opcoes:
             const option0Text = question.options[0].text;
