@@ -1,27 +1,4 @@
-/* --- UTILITARIOS --------------------------------------------------------- */
-
-/**
- * .
- *
- * @param  {String} value .
- */
-String.prototype.formats = String.prototype.formats || function () {
-    "use strict";
-
-    var str = this.toString();
-    if (arguments.length) {
-        var t = typeof arguments[0];
-        var key;
-        var args = "string" === t || "number" === t ? Array.prototype.slice.call(arguments) : arguments[0];
-
-        for (key in args) {
-            str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
-        }
-    }
-
-    return str;
-};
-
+/* --- LOGGING ------------------------------------------------------------- */
 
 /**
  * .
@@ -37,8 +14,44 @@ String.prototype.formats = String.prototype.formats || function () {
 })(console.log);
 
 // habilita ou desabilita o logging:
-console.enableLogging();
-// console.disableLogging();
+console.enableLogging();  // DEV
+// console.disableLogging();  // PRD
+
+
+/* --- STRING UTILITIES ---------------------------------------------------- */
+
+/**
+ * .
+ *
+ */
+String.prototype.formats = String.prototype.formats || function () {
+    "use strict";
+
+    let str = this.toString();
+    if (arguments.length) {
+        let t = typeof arguments[0];
+        let args = ("string" === t || "number" === t) ? Array.prototype.slice.call(arguments) : arguments[0];
+        for (let key in args) {
+            str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+        }
+    }
+
+    return str;
+};
+
+/**
+ * .
+ *
+ */
+String.prototype.hashtag = String.prototype.hashtag || function () {
+    "use strict";
+
+    let str = this.toString();
+    str = str.replace(/-|\s+/g, "");
+    str = str.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+
+    return '#' + str;
+};
 
 
 /* --- LOCAL STORAGE HELPER ------------------------------------------------ */

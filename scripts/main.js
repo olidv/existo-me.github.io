@@ -900,7 +900,7 @@ class ModalResult {
 
         // obtem os emojis para elaborar o texto para o clipboard:
         let siteTitle = self.#dataEmoji(".btn-clipboard");
-        let hashIdeal = GlobalUser.testScore.name.replace(/-|\s+/g, "");
+        let hashIdeal = GlobalUser.testScore.name.hashtag();
         let lineSide = GlobalUser.testScore.side == 1 ? self.#dataEmoji("#alert-left") : self.#dataEmoji("#alert-right");
         let line1 = self.equality >= self.market ? self.#dataEmoji("#bar-equality") : self.#dataEmoji("#bar-market");
         let line2 = self.global >= self.national ? self.#dataEmoji("#bar-global") : self.#dataEmoji("#bar-national");
@@ -908,7 +908,7 @@ class ModalResult {
         let line4 = self.progress >= self.tradition ? self.#dataEmoji("#bar-progress") : self.#dataEmoji("#bar-tradition");
 
         // cria o texto final com os rotulos da pontuacao:
-        const clip = `${siteTitle} #${hashIdeal}\n\n${lineSide}\n\n${line1} ${self.label_econ}\n${line2} ${self.label_dipl}\n${line3} ${self.label_govt}\n${line4} ${self.label_scty}\n`;
+        const clip = `${siteTitle} ${hashIdeal}\n\n${lineSide}\n\n${line1} ${self.label_econ}\n${line2} ${self.label_dipl}\n${line3} ${self.label_govt}\n${line4} ${self.label_scty}\n`;
         $(".btn-clipboard").attr("data-clipboard-text", clip);
 
         // inicializa componente para manipulacao do clipboard:
@@ -974,7 +974,7 @@ function showIntro() {
         // apresenta opcoes [Retomar Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //
-    } else if (GlobalUser.testVersion <= GlobalTest.testVersion && GlobalUser.testLength == GlobalTest.testLength) {
+    } else if (GlobalUser.testVersion == GlobalTest.testVersion && GlobalUser.testLength == GlobalTest.testLength) {
         // $CENARIO:MAJOR-RESTART: USUARIO ACABOU DE FINALIZAR VERSAO BASICA DO TESTE
         let imgPlane = `<img src="images/score/${GlobalUser.testScore.side}.png" class="img-inline" alt="Resultado do Teste" draggable="false" />`;
         // como nao tem nenhuma notificacao, restaura o titulo original do site:
@@ -987,6 +987,17 @@ function showIntro() {
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //
+    } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength == GlobalTest.testLength) {
+        // $CENARIO:MAJOR-UPGRADE: USUARIO EH NOTIFICADO DE ALTERACOES NAS QUESTOES DO TESTE
+        // altera o titulo do site para alertar sobre alteracoes nas questoes: (*) EXISTO.me • GPS Politico
+        DOM.notifyTitle("*");
+        // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
+        DOM.showNavResulting();
+        // exibe notificacao de alteracao na versao do teste: + pgps.testVersion
+        let htmlContent = DOM.getIntroHtml("#cenarioMajorUpgrade");
+        htmlContent = htmlContent.formats(GlobalTest.testVersion.toFixed(2), GlobalUser.testVersion.toFixed(2));
+        // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
+        DOM.showIntroHtml(htmlContent);
     } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
         let plusQueries = GlobalTest.testLength - GlobalUser.testLength;
