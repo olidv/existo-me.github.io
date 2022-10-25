@@ -1,4 +1,4 @@
-/*--- WEB SITE SETUP --------------------------------------------------------*/
+/*--- APPLICATION SETUP -----------------------------------------------------*/
 
 /* data-theme="light", data-fonts="normal" */
 :root {
@@ -36,7 +36,8 @@
 }
 
 
-/*--- LAYOUT ----------------------------------------------------------------*/
+/*--- WEB LAYOUT ------------------------------------------------------------*/
+/* large desktop devices */
 
 html,body {
     font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
@@ -72,6 +73,8 @@ footer {
 .back-flag {
     background-clip: padding-box;
     background-origin: padding-box;
+    background-position: 0 0;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-image: url(../images/br-flag.jpg);
@@ -82,6 +85,8 @@ footer {
     margin: 0;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    left: 20% !important;
+    width: 60% !important;
 }
 
 .page {
@@ -93,47 +98,22 @@ footer {
     border: 1px solid var(--ex-border-color);
 }
 
-@media (orientation: portrait) {
-    .back-flag {
-        background-position: center;
-        background-size: auto 100%;
-    }
 
-    .frame {
-        left: 0 !important;
-        width: 100% !important;
-    }
-}
-
-@media (orientation: landscape) {
-    .back-flag {
-        background-position: 0 0;
-        background-size: 100% 100%;
-    }
-
-    .frame {
-        left: 20% !important;
-        width: 60% !important;
-    }
-}
-
-
-/*--- TYPOGRAPHY ------------------------------------------------------------*/
+/*--- FONT TYPOGRAPHY -------------------------------------------------------*/
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Jost", Helvetica, Arial, sans-serif !important;
 }
 
-.h-nav {
+.ex-nav {
     margin-top: 0;
     margin-bottom: 0;
     white-space: nowrap;
     color: var(--ex-tx-color);
 }
-
-.h-nav:hover,
-.h-nav:focus {
+.ex-nav:hover,
+.ex-nav:focus {
     text-shadow: 2px 2px 4px #aaaaaa;
     /*filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));*/
 }
@@ -159,26 +139,6 @@ h1, h2, h3, h4, h5, h6,
     text-align: justify;
 }
 
-a,
-a:hover,
-a:focus,
-a:link,
-a:active,
-a:visited {
-    text-decoration: none;
-    outline: none;
-    color: var(--ex-tx-color);
-}
-
-@media (max-width: 575.98px) {
-    h2.h-nav {
-        font-size: 18px;
-    }
-    h5.h-nav {
-        font-size: 14px;
-    }
-}
-
 
 /*--- ICONS & IMAGES --------------------------------------------------------*/
 
@@ -190,34 +150,14 @@ a:visited {
     margin-bottom: 0.5rem;
 }
 
-.icon-nav {
-    font-size: 1.8rem;
-    color: var(--ex-tx-color);
-}
-
-.icon-cc {
-    font-size: 1.4rem;
-}
-
-.icon-social {
-    font-size: 1.8rem;
-    color: var(--ex-tx-color);
-}
-
-a i[class^='bi']:hover,
-a i[class^='bi']:focus {
-    text-shadow: 2px 2px 4px #aaa;
-    /*filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));*/
-}
-
-@media (max-width: 575.98px) {
-    .icon-nav {
-        font-size: 1.8rem;
-    }
+.img-inline {
+    display: inline-block;
+    width: auto;
+    height: 3em;
 }
 
 
-/*--- INPUTS ----------------------------------------------------------------*/
+/*--- FORM INPUTS -----------------------------------------------------------*/
 
 .form-check-input:checked {
     background-color: #212529;
@@ -335,10 +275,19 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-/*--- BUTTONS ---------------------------------------------------------------*/
+/*--- BUTTONS & ANCHORS -----------------------------------------------------*/
 
-.btn-close {
+.btn-close,
+.btn-outline-secondary {
     color: var(--ex-tx-color) !important;
+}
+
+.btn-outline-secondary:hover {
+    color: #ffffff !important;
+}
+
+.btn-dark {
+    background-color: var(--ex-btn-bg-color) !important;
 }
 
 .btn-nav {
@@ -353,12 +302,19 @@ input[type=range]:focus::-ms-fill-upper {
     background-color: #ffffff00;
 }
 
-.btn-dark {
-    background-color: var(--ex-btn-bg-color) !important;
+a,
+a:hover,
+a:focus,
+a:link,
+a:active,
+a:visited {
+    text-decoration: none;
+    outline: none;
+    color: var(--ex-tx-color);
 }
 
 
-/*--- CAROUSEL --------------------------------------------------------------*/
+/*--- COMPONENT CAROUSEL ----------------------------------------------------*/
 
 .carousel-control-next,
 .carousel-control-prev {
@@ -398,7 +354,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-/*--- TOASTS & POPOVERS -----------------------------------------------------*/
+/*--- TIPS & TOASTS & POPOVERS ----------------------------------------------*/
 
 .toast-header,
 .toast-body {
@@ -406,7 +362,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-/*--- MODALS ----------------------------------------------------------------*/
+/*--- MODALS & POPUPS -------------------------------------------------------*/
 
 .modal-content {
     color: var(--ex-tx-color);
@@ -551,19 +507,19 @@ div.text-rate {
 }
 
 
-/*--- UTILITIES -------------------------------------------------------------*/
+/*--- CSS UTILITIES ---------------------------------------------------------*/
 
 .shadow-10 {
     box-shadow: 0 10px 20px -4px #000;
 }
 
-@media (orientation: portrait) {
-    .no-mobile {
+@media (max-width: 599.98px) {
+    .no-phone {
         display: none;
     }
 }
 
-@media (orientation: landscape) {
+@media (max-width: 1024px) {
     .no-desktop {
         display: none;
     }
@@ -580,5 +536,58 @@ div.text-rate {
 .cinza { background-color: #BBBBBB; }
 .verde { background-color: green; }
 .amarelo { background-color: yellow !important; }
+
+
+/*--- RESPONSIVE DESIGN -----------------------------------------------------*/
+
+@media (min-width: 1200px) {
+}
+
+@media (max-width: 1199px) {
+    /* medium desktop devices */
+    .frame {
+        left: 15% !important;
+        width: 70% !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    /* large tablet devices */
+    .frame {
+        left: 10% !important;
+        width: 80% !important;
+    }
+}
+
+@media (max-width: 767px) {
+    /* medium tablet devices */
+    .frame {
+        left: 5% !important;
+        width: 90% !important;
+    }
+}
+
+@media (max-width: 479px) {
+    /* large phone devices */
+    .back-flag {
+        background-position: center;
+        background-size: auto 100%;
+    }
+
+    .frame {
+        left: 0 !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 359px) {
+    /* medium phone devices */
+
+}
+
+@media (max-width: 320px) {
+    /* small phone devices */
+
+}
 
 /*---------------------------------------------------------------------------*/

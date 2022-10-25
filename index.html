@@ -124,8 +124,8 @@
             <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
                     <div class="col-6 d-flex dropdown">
                         <a id="HMenuDropdown" href="#" class="dropdown" data-bs-toggle="dropdown" data-toggle="dropdown" title="Clique para abrir o menu principal.">
-                            <h2 class="h-nav">
-                                <i class="bi bi-list"></i>
+                            <h2 class="ex-nav">
+                                <i class="fa-solid fa-bars"></i>
                                 <img src="images/br-icon.png" class="icon-inline" alt="Bandeira do Brasil" draggable="false" />
                                 <b>EXISTO.me</b>
                             </h2>
@@ -149,17 +149,17 @@
                         </div>
                     </div>
                     <ul class="col-6 d-flex justify-content-end nav list-unstyled">
-                        <li id="navResult" class="ms-3">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap icon-nav"></i></a>
+                        <li class="h2 ms-3 ex-nav finished-test">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap"></i></a>
                         </li>
-                        <li class="ms-3">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear icon-nav"></i></a>
+                        <li class="h2 ms-3 ex-nav">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear"></i></a>
                         </li>
-                        <li class="ms-3">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a central de ajuda do site."><i class="bi bi-question-circle icon-nav"></i></a>
+                        <li class="h2 ms-3 ex-nav">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a central de ajuda do site."><i class="bi bi-question-circle"></i></a>
                         </li>
-                        <li id="navDonate" class="ms-3">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Contribua com nossa iniciativa ajudando nosso projeto a crescer."><i class="bi bi-heart-pulse icon-nav"></i></a>
+                        <li class="h2 ms-3 ex-nav finished-test">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Contribua com nossa iniciativa ajudando nosso projeto a crescer."><i class="bi bi-heart-pulse"></i></a>
                         </li>
                 </div>
             </div>
@@ -197,24 +197,24 @@
             <div class="container-fluid d-flex flex-wrap justify-content-between align-items-center py-2">
                 <div class="col-6 d-flex">
                     <a href="https://github.com/united-sapiens" title="Conheça a iniciativa United Sapiens" target="_blank">
-                        <h5 class="h-nav">
-                            <i class="bi bi-cc-circle icon-cc"></i> 
+                        <h5 class="ex-nav">
+                            <i class="fa-brands fa-creative-commons"></i> <i class="fa-brands fa-creative-commons-by"></i> 
                             2022 United Sapiens
                         </h5>
                     </a>
                 </div>
                 <ul class="col-6 d-flex justify-content-end nav list-unstyled">
-                    <li class="ms-3">
-                        <a href="https://www.github.com/existo-me" title="Visite o projeto no GitHub." target="_blank"><i class="bi bi-github icon-social"></i></a>
+                    <li class="h2 ms-3 ex-nav">
+                        <a href="https://www.github.com/existo-me" title="Visite o projeto no GitHub." target="_blank"><i class="bi bi-github"></i></a>
                     </li>
-                    <li class="ms-3">
-                        <a href="https://www.twitter.com/united_sapiens" title="Fale comigo no Twitter." target="_blank"><i class="bi bi-twitter icon-social"></i></a>
+                    <li class="h2 ms-3 ex-nav">
+                        <a href="https://www.twitter.com/united_sapiens" title="Fale comigo no Twitter." target="_blank"><i class="bi bi-twitter"></i></a>
                     </li>
-                    <li class="ms-3">
-                        <a href="https://www.instagram.com/united_sapiens" title="Fale comigo no Instagram." target="_blank"><i class="bi bi-instagram icon-social"></i></a>
+                    <li class="h2 ms-3 ex-nav">
+                        <a href="https://www.instagram.com/united_sapiens" title="Fale comigo no Instagram." target="_blank"><i class="bi bi-instagram"></i></a>
                     </li>
-                    <li class="ms-3">
-                        <a href="https://www.youtube.com/channel/UCUf4NOsEr_0pMNMKK25CPAg" title="Visite o canal no YouTube." target="_blank"><i class="bi bi-youtube icon-social"></i></a>
+                    <li class="h2 ms-3 ex-nav">
+                        <a href="https://www.youtube.com/channel/UCUf4NOsEr_0pMNMKK25CPAg" title="Visite o canal no YouTube." target="_blank"><i class="bi bi-youtube"></i></a>
                     </li>
                 </ul>
             </div>
@@ -538,7 +538,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"><i class="bi bi-grid-3x3-gap icon-nav"></i>&nbsp; Resultado do Teste</h4>
+                        <h4 class="modal-title"><i class="bi bi-grid-3x3-gap fi-nav"></i>&nbsp; Resultado do Teste</h4>
                         <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Gostou do site? Que tal ajudar nosso projeto a crescer.">
                             <i class="bi bi-heart-pulse"></i>
                         </button>
@@ -613,7 +613,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr class="no-mobile">
+                                <tr class="no-phone">
                                     <td>
                                         <b id="labelFontSize">Tamanho da Fonte &nbsp; [{0}]</b><br/>
                                         <small>Altera o tamanho da fonte do teste.</small>
@@ -636,10 +636,10 @@
                                 <tr>
                                     <td>
                                         <b id="labelUserHistory">Histórico de Repostas &nbsp; [#{0}]</b><br/>
-                                        <small>Limpa o armazenamento interno.</small>
+                                        <small>Limpa o resultado do teste.</small>
                                     </td>
                                     <td class="text-end w-25">
-                                        <button id="clearUserHistory" type="button" class="btn btn btn-outline-secondary btn-sm" title="Clique para limpar o armazenamento interno."><span class="no-mobile"><i class="fa fa-trash-alt"></i>&nbsp; </span>Apagar</button>
+                                        <button id="clearUserHistory" type="button" class="btn btn-sm btn-outline-secondary" title="Clique para limpar o armazenamento interno."><i class="fa fa-trash-alt"></i><span class="no-phone">&nbsp; Apagar</span></button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -671,7 +671,7 @@
                                 <a class="nav-link" data-bs-toggle="tab" href="#tabHelpMenu">Menu</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link btn-sm" data-bs-toggle="tab" href="#tabHelpTest">Teste</a>
+                                <a class="nav-link" data-bs-toggle="tab" href="#tabHelpTest">Teste</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-bs-toggle="tab" href="#tabHelpFaq">FAQ</a>
@@ -785,7 +785,7 @@
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title"><i class="bi bi-heart-pulse"></i>&nbsp; Ajude Nosso Projeto<span class="no-mobile"> a Crescer</span></h4>
+                        <h4 class="modal-title"><i class="bi bi-heart-pulse"></i>&nbsp; Ajude Nosso Projeto<span class="no-phone"> a Crescer</span></h4>
                         <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalBlog" title="Novo Artigo no MicroBlog.">
                             <i class="fa-brands fa-microblog"></i>
                         </button>

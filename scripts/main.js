@@ -279,10 +279,6 @@ class DomHelper {
     // propriedades privadas: atributos do web site
     pageTitle;
 
-    // propriedades privadas: menu funcional do site
-    navResult;
-    navDonate; // a opcao para doacao somente aparece apos o usuario concluir o teste.
-
     // propriedades privadas: componente carrocel
     bs5Carousel;
     innerCarousel;
@@ -317,10 +313,6 @@ class DomHelper {
      *
      */
     ready() {
-        // obtem as referencias para as opcoes principais manipuladas ao longo do teste politico:
-        this.navResult = $("#navResult");
-        this.navDonate = $("#navDonate");
-
         // inicializa o componente carrocel e identifica seus elementos internos:
         this.bs5Carousel = $("#carouselTest");
         this.innerCarousel = $("#carouselTest .carousel-inner");
@@ -384,8 +376,7 @@ class DomHelper {
      */
     showNavResulting() {
         // apresenta as opcoes resultantes:
-        this.navResult.removeClass("d-none"); // limpa tudo, pq nao sabe qual a cor anterior
-        this.navDonate.removeClass("d-none");
+        $(".finished-test").removeClass("d-none"); // limpa tudo, pq nao sabe qual a cor anterior
     }
 
     /**
@@ -394,8 +385,7 @@ class DomHelper {
      */
     hideNavResulting() {
         // inibe as opcoes resultantes:
-        this.navResult.addClass("d-none");
-        this.navDonate.addClass("d-none");
+        $(".finished-test").addClass("d-none");
     }
 
     /* --- BOOTSTRAP CAROUSEL ---------------------------------------------- */
