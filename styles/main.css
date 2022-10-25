@@ -594,8 +594,7 @@ div.text-rate {
     }
 
     .panel-test {
-        align-items: center !important;
-        margin-top: 0 !important;
+        margin-top: 3rem !important;
     }
 
     h2.ex-nav {
@@ -636,6 +635,11 @@ div.text-rate {
 
 @media (max-width: 379px) {
     /* medium phone devices */
+
+    .panel-test {
+        margin-top: 2rem !important;
+    }
+
     h2.ex-nav {
         font-size: 1.4rem;
     }
