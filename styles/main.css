@@ -21,16 +21,19 @@
     --ex-border-color: #222326;
 }
 
-[data-fonts="small"] {
-    --ex-tx-size: 1.0rem;
-}
+/* Em mobile, nao ha configuracao de fontes, por enquanto (v1)... */
+@media (orientation: landscape) {
+    [data-fonts="small"] {
+        --ex-tx-size: 1.0rem;
+    }
 
-[data-fonts="large"] {
-    --ex-tx-size: 1.50rem;
-}
+    [data-fonts="large"] {
+        --ex-tx-size: 1.50rem;
+    }
 
-[data-fonts="huge"] {
-    --ex-tx-size: 1.75rem;
+    [data-fonts="huge"] {
+        --ex-tx-size: 1.75rem;
+    }
 }
 
 
