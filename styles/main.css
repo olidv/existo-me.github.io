@@ -37,7 +37,7 @@
 
 
 /*--- WEB LAYOUT ------------------------------------------------------------*/
-/* large desktop devices */
+/* desktop first: large desktop devices */
 
 html,body {
     font-family: "Open Sans", Helvetica, Arial, sans-serif !important;
@@ -275,7 +275,18 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-/*--- BUTTONS & ANCHORS -----------------------------------------------------*/
+/*--- ANCHORS & BUTTONS -----------------------------------------------------*/
+
+a,
+a:hover,
+a:focus,
+a:link,
+a:active,
+a:visited {
+    text-decoration: none;
+    outline: none;
+    color: var(--ex-tx-color);
+}
 
 .btn-close,
 .btn-outline-secondary {
@@ -300,17 +311,6 @@ input[type=range]:focus::-ms-fill-upper {
     border-radius: 0.375rem;
     opacity: .6;
     background-color: #ffffff00;
-}
-
-a,
-a:hover,
-a:focus,
-a:link,
-a:active,
-a:visited {
-    text-decoration: none;
-    outline: none;
-    color: var(--ex-tx-color);
 }
 
 
@@ -541,6 +541,7 @@ div.text-rate {
 /*--- RESPONSIVE DESIGN -----------------------------------------------------*/
 
 @media (min-width: 1200px) {
+    /* large desktop devices */
 }
 
 @media (max-width: 1199px) {
@@ -565,6 +566,17 @@ div.text-rate {
         left: 5% !important;
         width: 90% !important;
     }
+
+    h2.ex-nav {
+        font-size: 1.6rem;
+    }
+    li.ex-nav {
+        font-size: 1.6rem;
+        margin-left: 1rem !important;
+    }
+    h5.ex-nav {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 479px) {
@@ -578,16 +590,59 @@ div.text-rate {
         left: 0 !important;
         width: 100% !important;
     }
+
+    h2.ex-nav {
+        font-size: 1.5rem;
+    }
+    li.ex-nav {
+        font-size: 1.5rem;
+        margin-left: 0.9rem !important;
+    }
+    h5.ex-nav {
+        font-size: 1rem;
+    }
 }
 
-@media (max-width: 359px) {
+@media (max-width: 379px) {
     /* medium phone devices */
+    h2.ex-nav {
+        font-size: 1.4rem;
+    }
+    li.ex-nav {
+        font-size: 1.4rem;
+        margin-left: 0.8rem !important;
+    }
+    h5.ex-nav {
+        font-size: 0.9rem;
+    }
+}
 
+@media (max-width: 349px) {
+    /* small phone devices */
+    h2.ex-nav {
+        font-size: 1.3rem;
+    }
+    li.ex-nav {
+        font-size: 1.3rem;
+        margin-left: 0.7rem !important;
+    }
+    h5.ex-nav {
+        font-size: 0.8rem;
+    }
 }
 
 @media (max-width: 320px) {
-    /* small phone devices */
-
+    /* large watch devices */
+    h2.ex-nav {
+        font-size: 1.2rem;
+    }
+    li.ex-nav {
+        font-size: 1.2rem;
+        margin-left: 0.7rem !important;
+    }
+    h5.ex-nav {
+        font-size: 0.7rem;
+    }
 }
 
 /*---------------------------------------------------------------------------*/
