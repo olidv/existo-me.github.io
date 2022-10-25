@@ -1213,6 +1213,9 @@ function retakeTest() {
     // limpa as respostas anteriores do usuario
     GlobalUser.clear();
 
+    // como limpou o estado do usuario, reseta a aparencia do cabecalho:
+    DOM.hideNavResulting();
+
     // inicializa teste:
     takeTest();
 }
