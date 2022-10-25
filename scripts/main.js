@@ -285,10 +285,6 @@ class DomHelper {
     prevControl;
     nextControl;
 
-    // propriedades privadas: slider de progresso do questionario
-    panelProgress;
-    rangeInput;
-
     // propriedades privadas: toasts e popovers
     toastUnderConstruction;
 
@@ -318,10 +314,6 @@ class DomHelper {
         this.innerCarousel = $("#carouselTest .carousel-inner");
         this.prevControl = $("#carouselTest .carousel-control-prev");
         this.nextControl = $("#carouselTest .carousel-control-next");
-
-        // identifica o slider de progresso.
-        this.panelProgress = $("#panelProgress");
-        this.rangeInput = $("#rangeTest");
 
         // identifica as toasts e popovers:
         this.toastUnderConstruction = document.getElementById("underConstructionToast");
@@ -470,9 +462,6 @@ class DomHelper {
         // na apresentacao do slide introdutorio, nao precisa dos controles de navegacao do carrocel:
         this.prevControl.addClass("d-none");
         this.nextControl.addClass("d-none");
-
-        // e nem o range de progresso:
-        this.hideRangeProgress();
     }
 
     /**
@@ -499,43 +488,6 @@ class DomHelper {
         // habilita os controles de navegacao (prev, next):
         this.prevControl.removeClass("d-none");
         this.nextControl.removeClass("d-none");
-    }
-
-    /* --- INPUT RANGE PROGRESS -------------------------------------------- */
-
-    /**
-     * Configura o range de progresso para que o usuario possa se situar.
-     *
-     * @param  {String} minValue .
-     * @param  {String} maxValue .
-     * @param  {String} stepValue .
-     */
-    showRangeProgress(minValue, maxValue, stepValue) {
-        // exibe o range de progresso, para o usuario se situar:
-        this.panelProgress.removeClass("d-none");
-
-        // parametriza os valores minimo e maximo da regua de progresso.
-        this.rangeInput.prop("min", minValue);
-        this.rangeInput.prop("max", maxValue);
-        this.rangeInput.prop("step", stepValue);
-    }
-
-    /**
-     * Inibe o range de progresso.
-     *
-     */
-    hideRangeProgress() {
-        // inibe o range de progresso, pois o usuario nao precisa se situar:
-        this.panelProgress.addClass("d-none");
-    }
-
-    /**
-     * .
-     *
-     * @param  {String} newValue .
-     */
-    updateRangeProgress(newValue) {
-        this.rangeInput.val(newValue);
     }
 
     /* --- TOAST AND POPOVER ----------------------------------------------- */
@@ -1070,8 +1022,6 @@ function slideNextQuest() {
         htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalTest.currentQuest, question.subject, option0.text, option1.text);
         // adiciona div como slide no carrocel e desloca para a questao
         DOM.nextSlide(htmlContent);
-        // atualiza o range de progresso:
-        DOM.updateRangeProgress(GlobalTest.currentQuest);
         // informa que processou proxima questao:
         return true;
     } else {
@@ -1094,9 +1044,6 @@ function takeTest() {
 
     // desabilita a navegacao do carrocel com mouse ou teclado
     DOM.initCarouselRespond();
-
-    // configura o range de progresso, com o numero minimo e maximo das questoes:
-    DOM.showRangeProgress(1, GlobalTest.testLength, 1);
 
     // emite alerta sonoro quando o usuario inicia o teste:
     DOM.playStart();
@@ -1183,9 +1130,6 @@ function reviewTest() {
         }
         // habilita navegacao do carrocel com mouse ou teclado
         DOM.initCarouselReview();
-
-        // para apenas visualizar as respostas, nao precisa do range de progresso:
-        DOM.hideRangeProgress();
     }
 
     // emite alerta sonoro quando o usuario inicia a revisao do teste:

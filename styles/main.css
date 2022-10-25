@@ -1,6 +1,5 @@
 /*--- APPLICATION SETUP -----------------------------------------------------*/
 
-/* data-theme="light", data-fonts="normal" */
 :root {
     --ex-bg-color: #eeeeee;
     --ex-tx-color: #212529;
@@ -20,18 +19,18 @@
     --ex-border-color: #222326;
 }
 
-/* Em mobile, nao ha configuracao de fontes, por enquanto (v1)... */
-@media (orientation: landscape) {
+/* Em smart-phones, nao ha configuracao de fontes, por enquanto (v1)... */
+@media (min-width: 480px) {
     [data-fonts="small"] {
-        --ex-tx-size: 1.0rem;
+        --ex-tx-size: 1.15rem;
     }
 
     [data-fonts="large"] {
-        --ex-tx-size: 1.50rem;
+        --ex-tx-size: 1.35rem;
     }
 
     [data-fonts="huge"] {
-        --ex-tx-size: 1.75rem;
+        --ex-tx-size: 1.45rem;
     }
 }
 
@@ -98,6 +97,11 @@ footer {
     border: 1px solid var(--ex-border-color);
 }
 
+.panel-test {
+    align-items: flex-start! important;
+    margin-top: 5rem !important;
+    margin-bottom: 0 !important;
+}
 
 /*--- FONT TYPOGRAPHY -------------------------------------------------------*/
 
@@ -115,23 +119,26 @@ h1, h2, h3, h4, h5, h6,
 .ex-nav:hover,
 .ex-nav:focus {
     text-shadow: 2px 2px 4px #aaaaaa;
-    /*filter: drop-shadow(3px 3px 4px rgba(0,0,0,0.3));*/
 }
 
-.h-notify {
-    line-height: 1.5em;
-    margin-top: 0;
-    margin-bottom: 1rem;
+.caption-test {
+    font-size: 2rem;
 }
 
-.h-notify .badge {
-    font-size: 0.94em;
-    line-height: 1em;
-    /* color: #fff !important;
-    background-color: #2FB56A !important; */
+.caption-test i[class^='fa-'],
+.caption-test i[class*=' fa-'] {
+    font-size: 3rem;
 }
 
-.lead {
+.caption-test img {
+    height: 3rem;
+}
+
+.caption-test .badge {
+    font-size: 1.735rem;
+}
+
+.lead-test {
     font-size: var(--ex-tx-size) !important;
 }
 
@@ -145,15 +152,18 @@ h1, h2, h3, h4, h5, h6,
 .icon-inline {
     display: inline-block;
     width: auto;
-    height: 1em;
-    line-height: 1.2;
+}
+
+h2.ex-nav .icon-inline {
+    height: 2rem;
+    vertical-align: top;
+    line-height: 2rem;
     margin-bottom: 0.5rem;
 }
 
 .img-inline {
     display: inline-block;
     width: auto;
-    height: 3em;
 }
 
 
@@ -303,9 +313,9 @@ a:visited {
 
 .btn-nav {
     box-sizing: content-box;
-    width: 2em;
-    height: 2em;
-    padding: 0.25em 0.25em;
+    width: 2rem;
+    height: 2rem;
+    padding: 0.25rem 0.25rem;
     color: var(--ex-tx-color);
     border: 0;
     border-radius: 0.375rem;
@@ -415,11 +425,6 @@ a:visited {
 .h-axis {
     font-weight: bolder;
     color: #333333;
-    /* font-family: 'Montserrat', sans-serif; */
-    /* font-size: 34pt; */
-    /* line-height: 36pt; */
-    /* margin-top: 12pt;
-    margin-bottom: 10pt; */
     margin: 0;
 }
 
@@ -441,10 +446,7 @@ div.axis {
 
 div.bar {
     height: 2.2rem;
-    /* line-height: 2.2rem; */
-    padding: 2pt 4pt;
-    /* margin-top: 4pt;
-    margin-bottom: 4pt; */
+    padding: 2px 4px;
     border-width: 2px;
     border-right-width: 1px;
     border-top-style: solid;
@@ -496,7 +498,6 @@ div.bar-tradition {
 }
 
 div.text-rate {
-    /* font-family: 'Montserrat', sans-serif; */
     font-size: 1.2rem;
     font-weight: bold;
     line-height: 1.5rem;
@@ -513,13 +514,13 @@ div.text-rate {
     box-shadow: 0 10px 20px -4px #000;
 }
 
-@media (max-width: 599.98px) {
+@media (max-width: 479.98px) {
     .no-phone {
         display: none;
     }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
     .no-desktop {
         display: none;
     }
@@ -530,12 +531,6 @@ div.text-rate {
     opacity: 0.7;
     background-color: rgba(255, 255, 0, 0.4);
 }
-.vermelho { background-color: red; }
-.azul { background-color: blue; }
-.laranja { background-color: orange; }
-.cinza { background-color: #BBBBBB; }
-.verde { background-color: green; }
-.amarelo { background-color: yellow !important; }
 
 
 /*--- RESPONSIVE DESIGN -----------------------------------------------------*/
@@ -558,6 +553,10 @@ div.text-rate {
         left: 10% !important;
         width: 80% !important;
     }
+
+    .panel-test {
+        margin-top: 4rem !important;
+    }
 }
 
 @media (max-width: 767px) {
@@ -569,6 +568,9 @@ div.text-rate {
 
     h2.ex-nav {
         font-size: 1.6rem;
+    }
+    h2.ex-nav .icon-inline {
+        height: 1.6rem;
     }
     li.ex-nav {
         font-size: 1.6rem;
@@ -591,8 +593,16 @@ div.text-rate {
         width: 100% !important;
     }
 
+    .panel-test {
+        align-items: center !important;
+        margin-top: 0 !important;
+    }
+
     h2.ex-nav {
         font-size: 1.5rem;
+    }
+    h2.ex-nav .icon-inline {
+        height: 1.5rem;
     }
     li.ex-nav {
         font-size: 1.5rem;
@@ -601,12 +611,36 @@ div.text-rate {
     h5.ex-nav {
         font-size: 1rem;
     }
+
+    .caption-test {
+        font-size: 1.5rem;
+    }
+
+    .caption-test i[class^='fa-'],
+    .caption-test i[class*=' fa-'] {
+        font-size: 2rem;
+    }
+
+    .caption-test img {
+        height: 2rem;
+    }
+
+    .caption-test .badge {
+        font-size: 1.2rem;
+    }
+
+    .lead-test {
+        font-size: 1.15rem;
+    }
 }
 
 @media (max-width: 379px) {
     /* medium phone devices */
     h2.ex-nav {
         font-size: 1.4rem;
+    }
+    h2.ex-nav .icon-inline {
+        height: 1.4rem;
     }
     li.ex-nav {
         font-size: 1.4rem;
@@ -622,6 +656,9 @@ div.text-rate {
     h2.ex-nav {
         font-size: 1.3rem;
     }
+    h2.ex-nav .icon-inline {
+        height: 1.3rem;
+    }
     li.ex-nav {
         font-size: 1.3rem;
         margin-left: 0.7rem !important;
@@ -635,6 +672,9 @@ div.text-rate {
     /* large watch devices */
     h2.ex-nav {
         font-size: 1.2rem;
+    }
+    h2.ex-nav .icon-inline {
+        height: 1.2rem;
     }
     li.ex-nav {
         font-size: 1.2rem;

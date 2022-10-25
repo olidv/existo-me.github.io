@@ -166,15 +166,11 @@
         </header>
 
         <main class="frame page shadow-10">
-            <div class="container-fluid d-flex align-items-center h-100">
-                <div class="row justify-content-md-center">
-
-                    <!--  -->
-                    <div id="carouselTest" class="col-12 col-lg-10 carousel slide" data-bs-interval="10000000" data-bs-ride="false" data-bs-keyboard="false" data-bs-wrap="true"> <!-- data-bs-pause="true"   -->
-                        <!--  -->
+            <div class="container-fluid d-flex panel-test h-100">
+                <div class="row justify-content-center">
+                    <div id="carouselTest" class="col-12 col-lg-10 carousel slide" data-bs-interval="10000000" data-bs-ride="false" data-bs-keyboard="false" data-bs-wrap="true">
                         <div class="carousel-inner"></div>
 
-                        <!--  -->
                         <button class="carousel-control-prev d-none" type="button" data-bs-target="#carouselTest" data-bs-slide="prev" title="Questão Anterior">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Anterior</span>
@@ -183,11 +179,6 @@
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Próxima</span>
                         </button>
-                    </div>
-
-                    <!--  -->
-                    <div id="panelProgress" class="col-12 col-lg-10 d-none">
-                        <p><input id="rangeTest" type="range" class="form-range" min="1" max="1" step="1" value="" disabled></p>
                     </div>
                 </div>
             </div>
@@ -223,10 +214,10 @@
         <!--- Carousel slides --------------------------------------------------->
 
         <div id="cenarioBeginnerStart" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center active">
-                <p><i class="fa-solid fa-location-crosshairs fa-3x"></i></p>
-                <h2 class="text-uppercase mb-3">Teste do GPS Político</h2>
-                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Composto de {0} questões. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+            <div class="carousel-item active">
+                <h2 class="text-center m-3 caption-test"><i class="fa-solid fa-location-crosshairs"></i></h2>
+                <h2 class="text-center text-uppercase mb-3 caption-test">Teste do GPS Político</h2>
+                <p class="lead-test text-justify">Mussum Ipsum, cacilds vidis litro abertis. Composto de {0} questões. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para iniciar o teste do GPS Político." onclick="takeTest()"><i class="fa-solid fa-play"></i>&nbsp; Iniciar Teste</button>
                     <a href="#" class="btn btn-lg btn-outline-secondary px4" role="button" data-bs-toggle="modal" data-bs-target="#modalIntro" title="Clique para saber como funciona o teste do GPS Político."><i class="fa-solid fa-question"></i>&nbsp; Como Funciona</a>
@@ -235,10 +226,10 @@
         </div>
 
         <div id="cenarioBeginnerResume" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-warning">#{1}...{0}</span></h2>
-                <h2 class="text-uppercase mb-3">Existem Questões Ainda Pendentes</h2>
-                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+            <div class="carousel-item active">
+                <h2 class="text-center m-3 caption-test"><span class="badge text-bg-warning">#{1}...{0}</span></h2>
+                <h2 class="text-center text-uppercase mb-3 caption-test">Existem Questões Ainda Pendentes</h2>
+                <p class="lead-test text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para retomar o teste do GPS Político de onde parou." onclick="takeTest()"><i class="fa-solid fa-forward"></i>&nbsp; Retomar Teste</button>
                     <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político."><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Teste</a>
@@ -247,10 +238,10 @@
         </div>
 
         <div id="cenarioMajorRestart" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center active">
-                <p>{0}</p>
-                <h2 class="text-uppercase mb-3">Parabéns por Concluir o Teste!</h2>
-                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+            <div class="carousel-item active">
+                <h2 class="text-center m-3 caption-test">{0}</h2>
+                <h2 class="text-center text-uppercase mb-3 caption-test">Parabéns por Concluir o Teste!</h2>
+                <p class="lead-test text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para refazer o teste do GPS Político" onclick="retakeTest()"><i class="fa-solid fa-rotate-right"></i>&nbsp; Refazer Teste</button>
                     <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político."><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Teste</a>
@@ -259,10 +250,10 @@
         </div>
 
         <div id="cenarioMajorUpgrade" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-warning">v{0}</span></h2>
-                <h2 class="text-uppercase mb-3">Alterações nas Questões do Teste</h2>
-                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Sua versão é v{1} questões. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+            <div class="carousel-item active">
+                <h2 class="text-center m-3 caption-test"><span class="badge text-bg-warning">v{0}</span></h2>
+                <h2 class="text-center text-uppercase mb-3 caption-test">Alterações nas Questões do Teste</h2>
+                <p class="lead-test text-justify">Mussum Ipsum, cacilds vidis litro abertis. Sua versão é v{1} questões. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para continuar o teste do GPS Político." onclick="retakeTest()"><i class="fa-solid fa-forward"></i>&nbsp; Refazer Teste</button>
                     <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político."><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Teste</a>
@@ -271,10 +262,10 @@
         </div>
 
         <div id="cenarioMajorNotify" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center active">
-                <h2 class="h-notify"><span class="badge text-bg-warning">+{0}</span></h2>
-                <h2 class="text-uppercase mb-3">Novas Questões para o Teste</h2>
-                <p class="lead text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
+            <div class="carousel-item active">
+                <h2 class="text-center m-3 caption-test"><span class="badge text-bg-warning">+{0}</span></h2>
+                <h2 class="text-center text-uppercase mb-3 caption-test">Novas Questões para o Teste</h2>
+                <p class="lead-test text-justify">Mussum Ipsum, cacilds vidis litro abertis. Mé faiz elementum girarzis, nisi eros vermeio. Paisis, filhis, espiritis santis. Si num tem leite então bota uma pinga aí cumpadi! Todo mundo vê os porris que eu tomo, mas ninguém vê os tombis que eu levo!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para continuar o teste do GPS Político." onclick="takeTest()"><i class="fa-solid fa-forward"></i>&nbsp; Continuar Teste</button>
                     <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político."><i class="fa-solid fa-magnifying-glass-arrow-right"></i>&nbsp; Revisar Teste</a>
@@ -283,31 +274,31 @@
         </div>
 
         <div id="templateRespondQuestion" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center">
-                <h2 class="text-center m-3"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
-                <p class="lead text-justify mb-3">{2}</p>
+            <div class="carousel-item">
+                <h2 class="text-center m-3 caption-test"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
+                <p class="lead-test text-justify mb-3">{2}</p>
                 <div class="form-check m-3">
                     <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção." tabindex="31" onclick="respondTest('{1}', '0')">
-                    <label for="inputRadio-{1}0" class="form-check-label lead text-justify" title="Clique aqui para selecionar esta opção.">{3}</label>
+                    <label for="inputRadio-{1}0" class="form-check-label lead-test text-justify" title="Clique aqui para selecionar esta opção.">{3}</label>
                 </div>
                 <div class="form-check m-3">
                     <input id="inputRadio-{1}1" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção."  tabindex="32" onclick="respondTest('{1}', '1')">
-                    <label for="inputRadio-{1}1" class="form-check-label lead text-justify" title="Clique aqui para selecionar esta opção.">{4}</label>
+                    <label for="inputRadio-{1}1" class="form-check-label lead-test text-justify" title="Clique aqui para selecionar esta opção.">{4}</label>
                 </div>
             </div>
         </div>
 
         <div id="templateReviewQuestion" class="d-none" tabindex="-1">
-            <div class="carousel-item text-center">
-                <h2 class="text-center m-3"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
-                <p class="lead text-justify mb-3">{2}</p>
+            <div class="carousel-item">
+                <h2 class="text-center m-3 caption-test"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
+                <p class="lead-test text-justify mb-3">{2}</p>
                 <div class="form-check m-3">
                     <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" {4}>
-                    <label for="inputRadio-{1}0" class="form-check-label lead text-justify">{3}</label>
+                    <label for="inputRadio-{1}0" class="form-check-label lead-test text-justify">{3}</label>
                 </div>
                 <div class="form-check m-3">
                     <input id="inputRadio-{1}1" name="inputRadio-{1}" type="radio" class="form-check-input" {6}>
-                    <label for="inputRadio-{1}1" class="form-check-label lead text-justify">{5}</label>
+                    <label for="inputRadio-{1}1" class="form-check-label lead-test text-justify">{5}</label>
                 </div>
             </div>
         </div>
