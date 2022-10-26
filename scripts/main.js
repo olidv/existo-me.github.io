@@ -1190,5 +1190,5 @@ $(document).ready(function () {
     showIntro();
 
     // Exibe a popup com o alerta de que ainda estamos em obras:
-    //DOM.popupObras();
+    DOM.popupObras();
 });
