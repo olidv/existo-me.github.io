@@ -40,7 +40,7 @@
     OBSERVACOES E/OU COMENTARIOS IMPORTANTES, EM LETRA MAIUSCULA PARA MAIOR DESTAQUE. E SEM ACENTUACAO.
 
     'uri'
-    Apostrofos designam endereco (url) de web site ou qualquer outro recurso (uri) utilizado.
+    Apostrofos designam endereco (url) de website ou qualquer outro recurso (uri) utilizado.
 
     "Description"
     Aspas designam qualquer literal (cadeia de caracteres alfanumerico) manipulado como valor string.
@@ -51,7 +51,7 @@
 
 ## DETALHAMENTO DOS CASOS DE USO
 
-### Caso de Uso: Acesso ao Web Site
+### Caso de Uso: Acesso ao WebSite
 
 ```
 -------------------------------------------------------------------------------

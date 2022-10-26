@@ -276,7 +276,7 @@ var GlobalTest = PoliticalTest.loadInstance(dataPoliticalGps);
  *
  */
 class DomHelper {
-    // propriedades privadas: atributos do web site
+    // propriedades privadas: atributos do website
     pageTitle;
 
     // propriedades privadas: componente carrocel
@@ -359,7 +359,7 @@ class DomHelper {
         document.title = this.pageTitle;
     }
 
-    /* --- WEB SITE RESULT MENU -------------------------------------------- */
+    /* --- WEBSITE RESULT MENU -------------------------------------------- */
 
     /**
      * .
@@ -669,7 +669,7 @@ class ModalSetup {
         // obtem a instancia da classe modal:
         let self = event.data.self;
 
-        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no website:
         GlobalUser.isThemeDark = this.checked;
 
         // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
@@ -685,7 +685,7 @@ class ModalSetup {
         // obtem a instancia da classe modal:
         let self = event.data.self;
 
-        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no website:
         GlobalUser.ordFontSize = this.value;
 
         // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
@@ -701,7 +701,7 @@ class ModalSetup {
         // obtem a instancia da classe modal:
         let self = event.data.self;
 
-        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no web site:
+        // ao alterar qualquer propriedade, as preferencias modificadas serao aplicadas no website:
         GlobalUser.isSoundOn = this.checked;
 
         // ao alterar qualquer preferencia, atualiza o respectivo rotulo:
@@ -1190,5 +1190,5 @@ $(document).ready(function () {
     showIntro();
 
     // Exibe a popup com o alerta de que ainda estamos em obras:
-    DOM.popupObras();
+    //DOM.popupObras();
 });

@@ -238,7 +238,7 @@ class AppUser {
         return newInstance;
     }
 
-    /* --- WEB SITE SETUP -------------------------------------------------- */
+    /* --- WEBSITE SETUP -------------------------------------------------- */
 
     /**
      * Property: esquema de cores 'dark' habilitado.
@@ -254,7 +254,7 @@ class AppUser {
             this.prefThemeColor = "light";
         }
 
-        // ao alterar qualquer propriedade, aplica as preferencias modificadas no web site:
+        // ao alterar qualquer propriedade, aplica as preferencias modificadas no website:
         this.setup();
     }
 
@@ -291,7 +291,7 @@ class AppUser {
                 break;
         }
 
-        // ao alterar qualquer propriedade, aplica as preferencias modificadas no web site:
+        // ao alterar qualquer propriedade, aplica as preferencias modificadas no website:
         this.setup();
     }
 
@@ -309,12 +309,12 @@ class AppUser {
             this.prefSoundAlert = "off";
         }
 
-        // ao alterar qualquer propriedade, aplica as preferencias modificadas no web site:
+        // ao alterar qualquer propriedade, aplica as preferencias modificadas no website:
         this.setup();
     }
 
     /**
-     * Aplica as configuracoes da aplicacao e preferencias do usuario no web site.
+     * Aplica as configuracoes da aplicacao e preferencias do usuario no website.
      *
      */
     setup() {
@@ -417,5 +417,5 @@ class AppUser {
 // Cria instancia global para manutencao das preferencias e respostas do usuario:
 var GlobalUser = AppUser.loadInstance();
 
-// de imediato efetiva as preferencias do usuario no web site:
+// de imediato efetiva as preferencias do usuario no website:
 GlobalUser.setup();
