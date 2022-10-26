@@ -136,5 +136,5 @@ prettierignore.txt
 #####
 /data/ideologies.js
 /data/questions.js
+/docs/*.docx
 /docs/ROADMAP.md
-/docs/~$NTENT_ptBR.docx

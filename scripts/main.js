@@ -286,8 +286,6 @@ class DomHelper {
     nextControl;
 
     // propriedades privadas: toasts e popovers
-    toastUnderConstruction;
-
     // propriedades privadas: audios
     audioStart;
     audioRespond;
@@ -315,8 +313,9 @@ class DomHelper {
         this.prevControl = $("#carouselTest .carousel-control-prev");
         this.nextControl = $("#carouselTest .carousel-control-next");
 
-        // identifica as toasts e popovers:
-        this.toastUnderConstruction = document.getElementById("underConstructionToast");
+        // inicializa e identifica as toasts e popovers:
+        // const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        // const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
         // identifica os arquivos de audios:
         this.audioStart = document.querySelector("#audioStart");
@@ -490,15 +489,15 @@ class DomHelper {
         this.nextControl.removeClass("d-none");
     }
 
-    /* --- TOAST AND POPOVER ----------------------------------------------- */
+    /* --- TOASTS AND POPUPS ----------------------------------------------- */
 
     /**
-     * Exibe a toast com o alerta de que ainda estamos em obras.
+     * Exibe a popup com o alerta de que ainda estamos em obras.
      *
      */
-    toastSorry() {
-        const nvToast = new bootstrap.Toast(this.toastUnderConstruction);
-        nvToast.show();
+    popupObras() {
+        const modalObras = new bootstrap.Modal(document.getElementById("modalObras"));
+        modalObras.show();
     }
 
     /* --- AUDIOS: PLAY SOUND ---------------------------------------------- */
@@ -719,7 +718,7 @@ class ModalSetup {
         let self = event.data.self;
 
         // para evitar enganos, pede a confirmacao do usuario:
-        let isOk = confirm("Por favor, confirme a exclusão do seu histórico de respostas para o teste do GPS Político:");
+        let isOk = confirm("Por favor, confirme a exclusão do seu registro de respostas para o teste do GPS Político:");
         if (isOk) {
             // limpa todos os dados do teste do usuario:
             GlobalUser.clear();
@@ -779,8 +778,8 @@ class ModalResult {
         $("#modalResult").on("hide.bs.modal", { self: this }, this.onHide);
 
         // vai exibir tooltip do tipo popover ao copiar para area de transferencia.
-        $("#btnShare").popover({
-            delay: { show: 1000, hide: 2000 },
+        $(".btn-popover").popover({
+            delay: { show: 500, hide: 100 },
         });
     }
 
@@ -909,10 +908,13 @@ class ModalResult {
         // ao efetuar a copia, exibe mensagem informando o usuario:
         clipboard.on("success", function (e) {
             $("#btnShare").popover("show");
+            // evita que o usuario aperte o botao novamente na sequencia.
+            $("#btnShare").prop("disabled", true);
 
             setTimeout(function () {
                 $("#btnShare").popover("hide");
-            }, 3000);
+                $("#btnShare").prop("disabled", false);
+            }, 3333);
         });
     }
 
@@ -1154,6 +1156,22 @@ function retakeTest() {
     takeTest();
 }
 
+/**
+ * .
+ * 
+ */
+function forgetMe() {
+    // Questiona o usuario antes de apagar seus dados:
+    let isOk = confirm("Deseja excluir seu histórico do teste e todas as preferências configuradas? Você será redirecionado para fora deste website se confirmar…");
+    if (isOk) {
+        // exclui o registro do usuario no local-storage:
+
+        // recomenda a pagina da iniciativa no github.
+        window.location.replace("https://www.github.com/united-sapiens");
+    }
+}
+
+
 /* --- JQUERY: DOM READY --------------------------------------------------- */
 
 /**
@@ -1171,6 +1189,6 @@ $(document).ready(function () {
     // a partir do estado do usuario, identifica qual painel introdutorio apresentar:
     showIntro();
 
-    // Exibe a toast com o alerta de que ainda estamos em obras:
-    //DOM.toastSorry();
+    // Exibe a popup com o alerta de que ainda estamos em obras:
+    //DOM.popupObras();
 });

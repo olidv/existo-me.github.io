@@ -6,6 +6,7 @@
     --ex-menu-bg-color: #ffffff;
     --ex-btn-bg-color: #212529;
     --ex-next-bg-color: rgba(0, 0, 0, 0.2);
+    --ex-card-br-color: rgba(0, 0, 0, 0.176);
     --ex-border-color: #CED2D6;
     --ex-tx-size: 1.25rem;
 }
@@ -16,6 +17,7 @@
     --ex-menu-bg-color: #4C555D;
     --ex-btn-bg-color: #000000;
     --ex-next-bg-color: rgba(0, 0, 0, 0.4);
+    --ex-card-br-color: rgba(238, 238, 238, 0.176);
     --ex-border-color: #222326;
 }
 
@@ -379,6 +381,12 @@ a:visited {
     background-color: var(--ex-menu-bg-color);
 }
 
+.modal-content .card-body {
+    color: var(--ex-tx-color);
+    background-color: var(--ex-menu-bg-color);
+    border-color: var(--ex-card-br-color);
+}
+
 .modal .modal-content .modal-body p,
 .modal .modal-content .modal-body li {
     text-align: justify;
@@ -388,12 +396,12 @@ a:visited {
     font-size: 1rem;
 }
 
-.modal-body.link-gold a,
-.modal-body.link-gold a:hover,
-.modal-body.link-gold a:focus,
-.modal-body.link-gold a:link,
-.modal-body.link-gold a:active,
-.modal-body.link-gold a:visited {
+.modal-body a,
+.modal-body a:hover,
+.modal-body a:focus,
+.modal-body a:link,
+.modal-body a:active,
+.modal-body a:visited {
     color: #D3A303; /* #FF8000, #F78E04 */
     text-decoration: underline;
 }
@@ -424,7 +432,6 @@ a:visited {
 
 .h-axis {
     font-weight: bolder;
-    color: #333333;
     margin: 0;
 }
 

@@ -403,6 +403,15 @@ class AppUser {
         this.save();
         console.log("Instancia corrente de AppUser reinicializada e atualizada no Storage com sucesso.");
     }
+
+    /**
+     * Limpa o historico do teste e todo o registro do usuario.
+     *
+     */
+    delete() {
+        GlobalStore.clear();
+        console.log("Instancia corrente de AppUser excluida do Storage com sucesso.");
+    }
 }
 
 // Cria instancia global para manutencao das preferencias e respostas do usuario:
