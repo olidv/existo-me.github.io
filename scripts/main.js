@@ -1164,7 +1164,9 @@ function forgetMe() {
     // Questiona o usuario antes de apagar seus dados:
     let isOk = confirm("Deseja excluir seu histórico do teste e todas as preferências configuradas? Você será redirecionado para fora deste website se confirmar…");
     if (isOk) {
-        // exclui o registro do usuario no local-storage:
+        // exclui o registro do usuario e qualquer outra informacao no local-storage:
+        GlobalStore.clear();
+        console.log("Excluídos todos os dados no Storage com sucesso.");
 
         // recomenda a pagina da iniciativa no github.
         window.location.replace("https://www.github.com/united-sapiens");

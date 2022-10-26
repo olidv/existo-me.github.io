@@ -8,7 +8,6 @@
     --ex-next-bg-color: rgba(0, 0, 0, 0.2);
     --ex-card-br-color: rgba(0, 0, 0, 0.176);
     --ex-border-color: #CED2D6;
-    --ex-tx-size: 1.25rem;
 }
 
 [data-theme="dark"] {
@@ -21,18 +20,39 @@
     --ex-border-color: #222326;
 }
 
-/* Em smart-phones, nao ha configuracao de fontes, por enquanto (v1)... */
 @media (min-width: 480px) {
     [data-fonts="small"] {
-        --ex-tx-size: 1.15rem;
+        --ex-tx-size: 1.25rem;
+    }
+
+    [data-fonts="normal"] {
+        --ex-tx-size: 1.50rem;
     }
 
     [data-fonts="large"] {
-        --ex-tx-size: 1.35rem;
+        --ex-tx-size: 1.75rem;
     }
 
     [data-fonts="huge"] {
-        --ex-tx-size: 1.45rem;
+        --ex-tx-size: 2rem;
+    }
+}
+
+@media (max-width: 479px) {
+    [data-fonts="small"] {
+        --ex-tx-size: 1.0rem;
+    }
+
+    [data-fonts="normal"] {
+        --ex-tx-size: 1.2rem;
+    }
+
+    [data-fonts="large"] {
+        --ex-tx-size: 1.4rem;
+    }
+
+    [data-fonts="huge"] {
+        --ex-tx-size: 1.6rem;
     }
 }
 
@@ -633,10 +653,6 @@ div.text-rate {
 
     .caption-test .badge {
         font-size: 1.2rem !important;
-    }
-
-    .lead-test {
-        font-size: 1.15rem !important;
     }
 }
 
