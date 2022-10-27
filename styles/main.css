@@ -484,12 +484,12 @@ div.bar {
     width: 50%;
 }
 div.bar-equality {
-    background-color: #FDCB58;
+    background-color: #DD2E44;
     text-align: left;
     border-right-style: solid;
 }
 div.bar-market {
-    background-color: #C1694F;
+    background-color: #55ACEE;
     text-align: right;
     border-left-style: solid;
 }
@@ -514,12 +514,12 @@ div.bar-authority {
     border-left-style: solid;
 }
 div.bar-progress {
-    background-color: #DD2E44;
+    background-color: #FDCB58;
     text-align: left;
     border-right-style: solid;
 }
 div.bar-tradition {
-    background-color: #55ACEE;
+    background-color: #C1694F;
     text-align: right;
     border-left-style: solid;
 }

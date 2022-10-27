@@ -10,7 +10,6 @@ class PoliticalTest {
     testLength = 0; // numero total de questoes do teste
     testQuests = []; // lista de questoes a serem respondidas
     testLabels = []; // denominacao para os eixos conforme a pontuacao (outcome):
-    testIdeals = []; // relacao de ideologias resultantes do teste:
 
     // propriedades privadas: controle do generator de quetoes:
     currentQuest = 0; // numero da questao corrente do teste em andamento
@@ -167,34 +166,19 @@ class PoliticalTest {
         userScore.dipl = this.#calculateRate(sum_dipl, this.max_dipl);
         userScore.govt = this.#calculateRate(sum_govt, this.max_govt);
         userScore.scty = this.#calculateRate(sum_scty, this.max_scty);
-        console.log("(antes) userScore = ", JSON.stringify(userScore));
 
         // identifica a ideologia do usuario:
-        let userIdeal = null;
-        let minDist = Infinity;
-        for (let i = 0; i < this.testIdeals.length; i++) {
-            let ideal = this.testIdeals[i];
-            console.log("ideal = ", ideal);
-
-            let dist = 0;
-            dist += Math.pow(Math.abs(ideal.rate.econ - userScore.econ), 2);
-            // console.log(`dist = ${dist}`);
-            dist += Math.pow(Math.abs(ideal.rate.dipl - userScore.dipl), 1.73856063);
-            // console.log(`dist = ${dist}`);
-            dist += Math.pow(Math.abs(ideal.rate.govt - userScore.govt), 2);
-            // console.log(`dist = ${dist}`);
-            dist += Math.pow(Math.abs(ideal.rate.scty - userScore.scty), 1.73856063);
-            console.log(`dist = ${dist} .:. minDist = ${minDist}`);
-            // console.log("--------------------------------");
-            if (dist < minDist) {
-                minDist = dist;
-                userIdeal = ideal;
-            }
+        if (userScore.econ > 52.5) {
+            userScore.name = "Esquerda";
+            userScore.side = 1;
+        } else if (userScore.econ < 47.5) {
+            userScore.name = "Direita";
+            userScore.side = 2;
+        } else {
+            userScore.name = "Centro";
+            userScore.side = 0;
         }
-        // obtem os parametros da ideologia do usuario:
-        userScore.name = userIdeal.name;
-        userScore.side = userIdeal.side;
-        console.log("(depois) userScore = ", JSON.stringify(userScore));
+        console.log("userScore = ", JSON.stringify(userScore));
 
         return userScore;
     }
@@ -867,7 +851,7 @@ class ModalResult {
             $("#alert-center").addClass("d-none");
             $("#alert-right").addClass("d-none");
             // informa a ideologia do usuario:
-            $("#label-left").text(GlobalUser.testScore.name);
+            // $("#label-left").text(GlobalUser.testScore.name);
         }
         // informa a ideologia de centro do usuario:
         else if (GlobalUser.testScore.side == 0) {
@@ -876,7 +860,7 @@ class ModalResult {
             $("#alert-center").removeClass("d-none");
             $("#alert-right").addClass("d-none");
             // informa a ideologia do usuario:
-            $("#label-center").text(GlobalUser.testScore.name);
+            // $("#label-center").text(GlobalUser.testScore.name);
         }
         // informa a ideologia de direita do usuario:
         else {
@@ -885,20 +869,19 @@ class ModalResult {
             $("#alert-center").addClass("d-none");
             $("#alert-right").removeClass("d-none");
             // informa a ideologia do usuario:
-            $("#label-right").text(GlobalUser.testScore.name);
+            // $("#label-right").text(GlobalUser.testScore.name);
         }
 
         // obtem os emojis para elaborar o texto para o clipboard:
         let siteTitle = self.#dataEmoji(".btn-clipboard");
         let hashIdeal = GlobalUser.testScore.name.hashtag();
-        let lineSide = GlobalUser.testScore.side == 1 ? self.#dataEmoji("#alert-left") : GlobalUser.testScore.side == 0 ? self.#dataEmoji("#alert-center") : self.#dataEmoji("#alert-right");
         let line1 = self.equality >= self.market ? self.#dataEmoji("#bar-equality") : self.#dataEmoji("#bar-market");
         let line2 = self.global >= self.national ? self.#dataEmoji("#bar-global") : self.#dataEmoji("#bar-national");
         let line3 = self.liberty >= self.authority ? self.#dataEmoji("#bar-liberty") : self.#dataEmoji("#bar-authority");
         let line4 = self.progress >= self.tradition ? self.#dataEmoji("#bar-progress") : self.#dataEmoji("#bar-tradition");
 
         // cria o texto final com os rotulos da pontuacao:
-        const clip = `${siteTitle} ${hashIdeal}\n\n${lineSide}\n\n${line1} ${self.label_econ}\n${line2} ${self.label_dipl}\n${line3} ${self.label_govt}\n${line4} ${self.label_scty}\n`;
+        const clip = `${siteTitle}  ${hashIdeal}\n\n${line1} ${self.label_econ}\n${line2} ${self.label_dipl}\n${line3} ${self.label_govt}\n${line4} ${self.label_scty}\n`;
         $(".btn-clipboard").attr("data-clipboard-text", clip);
 
         // inicializa componente para manipulacao do clipboard:
