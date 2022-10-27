@@ -1,0 +1,293 @@
+O lançamento oficial do site será no próximo 01 de Novembro.
+
+
+align-items-start mt-5
+mt-5 {
+}
+
+.align-items-start {
+    
+    
+    
+    align-items-center
+    
+    .vermelho { background-color: red; }
+.azul { background-color: blue; }
+.laranja { background-color: orange; }
+.cinza { background-color: #BBBBBB; }
+.verde { background-color: green; }
+.amarelo { background-color: yellow !important; }
+
+    
+    
+    🇧🇷 EXISTO.me #AnarcoEgoista
+
+🟦 🟦 🟦 🟦 Direita
+
+🟨 🟨 🟨 🟨 Centrista
+🟪 🟪 🟪 🟪 Chauvinista
+🟧 🟧 🟧 🟧 Anarquista
+🟦 🟦 🟦 🟦 Neutro
+
+    
+
+
+.caption-test i[class^='fa-'],
+.caption-test i[class*=' fa-'] {
+    font-size: 3rem;
+}
+
+.caption-test img {
+    height: 3rem;
+}
+
+.caption-test .badge {
+    font-size: 1.735rem;
+}
+
+
+
+
+
+
+
+
+
+.h-notify {
+    /* line-height: 1.5em; */
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.h-notify .badge {
+    font-size: 0.94em;
+    line-height: 1em;
+    /* color: #fff !important;
+    background-color: #2FB56A !important; */
+}
+
+
+                        <button type="button" class="btn-nav" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#modalIntro" title="Retorna ao primeiro tópico.">
+                            <i class="fa-solid fa-backward-fast"></i>
+                        </button>
+
+        <div class="position-fixed top-0 p-2" style="z-index: 999">
+            <div id="underConstructionToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header text-bg-warning">
+                    <i class="fa-solid fa-person-digging"></i> &nbsp; &nbsp; <strong class="me-auto">ATENÇÃO: ESTAMOS EM OBRAS...</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" title="Close this"></button>
+                </div>
+                <div class="toast-body fs-6">
+                    <p>Pedimos desculpas por qualquer transtorno. O lançamento oficial será no próximo 01/Novembro.</p>
+                </div>
+            </div>
+        </div>
+
+
+🇧🇷 EXISTO.me #SocialDemocrata
+
+🟩 🟩 🟩 🟩 Centro
+
+🟫 🟫 🟫 🟫 Capitalista
+🟪 🟪 🟪 🟪 Nacionalista
+⬛ ⬛ ⬛ ⬛ Estadista
+🟦 🟦 🟦 🟦 Neutro
+
+
+
+
+
+/*--- PHONES ----------------------------------------------------------------*/
+
+@media (max-width: 319.98px) {
+    h2.ex-nav {
+        font-size: 0.9rem;
+    }
+    li.ex-nav {
+        font-size: 0.9rem;
+        margin-left: 0.5rem !important;
+    }
+    h5.ex-nav {
+        font-size: 0.6rem;
+    }
+}
+
+@media (min-width: 320px) {
+    h2.ex-nav {
+        font-size: 1.25rem;
+    }
+    li.ex-nav {
+        font-size: 1.25rem;
+        margin-left: 0.7rem !important;
+    }
+    h5.ex-nav {
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 340px) {
+    h2.ex-nav {
+        font-size: 1.3rem;
+    }
+    li.ex-nav {
+        font-size: 1.3rem;
+        margin-left: 0.7rem !important;
+    }
+    h5.ex-nav {
+        font-size: 0.8rem;
+    }
+}
+
+@media (min-width: 360px) {
+    h2.ex-nav {
+        font-size: 1.4rem;
+    }
+    li.ex-nav {
+        font-size: 1.4rem;
+        margin-left: 0.8rem !important;
+    }
+    h5.ex-nav {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 400px) {
+    h2.ex-nav {
+        font-size: 1.5rem;
+    }
+    li.ex-nav {
+        font-size: 1.5rem;
+        margin-left: 0.9rem !important;
+    }
+    h5.ex-nav {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 480px) {
+    h2.ex-nav {
+        font-size: 1.75rem;
+    }
+    li.ex-nav {
+        font-size: 1.75rem;
+        margin-left: 1rem !important;
+    }
+    h5.ex-nav {
+        font-size: 1.25rem;
+    }
+}
+
+/*--- TABLETS ---------------------------------------------------------------*/
+
+@media (min-width: 600px) {
+    h2.ex-nav {
+        font-size: 1.8rem;
+    }
+    li.ex-nav {
+        font-size: 1.8rem;
+        margin-left: 1rem !important;
+    }
+    h5.ex-nav {
+        font-size: 1.35rem;
+    }
+}
+
+@media (min-width: 768px) {
+    h2.ex-nav {
+        font-size: 1.85rem;
+    }
+    li.ex-nav {
+        font-size: 1.85rem;
+        margin-left: 1rem !important;
+    }
+    h5.ex-nav {
+        font-size: 1.50rem;
+    }
+}
+
+/*--- DESKTOP ---------------------------------------------------------------*/
+
+@media (min-width: 1025px) {
+    h2.ex-nav {
+        font-size: 2rem;
+    }
+    li.ex-nav {
+        font-size: 2rem;
+        margin-left: 1.25rem !important;
+    }
+    h5.ex-nav {
+        font-size: 1.50rem;
+    }
+}
+
+
+
+
+
+
+:root {
+  font-size: 125%;
+}
+:root {
+  font-size: 6.25%;
+}
+body {
+  font-size: 16rem;
+}
+
+
+:root {
+  font-size: 1000px;
+}
+@media (min-width: 1rem) {
+  :root {
+    font-size: 1px;
+  }
+}
+
+
+
+
+
+
+@media (min-width: 576px) {
+  .container-sm, .container {
+    max-width: 540px;
+  }
+}
+@media (min-width: 768px) {
+  .container-md, .container-sm, .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .container-lg, .container-md, .container-sm, .container {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+    max-width: 1320px;
+  }
+}
+
+
+@media (max-width: 575.98px) {
+}
+@media (max-width: 767.98px) {
+}
+@media (max-width: 991.98px) {
+}
+@media (max-width: 1199.98px) {
+}
+@media (max-width: 1399.98px) {
+}
+
+
+
+

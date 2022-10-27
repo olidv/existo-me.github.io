@@ -129,7 +129,12 @@ class PoliticalTest {
      * @param  {String} max .
      */
     #calculateRate(sum, max) {
-        return ((100 * (max + sum)) / (2 * max)).toFixed(1);
+        // evita divisao por zero:
+        if (max == 0) {
+            return 0;
+        } else {
+            return ((100 * (max + sum)) / (2 * max)).toFixed(1);
+        }
     }
 
     /**
@@ -168,10 +173,10 @@ class PoliticalTest {
         userScore.scty = this.#calculateRate(sum_scty, this.max_scty);
 
         // identifica a ideologia do usuario:
-        if (userScore.econ > 52.5) {
+        if (userScore.econ > 54) {
             userScore.name = "Esquerda";
             userScore.side = 1;
-        } else if (userScore.econ < 47.5) {
+        } else if (userScore.econ < 44) {
             userScore.name = "Direita";
             userScore.side = 2;
         } else {
@@ -190,16 +195,13 @@ class PoliticalTest {
      * @param  {String} axis .
      */
     #getLabel(val, axis) {
-        if (val > 90) return axis[0];
-        if (val > 75) return axis[1];
-        if (val > 60) return axis[2];
-        if (val >= 40) return axis[3];
-        if (val >= 25) return axis[4];
-        if (val >= 10) return axis[5];
-        if (val >= 0) return axis[6];
-
-        // se nao identificar, nada a retornar...
-        return "";
+        /* 91...100 */ if (val > 90) return axis[0]; // 90
+        /* 73... 90 */ if (val >= 73) return axis[1]; // 75
+        /* 55... 72 */ if (val >= 55) return axis[2]; // 60
+        /* 44... 54 */ if (val >= 44) return axis[3]; // 40
+        /* 27... 43 */ if (val >= 27) return axis[4]; // 25
+        /* 10... 26 */ if (val >= 10) return axis[5]; //10
+        /*  0...  9 */ return axis[6]; // 0
     }
 
     /**
@@ -968,14 +970,15 @@ function showIntro() {
         DOM.showIntroHtml(htmlContent);
     } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
-        let plusQueries = GlobalTest.testLength - GlobalUser.testLength;
+        let testDif = GlobalTest.testLength - GlobalUser.testLength;
+        let plusQueries = testDif == 1 ? "1 nova questão adicionada" : (testDif.toString() + " novas questões adicionadas");
         // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
         DOM.notifyTitle("+" + plusQueries);
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
         DOM.showNavResulting();
         // exibe notificacao de novas questoes com valor: + pgps.testExtraLength
         let htmlContent = DOM.getIntroHtml("#cenarioMajorNotify");
-        htmlContent = htmlContent.formats(plusQueries);
+        htmlContent = htmlContent.formats(GlobalTest.testVersion.toFixed(2), GlobalUser.testVersion.toFixed(2), plusQueries);
         // apresenta opcoes[Continuar Teste Extra] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
     }
