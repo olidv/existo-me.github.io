@@ -14,8 +14,8 @@
 })(console.log);
 
 // habilita ou desabilita o logging:
-console.enableLogging();  // DEV
-// console.disableLogging();  // PRD
+// console.enableLogging();  // DEV
+console.disableLogging();  // PRD
 
 
 /* --- STRING UTILITIES ---------------------------------------------------- */
