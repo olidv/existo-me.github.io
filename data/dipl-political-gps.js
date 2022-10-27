@@ -4,12 +4,25 @@
 var diplPoliticalGps = {
     testQuests: [
         {
+            subject: "Um político brasileiro ou figura pública do governo, atuante nas relações externas, deve sempre:",
+            options: [
+                { text: "Garantir a honra dos brasileiros, não permitindo que outros líderes falem mal do Brasil.", mult: -1 },
+                { text: "Respeitar outros líderes de estado e jamais postar ofensas em redes sociais.", mult: +1 },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 10,
+                govt: 5,
+                scty: 0,
+            },
+        },
+        {
             //question_en: "The United Nations should be abolished.",
             //question_pt: "A ONU (Organização das Nações Unidas) deveria ser abolida.",
-            subject: "A ONU (Organização das Nações Unidas) deve ser:",
+            subject: "A Organização das Nações Unidas (ONU) deve ser:",
             options: [
-                { text: "abolida por ser inútil.", mult: +1 },
                 { text: "Mantida por ser importante.", mult: -1 },
+                { text: "Abolida por ser inútil.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -18,14 +31,13 @@ var diplPoliticalGps = {
                 scty: 0,
             },
         },
-
         {
             //question_en: "I support regional unions, such as the European Union.",
             //question_pt: "Eu apoio ligas regionais de países, como a União Europeia.",
             subject: "Uma liga países aqui na América do Sul, como a União Europeia, deve ser:",
             options: [
-                { text: "Criada e mantida.", mult: +1 },
                 { text: "Evitada a todo custo.", mult: -1 },
+                { text: "Criada e mantida.", mult: +1 },
             ],
             outcome: {
                 econ: -5,
@@ -37,10 +49,10 @@ var diplPoliticalGps = {
         {
             //question_en: "A united world government would be beneficial to mankind.",
             //question_pt: "Um governo mundial e unido, com agendas mútuas, seria benéfico para a humanidade.",
-            subject: "Um governo mundial e unido, com agendas mútuas, é:",
+            subject: "Um governo mundial e unido, com agendas mútuas, seria:",
             options: [
-                { text: "Benéfico para a humanidade.", mult: +1 },
-                { text: "Prejudicial à condição humana.", mult: -1 },
+                { text: "Benéfico para os brasileiros.", mult: +1 },
+                { text: "Prejudicial para os brasileiros.", mult: -1 },
             ],
             outcome: {
                 econ: 0,
@@ -52,7 +64,7 @@ var diplPoliticalGps = {
         {
             //question_en: "It is more important to retain peaceful relations than to further our strength.",
             //question_pt: "É mais importante manter relações pacíficas com os demais países do que aumentar a nossa força militar.",
-            subject: "O governo do Brasil deve focar mais em:",
+            subject: "Para garantir a segurança, o governo do Brasil deve focar mais em:",
             options: [
                 { text: "Relações pacíficas com os países vizinhos.", mult: +1 },
                 { text: "Investimentos nas Forças Armadas do Brasil.", mult: -1 },
@@ -69,8 +81,8 @@ var diplPoliticalGps = {
             //question_pt: "A ajuda internacional / apoio financeiro aos países necessitados é um desperdício de dinheiro.",
             subject: "O apoio financeiro aos países vizinhos necessitados é:",
             options: [
-                { text: "Um desperdício de dinheiro se for um país comunista.", mult: +1 },
                 { text: "Importante e necessário, independente de seu governo.", mult: -1 },
+                { text: "Um desperdício de dinheiro se for um país comunista.", mult: +1 },
             ],
             outcome: {
                 econ: -5,
@@ -82,10 +94,10 @@ var diplPoliticalGps = {
         {
             //question_en: "Governments should be accountable to the international community.",
             //question_pt: "Os governos deveriam prestar contas à comunidade internacional.",
-            subject: "O governo do Brasil deve:",
+            subject: "O governo do Brasil deve prestar contas:",
             options: [
-                { text: "Prestar contas à comunidade internacional.", mult: +1 },
-                { text: "Prestar contas apenas à população brasileira.", mult: -1 },
+                { text: "Também à comunidade internacional.", mult: +1 },
+                { text: "Apenas à população brasileira.", mult: -1 },
             ],
             outcome: {
                 econ: 0,
@@ -99,8 +111,8 @@ var diplPoliticalGps = {
             //question_pt: "Minha nação é grandiosa e deveria vir em primeiro lugar.",
             subject: "O meu Brasil é uma nação grandiosa:",
             options: [
-                { text: "E bem melhor que as outras nações vizinhas.", mult: +1 },
                 { text: "Mas não é tão melhor que as nações vizinhas.", mult: -1 },
+                { text: "E bem melhor que as outras nações vizinhas.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -114,8 +126,8 @@ var diplPoliticalGps = {
             //question_pt: "As Nossas guerras não precisam ser justificadas para os demais países.",
             subject: "Se o Brasil iniciasse uma guerra, deveria:",
             options: [
-                { text: "Ignorar a opinião dos demais países vizinhos.", mult: +1 },
                 { text: "Se justificar para os demais países vizinhos.", mult: -1 },
+                { text: "Ignorar a opinião dos demais países vizinhos.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -129,8 +141,8 @@ var diplPoliticalGps = {
             //question_pt: "Os governos deveriam estar tão preocupados com a situação social dos cidadãos estrangeiros quanto com os que nasceram em seu país / seus próprios cidadãos.",
             subject: "O governo do Brasil deve se preocupar:",
             options: [
-                { text: "Tanto com os brasileiros nascidos aqui quanto com cidadãos estrangeiros.", mult: +1 },
                 { text: "Principalmente com os cidadãos brasileiros que nasceram aqui.", mult: -1 },
+                { text: "Tanto com os brasileiros nascidos aqui quanto com cidadãos estrangeiros.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -157,10 +169,10 @@ var diplPoliticalGps = {
         {
             //question_en: "It is important that we work as a united world to combat climate change.",
             //question_pt: "É importante trabalharmos conjuntamente, unidos de forma global, para combatermos as mudanças climáticas.",
-            subject: "Para combatermos as mudanças climáticas, o Brasil deve:",
+            subject: "Para combatermos as mudanças climáticas, o Brasil deve trabalhar:",
             options: [
-                { text: "Trabalhar conjuntamente com os demais países, unidos de forma global.", mult: +1 },
-                { text: "Trabalhar isoladamente, apenas cuidado do que nos afeta.", mult: -1 },
+                { text: "Conjuntamente com os demais países, unidos de forma global.", mult: +1 },
+                { text: "Isoladamente, apenas cuidando do que nos afeta.", mult: -1 },
             ],
             outcome: {
                 econ: 0,
@@ -174,8 +186,8 @@ var diplPoliticalGps = {
             //question_pt: "Nenhuma cultura é superior a outra.",
             subject: "A cultura popular brasileira é:",
             options: [
-                { text: "Tão boa quando a cultura de nossos vizinhos.", mult: +1 },
                 { text: "Bem melhor que a cultura de nossos vizinhos.", mult: -1 },
+                { text: "Tão boa quando a cultura de nossos vizinhos.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -204,8 +216,8 @@ var diplPoliticalGps = {
             //question_pt: "A ação militar preventiva por parte de nossa nação é por vezes necessária para protegê-la.",
             subject: "Uma possível ação militar preventiva por parte das Forças Armadas do Brasil:",
             options: [
-                { text: "Seria importante e por vezes necessária para proteger nosso país.", mult: +1 },
                 { text: "Deveria ser evitada, pois muitas vezes tais ações não se justificam.", mult: -1 },
+                { text: "Seria importante e por vezes necessária para proteger nosso país.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -234,8 +246,8 @@ var diplPoliticalGps = {
             //question_pt: "Os valores tradicionais da nossa nação precisam ser disseminados tanto for quanto possível.",
             subject: "Os valores tradicionais e culturais do Brasil:",
             options: [
-                { text: "Precisam ser disseminados o máximo possível a todos os países vizinhos.", mult: +1 },
                 { text: "Não são tão importantes para serem disseminados a todos os países vizinhos.", mult: -1 },
+                { text: "Precisam ser disseminados o máximo possível a todos os países vizinhos.", mult: +1 },
             ],
             outcome: {
                 econ: 0,

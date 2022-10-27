@@ -6,10 +6,10 @@ var govtPoliticalGps = {
         {
             //question_en: "Gun ownership should be prohibited for those without a valid reason.",
             //question_pt: "A posse ou o porte de armas de fogo precisam ser limitados aos casos específicos onde elas se fazem realmente necessárias, sem uma razão válida.",
-            subject: "A posse ou o porte de armas de fogo deve:",
+            subject: "A posse ou o porte de armas de fogo em território nacional deve ser:",
             options: [
-                { text: "Ser proibido quando não houver uma razão válida.", mult: +1 },
-                { text: "Ser liberada para todos, independentemente de haver razão válida.", mult: -1 },
+                { text: "Liberada para todos, independentemente de haver razão válida.", mult: -1 },
+                { text: "Proibida quando não houver uma razão válida.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -21,10 +21,10 @@ var govtPoliticalGps = {
         {
             //question_en: "Physician-assisted suicide should be legal.",
             //question_pt: "O suicídio assistido por médico deve ser legal.",
-            subject: "O suicídio assistido por médico deve:",
+            subject: "O suicídio assistido por médico no Brasil deve ser:",
             options: [
-                { text: "Ser permitido e regularizado.", mult: +1 },
-                { text: "Ser proibido e evitado.", mult: -1 },
+                { text: "Proibido e evitado.", mult: -1 },
+                { text: "Permitido e regularizado.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -36,10 +36,10 @@ var govtPoliticalGps = {
         {
             //question_en: "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism.",
             //question_pt: "O sacrifício de algumas liberdades civis é necessário para nos proteger dos atos de terrorismo.",
-            subject: "Para nos protegermos dos atos de terrorismo:",
+            subject: "Para nos protegermos dos atos de terrorismo no Brasil é:",
             options: [
-                { text: "É necessário o sacrifício de algumas liberdades civis.", mult: +1 },
-                { text: "Não podemos permitir a perda das liberdades civis.", mult: -1 },
+                { text: "Necessário o sacrifício de algumas liberdades civis.", mult: +1 },
+                { text: "Injustificável permitir a perda das liberdades civis.", mult: -1 },
             ],
             outcome: {
                 econ: 0,
@@ -51,10 +51,10 @@ var govtPoliticalGps = {
         {
             //question_en: "Government surveillance is necessary in the modern world.",
             //question_pt: "A vigilância governamental é necessária no mundo moderno.",
-            subject: "A vigilância governamental no mundo moderno:",
+            subject: "A vigilância governamental sobre os brasileiros, pela Agência Brasileira de Inteligência (ABIN), é:",
             options: [
-                { text: "É necessária e importante.", mult: +1 },
-                { text: "É desnecessária e perigosa.", mult: -1 },
+                { text: "Necessária e importante.", mult: +1 },
+                { text: "Desnecessária e perigosa.", mult: -1 },
             ],
             outcome: {
                 econ: 0,
@@ -66,10 +66,10 @@ var govtPoliticalGps = {
         {
             //question_en: "The very existence of the state is a threat to our liberty.",
             //question_pt: "A própria existência do Estado é uma ameaça à nossa liberdade.",
-            subject: "A existência de um Estado:",
+            subject: "A existência de um Estado é sempre:",
             options: [
-                { text: "É uma ameaça à nossa liberdade.", mult: +1 },
-                { text: "É importante para a nossa proteção.", mult: -1 },
+                { text: "Importante para a nossa proteção.", mult: -1 },
+                { text: "Uma ameaça à nossa liberdade.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -81,7 +81,7 @@ var govtPoliticalGps = {
         {
             //question_en: "It is important that the government follows the majority opinion, even if it is wrong.",
             //question_pt: "É importante que o governo siga a opinião da maioria, ainda que ela possa estar errada.",
-            subject: "Para tomar decisões, o governo deve:",
+            subject: "Para tomar decisões, o governo do Brasil deve:",
             options: [
                 { text: "Sempre seguir a opinião da maioria dos brasileiros, ainda que ela possa estar errada.", mult: +1 },
                 { text: "Seguir a opinião da maioria dos brasileiros, mas apenas quando ela não estiver errada.", mult: -1 },
@@ -96,10 +96,10 @@ var govtPoliticalGps = {
         {
             //question_en: "It is very important to maintain law and order.",
             //question_pt: "É muito importante a manutenção da lei e da ordem.",
-            subject: "A manutenção da lei e da ordem:",
+            subject: "A manutenção da lei e da ordem pelo governo do Brasil é:",
             options: [
-                { text: "É o mais importante.", mult: +1 },
-                { text: "Não é tão prioritária.", mult: -1 },
+                { text: "Menos prioritário que outros temas.", mult: -1 },
+                { text: "O mais importante.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -113,8 +113,8 @@ var govtPoliticalGps = {
             //question_pt: "Mesmo ao protestar contra um governo autoritário, a violência não é aceitável.",
             subject: "Para protestar contra um governo autoritário:",
             options: [
-                { text: "A violência jamais poderá ser aceitável.", mult: +1 },
                 { text: "A violência pode ser utilizada.", mult: -1 },
+                { text: "A violência jamais poderá ser aceitável.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -126,10 +126,10 @@ var govtPoliticalGps = {
         {
             //question_en: "Military spending is a waste of money.",
             //question_pt: "As despesas militares são um desperdício de dinheiro.",
-            subject: "As despesas com as forças armadas do Brasil:",
+            subject: "As despesas com as Forças Armadas do Brasil são:",
             options: [
-                { text: "São um desperdício de dinheiro.", mult: +1 },
-                { text: "São necessárias e devem ser mantidas.", mult: -1 },
+                { text: "Necessárias e devem ser mantidas.", mult: -1 },
+                { text: "Um desperdício de dinheiro.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -158,8 +158,8 @@ var govtPoliticalGps = {
             //question_pt: "Independentemente das suas opiniões políticas, é importante ficar ao lado do seu país em momentos de necessidade.",
             subject: "Um cidadão brasileiro deve ser leal ao governo do Brasil:",
             options: [
-                { text: "Mesmo quando possui opiniões políticas contrárias.", mult: +1 },
                 { text: "Apenas quando possuir a mesma opinião do governo.", mult: -1 },
+                { text: "Mesmo quando possui opiniões políticas contrárias.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -218,8 +218,8 @@ var govtPoliticalGps = {
             //question_pt: "Um Estado rigidamente hierárquico é o melhor caminho para a manutenção da ordem.",
             subject: "Um Estado rigidamente hierárquico:",
             options: [
-                { text: "É o melhor caminho para a manutenção da ordem.", mult: +1 },
                 { text: "Não garante a ordem e pode levar ao fascismo.", mult: -1 },
+                { text: "É o melhor caminho para a manutenção da ordem.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -233,8 +233,8 @@ var govtPoliticalGps = {
             //question_pt: "A democracia é mais do que um mero processo de tomada de decisões.",
             subject: "A democracia brasileira:",
             options: [
-                { text: "É muito maior do que um mero processo de tomada de votos.", mult: +1 },
                 { text: "É simplesmente um mero processo de tomada de votos.", mult: -1 },
+                { text: "É muito maior do que um mero processo de tomada de votos.", mult: +1 },
             ],
             outcome: {
                 econ: 0,

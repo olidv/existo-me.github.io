@@ -4,12 +4,38 @@
 var sctyPoliticalGps = {
     testQuests: [
         {
+            subject: 'A prática do crime de peculato pelos políticos, quando fazem "rachadinha" com o salário de seus subordinados, deve ser:',
+            options: [
+                { text: "Considerada uma improbidade administrativa, pois é uma prática comum e não afeta o exercício da política.", mult: -1 },
+                { text: "Punida exemplarmente com rigor, impedindo o político de exercer atividades públicas novamente.", mult: +1 },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: -5,
+                scty: 10,
+            },
+        },
+        {
+            subject: "A utilização de urnas eletrônicas pela justiça eleitoral brasileira é:",
+            options: [
+                { text: "Um risco à democracia brasileira, e deveria ser substituída pelo voto impresso.", mult: -1 },
+                { text: "Motivo de orgulho nacional, por ser comprovadamente segura e passível de auditoria.", mult: +1 },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: -5,
+                scty: 10,
+            },
+        },
+        {
             //question_en: "Environmental regulations are essential.",
             //question_pt: "As regulações ambientais são essenciais para assegurar o futuro de nossos filhos e netos.",
-            subject: "As regularização fundiária na Amazônia:",
+            subject: "As regularização fundiária na Amazônia é:",
             options: [
-                { text: "É essencial para assegurar o futuro de nossos filhos e netos.", mult: +1 },
-                { text: "É uma questão que não necessariamente afeta nossa sociedade urbana.", mult: -1 },
+                { text: "Irrelevante e não necessariamente afeta nossa sociedade urbana.", mult: -1 },
+                { text: "Essencial para assegurar o futuro de nossos filhos e netos.", mult: +1 },
             ],
             outcome: {
                 econ: 5,
@@ -21,10 +47,10 @@ var sctyPoliticalGps = {
         {
             //question_en: "A better world will come from automation, science, and technology.",
             //question_pt: "Um mundo melhor surgirá do avanço da automação, da ciência e da tecnologia.",
-            subject: "O avanço da automação, da ciência e da tecnologia no Brasil:",
+            subject: "O avanço da automação, da ciência e da tecnologia no Brasil nos levará a um:",
             options: [
-                { text: "Nos levará a um mundo melhor.", mult: +1 },
-                { text: "Nos levará a um mundo pior.", mult: -1 },
+                { text: "Mundo muito melhor.", mult: +1 },
+                { text: "País bem pior.", mult: -1 },
             ],
             outcome: {
                 econ: 0,
@@ -38,8 +64,8 @@ var sctyPoliticalGps = {
             //question_pt: "As crianças deveriam ser educadas com valores religiosos ou tradicionais.",
             subject: "A educação das crianças brasileiras deve ser:",
             options: [
-                { text: "Tradicional e incluir valores religiosos.", mult: +1 },
                 { text: "Progressiva e sem valores religiosos.", mult: -1 },
+                { text: "Tradicional e incluir valores religiosos.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -68,8 +94,8 @@ var sctyPoliticalGps = {
             //question_pt: "As igrejas deveriam ser tributadas da mesma forma que as demais instituições são tributadas.",
             subject: "A tributação das igrejas no Brasil deve ser:",
             options: [
-                { text: "Feita da mesma forma que as demais instituições são tributadas.", mult: +1 },
                 { text: "Evitada, pois não podem ser tributadas como as demais instituições.", mult: -1 },
+                { text: "Feita da mesma forma que as demais instituições são tributadas.", mult: +1 },
             ],
             outcome: {
                 econ: 5,
@@ -83,8 +109,8 @@ var sctyPoliticalGps = {
             //question_pt: "A mudança climática é atualmente uma das maiores ameaças ao nosso modo de vida.",
             subject: "A questão das mudanças climáticas para a sociedade brasileira:",
             options: [
-                { text: "É uma das maiores ameaças ao nosso modo de vida.", mult: +1 },
                 { text: "Não é mais importante do que outros assuntos mais prioritários.", mult: -1 },
+                { text: "É uma das maiores ameaças ao nosso modo de vida.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -113,8 +139,8 @@ var sctyPoliticalGps = {
             //question_pt: "É importante que pensemos a longo prazo, além de nossa expectativa de vida.",
             subject: "Ao estabelecermos uma agenda de política social no Brasil, devemos pensar a:",
             options: [
-                { text: "Longo prazo, além de nossa expectativa de vida.", mult: +1 },
                 { text: "Curto prazo, enquanto ainda estamos vivos.", mult: -1 },
+                { text: "Longo prazo, além de nossa expectativa de vida.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -128,8 +154,8 @@ var sctyPoliticalGps = {
             //question_pt: "O uso de drogas deveria ser legalizado ou descriminalizado.",
             subject: "O uso de drogas no Brasil deve ser:",
             options: [
-                { text: "Legalizado e descriminalizado.", mult: +1 },
                 { text: "Proibido e combatido.", mult: -1 },
+                { text: "Legalizado e descriminalizado.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -158,8 +184,8 @@ var sctyPoliticalGps = {
             //question_pt: "O sexo fora do casamento é algo imoral.",
             subject: "O sexo fora do casamento é:",
             options: [
-                { text: "Algo imoral.", mult: +1 },
                 { text: "Comum e natural.", mult: -1 },
+                { text: "Algo imoral.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -173,8 +199,8 @@ var sctyPoliticalGps = {
             //question_pt: "O aborto deveria ser proibido em todos os casos, ou em sua grande maioria.",
             subject: "O aborto no território brasileiro deve ser:",
             options: [
-                { text: "Proibido em todos os casos, ou em sua grande maioria.", mult: +1 },
                 { text: "Permitido para todos os casos, ou em sua grande maioria.", mult: -1 },
+                { text: "Proibido em todos os casos, ou em sua grande maioria.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -203,8 +229,8 @@ var sctyPoliticalGps = {
             //question_pt: "Perseguir o progresso a qualquer custo é algo perigoso.",
             subject: "Perseguir o progresso sem medir custos é:",
             options: [
-                { text: "Algo perigoso para a sociedade brasileira.", mult: +1 },
                 { text: "O caminho para um Brasil melhor.", mult: -1 },
+                { text: "Algo perigoso para a sociedade brasileira.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -218,8 +244,8 @@ var sctyPoliticalGps = {
             //question_pt: "Se aceitamos os migrantes, é importante que eles assimilem a nossa cultura.",
             subject: "Ao aceitarmos a entrada de imigrantes no Brasil:",
             options: [
-                { text: "É importante que eles assimilem a nossa cultura.", mult: +1 },
                 { text: "Não é necessário que eles assimilem a nossa cultura.", mult: -1 },
+                { text: "É importante que eles assimilem a nossa cultura.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -231,10 +257,10 @@ var sctyPoliticalGps = {
         {
             //question_en: "All people - regardless of factors like culture or sexuality - should be treated equally.",
             //question_pt: "Todas as pessoas - independentemente de fatores como cultura ou sexualidade - deveriam ser tratadas igualmente.",
-            subject: "Todos os brasileiros devem ser tratadas igualmente:",
+            subject: "Todos os brasileiros devem ser tratados:",
             options: [
-                { text: "Independentemente de fatores como cultura ou sexualidade.", mult: +1 },
-                { text: "Apenas quando forem da mesma cultura ou sexualidade.", mult: -1 },
+                { text: "Igualmente, independentemente de fatores como cultura ou sexualidade.", mult: +1 },
+                { text: "Distintamente, conforme sua cultura ou sexualidade.", mult: -1 },
             ],
             outcome: {
                 econ: 10,
@@ -248,8 +274,8 @@ var sctyPoliticalGps = {
             //question_pt: "É importante que coloquemos os interesses do nosso grupo ideológico acima de todos os demais.",
             subject: "Os interesses do meu grupo ideológico:",
             options: [
-                { text: "São importantes e devem estar acima de todos os demais.", mult: +1 },
                 { text: "Não são mais importantes que os interesses de outros grupos.", mult: -1 },
+                { text: "São importantes e devem estar acima de todos os demais.", mult: +1 },
             ],
             outcome: {
                 econ: -10,
@@ -263,8 +289,8 @@ var sctyPoliticalGps = {
             //question_pt: "Meus valores religiosos precisam ser disseminados tanto quanto for possível.",
             subject: "Meus valores religiosos:",
             options: [
-                { text: "Precisam ser disseminados tanto quanto for possível.", mult: +1 },
                 { text: "São particulares a mim e podem não ter significado para outros.", mult: -1 },
+                { text: "Precisam ser disseminados tanto quanto for possível.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -308,8 +334,8 @@ var sctyPoliticalGps = {
             //question_pt: "A razão é mais importante do que manter nossa cultura.",
             subject: "Seguir nossa razão e os novos rumos dos avanços científicos:",
             options: [
-                { text: "É mais importante do que manter nossa cultura.", mult: +1 },
-                { text: "Não pode ser mais importante do que manter a nossa cultura.", mult: -1 },
+                { text: "Não pode ser mais importante do que manter a nossa cultura brasileira.", mult: -1 },
+                { text: "É mais importante do que manter nossa cultura brasileira.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
@@ -323,8 +349,8 @@ var sctyPoliticalGps = {
             //question_pt: "A manutenção dos valores familiares é algo essencial para a nossa sociedade.",
             subject: "A manutenção dos valores familiares:",
             options: [
-                { text: "É algo essencial para a nossa sociedade brasileira.", mult: +1 },
                 { text: "Não é tão prioritário na sociedade brasileira.", mult: -1 },
+                { text: "É algo essencial para a sociedade brasileira.", mult: +1 },
             ],
             outcome: {
                 econ: 0,
