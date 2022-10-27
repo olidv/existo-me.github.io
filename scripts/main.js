@@ -934,13 +934,14 @@ function showIntro() {
     } else if (GlobalUser.testVersion == GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:BEGINNER-RESUME: USUARIO INICIOU VERSAO BASICA DO TESTE MAS NAO FINALIZOU
         let testDif = GlobalTest.testLength - GlobalUser.testLength;
+        let plusQueries = testDif == 1 ? "falta 1 questão a ser respondida" : `faltam ${testDif} questões a serem respondidas`;
         // altera o titulo do site para alertar sobre as questoes pendentes:
         DOM.notifyTitle("#" + GlobalUser.testLength + "..." + GlobalTest.testLength);
         // como ainda nao tem resultado de teste, inibe as opcoes resultantes:
         DOM.hideNavResulting();
         // exibe notificacao de questoes pendentes com valor: # user.testTotalBasic ... pgps.testBasicLength
         let htmlContent = DOM.getIntroHtml("#cenarioBeginnerResume");
-        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalUser.testLength, testDif);
+        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalUser.testLength, plusQueries);
         // apresenta opcoes [Retomar Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //
@@ -972,7 +973,7 @@ function showIntro() {
     } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
         let testDif = GlobalTest.testLength - GlobalUser.testLength;
-        let plusQueries = testDif == 1 ? "1 nova questão adicionada" : testDif.toString() + " novas questões adicionadas";
+        let plusQueries = testDif == 1 ? "1 nova questão adicionada" : `${testDif} novas questões adicionadas`;
         // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
         DOM.notifyTitle("+" + plusQueries);
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
