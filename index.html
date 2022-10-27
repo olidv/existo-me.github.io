@@ -7,9 +7,9 @@
         <meta name="rating" content="general" />
         <meta name="robots" content="index, all" />
         <meta name="revisit-after" content="7 days" />
-        <!-- https://www.existo.me/
+        <!-- https://www.existo.me/ -->
         <base href="https://www.existo.me/" />
-        <link rel="canonical" href="https://www.existo.me/" /> -->
+        <link rel="canonical" href="https://www.existo.me/" />
 
         <!-- No Cache Policy -->
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
@@ -18,20 +18,20 @@
 
         <!-- Website Description -->
         <meta name="author" content="EXISTO.me" />
-        <meta name="description" content="." />
-        <meta name="keywords" content="" />
+        <meta name="description" content="Este website apresenta uma versão educacional do teste de coordenadas políticas, compatível com regimes de governo de todo o mundo. Foi criado pela iniciativa United Sapiens com o propósito educacional de levar o conhecimento do espectro de ideologias políticas a todos." />
+        <meta name="keywords" content="EXISTO.me,teste,coordenadas,políticas,ideologia,política,eixos,ideológicos,econômico,civil,diplomático,social,gps,político,united,sapiens,governo,brasil" />
         <title>EXISTO.me • GPS Político</title>
 
         <!-- Progressive Web Application -->
         <meta name="application-name" content="EXISTO.me" />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#2FB56A" />
         <meta name="browsermode" content="application" />
         <meta name="layoutmode" content="fitscreen/standard" />
         <meta name="full-screen" content="no" />
         <meta name="nightmode" content="enable/disable" />
         <meta name="imagemode" content="force" />
         <meta name="format-detection" content="telephone=no" />
-        <!-- <link rel="manifest" href="app.webmanifest" /> -->
+        <link rel="manifest" href="app.webmanifest" />
 
         <!-- Favicons for Desktop Browsers -->
         <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
@@ -64,38 +64,38 @@
         <link rel="apple-touch-icon" sizes="144x144" href="icons/apple-touch-icon-144x144.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="icons/apple-touch-icon-152x152.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon-180x180.png" />
-        <link rel="mask-icon" color="#000000" href="icons/safari-pinned-tab.svg" />
+        <link rel="mask-icon" color="#2FB56A" href="icons/safari-pinned-tab.svg" />
 
         <!-- Windows Tiles for Desktop -->
         <meta name="msapplication-tooltip" content="EXISTO.me • GPS Político" />
         <meta name="msapplication-starturl" content="/" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="msapplication-navbutton-color" content="#000000" />
-        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="msapplication-navbutton-color" content="#2FB56A" />
+        <meta name="msapplication-TileColor" content="#2FB56A" />
         <meta name="msapplication-TileImage" content="icons/ms-icon-144x144.png" />
         <meta name="msapplication-square70x70logo" content="icons/ms-icon-70x70.png" />
         <meta name="msapplication-square150x150logo" content="icons/ms-icon-150x150.png" />
         <meta name="msapplication-square310x310logo" content="icons/ms-icon-310x310.png" />
         <meta name="msapplication-wide310x150logo" content="icons/ms-icon-310x150.png" />
-        <!-- <meta name="msapplication-config" content="browserconfig.xml" /> -->
+        <meta name="msapplication-config" content="browserconfig.xml" />
 
         <!-- Share on Social Networks -->
         <meta property="og:site_name" content="EXISTO.me" />
         <meta property="og:title" content="EXISTO.me • GPS Político" />
-        <meta property="og:description" content="." />
+        <meta property="og:description" content="Este website apresenta uma versão educacional do teste de coordenadas políticas, compatível com regimes de governo de todo o mundo. Foi criado pela iniciativa United Sapiens com o propósito educacional de levar o conhecimento do espectro de ideologias políticas a todos." />
         <meta property="og:locale" content="pt-BR" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://existo-me.github.io/br/" />
-        <meta property="og:image" content="https://existo-me.github.io/br/icons/ms-icon-310x150.png" />
+        <meta property="og:url" content="https://www.existo.me" />
+        <meta property="og:image" content="https://www.existo.me" />
         <meta property="og:image:alt" content="EXISTO.me Logo" />
         <meta property="og:image:type" content="image/jpeg, image/png" />
 
         <!-- Share on Twitter -->
         <meta name="twitter:site" content="@United_Sapiens" />
         <meta name="twitter:title" content="EXISTO.me • GPS Político" />
-        <meta name="twitter:description" content="." />
+        <meta name="twitter:description" content="Este website apresenta uma versão educacional do teste de coordenadas políticas, compatível com regimes de governo de todo o mundo. Foi criado pela iniciativa United Sapiens com o propósito educacional de levar o conhecimento do espectro de ideologias políticas a todos." />
         <meta name="twitter:card" content="summary" />
-        <meta name="twitter:image" content="https://existo-me.github.io/br/icons/ms-icon-310x150.png" />
+        <meta name="twitter:image" content="https://www.existo.me" />
         <meta name="twitter:image:alt" content="EXISTO.me Logo" />
 
         <!-- Google Web Fonts -->
@@ -850,5 +850,17 @@
         <!-- Website Scripts: no-cache policy -->
         <script type="text/javascript" src="data/political-gps.js?testVersion=1.0"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
+
+        <!-- Website PWA - Progressive Web Application -->
+        <script>
+            // Check compatibility for the browser we're running this in:
+            if ("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
+                // Register the service worker:
+                navigator.serviceWorker
+                    .register("/sw.js", { scope: "/" })
+                    .then((reg) => console.info("[PWA] Service worker has been registered:", reg))
+                    .catch((err) => console.error("[PWA] Service worker registration failed:", err));
+            }
+        </script>
     </body>
 </html>
