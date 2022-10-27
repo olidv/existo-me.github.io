@@ -183,6 +183,7 @@ class AppUser {
     prefThemeColor; // esquema de cores: light, dark
     prefFontSize; // tamanho da fonte: small, normal, large, huge
     prefSoundAlert; // alerta sonoro: on, off
+    prefFirstTime; // indica se eh o primeiro acesso do usuario
 
     // propriedades publicas: teste do gps politico
     testVersion = 0.0; // numero da versao do teste respondido
@@ -211,6 +212,7 @@ class AppUser {
         this.prefThemeColor = "light";
         this.prefFontSize = "normal";
         this.prefSoundAlert = "off";
+        this.prefFirstTime = true;
     }
 
     /**
@@ -325,6 +327,20 @@ class AppUser {
         } else {
             this.prefSoundAlert = "off";
         }
+
+        // ao alterar qualquer propriedade, aplica as preferencias modificadas no website:
+        this.setup();
+    }
+
+    /**
+     * Property: se eh o primeiro acesso do usuario.
+     *
+     */
+    get isFirstTime() {
+        return this.prefFirstTime;
+    }
+    set isFirstTime(val) {
+        this.prefFirstTime = val;
 
         // ao alterar qualquer propriedade, aplica as preferencias modificadas no website:
         this.setup();

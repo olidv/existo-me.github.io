@@ -1,9 +1,7 @@
 /* --- JSON DATA: POLITICAL GPS TEST --------------------------------------------------------- */
 
-/* Let the browser do the parsing, automatically. */
+/* Contem 15 questoes do eixo ECONOMIA. */
 var econPoliticalGps = {
-    /* --- ECONOMIA 15 -------------------------------------------------------- */
-
     testQuests: [
         {
             //question_en: "I support single-payer, universal healthcare.",

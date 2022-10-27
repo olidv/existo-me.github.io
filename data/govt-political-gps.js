@@ -1,9 +1,7 @@
 /* --- JSON DATA: POLITICAL GPS TEST --------------------------------------------------------- */
 
-/* Let the browser do the parsing, automatically. */
+/* Contem 16 questoes do eixo GOVERNO. */
 var govtPoliticalGps = {
-    /* --- GOVERNO 16 --------------------------------------------------------- */
-
     testQuests: [
         {
             //question_en: "Gun ownership should be prohibited for those without a valid reason.",
@@ -217,7 +215,7 @@ var govtPoliticalGps = {
         },
         {
             //question_en: "A hierarchical state is best.",
-            //question_pt: "Um Estado rigidamente hierárquico é o melhor /? caminho para a manutenção da ordem.",
+            //question_pt: "Um Estado rigidamente hierárquico é o melhor caminho para a manutenção da ordem.",
             subject: "Um Estado rigidamente hierárquico:",
             options: [
                 { text: "É o melhor caminho para a manutenção da ordem.", mult: +1 },

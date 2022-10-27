@@ -1186,9 +1186,12 @@ $(document).ready(function () {
     // a partir do estado do usuario, identifica qual painel introdutorio apresentar:
     showIntro();
 
-    // Exibe a popup com o alerta de que ainda estamos em obras,
-    if (GlobalUser.testLength == 0) {
-        // mas somente se o usuario ainda nao iniciou o teste...
+    // Se for o primeiro acesso do usuario:
+    if (GlobalUser.isFirstTime) {
+        // exibe a popup com o alerta de que ainda estamos em obras,
         DOM.popupFanatic();
+
+        // ja nao eh mais o primeiro acesso a partir daqui...
+        GlobalUser.isFirstTime = false;
     }
 });

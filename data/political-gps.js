@@ -4,7 +4,7 @@
 var dataPoliticalGps = {
     // identificacao deste versao do teste politico:
     testVersion: 1.0,
-    testLength: 70,
+    testLength: 12,
 
     // relacao de questoes do teste:
     testQuests: [
@@ -580,7 +580,7 @@ var dataPoliticalGps = {
         },
         {
             //question_en: "A hierarchical state is best.",
-            //question_pt: "Um Estado rigidamente hierárquico é o melhor /? caminho para a manutenção da ordem.",
+            //question_pt: "Um Estado rigidamente hierárquico é o melhor caminho para a manutenção da ordem.",
             subject: "Um Estado rigidamente hierárquico:",
             options: [
                 { text: "É o melhor caminho para a manutenção da ordem.", mult: +1 },
@@ -640,7 +640,7 @@ var dataPoliticalGps = {
         },
         {
             //question_en: "Environmental regulations are essential.",
-            //question_pt: "As regulações ambientais são essenciais /? para assegurar o futuro de nossos filhos e netos.",
+            //question_pt: "As regulações ambientais são essenciais para assegurar o futuro de nossos filhos e netos.",
             subject: "As regulamentações ambientais:",
             options: [
                 { text: "São essenciais para assegurar o futuro de nossos filhos e netos.", mult: +1 },

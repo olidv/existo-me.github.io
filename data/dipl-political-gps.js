@@ -1,9 +1,7 @@
 /* --- JSON DATA: POLITICAL GPS TEST --------------------------------------------------------- */
 
-/* Let the browser do the parsing, automatically. */
+/* Contem 16 questoes do eixo DIPLOMACIA. */
 var diplPoliticalGps = {
-    /* --- DIPLOMACIA 16 ------------------------------------------------------ */
-
     testQuests: [
         {
             //question_en: "The United Nations should be abolished.",

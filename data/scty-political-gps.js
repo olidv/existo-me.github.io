@@ -1,13 +1,11 @@
 /* --- JSON DATA: POLITICAL GPS TEST --------------------------------------------------------- */
 
-/* Let the browser do the parsing, automatically. */
+/* Contem 23 questoes do eixo SOCIEDADE. */
 var sctyPoliticalGps = {
-    /* --- SOCIEDADE 23 ------------------------------------------------------- */
-
     testQuests: [
         {
             //question_en: "Environmental regulations are essential.",
-            //question_pt: "As regulações ambientais são essenciais /? para assegurar o futuro de nossos filhos e netos.",
+            //question_pt: "As regulações ambientais são essenciais para assegurar o futuro de nossos filhos e netos.",
             subject: "As regularização fundiária na Amazônia:",
             options: [
                 { text: "É essencial para assegurar o futuro de nossos filhos e netos.", mult: +1 },
