@@ -16,14 +16,14 @@ class PoliticalTest {
 
     // maximos valores possiveis para o score:
     max_econ = 0;
-    max_dipl = 0;
     max_govt = 0;
+    max_dipl = 0;
     max_scty = 0;
 
     // valor da pontuacao de cada questao respondida:
     val_econ = [];
-    val_dipl = [];
     val_govt = [];
+    val_dipl = [];
     val_scty = [];
 
     /* --- INITIALIZATION -------------------------------------------------- */
@@ -62,22 +62,22 @@ class PoliticalTest {
         this.currentQuest = currentQuery;
 
         // calcula os maximos valores para todas as questoes:
-        this.max_econ = this.max_dipl = this.max_govt = this.max_scty = 0;
+        this.max_econ = this.max_govt = this.max_dipl = this.max_scty = 0;
         for (var i = 0; i < this.testLength; i++) {
             this.max_econ += Math.abs(this.testQuests[i].outcome.econ);
-            this.max_dipl += Math.abs(this.testQuests[i].outcome.dipl);
             this.max_govt += Math.abs(this.testQuests[i].outcome.govt);
+            this.max_dipl += Math.abs(this.testQuests[i].outcome.dipl);
             this.max_scty += Math.abs(this.testQuests[i].outcome.scty);
         }
         console.log("this.max_econ = ", this.max_econ);
-        console.log("this.max_dipl = ", this.max_dipl);
         console.log("this.max_govt = ", this.max_govt);
+        console.log("this.max_dipl = ", this.max_dipl);
         console.log("this.max_scty = ", this.max_scty);
 
         // inicializa os arrays de soma da pontuacao:
         this.val_econ = new Array(this.testlength);
-        this.val_dipl = new Array(this.testlength);
         this.val_govt = new Array(this.testlength);
+        this.val_dipl = new Array(this.testlength);
         this.val_scty = new Array(this.testlength);
 
         // caso o usuario ja respondeu algumas perguntas anteriormente:
@@ -117,8 +117,8 @@ class PoliticalTest {
         let mult = question.options[option].mult;
 
         this.val_econ[idx] = mult * question.outcome.econ;
-        this.val_dipl[idx] = mult * question.outcome.dipl;
         this.val_govt[idx] = mult * question.outcome.govt;
+        this.val_dipl[idx] = mult * question.outcome.dipl;
         this.val_scty[idx] = mult * question.outcome.scty;
     }
 
@@ -147,29 +147,29 @@ class PoliticalTest {
             name: null,
             side: 0,
             econ: 0,
-            dipl: 0,
             govt: 0,
+            dipl: 0,
             scty: 0,
         };
         console.log("this.val_econ = ", this.val_econ);
-        console.log("this.val_dipl = ", this.val_dipl);
         console.log("this.val_govt = ", this.val_govt);
+        console.log("this.val_dipl = ", this.val_dipl);
         console.log("this.val_scty = ", this.val_scty);
 
         // soma todos os scores dos 4 eixos
         let sum_econ = this.val_econ.reduce((a, b) => a + b, 0);
-        let sum_dipl = this.val_dipl.reduce((a, b) => a + b, 0);
         let sum_govt = this.val_govt.reduce((a, b) => a + b, 0);
+        let sum_dipl = this.val_dipl.reduce((a, b) => a + b, 0);
         let sum_scty = this.val_scty.reduce((a, b) => a + b, 0);
         console.log("sum_econ = ", sum_econ);
-        console.log("sum_dipl = ", sum_dipl);
         console.log("sum_govt = ", sum_govt);
+        console.log("sum_dipl = ", sum_dipl);
         console.log("sum_scty = ", sum_scty);
 
         // calcula os rates dos eixos:
         userScore.econ = this.#calculateRate(sum_econ, this.max_econ);
-        userScore.dipl = this.#calculateRate(sum_dipl, this.max_dipl);
         userScore.govt = this.#calculateRate(sum_govt, this.max_govt);
+        userScore.dipl = this.#calculateRate(sum_dipl, this.max_dipl);
         userScore.scty = this.#calculateRate(sum_scty, this.max_scty);
 
         // identifica a ideologia do usuario:
@@ -218,8 +218,8 @@ class PoliticalTest {
      *
      * @param  {String} val .
      */
-    getLabelDipl(val) {
-        return this.#getLabel(val, this.testLabels.dipl);
+    getLabelGovt(val) {
+        return this.#getLabel(val, this.testLabels.govt);
     }
 
     /**
@@ -227,8 +227,8 @@ class PoliticalTest {
      *
      * @param  {String} val .
      */
-    getLabelGovt(val) {
-        return this.#getLabel(val, this.testLabels.govt);
+    getLabelDipl(val) {
+        return this.#getLabel(val, this.testLabels.dipl);
     }
 
     /**
@@ -722,17 +722,17 @@ class ModalResult {
     // propriedades privadas: pontuacao do usuario nos eixos
     equality;
     market;
-    global;
-    national;
     liberty;
     authority;
+    global;
+    national;
     progress;
     tradition;
 
     // propriedades privadas: rotulos para os eixos
     label_econ;
-    label_dipl;
     label_govt;
+    label_dipl;
     label_scty;
 
     /* --- INITIALIZATION -------------------------------------------------- */
@@ -808,33 +808,33 @@ class ModalResult {
         // atualiza os valores dos rotulos dos eixos conforme score do usuario:
         self.equality = GlobalUser.testScore.econ;
         self.market = (100 - self.equality).toFixed(1);
-        self.global = GlobalUser.testScore.dipl;
-        self.national = (100 - self.global).toFixed(1);
         self.liberty = GlobalUser.testScore.govt;
         self.authority = (100 - self.liberty).toFixed(1);
+        self.global = GlobalUser.testScore.dipl;
+        self.national = (100 - self.global).toFixed(1);
         self.progress = GlobalUser.testScore.scty;
         self.tradition = (100 - self.progress).toFixed(1);
 
         // obtem os rotulos para os eixos:
         self.label_econ = GlobalTest.getLabelEcon(GlobalUser.testScore.econ);
-        self.label_dipl = GlobalTest.getLabelDipl(GlobalUser.testScore.dipl);
         self.label_govt = GlobalTest.getLabelGovt(GlobalUser.testScore.govt);
+        self.label_dipl = GlobalTest.getLabelDipl(GlobalUser.testScore.dipl);
         self.label_scty = GlobalTest.getLabelScty(GlobalUser.testScore.scty);
 
         // aplica os valores a modal:
         self.#setBarValue("equality", self.equality);
         self.#setBarValue("market", self.market);
-        self.#setBarValue("national", self.national);
-        self.#setBarValue("global", self.global);
         self.#setBarValue("liberty", self.liberty);
         self.#setBarValue("authority", self.authority);
-        self.#setBarValue("tradition", self.tradition);
+        self.#setBarValue("global", self.global);
+        self.#setBarValue("national", self.national);
         self.#setBarValue("progress", self.progress);
+        self.#setBarValue("tradition", self.tradition);
 
         // obtem os rotulos para os eixos:
-        $("#economic-label").html(self.label_econ);
-        $("#diplomatic-label").html(self.label_dipl);
-        $("#state-label").html(self.label_govt);
+        $("#economy-label").html(self.label_econ);
+        $("#govern-label").html(self.label_govt);
+        $("#diplomacy-label").html(self.label_dipl);
         $("#society-label").html(self.label_scty);
 
         // informa a ideologia de esquerda do usuario:
@@ -869,12 +869,12 @@ class ModalResult {
         let siteTitle = self.#dataEmoji(".btn-clipboard");
         let hashIdeal = GlobalUser.testScore.name.hashtag();
         let line1 = self.equality >= self.market ? self.#dataEmoji("#bar-equality") : self.#dataEmoji("#bar-market");
-        let line2 = self.global >= self.national ? self.#dataEmoji("#bar-global") : self.#dataEmoji("#bar-national");
-        let line3 = self.liberty >= self.authority ? self.#dataEmoji("#bar-liberty") : self.#dataEmoji("#bar-authority");
+        let line2 = self.liberty >= self.authority ? self.#dataEmoji("#bar-liberty") : self.#dataEmoji("#bar-authority");
+        let line3 = self.global >= self.national ? self.#dataEmoji("#bar-global") : self.#dataEmoji("#bar-national");
         let line4 = self.progress >= self.tradition ? self.#dataEmoji("#bar-progress") : self.#dataEmoji("#bar-tradition");
 
         // cria o texto final com os rotulos da pontuacao:
-        const clip = `${siteTitle}  ${hashIdeal}\n\n${line1} ${self.label_econ}\n${line2} ${self.label_dipl}\n${line3} ${self.label_govt}\n${line4} ${self.label_scty}\n`;
+        const clip = `${siteTitle}  ${hashIdeal}\n\n${line1} ${self.label_econ}\n${line2} ${self.label_govt}\n${line3} ${self.label_dipl}\n${line4} ${self.label_scty}\n`;
         $(".btn-clipboard").attr("data-clipboard-text", clip);
 
         // inicializa componente para manipulacao do clipboard:
