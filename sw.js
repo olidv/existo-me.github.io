@@ -6,7 +6,7 @@ const precacheFiles = [
 ];
 
 self.addEventListener("install", function (event) {
-    //console.log("[PWA] Install Event processing...");
+    //console.info("[PWA] Install Event processing...");
 
     //console.log("[PWA] Skip waiting on install.");
     self.skipWaiting();
@@ -53,7 +53,7 @@ self.addEventListener("fetch", function (event) {
                         return response;
                     })
                     .catch(function (error) {
-                        //console.log("[PWA] Network request failed and no cache:", error);
+                        //console.error("[PWA] Network request failed and no cache:", error);
                     });
             }
         )

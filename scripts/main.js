@@ -190,25 +190,16 @@ class PoliticalTest {
      * @param  {String} axis .
      */
     #getLabel(val, axis) {
-        if (val > 100) {
-            return "";
-        } else if (val > 90) {
-            return axis[0];
-        } else if (val > 75) {
-            return axis[1];
-        } else if (val > 60) {
-            return axis[2];
-        } else if (val >= 40) {
-            return axis[3];
-        } else if (val >= 25) {
-            return axis[4];
-        } else if (val >= 10) {
-            return axis[5];
-        } else if (val >= 0) {
-            return axis[6];
-        } else {
-            return "";
-        }
+        if (val > 90) return axis[0];
+        if (val > 75) return axis[1];
+        if (val > 60) return axis[2];
+        if (val >= 40) return axis[3];
+        if (val >= 25) return axis[4];
+        if (val >= 10) return axis[5];
+        if (val >= 0) return axis[6];
+
+        // se nao identificar, nada a retornar...
+        return "";
     }
 
     /**
@@ -940,13 +931,14 @@ function showIntro() {
         //
     } else if (GlobalUser.testVersion == GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:BEGINNER-RESUME: USUARIO INICIOU VERSAO BASICA DO TESTE MAS NAO FINALIZOU
+        let testDif = GlobalTest.testLength - GlobalUser.testLength;
         // altera o titulo do site para alertar sobre as questoes pendentes:
         DOM.notifyTitle("#" + GlobalUser.testLength + "..." + GlobalTest.testLength);
         // como ainda nao tem resultado de teste, inibe as opcoes resultantes:
         DOM.hideNavResulting();
         // exibe notificacao de questoes pendentes com valor: # user.testTotalBasic ... pgps.testBasicLength
         let htmlContent = DOM.getIntroHtml("#cenarioBeginnerResume");
-        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalUser.testLength);
+        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalUser.testLength, testDif);
         // apresenta opcoes [Retomar Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
         //

@@ -660,6 +660,10 @@ div.text-rate {
     .caption-test .badge {
         font-size: 1.2rem !important;
     }
+
+    .lead {
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 379px) {
@@ -680,7 +684,11 @@ div.text-rate {
         margin-left: 0.8rem !important;
     }
     h5.ex-nav {
-        font-size: 0.9rem !important;
+        font-size: 1rem !important;
+    }
+
+    .lead {
+        font-size: 1.15rem;
     }
 }
 
@@ -699,6 +707,10 @@ div.text-rate {
     h5.ex-nav {
         font-size: 0.8rem !important;
     }
+
+    .lead {
+        font-size: 1.1rem;
+    }
 }
 
 @media (max-width: 320px) {
@@ -715,6 +727,10 @@ div.text-rate {
     }
     h5.ex-nav {
         font-size: 0.7rem !important;
+    }
+
+    .lead {
+        font-size: 1rem;
     }
 }
 
