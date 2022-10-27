@@ -968,10 +968,11 @@ function showIntro() {
         htmlContent = htmlContent.formats(GlobalTest.testVersion.toFixed(2), GlobalUser.testVersion.toFixed(2));
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
+        //
     } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
         let testDif = GlobalTest.testLength - GlobalUser.testLength;
-        let plusQueries = testDif == 1 ? "1 nova questão adicionada" : (testDif.toString() + " novas questões adicionadas");
+        let plusQueries = testDif == 1 ? "1 nova questão adicionada" : testDif.toString() + " novas questões adicionadas";
         // altera o titulo do site para alertar sobre novas questoes: (pgps.testExtraLength) EXISTO.me • GPS Politico
         DOM.notifyTitle("+" + plusQueries);
         // exibe opcoes [Resultado] e [Doacao]: obtem cor da pontuacao do usuario e aplica cor nos icones grid-3x3
@@ -980,6 +981,21 @@ function showIntro() {
         let htmlContent = DOM.getIntroHtml("#cenarioMajorNotify");
         htmlContent = htmlContent.formats(GlobalTest.testVersion.toFixed(2), GlobalUser.testVersion.toFixed(2), plusQueries);
         // apresenta opcoes[Continuar Teste Extra] [Revisar Respostas Basico]
+        DOM.showIntroHtml(htmlContent);
+        //
+    } else {
+        // $CENARIO:MAJOR-RESET: DADOS DO USUARIO INCONSISTENTES OU REFORMULACAO GERAL DO TESTE
+        // reinicializa a estrutura de dados do usuario para reiniciar o teste:
+        GlobalUser = AppUser.resetInstance();
+
+        // como nao tem nenhuma notificacao, restaura o titulo original do site:
+        DOM.resetTitle();
+        // como ainda nao tem resultado de teste, inibe as opcoes resultantes:
+        DOM.hideNavResulting();
+        // informa ao usuario o numero de questoes do teste basico:
+        let htmlContent = DOM.getIntroHtml("#cenarioBeginnerStart");
+        htmlContent = htmlContent.formats(GlobalTest.testLength);
+        // apresenta opcoes [Iniciar Teste Basico] [Como Funciona]
         DOM.showIntroHtml(htmlContent);
     }
 }

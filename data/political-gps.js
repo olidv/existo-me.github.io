@@ -3,7 +3,7 @@
 /* Let the browser do the parsing, automatically. */
 var dataPoliticalGps = {
     // identificacao deste versao do teste politico:
-    testVersion: 2.00,
+    testVersion: 1.00,
     testLength: 10, /* 70 */
 
     // relacao de questoes do teste:

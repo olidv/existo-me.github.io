@@ -238,6 +238,23 @@ class AppUser {
         return newInstance;
     }
 
+    /**
+     * Reinicializa uma nova instancia do usuario, para corrigir inconsistencias.
+     *
+     */
+    static resetInstance() {
+        let newInstance = new AppUser();
+
+        // sobrepoe a antiga versao existente no storage, para proximas sessoes:
+        newInstance.save();
+        console.log("Nova instancia de AppUser criada e armazenada no Storage com sucesso.");
+
+        // de imediato efetiva as preferencias do usuario no website:
+        newInstance.setup();
+
+        return newInstance;
+    }
+
     /* --- WEBSITE SETUP -------------------------------------------------- */
 
     /**
