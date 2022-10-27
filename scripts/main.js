@@ -479,9 +479,9 @@ class DomHelper {
      * Exibe a popup com o alerta de que ainda estamos em obras.
      *
      */
-    popupObras() {
-        const modalObras = new bootstrap.Modal(document.getElementById("modalObras"));
-        modalObras.show();
+    popupFanatic() {
+        const modalFanatic = new bootstrap.Modal(document.getElementById("modalFanatic"));
+        modalFanatic.show();
     }
 
     /* --- AUDIOS: PLAY SOUND ---------------------------------------------- */
@@ -1094,7 +1094,7 @@ function reviewTest() {
         // $CENARIO:BEGINNER-REVIEW
         let idQuestion = 0;
         // loop de todas as questoes do teste: question <- pgps.quizListBasicQueries
-        for (let question = GlobalTest.nextQuest(); question != null; question = GlobalTest.nextQuest()) {
+        for (let question = GlobalTest.nextQuest(); idQuestion < GlobalUser.testLength && question != null; question = GlobalTest.nextQuest()) {
             console.log(`reviewTest(): `, question);
 
             // obtem o texto das opcoes:
@@ -1174,6 +1174,9 @@ $(document).ready(function () {
     // a partir do estado do usuario, identifica qual painel introdutorio apresentar:
     showIntro();
 
-    // Exibe a popup com o alerta de que ainda estamos em obras:
-    //DOM.popupObras();
+    // Exibe a popup com o alerta de que ainda estamos em obras,
+    if (GlobalUser.testLength == 0) {
+        // mas somente se o usuario ainda nao iniciou o teste...
+        DOM.popupFanatic();
+    }
 });

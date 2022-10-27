@@ -276,14 +276,14 @@
         <div id="templateRespondQuestion" class="d-none" tabindex="-1">
             <div class="carousel-item">
                 <h2 class="text-center m-3 caption-test"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
-                <p class="lead-test mb-5">{2}</p>
-                <div class="form-check m-3 mb-5">
+                <p class="lead-test mb-4">{2}</p>
+                <div class="form-check m-3 mb-4">
                     <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção." tabindex="31" onclick="respondTest('{1}', '0')">
-                    <label for="inputRadio-{1}0" class="form-check-label lead-test" title="Clique aqui para selecionar esta opção.">{3}</label>
+                    <label for="inputRadio-{1}0" class="form-check-label lead-test label-test" title="Clique aqui para selecionar esta opção.">{3}</label>
                 </div>
                 <div class="form-check m-3">
                     <input id="inputRadio-{1}1" name="inputRadio-{1}" type="radio" class="form-check-input" title="Clique aqui para selecionar esta opção."  tabindex="32" onclick="respondTest('{1}', '1')">
-                    <label for="inputRadio-{1}1" class="form-check-label lead-test" title="Clique aqui para selecionar esta opção.">{4}</label>
+                    <label for="inputRadio-{1}1" class="form-check-label lead-test label-test" title="Clique aqui para selecionar esta opção.">{4}</label>
                 </div>
             </div>
         </div>
@@ -291,8 +291,8 @@
         <div id="templateReviewQuestion" class="d-none" tabindex="-1">
             <div class="carousel-item">
                 <h2 class="text-center m-3 caption-test"><span class="badge text-bg-dark">#{1}...{0}</span></h2>
-                <p class="lead-test mb-5">{2}</p>
-                <div class="form-check m-3 mb-5">
+                <p class="lead-test mb-4">{2}</p>
+                <div class="form-check m-3 mb-4">
                     <input id="inputRadio-{1}0" name="inputRadio-{1}" type="radio" class="form-check-input" {4}>
                     <label for="inputRadio-{1}0" class="form-check-label lead-test">{3}</label>
                 </div>
@@ -375,7 +375,7 @@
                         </ul>
                     </div>
                     <div class="modal-footer">
-                        <a href="https://www.github.com/existo-me/" class="btn btn-outline-secondary mx-3" role="button" title="https://www.github.com/existo-me/" target="_blank"><i class="fa-brands fa-github"></i>&nbsp; Página do Projeto</a>
+                        <a href="#" class="btn btn-outline-secondary mx-3" role="button" data-bs-toggle="modal" data-bs-target="#modalFanatic" title="Confira nosso texto 'O Fanático Político'"><i class="fa-regular fa-face-angry"></i>&nbsp; O Fanático<span class="no-phone"> Político</span></a>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Clique para fechar"><i class="fa-solid fa-xmark"></i>&nbsp; Fechar</button>
                     </div>
                 </div>
@@ -813,8 +813,7 @@
             </div>
         </div>
 
-        <!-- Popup: Estamos em Obras -->
-        <div id="modalObras" class="modal fade" tabindex="-1">
+        <div id="modalFanatic" class="modal fade" tabindex="-1">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
