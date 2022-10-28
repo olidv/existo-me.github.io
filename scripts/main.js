@@ -1189,7 +1189,7 @@ $(document).ready(function () {
     // Se for o primeiro acesso do usuario:
     if (GlobalUser.isFirstTime) {
         // exibe a popup com o alerta de que ainda estamos em obras,
-        DOM.popupFanatic();
+        // DOM.popupFanatic();
 
         // ja nao eh mais o primeiro acesso a partir daqui...
         GlobalUser.isFirstTime = false;
