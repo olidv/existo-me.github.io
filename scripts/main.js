@@ -140,6 +140,21 @@ class PoliticalTest {
     /**
      * .
      *
+     * @param  {String} val .
+     */
+    #calculateAxis(val) {
+        /* 91...100 */ if (val > 90) return 0; // 90
+        /* 73... 90 */ if (val >= 73) return 1; // 75
+        /* 55... 72 */ if (val >= 55) return 2; // 60
+        /* 44... 54 */ if (val >= 44) return 3; // 40
+        /* 27... 43 */ if (val >= 27) return 4; // 25
+        /* 10... 26 */ if (val >= 10) return 5; //10
+        /*  0...  9 */ return axis[6]; // 0
+    }
+
+    /**
+     * .
+     *
      */
     calculateScore() {
         // inicializa estrutura para a pontuacao a ser calculada para as respostas:
@@ -173,15 +188,16 @@ class PoliticalTest {
         userScore.scty = this.#calculateRate(sum_scty, this.max_scty);
 
         // identifica a ideologia do usuario:
-        if (userScore.econ > 54) {
+        const axis = this.#calculateAxis(userScore.econ);
+        if (axis < 3) {
             userScore.name = "Esquerda";
             userScore.side = 1;
-        } else if (userScore.econ < 44) {
-            userScore.name = "Direita";
-            userScore.side = 2;
-        } else {
+        } else if (userScore.econ == 3) {
             userScore.name = "Centro";
             userScore.side = 0;
+        } else {
+            userScore.name = "Direita";
+            userScore.side = 2;
         }
         console.log("userScore = ", JSON.stringify(userScore));
 
@@ -192,25 +208,10 @@ class PoliticalTest {
      * .
      *
      * @param  {String} val .
-     * @param  {String} axis .
-     */
-    #getLabel(val, axis) {
-        /* 91...100 */ if (val > 90) return axis[0]; // 90
-        /* 73... 90 */ if (val >= 73) return axis[1]; // 75
-        /* 55... 72 */ if (val >= 55) return axis[2]; // 60
-        /* 44... 54 */ if (val >= 44) return axis[3]; // 40
-        /* 27... 43 */ if (val >= 27) return axis[4]; // 25
-        /* 10... 26 */ if (val >= 10) return axis[5]; //10
-        /*  0...  9 */ return axis[6]; // 0
-    }
-
-    /**
-     * .
-     *
-     * @param  {String} val .
      */
     getLabelEcon(val) {
-        return this.#getLabel(val, this.testLabels.econ);
+        const axis = this.#calculateAxis(val);
+        return this.testLabels.econ[axis];
     }
 
     /**
@@ -219,7 +220,8 @@ class PoliticalTest {
      * @param  {String} val .
      */
     getLabelGovt(val) {
-        return this.#getLabel(val, this.testLabels.govt);
+        const axis = this.#calculateAxis(val);
+        return this.testLabels.govt[axis];
     }
 
     /**
@@ -228,7 +230,8 @@ class PoliticalTest {
      * @param  {String} val .
      */
     getLabelDipl(val) {
-        return this.#getLabel(val, this.testLabels.dipl);
+        const axis = this.#calculateAxis(val);
+        return this.testLabels.dipl[axis];
     }
 
     /**
@@ -237,7 +240,8 @@ class PoliticalTest {
      * @param  {String} val .
      */
     getLabelScty(val) {
-        return this.#getLabel(val, this.testLabels.scty);
+        const axis = this.#calculateAxis(val);
+        return this.testLabels.scty[axis];
     }
 }
 
@@ -469,12 +473,14 @@ class DomHelper {
     /* --- TOASTS AND POPUPS ----------------------------------------------- */
 
     /**
-     * Exibe a popup com o alerta de que ainda estamos em obras.
+     * Exibe a toast com o alerta de que ainda estamos em obras.
      *
      */
-    popupFanatic() {
-        const modalFanatic = new bootstrap.Modal(document.getElementById("modalFanatic"));
-        modalFanatic.show();
+    toastObras() {
+        // identifica a div da toast:
+        const toastUnderConstruction = document.getElementById("toastUnderConstruction");
+        const bsToast = new bootstrap.Toast(toastUnderConstruction);
+        bsToast.show();
     }
 
     /* --- AUDIOS: PLAY SOUND ---------------------------------------------- */
@@ -1189,7 +1195,7 @@ $(document).ready(function () {
     // Se for o primeiro acesso do usuario:
     if (GlobalUser.isFirstTime) {
         // exibe a popup com o alerta de que ainda estamos em obras,
-        // DOM.popupFanatic();
+        DOM.toastObras();
 
         // ja nao eh mais o primeiro acesso a partir daqui...
         GlobalUser.isFirstTime = false;

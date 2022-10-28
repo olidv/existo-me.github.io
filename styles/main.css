@@ -407,9 +407,13 @@ a:visited {
 
 /*--- TIPS & TOASTS & POPOVERS ----------------------------------------------*/
 
-.toast-header,
-.toast-body {
+#toastUnderConstruction .toast-header,
+#toastUnderConstruction .toast-body {
     color: black;
+}
+
+#toastUnderConstruction.toast {
+    background-color: #eeeeee;
 }
 
 
@@ -467,7 +471,7 @@ a:visited {
 
 .alert-side {
     padding: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .h-axis {
@@ -484,7 +488,7 @@ div.axis {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
 }
 
 .img-axis {
