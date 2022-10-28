@@ -1,3 +1,65 @@
+                    <!--  -->
+                    <div id="panelProgress" class="col-lg-10 d-none">
+                        <p><input id="rangeTest" type="range" class="form-range" min="1" max="1" step="1" value="" disabled></p>
+                    </div>
+
+
+
+    // propriedades privadas: slider de progresso do questionario
+    panelProgress;
+    rangeInput;
+
+        // identifica o slider de progresso.
+        this.panelProgress = $("#panelProgress");
+        this.rangeInput = $("#rangeTest");
+
+
+    /* --- INPUT RANGE PROGRESS -------------------------------------------- */
+
+    /**
+     * Configura o range de progresso para que o usuario possa se situar.
+     *
+     * @param  {String} minValue .
+     * @param  {String} maxValue .
+     * @param  {String} stepValue .
+     */
+    showRangeProgress(minValue, maxValue, stepValue) {
+        // exibe o range de progresso, para o usuario se situar:
+        this.panelProgress.removeClass("d-none");
+
+        // parametriza os valores minimo e maximo da regua de progresso.
+        this.rangeInput.prop("min", minValue);
+        this.rangeInput.prop("max", maxValue);
+        this.rangeInput.prop("step", stepValue);
+    }
+
+    /**
+     * Inibe o range de progresso.
+     *
+     */
+    hideRangeProgress() {
+        // inibe o range de progresso, pois o usuario nao precisa se situar:
+        this.panelProgress.addClass("d-none");
+    }
+
+    /**
+     * .
+     *
+     * @param  {String} newValue .
+     */
+    updateRangeProgress(newValue) {
+        this.rangeInput.val(newValue);
+    }
+
+
+    // configura o range de progresso, com o numero minimo e maximo das questoes:
+    DOM.showRangeProgress(1, GlobalTest.testLength, 1);
+
+
+        // para apenas visualizar as respostas, nao precisa do range de progresso:
+        DOM.hideRangeProgress();
+
+
 O lançamento oficial do site será no próximo 01 de Novembro.
 
 

@@ -561,6 +561,18 @@ div.text-rate {
     vertical-align: middle;
 }
 
+.text-equality { color: #BD0E24; }
+.text-market { color: #358CCE; }
+
+.text-liberty { color: #D4700C; }
+.text-authority { color: #61676D; }
+
+.text-global { color: #589139; }
+.text-national { color: #8A6EB6; }
+
+.text-progress { color: #DDAB38; }
+.text-tradition { color: #A1492F; }
+
 
 /*--- CSS UTILITIES ---------------------------------------------------------*/
 

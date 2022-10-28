@@ -243,6 +243,90 @@ class PoliticalTest {
         const axis = this.#calculateAxis(val);
         return this.testLabels.scty[axis];
     }
+
+    /**
+     * .
+     *
+     * @param  {Number} axis .
+     */
+    getTitleAxis(axis) {
+        switch (axis) {
+            case 1:
+                return "Economia";
+            case 2:
+                return "Governo";
+            case 3:
+                return "Diplomacia";
+            case 4:
+                return "Sociedade";
+        }
+    }
+
+    /**
+     * .
+     *
+     * @param  {String} axisSide .
+     */
+    getLabelAxis(axisSide) {
+        switch (axisSide) {
+            // Economia
+            case "11":
+                return "Igualdade";
+            case "10":
+                return "Mercado";
+            //
+            // Governo
+            case "21":
+                return "Liberdade";
+            case "20":
+                return "Autoridade";
+            //
+            // Diplomacia
+            case "31":
+                return "Globalização";
+            case "30":
+                return "Nacionalismo";
+            //
+            // Sociedade
+            case "41":
+                return "Progresso";
+            case "40":
+                return "Tradição";
+        }
+    }
+
+    /**
+     * .
+     *
+     * @param  {String} axisSide .
+     */
+    getStyleAxis(axisSide) {
+        switch (axisSide) {
+            // Economia
+            case "11":
+                return "text-equality";
+            case "10":
+                return "text-market";
+            //
+            // Governo
+            case "21":
+                return "text-liberty";
+            case "20":
+                return "text-authority";
+            //
+            // Diplomacia
+            case "31":
+                return "text-global";
+            case "30":
+                return "text-national";
+            //
+            // Sociedade
+            case "41":
+                return "text-progress";
+            case "40":
+                return "text-tradition";
+        }
+    }
 }
 
 // Cria instancia global para gerenciar a aplicacao do teste politico:
@@ -347,8 +431,8 @@ class DomHelper {
      *
      */
     showNavResulting() {
-        // apresenta as opcoes resultantes:
-        $(".finished-test").removeClass("d-none"); // limpa tudo, pq nao sabe qual a cor anterior
+        // apresenta o menu para visualizar o resultado:
+        $(".finished-test").removeClass("d-none");
     }
 
     /**
@@ -356,7 +440,7 @@ class DomHelper {
      *
      */
     hideNavResulting() {
-        // inibe as opcoes resultantes:
+        // inibe o menu para visualizar o resultado:
         $(".finished-test").addClass("d-none");
     }
 
@@ -470,16 +554,38 @@ class DomHelper {
         this.nextControl.removeClass("d-none");
     }
 
+    /* --- REVIEW TEST ----------------------------------------------------- */
+
+    /**
+     * .
+     *
+     */
+    showReviewTest() {
+        // apresenta apenas o botao para revisar o teste:
+        $(".btn-cancel-review").addClass("d-none");
+        $(".btn-review-test").removeClass("d-none");
+    }
+
+    /**
+     * .
+     *
+     */
+    showCancelReview() {
+        // apresenta apenas o botao para cancelar a revisao do teste:
+        $(".btn-review-test").addClass("d-none");
+        $(".btn-cancel-review").removeClass("d-none");
+    }
+
     /* --- TOASTS AND POPUPS ----------------------------------------------- */
 
     /**
-     * Exibe a toast com o alerta de que ainda estamos em obras.
+     * Exibe a toast splash screen do web site.
      *
      */
-    toastObras() {
+    showToastSplash() {
         // identifica a div da toast:
-        const toastUnderConstruction = document.getElementById("toastUnderConstruction");
-        const bsToast = new bootstrap.Toast(toastUnderConstruction);
+        const toastSplash = document.getElementById("toastSplash");
+        const bsToast = new bootstrap.Toast(toastSplash);
         bsToast.show();
     }
 
@@ -963,6 +1069,8 @@ function showIntro() {
         htmlContent = htmlContent.formats(imgPlane);
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
+        // Apresenta apenas o botao para revisar o teste:
+        DOM.showReviewTest();
         //
     } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength == GlobalTest.testLength) {
         // $CENARIO:MAJOR-UPGRADE: USUARIO EH NOTIFICADO DE ALTERACOES NAS QUESTOES DO TESTE
@@ -975,6 +1083,8 @@ function showIntro() {
         htmlContent = htmlContent.formats(GlobalTest.testVersion.toFixed(2), GlobalUser.testVersion.toFixed(2));
         // apresenta opcoes[Refazer Teste Basico] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
+        // Apresenta apenas o botao para revisar o teste:
+        DOM.showReviewTest();
         //
     } else if (GlobalUser.testVersion < GlobalTest.testVersion && GlobalUser.testLength < GlobalTest.testLength) {
         // $CENARIO:MAJOR-NOTIFY: USUARIO EH NOTIFICADO DE NOVAS QUESTOES EXTRAS
@@ -989,6 +1099,8 @@ function showIntro() {
         htmlContent = htmlContent.formats(GlobalTest.testVersion.toFixed(2), GlobalUser.testVersion.toFixed(2), plusQueries);
         // apresenta opcoes[Continuar Teste Extra] [Revisar Respostas Basico]
         DOM.showIntroHtml(htmlContent);
+        // Apresenta apenas o botao para revisar o teste:
+        DOM.showReviewTest();
         //
     } else {
         // $CENARIO:MAJOR-RESET: DADOS DO USUARIO INCONSISTENTES OU REFORMULACAO GERAL DO TESTE
@@ -1022,7 +1134,7 @@ function slideNextQuest() {
         const option1 = question.options[1];
         // prepara template de div para carrocel com dados da questao
         let htmlContent = DOM.getIntroHtml("#templateRespondQuestion");
-        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalTest.currentQuest, question.subject, option0.text, option1.text);
+        htmlContent = htmlContent.formats(GlobalTest.testLength, GlobalTest.currentQuest, question.heading, option0.text, option1.text);
         // adiciona div como slide no carrocel e desloca para a questao
         DOM.nextSlide(htmlContent);
         // informa que processou proxima questao:
@@ -1115,24 +1227,38 @@ function reviewTest() {
         for (let question = GlobalTest.nextQuest(); idQuestion < GlobalUser.testLength && question != null; question = GlobalTest.nextQuest()) {
             console.log(`reviewTest(): `, question);
 
-            // obtem o texto das opcoes:
-            const option0Text = question.options[0].text;
-            const option1Text = question.options[1].text;
+            // identifica o eixo ideologico pelo assunto (subject):
+            const titleAxis = GlobalTest.getTitleAxis(+question.subject);
+            const heading = `(<b>${titleAxis}</b>) ${question.heading}`;
 
-            // identifica para a questao selecionada a resposta do usuario:
+            // obtem o texto das opcoes:
+            const questSubject = question.subject.toString();
+            //
+            const option0Axis = questSubject + question.options[0].side.toString();
+            const option0Label = GlobalTest.getLabelAxis(option0Axis);
+            const option0Text = `(<b>+${option0Label}</b>) ${question.options[0].text}`;
+            //
+            const option1Axis = questSubject + question.options[1].side.toString();
+            const option1Label = GlobalTest.getLabelAxis(option1Axis);
+            const option1Text = `(<b>+${option1Label}</b>) ${question.options[1].text}`;
+
+            // identifica para a questao selecionada a resposta do usuario e o estilo a ser aplicado:
             const userChoice = GlobalUser.testChoices[idQuestion++];
             const option0Checked = userChoice.optn == 0 ? "checked" : "disabled";
             const option1Checked = userChoice.optn == 1 ? "checked" : "disabled";
 
             // prepara template (read-only) de div para carrocel com dados da questao
             let htmlContent = DOM.getIntroHtml("#templateReviewQuestion");
-            htmlContent = htmlContent.formats(GlobalTest.testLength, idQuestion, question.subject, option0Text, option0Checked, option1Text, option1Checked);
+            htmlContent = htmlContent.formats(GlobalTest.testLength, idQuestion, heading, option0Text, option0Checked, option1Text, option1Checked);
 
             // adiciona div como slide no carrocel
             DOM.addBeforeSlide(htmlContent);
         }
         // habilita navegacao do carrocel com mouse ou teclado
         DOM.initCarouselReview();
+
+        // Inibe o botao para revisar o teste e habilita o botao para cancelar:
+        DOM.showCancelReview();
     }
 
     // emite alerta sonoro quando o usuario inicia a revisao do teste:
@@ -1140,6 +1266,21 @@ function reviewTest() {
 
     // desloca para a primeira questao, que eh o proximo slide:
     DOM.nextSlide();
+}
+
+/**
+ * .
+ * 
+ */
+function cancelReview() {
+    // Inibe o botao para cancelar o teste e habilita o botao para revisar:
+    DOM.showReviewTest();
+
+    // emite alerta sonoro:
+    DOM.playStart();
+
+    // reinicializa o slide introdutorio:
+    showIntro();
 }
 
 /**
@@ -1195,7 +1336,7 @@ $(document).ready(function () {
     // Se for o primeiro acesso do usuario:
     if (GlobalUser.isFirstTime) {
         // exibe a popup com o alerta de que ainda estamos em obras,
-        DOM.toastObras();
+        DOM.showToastSplash();
 
         // ja nao eh mais o primeiro acesso a partir daqui...
         GlobalUser.isFirstTime = false;

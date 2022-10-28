@@ -2,8 +2,8 @@
 🇧🇷 EXISTO.me  #Esquerda
 
 🟥 🟥 🟥 🟥 Red         Igualdade  #DD2E44
-🟩 🟩 🟩 🟩 Green       Global     #78B159
 🟧 🟧 🟧 🟧 Orange      Liberdade  #F4900C
+🟩 🟩 🟩 🟩 Green       Global     #78B159
 🟨 🟨 🟨 🟨 Yellow      Progresso  #FDCB58
 
 
@@ -11,8 +11,8 @@
 🇧🇷 EXISTO.me  #Direita
 
 🟦 🟦 🟦 🟦 Blue        Mercado    #55ACEE
-🟪 🟪 🟪 🟪 Purple      Nacional   #AA8ED6
 ⬛ ⬛ ⬛ ⬛ Black       Autoridade #61676D
+🟪 🟪 🟪 🟪 Purple      Nacional   #AA8ED6
 🟫 🟫 🟫 🟫 Brown       Tradição   #C1694F
 
 

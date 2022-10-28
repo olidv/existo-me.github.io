@@ -158,7 +158,7 @@
                         <li class="h2 ms-3 ex-nav">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#modalHelp" title="Clique para consultar a central de ajuda do site."><i class="bi bi-question-circle"></i></a>
                         </li>
-                        <li class="h2 ms-3 ex-nav finished-test">
+                        <li class="h2 ms-3 ex-nav">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#modalDonate" title="Contribua com nossa iniciativa ajudando nosso projeto a crescer."><i class="bi bi-heart-pulse"></i></a>
                         </li>
                 </div>
@@ -244,7 +244,8 @@
                 <p class="lead text-justify">Esperamos que tenha gostado do teste. Lembre-se de que os testes de ideologia política são apenas aproximações de cálculos empíricos, não há como obter absoluta precisão ou confiabilidade. Clique na opção <i class="bi bi-grid-3x3-gap"></i> para visualizar seu resultado. Não esqueça de compartilhar!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para refazer o teste do GPS Político" onclick="retakeTest()">Refazer Teste</button>
-                    <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político.">Revisar Teste</a>
+                    <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary btn-review-test px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político.">Revisar Teste</a>
+                    <a href="javascript:cancelReview();" class="btn btn-lg btn-outline-secondary btn-cancel-review px4 d-none" role="button" title="Clique para cancelar a revisão do teste.">Cancelar Revisão</a>
                 </div>
             </div>
         </div>
@@ -256,7 +257,8 @@
                 <p class="lead text-justify">Uma nova versão do teste foi disponibilizada (<i>v{0}</i>), com algumas questões reformuladas. Caso queira, você pode revisar o teste para relembrar suas respostas (<i>v{1}</i>). Se não concordar com algumas de suas respostas após a reformulação, você pode refazer o teste para mudar suas escolhas.</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para continuar o teste do GPS Político." onclick="retakeTest()">Refazer Teste</button>
-                    <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político.">Revisar Teste</a>
+                    <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary btn-review-test px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político.">Revisar Teste</a>
+                    <a href="javascript:cancelReview();" class="btn btn-lg btn-outline-secondary btn-cancel-review px4 d-none" role="button" title="Clique para cancelar a revisão do teste.">Cancelar Revisão</a>
                 </div>
             </div>
         </div>
@@ -268,7 +270,8 @@
                 <p class="lead text-justify">Uma nova versão do teste foi disponibilizada (<i>v{0}</i>), com {2}. Caso queira, você pode revisar o teste para relembrar suas respostas (<i>v{1}</i>). Continue e finalize o teste para que possamos ajustar seu perfil político. Não esqueça de compartilhar!</p>
                 <div class="d-grid gap-3 d-md-flex justify-content-md-center m-4 px-4">
                     <button type="button" class="btn btn-lg btn-dark px-4 me-md-2" title="Clique para continuar o teste do GPS Político." onclick="takeTest()">Finalizar Teste</button>
-                    <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político.">Revisar Teste</a>
+                    <a href="javascript:reviewTest();" class="btn btn-lg btn-outline-secondary btn-review-test px4" role="button" title="Clique para revisar suas respostas do teste do GPS Político.">Revisar Teste</a>
+                    <a href="javascript:cancelReview();" class="btn btn-lg btn-outline-secondary btn-cancel-review px4 d-none" role="button" title="Clique para cancelar a revisão do teste.">Cancelar Revisão</a>
                 </div>
             </div>
         </div>
@@ -832,9 +835,9 @@
             </div>
         </div>
 
-        <!-- Toast: Estamos em Obras -->
+        <!-- Toast Splash Screen -->
         <div class="position-fixed top-0 p-2 w-100 d-flex align-items-center justify-content-center" style="z-index: 999">
-            <div id="toastUnderConstruction" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div id="toastSplash" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header text-bg-warning">
                     <i class="fa-solid fa-person-digging"></i> &nbsp; &nbsp; <strong class="me-auto">ATENÇÃO: ESTAMOS EM OBRAS...</strong>
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close" title="Close this"></button>
