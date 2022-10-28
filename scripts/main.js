@@ -143,12 +143,12 @@ class PoliticalTest {
      * @param  {String} val .
      */
     #calculateAxis(val) {
-        /* 91...100 */ if (val > 90) return 0; // 90
-        /* 73... 90 */ if (val >= 73) return 1; // 75
-        /* 55... 72 */ if (val >= 55) return 2; // 60
-        /* 44... 54 */ if (val >= 44) return 3; // 40
-        /* 27... 43 */ if (val >= 27) return 4; // 25
-        /* 10... 26 */ if (val >= 10) return 5; //10
+        /* 91...100 */ if (val > 90) return 0;
+        /* 73... 90 */ if (val >= 73) return 1;
+        /* 55... 72 */ if (val >= 55) return 2;
+        /* 44... 54 */ if (val >= 44) return 3;
+        /* 27... 43 */ if (val >= 27) return 4;
+        /* 10... 26 */ if (val >= 10) return 5;
         /*  0...  9 */ return 6; // 0
     }
 
@@ -1205,7 +1205,7 @@ $(document).ready(function () {
 
 /* --- ENVIRONMENT --------------------------------------------------------- */
 
-// O que acontece em DEV, fica em DEV...
+// Detecta o ambiente de execucao e procede com a respectiva configuracao...
 if (GlobalEnv.production) {
     // PROD:
     //
@@ -1220,7 +1220,8 @@ if (GlobalEnv.production) {
             .catch((err) => console.error("[PWA] Service worker registration failed:", err));
     }
 } else {
-    // DEV:
+    // DEV: O que acontece em DEV, fica em DEV...
+    //
     // reduz o numero de questoes para facilitar depuracao:
     if (!GlobalEnv.production) GlobalTest.testLength = 5;
 }

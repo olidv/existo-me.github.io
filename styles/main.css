@@ -125,11 +125,41 @@ footer {
     margin-bottom: 0 !important;
 }
 
+/*--- ICONS & IMAGES --------------------------------------------------------*/
+
+.icon-inline {
+    display: inline-block;
+    width: auto;
+}
+
+h2.ex-nav .icon-inline {
+    height: 2rem;
+    vertical-align: top;
+    line-height: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.img-inline {
+    display: inline-block;
+    width: auto;
+}
+
 /*--- FONT TYPOGRAPHY -------------------------------------------------------*/
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Jost", Helvetica, Arial, sans-serif !important;
+}
+
+a.link-gold,
+a.link-gold:hover,
+a.link-gold:focus,
+a.link-gold:link,
+a.link-gold:active,
+a.link-gold:visited {
+    color: #D3A303; /* #FF8000, #F78E04 */
+    text-decoration: none;
+    outline: none;
 }
 
 .ex-nav {
@@ -166,46 +196,19 @@ h1, h2, h3, h4, h5, h6,
 
 .label-test {
     width: 100%;
+    padding-top: 1rem;
     padding-bottom: 1rem;
     cursor: pointer;
 }
 
-.text-justify {
-    text-align: justify;
-}
-
-a.link-gold,
-a.link-gold:hover,
-a.link-gold:focus,
-a.link-gold:link,
-a.link-gold:active,
-a.link-gold:visited {
-    color: #D3A303; /* #FF8000, #F78E04 */
-    text-decoration: none;
-    outline: none;
-}
-
-/*--- ICONS & IMAGES --------------------------------------------------------*/
-
-.icon-inline {
-    display: inline-block;
-    width: auto;
-}
-
-h2.ex-nav .icon-inline {
-    height: 2rem;
-    vertical-align: top;
-    line-height: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.img-inline {
-    display: inline-block;
-    width: auto;
-}
-
 
 /*--- FORM INPUTS -----------------------------------------------------------*/
+
+.input-test {
+    margin-top: 1.5rem !important;
+    /* float: none !important; */
+    /* vertical-align: baseline; */
+}
 
 .form-check-input:checked {
     background-color: #212529;
@@ -563,6 +566,10 @@ div.text-rate {
 
 .shadow-10 {
     box-shadow: 0 10px 20px -4px #000;
+}
+
+.text-justify {
+    text-align: justify;
 }
 
 @media (max-width: 479.98px) {
