@@ -13,9 +13,39 @@
     };
 })(console.log);
 
-// habilita ou desabilita o logging:
-// console.enableLogging();  // DEV
-console.disableLogging();  // PRD
+
+/* --- ENVIRONMENT --------------------------------------------------------- */
+
+// Cria instancia global para indicar o ambiente de execucao:
+var GlobalEnv = {};
+
+// determina qual o ambiente de execucao corrente: dev ou prod...
+if (document.documentElement.getAttribute("data-env") == "dev") {
+    // Ambiente DESENVOLVIMENTO:
+    GlobalEnv = {
+        name: "dev",
+        production: false,
+        baseUrl: "http://localhost:5500/",
+    };
+    // habilita o logging na console em desenvolvimento:
+    console.enableLogging();
+    console.log("*** AMBIENTE DE DESENVOLVIMENTO ***");
+    //
+} else {
+    // Ambiente PRODUCAO:
+    GlobalEnv = {
+        name: "prod",
+        production: true,
+        baseUrl: "https://www.existo.me/",
+    };
+    // desabilita o logging na console em producao:
+    //console.log("*** AMBIENTE DE PRODUCAO ***");
+    console.disableLogging();
+}
+
+// atualiza a pasta base do web site:
+document.querySelector("base").setAttribute("href", GlobalEnv.baseUrl);
+document.querySelector('link[rel="canonical"]').setAttribute("href", GlobalEnv.baseUrl);
 
 
 /* --- STRING UTILITIES ---------------------------------------------------- */
@@ -24,35 +54,38 @@ console.disableLogging();  // PRD
  * .
  *
  */
-String.prototype.formats = String.prototype.formats || function () {
-    "use strict";
+String.prototype.formats =
+    String.prototype.formats ||
+    function () {
+        "use strict";
 
-    let str = this.toString();
-    if (arguments.length) {
-        let t = typeof arguments[0];
-        let args = ("string" === t || "number" === t) ? Array.prototype.slice.call(arguments) : arguments[0];
-        for (let key in args) {
-            str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+        let str = this.toString();
+        if (arguments.length) {
+            let t = typeof arguments[0];
+            let args = "string" === t || "number" === t ? Array.prototype.slice.call(arguments) : arguments[0];
+            for (let key in args) {
+                str = str.replace(new RegExp("\\{" + key + "\\}", "gi"), args[key]);
+            }
         }
-    }
 
-    return str;
-};
+        return str;
+    };
 
 /**
  * .
  *
  */
-String.prototype.hashtag = String.prototype.hashtag || function () {
-    "use strict";
+String.prototype.hashtag =
+    String.prototype.hashtag ||
+    function () {
+        "use strict";
 
-    let str = this.toString();
-    str = str.replace(/-|\s+/g, "");
-    str = str.normalize("NFD").replace(/\p{Diacritic}/gu, "");
+        let str = this.toString();
+        str = str.replace(/-|\s+/g, "");
+        str = str.normalize("NFD").replace(/\p{Diacritic}/gu, "");
 
-    return '#' + str;
-};
-
+        return "#" + str;
+    };
 
 /* --- LOCAL STORAGE HELPER ------------------------------------------------ */
 
@@ -167,7 +200,6 @@ class StorageFacade {
 
 // Cria instancia global para manutencao de dados no storage (browser api):
 var GlobalStore = new StorageFacade(true); // maior persistencia sem data de expiracao (local-storage).
-
 
 /* --- APPLICATION USER CLASS ---------------------------------------------- */
 

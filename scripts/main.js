@@ -149,7 +149,7 @@ class PoliticalTest {
         /* 44... 54 */ if (val >= 44) return 3; // 40
         /* 27... 43 */ if (val >= 27) return 4; // 25
         /* 10... 26 */ if (val >= 10) return 5; //10
-        /*  0...  9 */ return axis[6]; // 0
+        /*  0...  9 */ return 6; // 0
     }
 
     /**
@@ -1201,3 +1201,26 @@ $(document).ready(function () {
         GlobalUser.isFirstTime = false;
     }
 });
+
+
+/* --- ENVIRONMENT --------------------------------------------------------- */
+
+// O que acontece em DEV, fica em DEV...
+if (GlobalEnv.production) {
+    // PROD:
+    //
+    /* --- Website PWA - Progressive Web Application ----------------------- */
+    //
+    // Check compatibility for the browser we're running this in:
+    if ("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
+        // Register the service worker:
+        navigator.serviceWorker
+            .register("/sw.js", { scope: "/" })
+            .then((reg) => console.info("[PWA] Service worker has been registered:", reg))
+            .catch((err) => console.error("[PWA] Service worker registration failed:", err));
+    }
+} else {
+    // DEV:
+    // reduz o numero de questoes para facilitar depuracao:
+    if (!GlobalEnv.production) GlobalTest.testLength = 5;
+}

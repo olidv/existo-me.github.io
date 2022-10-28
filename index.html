@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-env="prod">  <!-- dev | prod -->
     <head>
         <!-- Website Configuration -->
         <meta charset="utf-8" />
@@ -8,10 +8,10 @@
         <meta name="robots" content="index, all" />
         <meta name="revisit-after" content="7 days" />
         <!-- https://www.existo.me/ -->
-        <base href="https://www.existo.me/" />
-        <link rel="canonical" href="https://www.existo.me/" />
+        <base href="" />
+        <link rel="canonical" href="" />
 
-        <!-- No Cache Policy -->
+        <!-- Website Policy -->
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Expires" content="0"/>
@@ -21,6 +21,9 @@
         <meta name="description" content="Este website apresenta uma versão educacional do teste de coordenadas políticas, compatível com regimes de governo de todo o mundo. Foi criado pela iniciativa United Sapiens com o propósito educacional de levar o conhecimento do espectro de ideologias políticas a todos." />
         <meta name="keywords" content="EXISTO.me,teste,coordenadas,políticas,ideologia,política,eixos,ideológicos,econômico,civil,diplomático,social,gps,político,united,sapiens,governo,brasil" />
         <title>EXISTO.me • GPS Político</title>
+
+        <!-- Website Setup -->
+        <script type="text/javascript" src="scripts/head.js"></script>
 
         <!-- Progressive Web Application -->
         <meta name="application-name" content="EXISTO.me" />
@@ -112,9 +115,6 @@
 
         <!-- Website Stylesheets -->
         <link rel="stylesheet" href="styles/main.css" />
-
-        <!-- Website Setup -->
-        <script type="text/javascript" src="scripts/head.js"></script>
     </head>
 
     <!-- Website Content -->
@@ -858,17 +858,5 @@
         <!-- Website Scripts: no-cache policy -->
         <script type="text/javascript" src="data/political-gps.js?testVersion=1.0"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
-
-        <!-- Website PWA - Progressive Web Application -->
-        <script>
-            // Check compatibility for the browser we're running this in:
-            if ("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
-                // Register the service worker:
-                navigator.serviceWorker
-                    .register("/sw.js", { scope: "/" })
-                    .then((reg) => console.info("[PWA] Service worker has been registered:", reg))
-                    .catch((err) => console.error("[PWA] Service worker registration failed:", err));
-            }
-        </script>
     </body>
 </html>
