@@ -9,7 +9,7 @@ var dataPoliticalGps = {
     // relacao de questoes do teste:
     testQuests: [
         {
-            subject: "As prais em todo o litoral brasileiro deveriam ser:",
+            subject: "As praias em todo o litoral brasileiro deveriam ser:",
             options: [
                 { text: "Mantidas públicas e de acesso gratuito, sempre sob administração do governo.", mult: +1 },
                 { text: "Privatizadas em grande parte, para garantir à população maior limpeza e segurança.", mult: -1 },
@@ -170,7 +170,7 @@ var dataPoliticalGps = {
         {
             //question_en: "Environmental regulations are essential.",
             //question_pt: "As regulações ambientais são essenciais para assegurar o futuro de nossos filhos e netos.",
-            subject: "As regularização fundiária na Amazônia é:",
+            subject: "A regularização fundiária na Amazônia é:",
             options: [
                 { text: "Irrelevante e não necessariamente afeta nossa sociedade urbana.", mult: -1 },
                 { text: "Essencial para assegurar o futuro de nossos filhos e netos.", mult: +1 },
@@ -200,7 +200,7 @@ var dataPoliticalGps = {
         {
             //question_en: "Tariffs on international trade are important to encourage local production.",
             //question_pt: "A tarifação do comércio internacional é importante para estimular a produção local.",
-            subject: "A tarifação de compras internacionais feitas em applicativos como Shopee:",
+            subject: "A tarifação de compras internacionais feitas em aplicativos como Shopee:",
             options: [
                 { text: "É importante para proteger a produção local e favorecer os brasileiros a longo prazo.", mult: +1 },
                 { text: "Não afeta a produção local e apenas prejudica os brasileiros mais pobres a curto prazo.", mult: -1 },
@@ -873,7 +873,7 @@ var dataPoliticalGps = {
         {
             //question_en: "Research should be conducted on an international scale.",
             //question_pt: "As pesquisas científicas deveriam ser conduzidas em escala e cooperação global.",
-            subject: "As pesquisas científicas dos instituros brasileiros devem ser conduzidas:",
+            subject: "As pesquisas científicas dos institutos brasileiros devem ser conduzidas:",
             options: [
                 { text: "Conjuntamente com outros países, em escala e cooperação global.", mult: +1 },
                 { text: "Separadamente por cada país, sem interferência externa.", mult: -1 },
