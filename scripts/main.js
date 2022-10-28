@@ -1219,53 +1219,51 @@ function reviewTest() {
     // inicializa teste com questoes de pgps.quizListBasicQueries
     GlobalTest.initQuiz(0, []);
 
-    // somente adiciona as questoes se os slides das questoes ainda nao foram adicionados:
-    if (DOM.lengthSlides <= 1) {
-        // $CENARIO:BEGINNER-REVIEW
-        let idQuestion = 0;
-        // loop de todas as questoes do teste: question <- pgps.quizListBasicQueries
-        for (let question = GlobalTest.nextQuest(); idQuestion < GlobalUser.testLength && question != null; question = GlobalTest.nextQuest()) {
-            console.log(`reviewTest(): `, question);
+    // $CENARIO:BEGINNER-REVIEW
+    let idQuestion = 0;
+    // loop de todas as questoes do teste: question <- pgps.quizListBasicQueries
+    for (let question = GlobalTest.nextQuest(); idQuestion < GlobalUser.testLength && question != null; question = GlobalTest.nextQuest()) {
+        console.log(`reviewTest(): `, question);
 
-            // identifica o eixo ideologico pelo assunto (subject):
-            const titleAxis = GlobalTest.getTitleAxis(+question.subject);
-            const heading = `(<b>${titleAxis}</b>) ${question.heading}`;
+        // identifica o eixo ideologico pelo assunto (subject):
+        const titleAxis = GlobalTest.getTitleAxis(+question.subject);
+        const heading = `(<b>${titleAxis}</b>) ${question.heading}`;
 
-            // obtem o texto das opcoes:
-            const questSubject = question.subject.toString();
-            //
-            const option0Axis = questSubject + question.options[0].side.toString();
-            const option0Label = GlobalTest.getLabelAxis(option0Axis);
-            const option0Text = `(<b>+${option0Label}</b>) ${question.options[0].text}`;
-            //
-            const option1Axis = questSubject + question.options[1].side.toString();
-            const option1Label = GlobalTest.getLabelAxis(option1Axis);
-            const option1Text = `(<b>+${option1Label}</b>) ${question.options[1].text}`;
+        // obtem o texto das opcoes:
+        const questSubject = question.subject.toString();
+        //
+        const option0Axis = questSubject + question.options[0].side.toString();
+        const option0Label = GlobalTest.getLabelAxis(option0Axis);
+        const option0Text = `(<b>+${option0Label}</b>) ${question.options[0].text}`;
+        //
+        const option1Axis = questSubject + question.options[1].side.toString();
+        const option1Label = GlobalTest.getLabelAxis(option1Axis);
+        const option1Text = `(<b>+${option1Label}</b>) ${question.options[1].text}`;
 
-            // identifica para a questao selecionada a resposta do usuario e o estilo a ser aplicado:
-            const userChoice = GlobalUser.testChoices[idQuestion++];
-            const option0Checked = userChoice.optn == 0 ? "checked" : "disabled";
-            const option1Checked = userChoice.optn == 1 ? "checked" : "disabled";
+        // identifica para a questao selecionada a resposta do usuario e o estilo a ser aplicado:
+        const userChoice = GlobalUser.testChoices[idQuestion++];
+        const option0Checked = userChoice.optn == 0 ? "checked" : "disabled";
+        const option1Checked = userChoice.optn == 1 ? "checked" : "disabled";
 
-            // prepara template (read-only) de div para carrocel com dados da questao
-            let htmlContent = DOM.getIntroHtml("#templateReviewQuestion");
-            htmlContent = htmlContent.formats(GlobalTest.testLength, idQuestion, heading, option0Text, option0Checked, option1Text, option1Checked);
+        // prepara template (read-only) de div para carrocel com dados da questao
+        let htmlContent = DOM.getIntroHtml("#templateReviewQuestion");
+        htmlContent = htmlContent.formats(GlobalTest.testLength, idQuestion, heading, option0Text, option0Checked, option1Text, option1Checked);
 
-            // adiciona div como slide no carrocel
-            DOM.addBeforeSlide(htmlContent);
-        }
-        // habilita navegacao do carrocel com mouse ou teclado
-        DOM.initCarouselReview();
-
-        // Inibe o botao para revisar o teste e habilita o botao para cancelar:
-        DOM.showCancelReview();
+        // adiciona div como slide no carrocel
+        DOM.addBeforeSlide(htmlContent);
     }
+
+    // habilita navegacao do carrocel com mouse ou teclado
+    DOM.initCarouselReview();
 
     // emite alerta sonoro quando o usuario inicia a revisao do teste:
     DOM.playStart();
 
     // desloca para a primeira questao, que eh o proximo slide:
     DOM.nextSlide();
+
+    // ao final, inibe o botao para revisar o teste e habilita o botao para cancelar:
+    DOM.showCancelReview();
 }
 
 /**
