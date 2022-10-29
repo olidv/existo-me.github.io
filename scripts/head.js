@@ -28,9 +28,8 @@ if (document.documentElement.getAttribute("data-env") == "dev") {
         baseUrl: "http://localhost:5500/",
     };
 
-    // atualiza a pasta base do web site quando em desenvolvimento:
-    document.querySelector("base").setAttribute("href", GlobalEnv.baseUrl);
-    document.querySelector('link[rel="canonical"]').setAttribute("href", GlobalEnv.baseUrl);
+    // evita erros com a configuracao de PWA na estacao de desenvolvimento (desktop):
+    document.querySelector('link[rel="manifest"]').removeAttribute("href");
 
     // habilita o logging na console em desenvolvimento:
     console.enableLogging();
@@ -48,6 +47,10 @@ if (document.documentElement.getAttribute("data-env") == "dev") {
     //console.log("*** AMBIENTE DE PRODUCAO ***");
     console.disableLogging();
 }
+
+// atualiza a pasta base do web site conforme ambiente de execucao:
+document.querySelector("base").setAttribute("href", GlobalEnv.baseUrl);
+document.querySelector('link[rel="canonical"]').setAttribute("href", GlobalEnv.baseUrl);
 
 
 /* --- STRING UTILITIES ---------------------------------------------------- */

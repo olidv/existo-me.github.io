@@ -8,13 +8,13 @@ const [EQUALITY, MARKET, LIBERTY, AUTHORITY, GLOBAL, NATIONAL, PROGRESS, TRADITI
 var dataPoliticalGps = {
     // identificacao deste versao do teste politico:
     testVersion: 1.0,
-    testLength: 60,
+    testLength: 70,
 
     // relacao de questoes do teste:
     testQuests: [
         {
             subject: ECONOMY,
-            heading: "As praias em todo o litoral brasileiro deveriam ser:",
+            heading: "As praias em todo o litoral brasileiro devem ser:",
             options: [
                 { text: "Mantidas públicas e de acesso gratuito, sempre sob administração do governo.", mult: +1, side: EQUALITY },
                 { text: "Privatizadas em grande parte, para garantir à população maior limpeza e segurança.", mult: -1, side: MARKET },
@@ -49,7 +49,7 @@ var dataPoliticalGps = {
             heading: "Uma liga países aqui na América do Sul, como a União Europeia, deve ser:",
             options: [
                 { text: "Evitada a todo custo.", mult: -1, side: NATIONAL },
-                { text: "Criada para benefício de todos.", mult: +1, side: GLOBAL  },
+                { text: "Criada para benefício de todos.", mult: +1, side: GLOBAL },
             ],
             outcome: {
                 econ: -5,
@@ -63,7 +63,7 @@ var dataPoliticalGps = {
             heading: 'A prática do crime de peculato pelos políticos, quando fazem "rachadinha" com o salário de seus subordinados, deve ser:',
             options: [
                 { text: "Considerada apenas uma improbidade administrativa, pois é uma prática comum e não afeta o exercício da política.", mult: -1, side: TRADITION },
-                { text: "Punida exemplarmente com rigor, impedindo o político de exercer atividades públicas novamente.", mult: +1, side: PROGRESS },
+                { text: "Punida exemplarmente e com rigor, impedindo o político de exercer atividades públicas novamente.", mult: +1, side: PROGRESS },
             ],
             outcome: {
                 econ: 0,
@@ -92,10 +92,10 @@ var dataPoliticalGps = {
             //question_en: "Even when protesting an authoritarian government, violence is not acceptable.",
             //question_pt: "Mesmo ao protestar contra um governo autoritário, a violência não é aceitável.",
             subject: GOVERN,
-            heading: "Para protestar contra um governo autoritário:",
+            heading: "Para protestar contra um governo autoritário, a violência:",
             options: [
-                { text: "A violência pode ser utilizada.", mult: -1, side: AUTHORITY },
-                { text: "A violência jamais poderá ser aceitável.", mult: +1, side: LIBERTY },
+                { text: "Pode ser utilizada, ainda que eventualmente.", mult: -1, side: AUTHORITY },
+                { text: "Jamais poderá ser considerada aceitável.", mult: +1, side: LIBERTY },
             ],
             outcome: {
                 econ: 0,
@@ -110,8 +110,8 @@ var dataPoliticalGps = {
             subject: DIPLOMACY,
             heading: "O apoio financeiro aos países vizinhos necessitados é:",
             options: [
-                { text: "Importante e necessário, independente de seu governo.", mult: -1, side: GLOBAL },
-                { text: "Um desperdício de dinheiro se for um país comunista.", mult: +1, side: NATIONAL },
+                { text: "Importante e necessário, independente do regime de seu governo.", mult: -1, side: GLOBAL },
+                { text: "Um desperdício de dinheiro se for um governo autoritário.", mult: +1, side: NATIONAL },
             ],
             outcome: {
                 econ: -5,
@@ -125,7 +125,7 @@ var dataPoliticalGps = {
             heading: "A utilização de urnas eletrônicas pela justiça eleitoral brasileira é:",
             options: [
                 { text: "Um risco à democracia brasileira, e deveria ser substituída pelo voto impresso.", mult: -1, side: TRADITION },
-                { text: "Motivo de orgulho nacional, por ser comprovadamente segura e passível de auditoria.", mult: +1, side: PROGRESS  },
+                { text: "Motivo de orgulho nacional, por ser comprovadamente segura e passível de auditoria.", mult: +1, side: PROGRESS },
             ],
             outcome: {
                 econ: 0,
@@ -269,7 +269,7 @@ var dataPoliticalGps = {
             heading: "A tributação da herança no Brasil deve ser:",
             options: [
                 { text: "Eliminada porque a herança é uma forma legítima de riqueza.", mult: +1, side: MARKET },
-                { text: "Aumentada porque a herança promove a desigualdade social.", mult: -1, side: EQUALITY },
+                { text: "Ampliada porque a herança promove a desigualdade social.", mult: -1, side: EQUALITY },
             ],
             outcome: {
                 econ: -10,
@@ -379,7 +379,7 @@ var dataPoliticalGps = {
             heading: "A tributação das igrejas no Brasil deve ser:",
             options: [
                 { text: "Evitada, pois não podem ser tributadas como as demais instituições.", mult: -1, side: TRADITION },
-                { text: "Feita da mesma forma que as demais instituições são tributadas.", mult: +1, side: PROGRESS  },
+                { text: "Feita da mesma forma que as demais instituições são tributadas.", mult: +1, side: PROGRESS },
             ],
             outcome: {
                 econ: 5,
@@ -408,7 +408,7 @@ var dataPoliticalGps = {
             //question_en: "The sacrifice of some civil liberties is necessary to protect us from acts of terrorism.",
             //question_pt: "O sacrifício de algumas liberdades civis é necessário para nos proteger dos atos de terrorismo.",
             subject: GOVERN,
-            heading: "Para nos protegermos dos atos de terrorismo no Brasil é:",
+            heading: "Para nos protegermos dos atos de terrorismo no Brasil, é:",
             options: [
                 { text: "Necessário o sacrifício de algumas liberdades civis.", mult: +1, side: AUTHORITY },
                 { text: "Injustificável permitir a perda das liberdades civis.", mult: -1, side: LIBERTY },
@@ -443,7 +443,7 @@ var dataPoliticalGps = {
             heading: "O uso de drogas no Brasil deve ser:",
             options: [
                 { text: "Proibido e combatido.", mult: -1, side: TRADITION },
-                { text: "Legalizado e descriminalizado.", mult: +1, side: PROGRESS  },
+                { text: "Legalizado e descriminalizado.", mult: +1, side: PROGRESS },
             ],
             outcome: {
                 econ: 0,
@@ -587,7 +587,7 @@ var dataPoliticalGps = {
             heading: "As áreas e serviços de utilidade pública no Brasil, como estradas e eletricidade, devem ser:",
             options: [
                 { text: "Administradas pelo setor privado.", mult: -1, side: MARKET },
-                { text: "Mantidas como propriedade do Estado.", mult: +1, side: EQUALITY },
+                { text: "Mantidas sob administração do Estado.", mult: +1, side: EQUALITY },
             ],
             outcome: {
                 econ: 10,
@@ -648,10 +648,10 @@ var dataPoliticalGps = {
             //question_en: "Government intervention is a threat to the economy.",
             //question_pt: "Uma intervenção excessiva do Estado no Mercado é um risco/ameaça à economia.",
             subject: ECONOMY,
-            heading: "A intervenção excessiva do governo no mercado financeiro:",
+            heading: "Uma intervenção excessiva do governo no mercado financeiro é:",
             options: [
-                { text: "É necessário para estabilizar a economia do Brasil.", mult: -1, side: EQUALITY },
-                { text: "É uma ameaça à economia do Brasil.", mult: +1, side: MARKET },
+                { text: "Necessário para estabilizar a economia do Brasil.", mult: -1, side: EQUALITY },
+                { text: "Uma ameaça à livre iniciativa dos brasileiros.", mult: +1, side: MARKET },
             ],
             outcome: {
                 econ: -10,
@@ -744,9 +744,9 @@ var dataPoliticalGps = {
             //question_en: "Our nation's values should be spread as much as possible.",
             //question_pt: "Os valores tradicionais da nossa nação precisam ser disseminados tanto for quanto possível.",
             subject: DIPLOMACY,
-            heading: "Os valores tradicionais e culturais do Brasil:",
+            heading: "Os costumes, as crenças e demais valores culturais do Brasil:",
             options: [
-                { text: "Não são tão importantes para serem disseminados a todos os países vizinhos.", mult: -1, side: GLOBAL },
+                { text: "Não são tão imprescindíveis para serem disseminados a todos os países vizinhos.", mult: -1, side: GLOBAL },
                 { text: "Precisam ser disseminados o máximo possível a todos os países vizinhos.", mult: +1, side: NATIONAL },
             ],
             outcome: {
@@ -859,7 +859,7 @@ var dataPoliticalGps = {
             heading: "A manutenção da lei e da ordem pelo governo do Brasil é:",
             options: [
                 { text: "Menos prioritário que outros temas.", mult: -1, side: LIBERTY },
-                { text: "O mais importante.", mult: +1, side: AUTHORITY },
+                { text: "O mais importante para a sociedade.", mult: +1, side: AUTHORITY },
             ],
             outcome: {
                 econ: 0,
@@ -964,6 +964,166 @@ var dataPoliticalGps = {
                 scty: -10,
             },
         },
+        {
+            //question_en: "Reason is more important than maintaining our culture.",
+            //question_pt: "A razão é mais importante do que manter nossa cultura.",
+            subject: SOCIETY,
+            heading: "Seguir nossa razão e os novos rumos dos avanços científicos:",
+            options: [
+                { text: "Não pode ser mais importante do que manter a nossa cultura brasileira.", mult: -1, side: TRADITION },
+                { text: "É mais importante do que manter nossa cultura brasileira.", mult: +1, side: PROGRESS },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: 0,
+                scty: 10,
+            },
+        },
+        {
+            //question_en: "The means of production should belong to the workers who use them.",
+            //question_pt: "Os meios de produção deveriam pertencer aos trabalhadores que os utilizam.",
+            subject: ECONOMY,
+            heading: "Os meios de produção no Brasil devem pertencer:",
+            options: [
+                { text: "A quem possui melhor condição de administrá-los.", mult: -1, side: MARKET },
+                { text: "Aos trabalhadores que os mantém.", mult: +1, side: EQUALITY },
+            ],
+            outcome: {
+                econ: 10,
+                dipl: 0,
+                govt: 0,
+                scty: 0,
+            },
+        },
+        {
+            //question_en: "It is important that we maintain the traditions of our past.",
+            //question_pt: "É importante preservar as tradições do nosso passado.",
+            subject: SOCIETY,
+            heading: "As tradições do nosso passado:",
+            options: [
+                { text: "São importantes e deveriam ser preservadas.", mult: +1, side: TRADITION },
+                { text: "Não são tão importantes a longo prazo.", mult: -1, side: PROGRESS },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: 0,
+                scty: -10,
+            },
+        },
+        {
+            //question_en: "Climate change is currently one of the greatest threats to our way of life.",
+            //question_pt: "A mudança climática é atualmente uma das maiores ameaças ao nosso modo de vida.",
+            subject: SOCIETY,
+            heading: "A questão das mudanças climáticas para a sociedade brasileira:",
+            options: [
+                { text: "Não é mais importante do que outros assuntos mais prioritários.", mult: -1, side: TRADITION },
+                { text: "É uma das maiores ameaças ao nosso modo de vida.", mult: +1, side: PROGRESS },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: 0,
+                scty: 10,
+            },
+        },
+        {
+            //question_en: "It is important to maintain our national sovereignty.",
+            //question_pt: "É muito importante manter a nossa soberania nacional.",
+            subject: DIPLOMACY,
+            heading: "A soberania nacional do Brasil:",
+            options: [
+                { text: "É muito importante e deve ser priorizada acima de outras questões sociais.", mult: +1, side: NATIONAL },
+                { text: "Não é mais importante que outras questões sociais mais prioritárias.", mult: -1, side: GLOBAL },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: -10,
+                govt: -5,
+                scty: 0,
+            },
+        },
+        {
+            //question_en: "A better world will come from automation, science, and technology.",
+            //question_pt: "Um mundo melhor surgirá do avanço da automação, da ciência e da tecnologia.",
+            subject: SOCIETY,
+            heading: "O avanço da automação, da ciência e da tecnologia no Brasil nos levará a:",
+            options: [
+                { text: "Um mundo muito melhor.", mult: +1, side: PROGRESS },
+                { text: "Uma sociedade bem pior.", mult: -1, side: TRADITION },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: 0,
+                scty: 10,
+            },
+        },
+        {
+            //question_en: "Genetic modification is a force for good, even on humans.",
+            //question_pt: "As pesquisas e práticas de alteração genética são algo que beneficia a humanidade, mesmo quando a genética humana está envolvida.",
+            subject: SOCIETY,
+            heading: "As pesquisas e práticas de alteração genética, quando a genética humana está envolvida, devem ser:",
+            options: [
+                { text: "Consideradas benéficas aos brasileiros.", mult: +1, side: PROGRESS },
+                { text: "Proibidas por representar risco aos brasileiros.", mult: -1, side: TRADITION },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: 0,
+                scty: 10,
+            },
+        },
+        {
+            //question_en: "All people - regardless of factors like culture or sexuality - should be treated equally.",
+            //question_pt: "Todas as pessoas - independentemente de fatores como cultura ou sexualidade - deveriam ser tratadas igualmente.",
+            subject: SOCIETY,
+            heading: "Todos os brasileiros devem ser tratados:",
+            options: [
+                { text: "Igualmente, independentemente de fatores como classe, cultura ou sexualidade.", mult: +1, side: PROGRESS },
+                { text: "Distintamente, conforme sua condição social, cultura ou sexualidade.", mult: -1, side: TRADITION },
+            ],
+            outcome: {
+                econ: 10,
+                dipl: 10,
+                govt: 10,
+                scty: 10,
+            },
+        },
+        {
+            //question_en: "To chase progress at all costs is dangerous.",
+            //question_pt: "Perseguir o progresso a qualquer custo é algo perigoso.",
+            subject: SOCIETY,
+            heading: "Perseguir o progresso sem medir custos é:",
+            options: [
+                { text: "O caminho para um Brasil melhor.", mult: -1, side: PROGRESS },
+                { text: "Algo perigoso para a sociedade brasileira.", mult: +1, side: TRADITION },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: 0,
+                scty: -10,
+            },
+        },
+        {
+            //question_en: "It is important that we think in the long term, beyond our lifespans.",
+            //question_pt: "É importante que pensemos a longo prazo, além de nossa expectativa de vida.",
+            subject: SOCIETY,
+            heading: "Ao estabelecermos uma agenda de política social no Brasil, devemos pensar a:",
+            options: [
+                { text: "Curto prazo, enquanto ainda estamos vivos.", mult: -1, side: TRADITION },
+                { text: "Longo prazo, além de nossa expectativa de vida.", mult: +1, side: PROGRESS },
+            ],
+            outcome: {
+                econ: 0,
+                dipl: 0,
+                govt: 0,
+                scty: 10,
+            },
+        },
     ],
 
     // denominacao para os eixos conforme a pontuacao (outcome):
@@ -971,6 +1131,6 @@ var dataPoliticalGps = {
         econ: ["Comunista", "Socialista", "Social", "Centrista", "Liberal", "Neoliberal", "Laissez-Faire"],
         dipl: ["Cosmopolita", "Internacionalista", "Pacifista", "Equilibrado", "Patriótico", "Nacionalista", "Chauvinista"],
         govt: ["Anarquista", "Libertário", "Liberalista", "Moderado", "Estatista", "Autoritário", "Totalitário"],
-        scty: ["Revolucionário", "Muito Progressista", "Moderno", "Neutro", "Tradicional", "Muito Conservador", "Reacionário"],
+        scty: ["Revolucionário", "Progressista", "Moderno", "Neutro", "Tradicional", "Conservador", "Reacionário"],
     },
 };

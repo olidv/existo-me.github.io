@@ -410,15 +410,6 @@ a:visited {
 
 /*--- TIPS & TOASTS & POPOVERS ----------------------------------------------*/
 
-#toastUnderConstruction .toast-header,
-#toastUnderConstruction .toast-body {
-    color: black;
-}
-
-#toastUnderConstruction.toast {
-    background-color: #eeeeee;
-}
-
 
 /*--- MODALS & POPUPS -------------------------------------------------------*/
 

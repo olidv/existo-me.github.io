@@ -2,13 +2,14 @@
     "name": "EXISTO.me • GPS Político",
     "short_name": "EXISTO.me",
     "description": "Este website apresenta uma versão educacional do teste de coordenadas políticas, compatível com regimes de governo de todo o mundo. Foi criado pela iniciativa United Sapiens com o propósito educacional de levar o conhecimento do espectro de ideologias políticas a todos.",
+    "start_url": "https://www.existo.me/index.html",
+    "scope": "https://www.existo.me/",
     "lang": "pt-BR",
-    "scope": "/",
-    "start_url": "/?utm_source=homescreen",
     "display": "standalone",
-    "theme_color": "#2FB56A",
     "background_color": "#2FB56A",
+    "theme_color": "#2FB56A",
     "orientation": "portrait",
+    "splash_pages": null,
     "icons": [
         {
             "src": "icons/android-icon-36x36.png",
@@ -55,6 +56,5 @@
             "sizes": "512x512",
             "type": "image/png"
         }
-    ],
-    "splash_pages": null
+    ]
 }
