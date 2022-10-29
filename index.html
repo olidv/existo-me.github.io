@@ -7,9 +7,8 @@
         <meta name="rating" content="general" />
         <meta name="robots" content="index, all" />
         <meta name="revisit-after" content="7 days" />
-        <!-- https://www.existo.me/ -->
-        <base href="" />
-        <link rel="canonical" href="" />
+        <base href="https://www.existo.me/" />
+        <link rel="canonical" href="https://www.existo.me/" />
 
         <!-- Website Policy -->
         <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
@@ -88,7 +87,7 @@
         <meta property="og:title" content="EXISTO.me • GPS Político" />
         <meta property="og:description" content="Este website apresenta uma versão educacional do teste de coordenadas políticas, compatível com regimes de governo de todo o mundo. Foi criado pela iniciativa United Sapiens com o propósito educacional de levar o conhecimento do espectro de ideologias políticas a todos." />
         <meta property="og:locale" content="pt-BR" />
-        <meta property="og:url" content="https://www.existo.me" />
+        <meta property="og:url" content="https://www.existo.me/" />
         <meta property="og:image" content="https://www.existo.me/icons/og-image.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1024" />
@@ -96,12 +95,12 @@
         <meta property="og:image:alt" content="EXISTO.me Logo" />
 
         <!-- Share on Twitter -->
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:creator" content="@United_Sapiens" />
         <meta name="twitter:site" content="@United_Sapiens" />
         <meta name="twitter:title" content="EXISTO.me • GPS Político" />
         <meta name="twitter:description" content="Este website apresenta uma versão educacional do teste de coordenadas políticas, compatível com regimes de governo de todo o mundo. Foi criado pela iniciativa United Sapiens com o propósito educacional de levar o conhecimento do espectro de ideologias políticas a todos." />
-        <meta name="twitter:image" content="https://www.existo.me/icons/og-image.png" />
+        <meta name="twitter:image" content="https://www.existo.me/icons/android-icon-512x512.png" />
         <meta name="twitter:image:alt" content="EXISTO.me Logo" />
 
         <!-- Google Web Fonts -->
@@ -153,7 +152,7 @@
                     </div>
                     <ul class="col-6 d-flex justify-content-end nav list-unstyled">
                         <li class="h2 ms-3 ex-nav finished-test">
-                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para revisar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap"></i></a>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#modalResult" title="Clique para visualizar o seu resultado do teste político."><i class="bi bi-grid-3x3-gap"></i></a>
                         </li>
                         <li class="h2 ms-3 ex-nav">
                             <a href="#" data-bs-toggle="modal" data-bs-target="#modalSetup" title="Clique para ajustar suas preferências pessoais."><i class="bi bi-gear"></i></a>
@@ -679,7 +678,6 @@
                     </div>
                     <div class="modal-footer">
                         <a href="javascript:forgetMe();" class="btn btn-outline-secondary mx-3" role="button" title="Clique para apagar suas preferências e sair do site..."><i class="fa-solid fa-person-circle-minus"></i>&nbsp; Esqueça-me!</a>
-
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Clique para fechar"><i class="fa-solid fa-xmark"></i>&nbsp; Fechar</button>
                     </div>
                 </div>
@@ -756,11 +754,12 @@
                                     <li>A opção [Esquema de Cores] permite alternar o esquema de cores da aplicação, entre claro e escuro.</li>
                                     <li>A opção [Tamanho da Fonte] permite aumentar ou reduzir o tamanho do texto para melhorar a legibilidade dos testes.</li>
                                     <li>A opção [Alertas Sonoros] permite ligar ou desligar a emissão de sons durante a execução do teste.</li>
-                                    <li>A opção [Histórico de Respostas] permite limpar o histórico de respostas do usuário, caso não queira que suas respostas permaneçam armazenadas no dispositivo.</li>
+                                    <li>A opção [Respostas Armazenadas] permite limpar o histórico de respostas do usuário, caso não queira que suas respostas permaneçam armazenadas no dispositivo.</li>
+                                    <li>A opção [Esqueça-me!] permite excluir todo o histórico do teste e também as preferências configuradas. Após a exclusão, você será redirecionado para outra página fora deste website.</li>
                                 </ul>
 
                                 <h5><i class="bi bi-heart-pulse"></i>&nbsp; Ajude Nosso Projeto a Crescer</h5>
-                                <p class="mb-4">A última opção do menu funcional abre janela popup contendo a apresentação da campanha de crowdfunding para a iniciativa United Sapiens. Atualmente a campanha está cadastrada no site <a href="https://www.vakinha.com.br/" title="https://www.vakinha.com.br/" target="_blank">Vakinha</a>. Caso queira contribuir com a campanha, basta realizar um PIX utilizando a chave apresentada na janela.</p>
+                                <p class="mb-4">A última opção do menu funcional abre janela popup contendo a apresentação da campanha de crowdfunding para a iniciativa United Sapiens. Atualmente a campanha está cadastrada no site <a href="https://vakinha.bio/3238942" title="https://vakinha.bio/3238942" target="_blank">Vakinha</a>. Caso queira contribuir com a campanha, basta realizar um PIX utilizando a chave apresentada na janela.</p>
                             </div>
 
                             <div id="tabHelpTest" class="tab-pane p-3 fade">
@@ -771,7 +770,7 @@
                                 <p class="mb-4">O teste utiliza um componente “carrossel” para navegar entre as questões. Assim que você escolhe a sua resposta, entre as duas opções apresentadas, a tela avança para a próxima questão. Você pode acompanhar pelo título onde é apresentada a questão atual e o número total de questões, ou pela barra de slider abaixo do teste. Não se preocupe se por ventura achar que não escolheu a opção correta, ao final do teste é possível revisar suas respostas. Caso queira, também é possível refazer o teste.</p>
 
                                 <h5>Questões Pendentes</h5>
-                                <p class="mb-4">As respostas do teste são salvas na área local de armazenamento do navegador. Caso não consiga realizar o teste, ao retornar ao site você é informado que existem questões pendentes. O número da última questão respondida é apresentado no título em amarelo. Basta clicar em [RETOMAR TESTE] para prosseguir de onde parou, até concluir o teste.</p>
+                                <p class="mb-4">As respostas do teste são salvas na área local de armazenamento do navegador. Caso não consiga realizar o teste, ao retornar ao site você é informado que existem questões pendentes. O número da última questão respondida é apresentado no título em amarelo. Basta clicar em [FINALIZAR TESTE] para prosseguir de onde parou, até concluir o teste.</p>
 
                                 <h5>Tela de Resultado</h5>
                                 <p class="mb-4">Imediatamente após concluir o teste, respondendo à última questão, é apresentada uma janela popup com as estatísticas de seu resultado. Nesta tela é apresentada a ideologia política que mais se “enquadra” às suas respostas: Esquerda ou Direita. Também são apresentados os valores para os eixos políticos Economia, Governo, Diplomacia e Sociedade. Caso queira compartilhar seu resultado em redes sociais, clique no botão [COMPARTILHAR] na parte inferior. Um pequeno texto, resumido e formatado, será copiado para a área de transferência. Você poderá postar esse conteúdo em qualquer rede social que desejar. Até o momento foram realizados testes com sucesso com o Twitter, Facebook, WhatsApp e Telegram. Estamos prosseguindo com mais testes.</p>
@@ -782,7 +781,7 @@
 
                             <div id="tabHelpFaq" class="tab-pane p-3 fade">
                                 <h5>Este site utiliza Cookies?</h5>
-                                <p class="mb-4">Não, este site não utiliza cookies ou qualquer outro meio para rastrear o usuário. Nenhuma informação sobre a pessoa do usuário, sua localização, seu equipamento ou dispositivo utilizado para acesso, ou mesmo seu endereço IP, é acessado e/ou armazenado. Pelo fato da aplicação ser uma “Single Page Application”, não há uma segunda aplicação de retaguarda com a qual o site se comunica. Apenas o resultado do teste é armazenado na área de armazenamento local do navegador (local storage). Se o usuário não quiser deixar seu resultado salvo no navegador, basta apagar o histórico do navegador, ou utilizar a opção [APAGAR] na janela de preferências.</p>
+                                <p class="mb-4">Não, este site não utiliza cookies ou qualquer outro meio para rastrear o usuário. Nenhuma informação sobre a pessoa do usuário, sua localização, seu equipamento ou dispositivo utilizado para acesso, ou mesmo seu endereço IP, é acessado e/ou armazenado. Pelo fato da aplicação ser uma “Single Page Application”, não há uma segunda aplicação de retaguarda com a qual o site se comunica. Apenas o resultado do teste é armazenado na área de armazenamento local do navegador (local storage). Se o usuário não quiser deixar seu resultado salvo no navegador, basta apagar o histórico do navegador, ou utilizar qualquer uma das opções [APAGAR] e [ESQUEÇA-ME] na janela de preferências.</p>
 
                                 <h5>Qual a teoria política por trás do teste?</h5>
                                 <p class="mb-4">Este site é baseado no site <a href="https://8values.github.io/" title="https://8values.github.io/" target="_blank">8values</a>, criado pelo desenvolvedor <a href="https://github.com/TristanBomb" title="https://github.com/TristanBomb" target="_blank">TristanBomb</a>. Foram feitas modificações nas questões para se adaptarem à realidade brasileira. Também se optou por substituir a <a href="https://pt.wikipedia.org/wiki/Escala_Likert" title="https://pt.wikipedia.org/wiki/Escala_Likert" target="_blank">Escala Likert</a> das respostas (concordo, concordo fortemente, etc) por apenas duas escolhas contraditórias (concordo, discordo).</p>
@@ -797,7 +796,7 @@
                                 <p class="mb-4">Eu me chamo <a href="https://github.com/tecnolista" title="https://github.com/tecnolista" target="_blank">Raul Bras</a>, sou desenvolvedor web e atualmente resido no Brasil entre os habitantes paulistas do mundo de Oz. Esta aplicação é o segundo site lançado pela iniciativa <a href="https://github.com/united-sapiens" title="https://github.com/united-sapiens" target="_blank">United Sapiens</a>, da qual faço parte e contribuo como programador.</p>
 
                                 <h5>Como o site EXISTO.me está licenciado?</h5>
-                                <p class="mb-4">o conteúdo textual do website e o cálculo parametrizado do teste do GPS Político estão licenciados pela <a href="https://creativecommons.org/licenses/by/4.0/" title="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons BY</a>. O código fonte do website é disponibilizado sob a licença <a href="https://opensource.org/licenses/MIT" title="https://opensource.org/licenses/MIT" target="_blank">MIT</a>.</p>
+                                <p class="mb-4">O conteúdo textual do website e o cálculo parametrizado do teste do GPS Político estão licenciados pela <a href="https://creativecommons.org/licenses/by/4.0/" title="https://creativecommons.org/licenses/by/4.0/" target="_blank">Creative Commons BY</a>. O software do website é disponibilizado sob a licença <a href="https://opensource.org/licenses/MIT" title="https://opensource.org/licenses/MIT" target="_blank">MIT</a> como código livre e aberto (domínio público).</p>
 
                                 <h5>Posso ajudar a calibrar o teste?</h5>
                                 <p class="mb-4">Neste momento, toda ajuda será bem-vinda. Envie o resultado por e-mail, pode ser um print da tela, e descreva sua ideologia política para nós. Comentários, perguntas ou críticas também ajuda muito.</p>

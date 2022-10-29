@@ -27,6 +27,11 @@ if (document.documentElement.getAttribute("data-env") == "dev") {
         production: false,
         baseUrl: "http://localhost:5500/",
     };
+
+    // atualiza a pasta base do web site quando em desenvolvimento:
+    document.querySelector("base").setAttribute("href", GlobalEnv.baseUrl);
+    document.querySelector('link[rel="canonical"]').setAttribute("href", GlobalEnv.baseUrl);
+
     // habilita o logging na console em desenvolvimento:
     console.enableLogging();
     console.log("*** AMBIENTE DE DESENVOLVIMENTO ***");
@@ -38,14 +43,11 @@ if (document.documentElement.getAttribute("data-env") == "dev") {
         production: true,
         baseUrl: "https://www.existo.me/",
     };
+
     // desabilita o logging na console em producao:
     //console.log("*** AMBIENTE DE PRODUCAO ***");
     console.disableLogging();
 }
-
-// atualiza a pasta base do web site:
-document.querySelector("base").setAttribute("href", GlobalEnv.baseUrl);
-document.querySelector('link[rel="canonical"]').setAttribute("href", GlobalEnv.baseUrl);
 
 
 /* --- STRING UTILITIES ---------------------------------------------------- */
