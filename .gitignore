@@ -137,5 +137,4 @@ prettierignore.txt
 RECYCLEME.txt
 /data/ideologies.js
 /data/questions.js
-/docs/*.docx
 /docs/ROADMAP.md
