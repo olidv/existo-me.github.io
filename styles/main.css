@@ -575,6 +575,14 @@ div.text-rate {
     text-align: justify;
 }
 
+.w-60 {
+    width: 60% !important;
+}
+
+.w-40 {
+    width: 40% !important;
+}
+
 @media (max-width: 479.98px) {
     .no-phone {
         display: none;
