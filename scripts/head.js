@@ -43,6 +43,11 @@ if (document.documentElement.getAttribute("data-env") == "dev") {
         baseUrl: "https://www.existo.me/",
     };
 
+    // forca o protocolo HTTPS quando em producao:
+    if (location.protocol !== "https:") {
+        location.replace(GlobalEnv.baseUrl);
+    }
+
     // desabilita o logging na console em producao:
     //console.log("*** AMBIENTE DE PRODUCAO ***");
     console.disableLogging();

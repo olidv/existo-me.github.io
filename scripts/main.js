@@ -350,7 +350,6 @@ class DomHelper {
     prevControl;
     nextControl;
 
-    // propriedades privadas: toasts e popovers
     // propriedades privadas: audios
     audioStart;
     audioRespond;
@@ -377,10 +376,6 @@ class DomHelper {
         this.innerCarousel = $("#carouselTest .carousel-inner");
         this.prevControl = $("#carouselTest .carousel-control-prev");
         this.nextControl = $("#carouselTest .carousel-control-next");
-
-        // inicializa e identifica as toasts e popovers:
-        // const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-        // const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 
         // identifica os arquivos de audios:
         this.audioStart = document.querySelector("#audioStart");
@@ -574,19 +569,6 @@ class DomHelper {
         // apresenta apenas o botao para cancelar a revisao do teste:
         $(".btn-review-test").addClass("d-none");
         $(".btn-cancel-review").removeClass("d-none");
-    }
-
-    /* --- TOASTS AND POPUPS ----------------------------------------------- */
-
-    /**
-     * Exibe a toast splash screen do web site.
-     *
-     */
-    showToastSplash() {
-        // identifica a div da toast:
-        const toastSplash = document.getElementById("toastSplash");
-        const bsToast = new bootstrap.Toast(toastSplash);
-        bsToast.show();
     }
 
     /* --- AUDIOS: PLAY SOUND ---------------------------------------------- */
@@ -1314,34 +1296,6 @@ function forgetMe() {
 }
 
 
-/* --- JQUERY: DOM READY --------------------------------------------------- */
-
-/**
- * Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
- *
- */
-$(document).ready(function () {
-    ("use strict"); // sempre!
-
-    // Efetua inicializacao das referencias internas do DOM.
-    DOM.ready();
-    GlobalSetup.ready();
-    GlobalResult.ready();
-
-    // a partir do estado do usuario, identifica qual painel introdutorio apresentar:
-    showIntro();
-
-    // Se for o primeiro acesso do usuario:
-    if (GlobalUser.isFirstTime) {
-        // exibe a popup com o alerta de que ainda estamos em obras,
-        DOM.showToastSplash();
-
-        // ja nao eh mais o primeiro acesso a partir daqui...
-        GlobalUser.isFirstTime = false;
-    }
-});
-
-
 /* --- ENVIRONMENT --------------------------------------------------------- */
 
 // Detecta o ambiente de execucao e procede com a respectiva configuracao...
@@ -1364,3 +1318,30 @@ if (GlobalEnv.production) {
     // reduz o numero de questoes para facilitar depuracao:
     if (!GlobalEnv.production) GlobalTest.testLength = 5;
 }
+
+
+/* --- JQUERY: DOM READY --------------------------------------------------- */
+
+/**
+ * Elementos "Window, Body e Document" prontos para manipulacao pelo jQuery.
+ *
+ */
+$(document).ready(function () {
+    ("use strict"); // sempre!
+
+    // Efetua inicializacao das referencias internas do DOM.
+    DOM.ready();
+    GlobalSetup.ready();
+    GlobalResult.ready();
+
+    // a partir do estado do usuario, identifica qual painel introdutorio apresentar:
+    showIntro();
+
+    // Se for o primeiro acesso do usuario:
+    if (GlobalUser.isFirstTime) {
+        // TODO ???
+
+        // ja nao eh mais o primeiro acesso a partir daqui...
+        GlobalUser.isFirstTime = false;
+    }
+});

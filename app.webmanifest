@@ -6,8 +6,8 @@
     "scope": "https://www.existo.me/",
     "lang": "pt-BR",
     "display": "standalone",
-    "background_color": "#2FB56A",
-    "theme_color": "#2FB56A",
+    "background_color": "#4C555D",
+    "theme_color": "#4C555D",
     "orientation": "portrait",
     "splash_pages": null,
     "icons": [
