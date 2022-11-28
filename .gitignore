@@ -134,8 +134,6 @@ prettierignore.txt
 # below put you custom 'per project' settings,
 # patterns or path.
 #####
+docs/*.tmp
 RECYCLEME.txt
-/data/ideologies.js
-/data/questions.js
-/docs/ROADMAP.md
-/docs/*.tmp
+ROADMAP.md
