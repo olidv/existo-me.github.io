@@ -1128,7 +1128,7 @@ var dataPoliticalGps = {
 
     // denominacao para os eixos conforme a pontuacao (outcome):
     testLabels: {
-        econ: ["Comunista", "Socialista", "Social", "Centrista", "Liberal", "Neoliberal", "Laissez-Faire"],
+        econ: ["Marxista", "Socialista", "Social-Democrata", "Centrista", "Liberal-Democrata", "Neoliberal", "Laissez-Faire"],
         dipl: ["Cosmopolita", "Internacionalista", "Pacifista", "Equilibrado", "Patriótico", "Nacionalista", "Chauvinista"],
         govt: ["Anarquista", "Libertário", "Liberalista", "Moderado", "Estatista", "Autoritário", "Totalitário"],
         scty: ["Revolucionário", "Progressista", "Moderno", "Neutro", "Tradicional", "Conservador", "Reacionário"],
