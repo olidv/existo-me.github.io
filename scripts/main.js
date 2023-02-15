@@ -1302,16 +1302,16 @@ function forgetMe() {
 if (GlobalEnv.production) {
     // PROD:
     //
-    /* --- Website PWA - Progressive Web Application ----------------------- */
+    /* --- FIXME: Website PWA - Progressive Web Application ----------------------- */
     //
     // Check compatibility for the browser we're running this in:
-    if ("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
-        // Register the service worker:
-        navigator.serviceWorker
-            .register("/sw.js", { scope: "/" })
-            .then((reg) => console.info("[PWA] Service worker has been registered:", reg))
-            .catch((err) => console.error("[PWA] Service worker registration failed:", err));
-    }
+    // if ("serviceWorker" in navigator && !navigator.serviceWorker.controller) {
+    //     // Register the service worker:
+    //     navigator.serviceWorker
+    //         .register("/sw.js", { scope: "/" })
+    //         .then((reg) => console.info("[PWA] Service worker has been registered:", reg))
+    //         .catch((err) => console.error("[PWA] Service worker registration failed:", err));
+    // }
 } else {
     // DEV: O que acontece em DEV, fica em DEV...
     //
