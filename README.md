@@ -20,9 +20,9 @@ As a Full Stack Web Developer, I have been using the Angular framework in the la
 
 ## How You Can Contribute
 
-You can help if you want, by editing this repo and adding new content - text, scripts, styles, images, ...
+As a full-stack developer, I can work as a back-end or front-end programmer. But I'm not specialized in web design nor ux/ui. If you work in these areas, your contribution is most welcome.
 
-Just follow the steps below:
+You can help if you want, by editing this repo and adding new content - text, scripts, styles, images, ... Just follow the steps below:
 
 - Fork this repository
 - Clone the repository
